@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour
     private bool canAttack = true;
     private bool canFinishAttack = true;
     private Vector3 rollDirection;
-    
 
+    private bool canRoll = true;
     
 
     // Update is called once per frame
@@ -116,12 +116,15 @@ public class PlayerController : MonoBehaviour
             mousePos.Normalize();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL)
+        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll)
         {
             playerState = PlayerState.ROLLING;
             rollDirection = movement;
+            currentRotation = Quaternion.LookRotation(rollDirection);
             movement = Vector3.zero;
+            canRoll = false;
             animator.SetBool("IsRolling", true);
+            StartRoll();
         }
     }
 
@@ -136,6 +139,11 @@ public class PlayerController : MonoBehaviour
         isRolling = false;
         playerState = PlayerState.NEUTRAL;
         animator.SetBool("IsRolling", false);
+    }
+
+    public void LetRoll()
+    {
+        canRoll = true;
     }
 
     private float attackDistance;
@@ -249,7 +257,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerState == PlayerState.ROLLING && isRolling)
         {
-            controller.Move(rollDirection * 30 * Time.deltaTime);
+            controller.Move(rollDirection * 29 * Time.deltaTime);
         }
 
         // If player is touching the floor, gravity force is not applied

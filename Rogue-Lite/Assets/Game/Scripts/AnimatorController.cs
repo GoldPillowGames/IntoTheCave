@@ -32,6 +32,11 @@ public class AnimatorController : MonoBehaviour
         playerController.StartRoll();
     }
 
+    void LetRoll()
+    {
+        playerController.LetRoll();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
