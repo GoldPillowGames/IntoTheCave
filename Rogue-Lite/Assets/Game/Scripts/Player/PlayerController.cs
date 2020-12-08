@@ -4,36 +4,72 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("References")]
     [Tooltip("Main camera reference")]
     [SerializeField] private Camera cam;
     [Tooltip("Camera orientation transform")]
     [SerializeField] private Transform cameraDirection;
-    [Tooltip("Player movement speed")]
-    [SerializeField] private float speed = 5;
-    [Tooltip("Gravity force strength")]
-    [SerializeField] private float gravity = -27.5f;
     [Tooltip("Ground checker transform")]
     [SerializeField] private Transform groundChecker;
-    [Tooltip("Ground checker radius")]
-    [SerializeField] private float groundCheckerArea;
-    [Tooltip("Ground Layer Mask")]
-    [SerializeField] private LayerMask whatIsGround;
     [Tooltip("Player container reference")]
     [SerializeField] private Transform playerContainer;
     [Tooltip("UI reference")]
     [SerializeField] private UIController UI;
+    [Tooltip("Player animator")]
+    [SerializeField] private Animator animator;
+
+    [Header("Movement Variables")]
+
+    [Tooltip("Player movement speed")]
+    [SerializeField] private float speed = 5;
+    [Tooltip("Gravity force strength")]
+    [SerializeField] private float gravity = -27.5f;
+    [Tooltip("Ground checker radius")]
+    [SerializeField] private float groundCheckerArea;
+    [Tooltip("Ground Layer Mask")]
+    [SerializeField] private LayerMask whatIsGround;
     [Tooltip("Player rotation speed")]
     [SerializeField] private float rotationSpeed = 15f;
+    [SerializeField] private float attackDashTimer;
+    [SerializeField] private float attackMaxDashTimer = 0.1f;
+    [SerializeField] private float timeToDash;
+    [SerializeField] private float maxTimeToDash = 0.05f;
+
+    [Header("Other")]
+    [SerializeField] private bool debug = false;
+    [SerializeField] private MeleeWeaponTrail weaponTrail;
+
+    public enum PlayerState
+    {
+        NEUTRAL,
+        ATTACKING,
+        BLOCKING,
+        ROLLING
+    }
+
+    
+
+    private PlayerState playerState = PlayerState.NEUTRAL;
 
     private Quaternion currentRotation;     // Current looking rotation
     private CharacterController controller; // Character controller
     private Vector3 movement;               // Current Movement
     private Vector2 gravityVelocity;        // Gravity Velocity
 
+    private bool isRolling = false;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
     }
+    private Vector3 clickPosition;
+    private Vector3 lookDirection;
+    private bool canAttack = true;
+    private bool canFinishAttack = true;
+    private Vector3 rollDirection;
+    
+
+    
 
     // Update is called once per frame
     void Update()
@@ -41,9 +77,107 @@ public class PlayerController : MonoBehaviour
         Movement();
 
         // Updates where the player is looking to if he is moving
-        if (movement != Vector3.zero)
+        if ((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING)
             playerContainer.rotation = Quaternion.Lerp(playerContainer.rotation, currentRotation, rotationSpeed * Time.deltaTime);
+
+
+        if (Input.GetMouseButton(1))
+        {
+            animator.SetBool("IsDefending", true);
+            playerState = PlayerState.BLOCKING;
+        }
+        else
+        {
+            animator.SetBool("IsDefending", false);
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            playerState = PlayerState.NEUTRAL;
+        }
+
+        if (Input.GetMouseButtonDown(0) && canAttack)
+        {
+            canAttack = false;
+            canFinishAttack = false;
+            playerState = PlayerState.ATTACKING;
+            animator.SetBool("IsWalking", false);
+            animator.SetTrigger("Attack1");
+            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit cameraRayHit;
+            if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsGround))
+            {
+                clickPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
+                lookDirection = (clickPosition - transform.position).normalized;
+                currentRotation = Quaternion.LookRotation(lookDirection.normalized, transform.up);
+            }
+
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.Normalize();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL)
+        {
+            playerState = PlayerState.ROLLING;
+            rollDirection = movement;
+            movement = Vector3.zero;
+            animator.SetBool("IsRolling", true);
+        }
     }
+
+    #region Events
+    public void StartRoll()
+    {
+        isRolling = true;
+    }
+
+    public void EndRoll()
+    {
+        isRolling = false;
+        playerState = PlayerState.NEUTRAL;
+        animator.SetBool("IsRolling", false);
+    }
+
+    private float attackDistance;
+
+    public void Attack(float attackDistance)
+    {
+        attackDashTimer = attackMaxDashTimer;
+        this.attackDistance = attackDistance;
+        weaponTrail.Emit = true;
+    }
+
+    public void LetAttack()
+    {
+        canAttack = true;
+        canFinishAttack = true;
+        weaponTrail.Emit = false;
+    }
+
+    public void FinishAttack()
+    {
+        if (canFinishAttack)
+        {
+            if (playerState == PlayerState.ATTACKING)
+            {
+                playerState = PlayerState.NEUTRAL;
+                if (movement != Vector3.zero)
+                {
+                    if (playerState == PlayerState.NEUTRAL)
+                    {
+                        animator.SetBool("IsWalking", true);
+                        currentRotation = Quaternion.LookRotation(movement);
+                    }
+                }
+                else
+                {
+                    animator.SetBool("IsWalking", false);
+                }
+            }
+        }
+        
+    }
+    #endregion
 
     void HandleMouseMovement()
     {
@@ -85,12 +219,38 @@ public class PlayerController : MonoBehaviour
         #region Horizontal Movement Calculation & Assignation
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
-        controller.Move(movement * speed * Time.deltaTime);
+        
+        if(playerState == PlayerState.NEUTRAL)
+            controller.Move(movement * speed * Time.deltaTime);
         #endregion
 
         // Calculate where does the player looks
         if(movement != Vector3.zero)
-            currentRotation = Quaternion.LookRotation(movement);
+        {
+            if (playerState == PlayerState.NEUTRAL)
+            {
+                canAttack = true;
+                animator.SetBool("IsWalking", true);
+                currentRotation = Quaternion.LookRotation(movement);
+            }
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
+
+        if (attackDashTimer > 0)
+        {
+            controller.Move(lookDirection * attackDistance * Time.deltaTime);
+            attackDashTimer -= Time.deltaTime;
+        }
+
+
+        if (playerState == PlayerState.ROLLING && isRolling)
+        {
+            controller.Move(rollDirection * 30 * Time.deltaTime);
+        }
 
         // If player is touching the floor, gravity force is not applied
         gravityVelocity.y = (IsGrounded() && gravityVelocity.y < 0) ? 0 : gravityVelocity.y + gravity * Time.deltaTime;
@@ -106,9 +266,20 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(groundChecker.position, groundCheckerArea, whatIsGround);
     }
 
+    private void OnDrawGizmos()
+    {
+        if (debug)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(clickPosition, 1);
+        }
+        
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(groundChecker.position, groundCheckerArea);
+        
     }
 }
