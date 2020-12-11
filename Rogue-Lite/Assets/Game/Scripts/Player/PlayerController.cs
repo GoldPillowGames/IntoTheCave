@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    NEUTRAL,
+    ATTACKING,
+    BLOCKING,
+    ROLLING,
+    DIALOGUE
+}
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -18,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player animator")]
     [SerializeField] private Animator animator;
 
+    [SerializeField] private CameraController cameraController;
+
     [Header("Movement Variables")]
 
     [Tooltip("Player movement speed")]
@@ -28,6 +38,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckerArea;
     [Tooltip("Ground Layer Mask")]
     [SerializeField] private LayerMask whatIsGround;
+    [Tooltip("Interactable Layer Mask")]
+    [SerializeField] private LayerMask whatIsInteractable;
     [Tooltip("Player rotation speed")]
     [SerializeField] private float rotationSpeed = 15f;
     [SerializeField] private float attackDashTimer;
@@ -35,17 +47,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float timeToDash;
     [SerializeField] private float maxTimeToDash = 0.05f;
 
+    [Header("Interaction Variables")]
+    [SerializeField] private float checkRadius = 4f;
+    [SerializeField] private float outRadius = 5f;
+
     [Header("Other")]
     [SerializeField] private bool debug = false;
     [SerializeField] private MeleeWeaponTrail weaponTrail;
 
-    public enum PlayerState
-    {
-        NEUTRAL,
-        ATTACKING,
-        BLOCKING,
-        ROLLING
-    }
+    
 
     
 
@@ -69,8 +79,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 rollDirection;
 
     private bool canRoll = true;
-    
 
+    private bool interactableDetected = false;
     // Update is called once per frame
     void Update()
     {
@@ -80,7 +90,44 @@ public class PlayerController : MonoBehaviour
         if ((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING)
             playerContainer.rotation = Quaternion.Lerp(playerContainer.rotation, currentRotation, rotationSpeed * Time.deltaTime);
 
+        // RaycastHit interactableHit;
+         // = Physics.SphereCast(transform.position, checkRadius, transform.forward, out interactableHit, checkRadius, whatIsInteractable);
 
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, whatIsInteractable);
+
+        if(hitColliders.Length > 0)
+        {
+            interactableDetected = true;
+        }
+
+        Collider[] hitColliders2 = Physics.OverlapSphere(transform.position, outRadius, whatIsInteractable);
+
+        if (hitColliders2.Length == 0 && interactableDetected)
+        {
+            interactableDetected = false;
+        }
+        //foreach (var hitCollider in hitColliders)
+        //{
+        //    print("Interactable");
+        //    //hitCollider.SendMessage("AddDamage");
+        //    if (hitCollider.gameObject.layer == 9)
+        //    {
+        //        interactableDetected = true;
+        //        print("Interactable");
+        //    }
+        //}
+
+
+        if (interactableDetected)
+        {
+            cameraController.cameraState = CameraState.INTERACT;
+        }
+        else
+        {
+            cameraController.cameraState = CameraState.IDLE;
+        }
+
+        #region Input
         if (Input.GetMouseButton(1))
         {
             animator.SetBool("IsDefending", true);
@@ -126,6 +173,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsRolling", true);
             StartRoll();
         }
+        #endregion
     }
 
     #region Events
@@ -288,6 +336,7 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(groundChecker.position, groundCheckerArea);
-        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
 }
