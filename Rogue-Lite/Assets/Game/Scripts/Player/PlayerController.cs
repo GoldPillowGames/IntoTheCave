@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [Tooltip("Interactable Layer Mask")]
     [SerializeField] private LayerMask whatIsInteractable;
+    [Tooltip("Cursor Click Layer Mask")]
+    [SerializeField] private LayerMask whatIsCursorClick;
     [Tooltip("Player rotation speed")]
     [SerializeField] private float rotationSpeed = 15f;
     [SerializeField] private float attackDashTimer;
@@ -152,7 +154,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack1");
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit cameraRayHit;
-            if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsGround))
+            if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsCursorClick))
             {
                 clickPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
                 lookDirection = (clickPosition - transform.position).normalized;

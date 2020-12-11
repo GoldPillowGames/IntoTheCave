@@ -19,7 +19,9 @@ public class DialogueController : MonoBehaviour
     private Color hideColor;
     private Color originalColor;
     private string sentence = "Example Text";
-    
+
+    private int currentSentenceIndex = 1;
+    private int currentDialogueIndex = 1;
 
     // Load the data from the database
     string sentecesDBcontent;
@@ -49,11 +51,13 @@ public class DialogueController : MonoBehaviour
 
         for (int i = 1; i < sentencesData.Length; i++)
         {
+            
             values.Add(sentencesData[i].Split(','));
         }
         print("Values: " + values[1].Length);
         int random = UnityEngine.Random.Range(0, values.Count);
-        ShowSentence(random);
+        //ShowSentence(random);
+        ShowSentence(0);
     }
 
     // Update is called once per frame
@@ -61,6 +65,23 @@ public class DialogueController : MonoBehaviour
     {
         if (!dialogueText)
             return;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //int random = UnityEngine.Random.Range(0, values.Count);
+            //sentence = values[random][1];
+            //textAnimatorPlayer.ShowText(sentence);
+            if(currentDialogueIndex == int.Parse(values[currentSentenceIndex+1][1]))
+            {
+                ShowSentence(currentSentenceIndex+1);
+            }
+            else
+            {
+                print("currentSentenceIndex: " + currentSentenceIndex);
+                print("currentDialogueIndex: " + currentDialogueIndex);
+                print("int.Parse(values[currentSentenceIndex + 1][1]): " + int.Parse(values[currentSentenceIndex + 1][1]));
+            }
+        }
 
         //if (Input.GetKeyDown(KeyCode.E))
         //{
@@ -72,8 +93,11 @@ public class DialogueController : MonoBehaviour
 
     public void ShowSentence(int sentenceIndex)
     {
-        sentence = values[sentenceIndex][1];
+        sentence = values[sentenceIndex][2];
+        currentSentenceIndex = int.Parse(values[sentenceIndex][0]) - 1;
+        currentDialogueIndex = int.Parse(values[sentenceIndex][1]);
         textAnimatorPlayer.ShowText(sentence);
+
     }
 
     public void HideQuote()
