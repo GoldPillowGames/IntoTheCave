@@ -233,7 +233,7 @@ namespace AwesomeToon {
         }
 
         float TestInView(Vector3 dir, float dist) {
-            if (!raycast) return 1.1f;
+            /*if (!raycast)*/ return 1.1f; // Descomentar para mostrar raycast.
             RaycastHit hit;
             if (Physics.Raycast(posAbs, dir, out hit, dist, raycastMask)) {
                 Debug.DrawRay(posAbs, dir.normalized * hit.distance, Color.red);
