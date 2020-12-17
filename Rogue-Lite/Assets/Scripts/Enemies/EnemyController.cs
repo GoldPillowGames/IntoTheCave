@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Enemy.ExampleEnemy;
+using Patterns.State;
+using UnityEngine;
 
 namespace Enemy
 {

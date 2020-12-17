@@ -8,15 +8,15 @@ namespace Enemy.ExampleEnemy
     {
         #region Variables
         private PlayerController playerController;
-        private Rigidbody rigidbody; // Hacer clase concreta.
+        private Rigidbody rigidBody;
 
-        [SerializeField] public float velocity;
+        [SerializeField] public float velocity = 5;
         [SerializeField] public float rotationLerpValue = 15;
         #endregion
 
         #region Properties
         public PlayerController PlayerController => playerController;
-        public Rigidbody Rigidbody => rigidbody;
+        public Rigidbody RigidBody => rigidBody;
         public float Velocity => velocity;
         public Transform Transform => gameObject.transform;
         #endregion
@@ -26,7 +26,7 @@ namespace Enemy.ExampleEnemy
         {
             base.Awake();
 
-            rigidbody = GetComponent<Rigidbody>();
+            rigidBody = GetComponent<Rigidbody>();
             playerController = GameObject.FindObjectOfType<PlayerController>();
         }
 
