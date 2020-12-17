@@ -4,11 +4,14 @@ using UnityEngine;
 
 public abstract class State
 {
-    protected FiniteStateMachine enemyStateMachine;
+    #region Variables
+    protected FiniteStateMachine stateMachine;
+    #endregion
 
-    public State(FiniteStateMachine enemyStateMachine)
+    #region Methods
+    public State(FiniteStateMachine stateMachine)
     {
-        this.enemyStateMachine = enemyStateMachine;
+        this.stateMachine = stateMachine;
     }
 
     public virtual void Enter()
@@ -30,5 +33,5 @@ public abstract class State
     {
 
     }
-
+    #endregion
 }

@@ -3,30 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemy.ExampleEnemy {
-    public class FollowingState : Enemy.EnemyState
+    public class FollowingState : State
     {
-        private PlayerController playerController; // Provisional (en clase propia).
-        private Rigidbody rigidBody; // Provisional (en clase propia).
-        private float velocity; // Provisional (la lee directamente de EnemyBehaviour o se guarda en una variable como ahora? Valorar).
-        private Transform transform;
-        public FollowingState (EnemyBehaviour enemyBehaviour, FiniteStateMachine enemyStateMachine) : base(enemyBehaviour, enemyStateMachine)
+        #region Variables
+        private EnemyController enemy;
+        #endregion
+
+        #region Methods
+        public FollowingState (EnemyController enemy, FiniteStateMachine stateMachine) : base(stateMachine)
         {
-            playerController = enemyBehaviour.GetPlayerController();
-            rigidBody = enemyBehaviour.GetRigidBody();
-            velocity = enemyBehaviour.GetVelocity();
-            transform = enemyBehaviour.transform;
+            this.enemy = enemy;
         }
 
         public override void Update(float deltaTime)
         {
             base.Update(deltaTime);
+            MoveAndRotateTo(enemy.PlayerController.transform);
 
-            Vector3 direction = (playerController.transform.position - enemyBehaviour.transform.position).normalized;
-
-            rigidBody.velocity = direction * velocity;
-
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction, Vector3.up), /**/ 15 /*Provisional*/ * Time.deltaTime); // Hacer con Lerp BIEN hecho y en clase propia.
+            // Poner transiciones.
         }
 
+        private void MoveAndRotateTo(Transform target)
+        {
+            Vector3 direction = (target.position - enemy.Transform.position).normalized;
+            enemy.Rigidbody.velocity = direction * enemy.Velocity;
+            enemy.Transform.rotation = Quaternion.Lerp(enemy.transform.rotation, Quaternion.LookRotation(direction, Vector3.up), enemy.rotationLerpValue * Time.deltaTime); // Hacer con Lerp BIEN hecho.
+        }
+        #endregion
     }
 }

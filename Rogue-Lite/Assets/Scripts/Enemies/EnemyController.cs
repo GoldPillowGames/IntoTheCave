@@ -5,10 +5,13 @@ using Enemy.ExampleEnemy;
 
 namespace Enemy
 {
-    public abstract class EnemyBehaviour : MonoBehaviour
+    public abstract class EnemyController : MonoBehaviour
     {
+        #region Variables
         protected FiniteStateMachine stateMachine;
+        #endregion
 
+        #region Methods
         protected virtual void Awake()
         {
             stateMachine = new FiniteStateMachine();
@@ -28,6 +31,7 @@ namespace Enemy
         {
             stateMachine.FixedUpdate(Time.deltaTime);
         }
+        #endregion
     }
 }
 

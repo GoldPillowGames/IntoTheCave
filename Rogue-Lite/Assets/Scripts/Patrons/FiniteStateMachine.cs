@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class FiniteStateMachine
 {
+    #region Variables
     protected State currentState;
+    #endregion
 
+    #region Methods
     public FiniteStateMachine()
     {
 
@@ -33,5 +36,6 @@ public class FiniteStateMachine
     {
         currentState.FixedUpdate(deltaTime);
     }
+    #endregion
 }
 
