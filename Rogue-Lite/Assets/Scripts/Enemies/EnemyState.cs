@@ -4,37 +4,11 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public abstract class EnemyState
+    public class EnemyState : State
     {
         protected EnemyBehaviour enemyBehaviour;
-        protected EnemyStateMachine enemyStateMachine;
-
-        public EnemyState(EnemyBehaviour enemyBehaviour, EnemyStateMachine enemyStateMachine)
+        public EnemyState(EnemyBehaviour enemyBehaviour, FiniteStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
-            this.enemyBehaviour = enemyBehaviour;
-            this.enemyStateMachine = enemyStateMachine;
         }
-
-        public virtual void Enter()
-        {
-
-        }
-
-        public virtual void Update(float deltaTime)
-        {
-
-        }
-
-        public virtual void FixedUpdate(float deltaTime)
-        {
-
-        }
-
-        public virtual void Exit()
-        {
-
-        }
-
     }
 }
-

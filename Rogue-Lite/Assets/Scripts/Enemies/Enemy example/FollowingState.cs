@@ -9,7 +9,7 @@ namespace Enemy.ExampleEnemy {
         private Rigidbody rigidBody; // Provisional (en clase propia).
         private float velocity; // Provisional (la lee directamente de EnemyBehaviour o se guarda en una variable como ahora? Valorar).
         private Transform transform;
-        public FollowingState (EnemyBehaviour enemyBehaviour, EnemyStateMachine enemyStateMachine) : base(enemyBehaviour, enemyStateMachine)
+        public FollowingState (EnemyBehaviour enemyBehaviour, FiniteStateMachine enemyStateMachine) : base(enemyBehaviour, enemyStateMachine)
         {
             playerController = enemyBehaviour.GetPlayerController();
             rigidBody = enemyBehaviour.GetRigidBody();

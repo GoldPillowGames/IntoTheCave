@@ -7,11 +7,11 @@ namespace Enemy
 {
     public abstract class EnemyBehaviour : MonoBehaviour
     {
-        protected EnemyStateMachine stateMachine;
+        protected FiniteStateMachine stateMachine;
 
         protected virtual void Awake()
         {
-            stateMachine = new EnemyStateMachine();
+            stateMachine = new FiniteStateMachine();
         }
 
         protected virtual void Start()

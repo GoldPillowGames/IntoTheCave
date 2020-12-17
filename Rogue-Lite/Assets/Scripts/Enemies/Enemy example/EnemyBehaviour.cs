@@ -6,10 +6,11 @@ namespace Enemy.ExampleEnemy
 {
     public class EnemyBehaviour : Enemy.EnemyBehaviour
     {
-        private PlayerController playerController; // Provisional (en clase propia).
-        private Rigidbody rigidBody; // Provisional (en clase propia).
+        public PlayerController playerController { get; private set; } // Provisional.
+        public Rigidbody rigidBody { get; set; }// Provisional (en clase propia).
 
-        [SerializeField] private float velocity;
+        [SerializeField]
+        public float velocity { get; private set; }
 
         protected override void Awake()
         {
