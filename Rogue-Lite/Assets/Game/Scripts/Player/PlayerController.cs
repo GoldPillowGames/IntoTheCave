@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private bool debug = false;
-    [SerializeField] private MeleeWeaponTrail weaponTrail;
+    public MeleeWeaponTrail weaponTrail;
 
     
 
