@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Enemy.ExampleEnemy;
+using Patterns.State;
+using UnityEngine;
 
 namespace Enemy
 {
-    public abstract class EnemyBehaviour : MonoBehaviour
+    public abstract class EnemyController : MonoBehaviour
     {
-        protected EnemyStateMachine stateMachine;
+        #region Variables
+        protected FiniteStateMachine stateMachine;
+        #endregion
 
+        #region Methods
         protected virtual void Awake()
         {
-            stateMachine = new EnemyStateMachine();
+            stateMachine = new FiniteStateMachine();
         }
 
         protected virtual void Start()
@@ -28,6 +32,7 @@ namespace Enemy
         {
             stateMachine.FixedUpdate(Time.deltaTime);
         }
+        #endregion
     }
 }
 

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Enemy
+namespace Patterns.State
 {
-    public abstract class EnemyState
+    public abstract class State
     {
-        protected EnemyBehaviour enemyBehaviour;
-        protected EnemyStateMachine enemyStateMachine;
+        #region Variables
+        protected FiniteStateMachine stateMachine;
+        #endregion
 
-        public EnemyState(EnemyBehaviour enemyBehaviour, EnemyStateMachine enemyStateMachine)
+        #region Methods
+        public State(FiniteStateMachine stateMachine)
         {
-            this.enemyBehaviour = enemyBehaviour;
-            this.enemyStateMachine = enemyStateMachine;
+            this.stateMachine = stateMachine;
         }
 
         public virtual void Enter()
@@ -34,7 +35,6 @@ namespace Enemy
         {
 
         }
-
+        #endregion
     }
 }
-

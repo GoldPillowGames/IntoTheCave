@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Enemy
+namespace Patterns.State
 {
-    public class EnemyStateMachine
+    public class FiniteStateMachine
     {
-        protected EnemyState currentState;
+        #region Variables
+        protected State currentState;
+        #endregion
 
-        public EnemyStateMachine()
+        #region Methods
+        public FiniteStateMachine()
         {
 
         }
 
-        public void SetInitialState(EnemyState initialState)
+        public void SetInitialState(State initialState)
         {
             currentState = initialState;
             currentState.Enter();
         }
 
-        public void SetState(EnemyState incomingState)
+        public void SetState(State incomingState)
         {
             currentState.Exit();
             currentState = incomingState;
-            incomingState.Enter();
+            currentState.Enter();
         }
 
         public void Update(float deltaTime)
@@ -35,6 +38,6 @@ namespace Enemy
         {
             currentState.FixedUpdate(deltaTime);
         }
+        #endregion
     }
 }
-
