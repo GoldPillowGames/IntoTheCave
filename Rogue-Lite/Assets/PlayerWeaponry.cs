@@ -5,13 +5,18 @@ using UnityEngine;
 public class PlayerWeaponry : MonoBehaviour
 {
     [Header("Weaponry")]
-    [SerializeField] private int currentWeaponIndex;
+    [SerializeField] private int currentWeaponIndex = 0;
     [SerializeField] private GameObject[] weapon1;
     [SerializeField] private GameObject[] weapon2;
     [SerializeField] private GameObject[] weapon3;
 
+    private Transform[] weaponTrails1;
+    private Transform[] weaponTrails2;
+    private Transform[] weaponTrails3;
+
     [Header("References")]
     [SerializeField] private Animator animator;
+    [SerializeField] private MeleeWeaponTrail trail;
     [SerializeField] private RuntimeAnimatorController[] controllers;
     private GameObject[] currentWeapon;
 
@@ -19,6 +24,10 @@ public class PlayerWeaponry : MonoBehaviour
     void Start()
     {
         currentWeapon = weapon1;
+        weaponTrails1 = weapon1[0].GetComponentsInChildren<Transform>();
+        weaponTrails2 = weapon2[0].GetComponentsInChildren<Transform>();
+        SwapWeapon(currentWeaponIndex);
+        //weaponTrails3 = weapon3[0].GetComponents<MeleeWeaponTrail>();
     }
 
     void SwapWeapon(int index)
@@ -42,7 +51,10 @@ public class PlayerWeaponry : MonoBehaviour
                 {
                     weapon3[i].SetActive(false);
                 }
-                GetComponent<PlayerController>().weaponTrail = weapon1[0].GetComponent<MeleeWeaponTrail>();
+                trail._base = weaponTrails1[2];
+                trail._tip = weaponTrails1[1];
+                animator.SetBool("HasAttack3", true);
+                //GetComponent<PlayerController>().weaponTrail = weapon1[0].GetComponent<MeleeWeaponTrail>();
                 break;
             case 1:
                 for (int i = 0; i < weapon1.Length; i++)
@@ -57,7 +69,10 @@ public class PlayerWeaponry : MonoBehaviour
                 {
                     weapon3[i].SetActive(false);
                 }
-                GetComponent<PlayerController>().weaponTrail = weapon2[0].GetComponent<MeleeWeaponTrail>();
+                trail._base = weaponTrails2[2];
+                trail._tip = weaponTrails2[1];
+                animator.SetBool("HasAttack3", false);
+                //GetComponent<PlayerController>().weaponTrail = weapon2[0].GetComponent<MeleeWeaponTrail>();
                 break;
             case 2:
                 for (int i = 0; i < weapon1.Length; i++)
