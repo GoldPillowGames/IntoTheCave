@@ -26,8 +26,9 @@ public class PlayerWeaponry : MonoBehaviour
         currentWeapon = weapon1;
         weaponTrails1 = weapon1[0].GetComponentsInChildren<Transform>();
         weaponTrails2 = weapon2[0].GetComponentsInChildren<Transform>();
+        weaponTrails3 = weapon3[0].GetComponentsInChildren<Transform>();
         SwapWeapon(currentWeaponIndex);
-        //weaponTrails3 = weapon3[0].GetComponents<MeleeWeaponTrail>();
+        
     }
 
     void SwapWeapon(int index)
@@ -87,7 +88,10 @@ public class PlayerWeaponry : MonoBehaviour
                 {
                     weapon3[i].SetActive(true);
                 }
-                GetComponent<PlayerController>().weaponTrail = weapon3[0].GetComponentInChildren<MeleeWeaponTrail>();
+                trail._base = weaponTrails3[2];
+                trail._tip = weaponTrails3[1];
+                animator.SetBool("HasAttack3", false);
+               // GetComponent<PlayerController>().weaponTrail = weapon3[0].GetComponentInChildren<MeleeWeaponTrail>();
                 break;
         }
     }
