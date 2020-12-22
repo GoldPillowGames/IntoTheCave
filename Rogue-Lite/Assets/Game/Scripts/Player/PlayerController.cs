@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIController UI;
     [Tooltip("Player animator")]
     [SerializeField] private Animator animator;
-
+    [SerializeField] private GameObject lights;
     [SerializeField] private CameraController cameraController;
+    public CameraFollower cameraFollower;
 
     [Header("Movement Variables")]
 
@@ -49,6 +50,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float timeToDash;
     [SerializeField] private float maxTimeToDash = 0.05f;
 
+    [Header("State Variables")]
+    public int health;
+    public int maxHealth = 100;
+
     [Header("Interaction Variables")]
     [SerializeField] private float checkRadius = 4f;
     [SerializeField] private float outRadius = 5f;
@@ -63,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerState playerState = PlayerState.NEUTRAL;
 
-    private Quaternion currentRotation;     // Current looking rotation
+    [HideInInspector] public Quaternion currentRotation;     // Current looking rotation
     private CharacterController controller; // Character controller
     private Vector3 movement;               // Current Movement
     private Vector2 gravityVelocity;        // Gravity Velocity
@@ -73,7 +78,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(cam);
+        DontDestroyOnLoad(lights);
+        DontDestroyOnLoad(cameraDirection);
+        DontDestroyOnLoad(cameraFollower);
     }
+
     private Vector3 clickPosition;
     private Vector3 lookDirection;
     private bool canAttack = true;
@@ -83,17 +94,28 @@ public class PlayerController : MonoBehaviour
     private bool canRoll = true;
 
     private bool interactableDetected = false;
+
+    [HideInInspector] public bool    doorOpened    = false;
+    [HideInInspector] public Vector3 doorDirection = new Vector3(0,0,0);
+
+    private void Start()
+    {
+        health = maxHealth;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        
         Movement();
 
         // Updates where the player is looking to if he is moving
-        if ((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING)
+        if (((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING) || doorOpened)
+        {
             playerContainer.rotation = Quaternion.Lerp(playerContainer.rotation, currentRotation, rotationSpeed * Time.deltaTime);
-
-        // RaycastHit interactableHit;
-         // = Physics.SphereCast(transform.position, checkRadius, transform.forward, out interactableHit, checkRadius, whatIsInteractable);
+            // print("Updating rotation...");
+        }
+            
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, whatIsInteractable);
 
@@ -108,17 +130,6 @@ public class PlayerController : MonoBehaviour
         {
             interactableDetected = false;
         }
-        //foreach (var hitCollider in hitColliders)
-        //{
-        //    print("Interactable");
-        //    //hitCollider.SendMessage("AddDamage");
-        //    if (hitCollider.gameObject.layer == 9)
-        //    {
-        //        interactableDetected = true;
-        //        print("Interactable");
-        //    }
-        //}
-
 
         if (interactableDetected)
         {
@@ -274,16 +285,27 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Movement()
     {
-        #region Horizontal Movement Calculation & Assignation
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
-        
-        if(playerState == PlayerState.NEUTRAL)
-            controller.Move(movement * speed * Time.deltaTime);
-        #endregion
+        if (!doorOpened)
+        {
+            #region Horizontal Movement Calculation & Assignation
+            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
+
+            if (playerState == PlayerState.NEUTRAL)
+                controller.Move(movement * speed * Time.deltaTime);
+            #endregion
+        }
+        else
+        {
+            movement = Vector3.zero;
+            // print
+            animator.SetBool("IsWalking", true);
+            controller.Move(doorDirection * speed * Time.deltaTime);
+        }
+
 
         // Calculate where does the player looks
-        if(movement != Vector3.zero)
+        if (movement != Vector3.zero)
         {
             if (playerState == PlayerState.NEUTRAL)
             {
@@ -292,7 +314,7 @@ public class PlayerController : MonoBehaviour
                 currentRotation = Quaternion.LookRotation(movement);
             }
         }
-        else
+        else if(!doorOpened)
         {
             animator.SetBool("IsWalking", false);
         }
