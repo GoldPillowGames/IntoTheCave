@@ -1,4 +1,8 @@
-﻿namespace GoldPillowGames.Patterns
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Patterns.State
 {
     public abstract class State
     {

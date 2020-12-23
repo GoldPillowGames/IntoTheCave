@@ -1,7 +1,10 @@
-﻿using GoldPillowGames.Patterns;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Enemy.ExampleEnemy;
+using Patterns.State;
 using UnityEngine;
 
-namespace GoldPillowGames.Enemy
+namespace Enemy
 {
     public abstract class EnemyController : MonoBehaviour
     {
