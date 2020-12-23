@@ -68,7 +68,24 @@ public class EventTrigger : MonoBehaviour
 
     private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (activated && eventType == EventType.ROOM_DOOR)
+            {
+                // Localizamos el run manager
+                RunManager runManager = FindObjectOfType<RunManager>();
+                if (runManager)
+                {
+                    runManager.currentDoor = nextDoorPosition; // Actualizamos la puerta por la que debe aparecer el jugador
+                    runManager.LoadNextRoom();                 // Cargamos la siguiente escena
+                }
+                else
+                {
+                    Debug.LogError("No Run Manager Detected, check if it was loaded.");
+                }
+            }
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -115,43 +132,7 @@ public class EventTrigger : MonoBehaviour
             case EventType.ROOM_DOOR:
                 if (other.CompareTag("Player") && !activated)
                 {
-                    if (!activated && eventType == EventType.ROOM_DOOR)
-                    {
-                        activated = true;
-                        // Localizamos el run manager
-                        RunManager runManager = FindObjectOfType<RunManager>();
-                        if (runManager)
-                        {
-                            PlayerController[] players = FindObjectsOfType<PlayerController>();
-                            foreach (PlayerController player in players)
-                            {
-                                player.doorOpened = true;
-                                switch (doorPosition)
-                                {
-                                    case DoorPosition.TOP:
-                                        player.doorDirection = -player.transform.right;
-                                        break;
-                                    case DoorPosition.BOTTOM:
-                                        player.doorDirection = player.transform.right;
-                                        break;
-                                    case DoorPosition.LEFT:
-                                        player.doorDirection = -player.transform.forward;
-                                        break;
-                                    case DoorPosition.RIGHT:
-                                        player.doorDirection = player.transform.forward;
-                                        break;
-                                }
-                                player.currentRotation = Quaternion.LookRotation(player.doorDirection);
-                                player.cameraFollower.StopFollowing();
-                            }
-                            runManager.currentDoor = nextDoorPosition; // Actualizamos la puerta por la que debe aparecer el jugador
-                            runManager.LoadNextRoom();                 // Cargamos la siguiente escena
-                        }
-                        else
-                        {
-                            Debug.LogError("No Run Manager Detected, check if it was loaded.");
-                        }
-                    }
+                    activated = true;
                 }
                 break;
             default:

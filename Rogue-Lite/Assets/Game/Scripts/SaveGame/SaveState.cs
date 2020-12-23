@@ -16,5 +16,4 @@ public class SaveState
     public int coins = 0;
     public bool firstTime = true;
     public float currentTimeToDisplayAd = 200f;
-    public int currentHP;
 }

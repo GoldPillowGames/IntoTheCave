@@ -20,18 +20,12 @@ public class CameraController : MonoBehaviour
     public float idleDistance = 42;
     float interactDistance;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(cmCamera);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         cmTransposer = cmCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         //idleDistance = cmTransposer.m_CameraDistance;
         interactDistance = idleDistance / 1.1f;
-        
     }
 
     // Update is called once per frame
@@ -49,5 +43,6 @@ public class CameraController : MonoBehaviour
             case CameraState.DIALOGUE:
                 break;
         }
+        
     }
 }

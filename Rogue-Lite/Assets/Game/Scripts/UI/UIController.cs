@@ -9,24 +9,13 @@ public class UIController : MonoBehaviour
     public Image originalMousePos;
     public Image currentMousePos;
 
-    public PlayerController player;
-    public Image playerHealthbar;
-    public Image playerHealthbarWhiteBackground;
-
     Color mouseColor;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(originalMousePos)
-            originalMousePos.color = new Color(1, 1, 1, 0);
-        if(currentMousePos)
-            currentMousePos.color = new Color(1, 1, 1, 0);
+        originalMousePos.color = new Color(1, 1, 1, 0);
+        currentMousePos.color = new Color(1, 1, 1, 0);
         mouseColor = new Color(1, 1, 1, 0);
     }
 
@@ -49,14 +38,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerHealthbar.fillAmount = (float)player.health / (float)player.maxHealth;
-        playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(playerHealthbarWhiteBackground.fillAmount, playerHealthbar.fillAmount, 10 * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            player.health -= 20;
-        }
-        //originalMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
-        //currentMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
+        originalMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
+        currentMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
     }
 }
