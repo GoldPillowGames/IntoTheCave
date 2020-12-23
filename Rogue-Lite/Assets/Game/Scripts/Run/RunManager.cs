@@ -42,7 +42,6 @@ public class RunManager : MonoBehaviour
             if (g.GetComponent<EventTrigger>().doorPosition.Equals(FindObjectOfType<RunManager>().currentDoor))
             {
                 PlayerController player = FindObjectOfType<PlayerController>();
-                
                 // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
                 player.enabled = false;
                 player.GetComponent<CharacterController>().enabled = false;
@@ -53,16 +52,7 @@ public class RunManager : MonoBehaviour
                 // Reactivamos el player controller y el character controller
                 player.enabled = true;
                 player.GetComponent<CharacterController>().enabled = true;
-                player.cameraFollower.ResetFollowing();
             }
-        }
-
-        PlayerController[] players = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController player in players)
-        {
-            player.doorOpened = false;
-            player.weaponTrail.Start();
-            
         }
     }
 
@@ -82,11 +72,6 @@ public class RunManager : MonoBehaviour
     }
 
     public void LoadNextRoom()
-    {
-        Invoke("LoadRoom", 1.2f);
-    }
-
-    private void LoadRoom()
     {
         StartCoroutine(LoadASynchrously(2));
     }
