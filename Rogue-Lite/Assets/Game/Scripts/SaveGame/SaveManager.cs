@@ -15,10 +15,10 @@ public class SaveManager : MonoBehaviour
 
         Load();
 
-        if(saveType == SaveType.Test)
-        {
-            ResetData();
-        }
+        //if(saveType == SaveType.Test)
+        //{
+        //    ResetData();
+        //}
 
         Debug.Log(Helper.Serialize<SaveState>(state));
         Debug.Log("Level: " + state.level + ", " + "Current EXP: " + state.levelProgress);
@@ -27,6 +27,7 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetString("save", Helper.Serialize<SaveState>(state));
+        print("Data saved...");
     }
 
     public void Load()
