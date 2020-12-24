@@ -9,6 +9,12 @@ public class PlayerWeaponry : MonoBehaviour
     [SerializeField] private GameObject[] weapon1;
     [SerializeField] private GameObject[] weapon2;
     [SerializeField] private GameObject[] weapon3;
+    [SerializeField] private float[] attackTimer1;
+    [SerializeField] private float[] attackTimer2;
+    [SerializeField] private float[] attackTimer3;
+    [SerializeField] private float[] moveTimer1;
+    [SerializeField] private float[] moveTimer2;
+    [SerializeField] private float[] moveTimer3;
 
     private Transform[] weaponTrails1;
     private Transform[] weaponTrails2;
@@ -18,6 +24,7 @@ public class PlayerWeaponry : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private MeleeWeaponTrail trail;
     [SerializeField] private RuntimeAnimatorController[] controllers;
+    [SerializeField] private PlayerController playerController;
     private GameObject[] currentWeapon;
 
     // Start is called before the first frame update
@@ -27,8 +34,9 @@ public class PlayerWeaponry : MonoBehaviour
         weaponTrails1 = weapon1[0].GetComponentsInChildren<Transform>();
         weaponTrails2 = weapon2[0].GetComponentsInChildren<Transform>();
         weaponTrails3 = weapon3[0].GetComponentsInChildren<Transform>();
+        if (!playerController)
+            playerController = GetComponent<PlayerController>();
         SwapWeapon(currentWeaponIndex);
-        
     }
 
     void SwapWeapon(int index)
@@ -54,6 +62,9 @@ public class PlayerWeaponry : MonoBehaviour
                 }
                 trail._base = weaponTrails1[2];
                 trail._tip = weaponTrails1[1];
+                playerController.attackTime = attackTimer1;
+                playerController.moveTime = moveTimer1;
+                playerController.numberOfAttacks = 3;
                 animator.SetBool("HasAttack3", true);
                 //GetComponent<PlayerController>().weaponTrail = weapon1[0].GetComponent<MeleeWeaponTrail>();
                 break;
@@ -70,8 +81,12 @@ public class PlayerWeaponry : MonoBehaviour
                 {
                     weapon3[i].SetActive(false);
                 }
+
                 trail._base = weaponTrails2[2];
                 trail._tip = weaponTrails2[1];
+                playerController.attackTime = attackTimer2;
+                playerController.moveTime = moveTimer2;
+                playerController.numberOfAttacks = 2;
                 animator.SetBool("HasAttack3", false);
                 //GetComponent<PlayerController>().weaponTrail = weapon2[0].GetComponent<MeleeWeaponTrail>();
                 break;
@@ -90,6 +105,9 @@ public class PlayerWeaponry : MonoBehaviour
                 }
                 trail._base = weaponTrails3[2];
                 trail._tip = weaponTrails3[1];
+                playerController.attackTime = attackTimer3;
+                playerController.moveTime = moveTimer3;
+                playerController.numberOfAttacks = 2;
                 animator.SetBool("HasAttack3", false);
                // GetComponent<PlayerController>().weaponTrail = weapon3[0].GetComponentInChildren<MeleeWeaponTrail>();
                 break;

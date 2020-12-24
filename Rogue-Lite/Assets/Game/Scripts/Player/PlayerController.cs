@@ -114,8 +114,10 @@ public class PlayerController : MonoBehaviour
         {
             playerContainer.rotation = Quaternion.Lerp(playerContainer.rotation, currentRotation, rotationSpeed * Time.deltaTime);
             // print("Updating rotation...");
+            
         }
             
+
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, whatIsInteractable);
 
@@ -156,13 +158,21 @@ public class PlayerController : MonoBehaviour
             playerState = PlayerState.NEUTRAL;
         }
 
-        if (Input.GetMouseButtonDown(0) && canAttack)
+        if (Input.GetMouseButton(0) /*&& canAttack*/ && timeToAttack <= 0)
         {
             canAttack = false;
             canFinishAttack = false;
             playerState = PlayerState.ATTACKING;
             animator.SetBool("IsWalking", false);
             animator.SetTrigger("Attack1");
+
+            // Attack Variables
+            print(timeToAttack);
+            timeToAttack = attackTime[attackIndex];
+            timeToMove = moveTime[attackIndex];
+            attackIndex = attackIndex == numberOfAttacks - 1 ? 0 : attackIndex+1;
+            
+
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit cameraRayHit;
             if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsCursorClick))
@@ -187,6 +197,41 @@ public class PlayerController : MonoBehaviour
             StartRoll();
         }
         #endregion
+
+        
+    }
+
+    public float[] attackTime;
+    public float[] moveTime;
+    public int numberOfAttacks = 3;
+    private float timeToAttack = 0;
+    private float timeToMove = 0;
+    private int attackIndex = 0;
+
+    private void FixedUpdate()
+    {
+        timeToAttack -= Time.fixedDeltaTime;
+        timeToMove -= Time.fixedDeltaTime;
+        if (timeToMove <= 0)
+        {
+            // canFinishAttack = true;
+            if (playerState == PlayerState.ATTACKING)
+            {
+                playerState = PlayerState.NEUTRAL;
+                if (movement != Vector3.zero)
+                {
+                    if (playerState == PlayerState.NEUTRAL)
+                    {
+                        animator.SetBool("IsWalking", true);
+                        currentRotation = Quaternion.LookRotation(movement);
+                    }
+                }
+                else
+                {
+                    animator.SetBool("IsWalking", false);
+                }
+            }
+        }
     }
 
     #region Events
@@ -218,8 +263,8 @@ public class PlayerController : MonoBehaviour
 
     public void LetAttack()
     {
-        canAttack = true;
-        canFinishAttack = true;
+        //canAttack = true;
+        //canFinishAttack = true;
         weaponTrail.Emit = false;
     }
 
@@ -227,22 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canFinishAttack)
         {
-            if (playerState == PlayerState.ATTACKING)
-            {
-                playerState = PlayerState.NEUTRAL;
-                if (movement != Vector3.zero)
-                {
-                    if (playerState == PlayerState.NEUTRAL)
-                    {
-                        animator.SetBool("IsWalking", true);
-                        currentRotation = Quaternion.LookRotation(movement);
-                    }
-                }
-                else
-                {
-                    animator.SetBool("IsWalking", false);
-                }
-            }
+            
         }
         
     }
@@ -292,7 +322,11 @@ public class PlayerController : MonoBehaviour
             movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
 
             if (playerState == PlayerState.NEUTRAL)
+            {
+                attackIndex = 0;
                 controller.Move(movement * speed * Time.deltaTime);
+            }
+                
             #endregion
         }
         else
@@ -300,6 +334,7 @@ public class PlayerController : MonoBehaviour
             movement = Vector3.zero;
             // print
             animator.SetBool("IsWalking", true);
+            attackIndex = 0;
             controller.Move(doorDirection * speed * Time.deltaTime);
         }
 
