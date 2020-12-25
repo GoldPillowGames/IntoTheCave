@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             cameraController.cameraState = CameraState.INTERACT;
         }
-        else
+        else if(cameraController.cameraState != CameraState.END_ROOM)
         {
             cameraController.cameraState = CameraState.IDLE;
         }

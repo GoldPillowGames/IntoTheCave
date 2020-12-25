@@ -4,23 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class RunManager : MonoBehaviour
 {
+    #region Variables
     public DoorPosition currentDoor;
-    private GameObject[] doors;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    [SerializeField] private CameraController _cameraController;
+    [SerializeField] private TimeManager _timeManager;
+    private GameObject[] _doors;
+    #endregion
 
+    #region Methods
     private void Start()
     {
         SceneManager.activeSceneChanged += OnSceneLoaded;
+
+        if (!_cameraController)
+        {
+            _cameraController = FindObjectOfType<CameraController>();
+        }
+
+        if (!_timeManager)
+        {
+            _timeManager = FindObjectOfType<TimeManager>();
+        }
     }
 
     private void OnSceneLoaded(Scene previousScene, Scene currentScene)
     {
         // Reiniciamos el array de puertas
-        doors = new GameObject[4];
+        _doors = new GameObject[4];
         int currentIndex = 0;
 
         // Obtenemos las puertas de la escena actual
@@ -28,13 +39,13 @@ public class RunManager : MonoBehaviour
         {
             if (g.CompareTag("Door"))
             {
-                doors[currentIndex] = g;
+                _doors[currentIndex] = g;
                 currentIndex++;
             }
         }
         
         // Comprobamos por cada una de las puertas si su ubicación coincide con la deseada
-        foreach (GameObject g in doors)
+        foreach (GameObject g in _doors)
         {
             g.GetComponent<BoxCollider>().enabled = false;
 
@@ -77,7 +88,16 @@ public class RunManager : MonoBehaviour
 
     public void EndCurrentStage()
     {
-        if(FindObjectOfType<RoomManager>())
+        _cameraController.cameraState = CameraState.END_ROOM;
+        _timeManager.timeScale = 0.6f;
+        Invoke("CallDoorsToOpen", 1f);
+    }
+
+    private void CallDoorsToOpen()
+    {
+        _cameraController.cameraState = CameraState.IDLE;
+        _timeManager.timeScale = 1f;
+        if (FindObjectOfType<RoomManager>())
             FindObjectOfType<RoomManager>().OpenDoors();
     }
 
@@ -108,4 +128,5 @@ public class RunManager : MonoBehaviour
 
         //GetComponent<Animator>().SetTrigger("FadeOutIn");
     }
+    #endregion
 }

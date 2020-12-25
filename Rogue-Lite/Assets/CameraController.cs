@@ -7,7 +7,8 @@ public enum CameraState
 {
     IDLE,
     INTERACT,
-    DIALOGUE
+    DIALOGUE,
+    END_ROOM
 }
 
 public class CameraController : MonoBehaviour
@@ -18,7 +19,8 @@ public class CameraController : MonoBehaviour
     public CameraState cameraState;
 
     public float idleDistance = 42;
-    float interactDistance;
+    public float interactDistance;
+    public float endRoomDistance = 30;
 
     private void Awake()
     {
@@ -47,6 +49,9 @@ public class CameraController : MonoBehaviour
                 cmTransposer.m_CameraDistance = Mathf.Lerp(cmTransposer.m_CameraDistance, interactDistance, 4 * Time.deltaTime);
                 break;
             case CameraState.DIALOGUE:
+                break;
+            case CameraState.END_ROOM:
+                cmTransposer.m_CameraDistance = Mathf.Lerp(cmTransposer.m_CameraDistance, endRoomDistance, 4 * Time.deltaTime);
                 break;
         }
     }

@@ -4,36 +4,54 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    #region Variables
+    public AudioSource[] musicSources = new AudioSource[4];
 
-    public AudioSource musicTrack1;
-    public AudioSource musicTrack2;
-
-    private float _currentVolume = 0;
+    private Dictionary<AudioSource, float> _tracks;
     private float _currentPitch = 1;
+    #endregion
 
+    #region Methods
     // Start is called before the first frame update
     void Start()
     {
-        
+        _tracks = new Dictionary<AudioSource, float>();
+        _tracks.Add(musicSources[0], 1);
+        for (int i = 1; i < musicSources.Length; i++)
+        {
+            _tracks.Add(musicSources[i], 0);
+        }
+    }
+
+    public void SetPitch(float pitch)
+    {
+        _currentPitch = _currentPitch == 1 ? 0.9f : 1;
+    }
+
+    public void ActivateDynamicTrack(int musicIndex)
+    {
+        for(int i = 0; i < musicSources.Length; i++)
+        {
+            if(i <= musicIndex)
+            {
+                _tracks[musicSources[i]] = 1;
+            }
+        }
+    }
+
+    public void DeactivateDynamicTrack(int musicIndex)
+    {
+        _tracks[musicSources[musicIndex]] = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        for(int i = 0; i < musicSources.Length; i++)
         {
-            _currentVolume = _currentVolume == 0 ? 1 : 0;
+            musicSources[i].volume = Mathf.Lerp(musicSources[i].volume, _tracks[musicSources[i]], 2 * Time.unscaledDeltaTime);
+            musicSources[i].pitch = Mathf.Lerp(musicSources[i].pitch, _currentPitch, 2 * Time.unscaledDeltaTime);
         }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            _currentPitch = _currentPitch == 1 ? 0.9f : 1;
-        }
-
-        Time.timeScale = Mathf.Lerp(Time.timeScale, _currentPitch, 2 * Time.unscaledDeltaTime);
-
-        musicTrack1.pitch = Time.timeScale;
-        musicTrack2.pitch = Time.timeScale;
-        musicTrack2.volume = Mathf.Lerp(musicTrack2.volume, _currentVolume, 2 * Time.unscaledDeltaTime);
     }
+    #endregion
 }
