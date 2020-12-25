@@ -62,8 +62,8 @@ public class PlayerWeaponry : MonoBehaviour
                 }
                 trail._base = weaponTrails1[2];
                 trail._tip = weaponTrails1[1];
-                playerController.attackTime = attackTimer1;
-                playerController.moveTime = moveTimer1;
+                playerController._attackTime = attackTimer1;
+                playerController._moveTime = moveTimer1;
                 playerController.numberOfAttacks = 3;
                 animator.SetBool("HasAttack3", true);
                 //GetComponent<PlayerController>().weaponTrail = weapon1[0].GetComponent<MeleeWeaponTrail>();
@@ -84,8 +84,8 @@ public class PlayerWeaponry : MonoBehaviour
 
                 trail._base = weaponTrails2[2];
                 trail._tip = weaponTrails2[1];
-                playerController.attackTime = attackTimer2;
-                playerController.moveTime = moveTimer2;
+                playerController._attackTime = attackTimer2;
+                playerController._moveTime = moveTimer2;
                 playerController.numberOfAttacks = 2;
                 animator.SetBool("HasAttack3", false);
                 //GetComponent<PlayerController>().weaponTrail = weapon2[0].GetComponent<MeleeWeaponTrail>();
@@ -105,8 +105,8 @@ public class PlayerWeaponry : MonoBehaviour
                 }
                 trail._base = weaponTrails3[2];
                 trail._tip = weaponTrails3[1];
-                playerController.attackTime = attackTimer3;
-                playerController.moveTime = moveTimer3;
+                playerController._attackTime = attackTimer3;
+                playerController._moveTime = moveTimer3;
                 playerController.numberOfAttacks = 2;
                 animator.SetBool("HasAttack3", false);
                // GetComponent<PlayerController>().weaponTrail = weapon3[0].GetComponentInChildren<MeleeWeaponTrail>();

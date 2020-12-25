@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject lights;
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private Config _config;
+    [SerializeField] private FixedJoystick joystick;
     public CameraFollower cameraFollower;
 
     [Header("Movement Variables")]
@@ -101,6 +103,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        if (!_config)
+        {
+            _config = FindObjectOfType<Config>();
+        }
     }
 
     // Update is called once per frame
@@ -116,8 +122,6 @@ public class PlayerController : MonoBehaviour
             // print("Updating rotation...");
             
         }
-            
-
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, whatIsInteractable);
 
@@ -143,7 +147,7 @@ public class PlayerController : MonoBehaviour
         }
 
         #region Input
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && !_config.tactile)
         {
             animator.SetBool("IsDefending", true);
             playerState = PlayerState.BLOCKING;
@@ -153,24 +157,25 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsDefending", false);
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && !_config.tactile)
         {
             playerState = PlayerState.NEUTRAL;
         }
 
-        if (Input.GetMouseButton(0) /*&& canAttack*/ && timeToAttack <= 0)
+        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && !_config.tactile)
         {
             canAttack = false;
             canFinishAttack = false;
             playerState = PlayerState.ATTACKING;
-            animator.SetBool("IsWalking", false);
+            
             animator.SetTrigger("Attack1");
+            animator.SetBool("IsAttacking", true);
 
             // Attack Variables
-            print(timeToAttack);
-            timeToAttack = attackTime[attackIndex];
-            timeToMove = moveTime[attackIndex];
-            attackIndex = attackIndex == numberOfAttacks - 1 ? 0 : attackIndex+1;
+            print(_timeToAttack);
+            _timeToAttack = _attackTime[_attackIndex];
+            _timeToMove = _moveTime[_attackIndex];
+            _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
             
 
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -186,7 +191,7 @@ public class PlayerController : MonoBehaviour
             mousePos.Normalize();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll)
+        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !_config.tactile)
         {
             playerState = PlayerState.ROLLING;
             rollDirection = movement;
@@ -201,19 +206,20 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public float[] attackTime;
-    public float[] moveTime;
+    public float[] _attackTime;
+    public float[] _moveTime;
     public int numberOfAttacks = 3;
-    private float timeToAttack = 0;
-    private float timeToMove = 0;
-    private int attackIndex = 0;
+    private float _timeToAttack = 0;
+    private float _timeToMove = 0;
+    private int _attackIndex = 0;
 
     private void FixedUpdate()
     {
-        timeToAttack -= Time.fixedDeltaTime;
-        timeToMove -= Time.fixedDeltaTime;
-        if (timeToMove <= 0)
+        _timeToAttack -= Time.fixedDeltaTime;
+        _timeToMove -= Time.fixedDeltaTime;
+        if (_timeToMove <= 0)
         {
+            animator.SetBool("IsAttacking", false);
             // canFinishAttack = true;
             if (playerState == PlayerState.ATTACKING)
             {
@@ -259,6 +265,7 @@ public class PlayerController : MonoBehaviour
         attackDashTimer = attackMaxDashTimer;
         this.attackDistance = attackDistance;
         weaponTrail.Emit = true;
+        animator.SetBool("IsWalking", false);
     }
 
     public void LetAttack()
@@ -318,23 +325,32 @@ public class PlayerController : MonoBehaviour
         if (!doorOpened)
         {
             #region Horizontal Movement Calculation & Assignation
-            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-            movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
+            if (!_config.tactile)
+            {
+                Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+                movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
+            }
+            else
+            {
+                Vector2 input = new Vector2(joystick.Horizontal, joystick.Vertical).normalized;
+                movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
+            }
 
             if (playerState == PlayerState.NEUTRAL)
             {
-                attackIndex = 0;
+                _attackIndex = 0;
                 controller.Move(movement * speed * Time.deltaTime);
             }
-                
+
             #endregion
+
         }
         else
         {
             movement = Vector3.zero;
             // print
             animator.SetBool("IsWalking", true);
-            attackIndex = 0;
+            _attackIndex = 0;
             controller.Move(doorDirection * speed * Time.deltaTime);
         }
 
