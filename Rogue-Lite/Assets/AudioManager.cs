@@ -5,10 +5,13 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     #region Variables
-    public AudioSource[] musicSources = new AudioSource[4];
+    [SerializeField] private AudioSource[] _musicSources = new AudioSource[4];
+    [SerializeField] private AudioSource _sfxSource;
 
     private Dictionary<AudioSource, float> _tracks;
     private float _currentPitch = 1;
+    private float _currentSFXVolume = 1;
+    private float _currentSFXPitch = 1;
     #endregion
 
     #region Methods
@@ -16,11 +19,25 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         _tracks = new Dictionary<AudioSource, float>();
-        _tracks.Add(musicSources[0], 1);
-        for (int i = 1; i < musicSources.Length; i++)
+        _tracks.Add(_musicSources[0], 1);
+        for (int i = 1; i < _musicSources.Length; i++)
         {
-            _tracks.Add(musicSources[i], 0);
+            _tracks.Add(_musicSources[i], 0);
         }
+        _currentSFXVolume = _sfxSource.volume;
+        _currentSFXPitch = _sfxSource.pitch;
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        _sfxSource.volume = 1;
+        _sfxSource.PlayOneShot(clip);
+    }
+
+    public void PlaySFX(AudioClip clip, float volume)
+    {
+        _sfxSource.volume = volume;
+        _sfxSource.PlayOneShot(clip);
     }
 
     public void SetPitch(float pitch)
@@ -30,28 +47,31 @@ public class AudioManager : MonoBehaviour
 
     public void ActivateDynamicTrack(int musicIndex)
     {
-        for(int i = 0; i < musicSources.Length; i++)
+        for(int i = 0; i < _musicSources.Length; i++)
         {
             if(i <= musicIndex)
             {
-                _tracks[musicSources[i]] = 1;
+                _tracks[_musicSources[i]] = 1;
             }
         }
     }
 
     public void DeactivateDynamicTrack(int musicIndex)
     {
-        _tracks[musicSources[musicIndex]] = 0;
+        _tracks[_musicSources[musicIndex]] = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < musicSources.Length; i++)
+        for(int i = 0; i < _musicSources.Length; i++)
         {
-            musicSources[i].volume = Mathf.Lerp(musicSources[i].volume, _tracks[musicSources[i]], 2 * Time.unscaledDeltaTime);
-            musicSources[i].pitch = Mathf.Lerp(musicSources[i].pitch, _currentPitch, 2 * Time.unscaledDeltaTime);
+            _musicSources[i].volume = Mathf.Lerp(_musicSources[i].volume, _tracks[_musicSources[i]], 2 * Time.unscaledDeltaTime);
+            _musicSources[i].pitch = Mathf.Lerp(_musicSources[i].pitch, _currentPitch, 2 * Time.unscaledDeltaTime);
         }
+
+        _sfxSource.volume = Mathf.Lerp(_sfxSource.volume, _currentSFXVolume, 2 * Time.unscaledDeltaTime);
+        _sfxSource.pitch = Mathf.Lerp(_sfxSource.pitch, _currentSFXPitch, 2 * Time.unscaledDeltaTime);
     }
     #endregion
 }

@@ -13,6 +13,10 @@ public class UIController : MonoBehaviour
     public Image playerHealthbar;
     public Image playerHealthbarWhiteBackground;
 
+    [SerializeField] private DeathMenuManager _deathMenuManager;
+
+    private bool _playerIsDead = false;
+
     Color mouseColor;
 
     private void Awake()
@@ -56,6 +60,15 @@ public class UIController : MonoBehaviour
         {
             player.health -= 20;
         }
+
+        if(!_playerIsDead && player.health <= 0)
+        {
+            _playerIsDead = true;
+            _deathMenuManager.PlayDeathMenu();
+        }
+
+        
+
         //originalMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
         //currentMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
     }

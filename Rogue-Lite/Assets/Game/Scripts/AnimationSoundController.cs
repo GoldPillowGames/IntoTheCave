@@ -9,6 +9,7 @@ public class AnimationSoundController : MonoBehaviour
 
     void PlayAttackSound(int id)
     {
-        audioSource.PlayOneShot(attacks[id]);
+        // audioSource.PlayOneShot(attacks[id]);
+        Audio.PlaySFX(attacks[id]);
     }
 }
