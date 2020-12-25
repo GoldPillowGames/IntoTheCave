@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    private AudioManager _audioManager;
 
     void Start()
     {
-        _audioManager = FindObjectOfType<AudioManager>();
-        _audioManager.ActivateDynamicTrack(1);
+        Audio.ActivateTrack(1);
     }
 
     public void OpenDoors()
@@ -18,6 +16,6 @@ public class RoomManager : MonoBehaviour
         {
             g.GetComponent<BoxCollider>().enabled = true;
         }
-        _audioManager.DeactivateDynamicTrack(1);
+        Audio.DeactivateTrack(1);
     }
 }

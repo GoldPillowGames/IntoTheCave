@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     public CameraFollower cameraFollower;
 
     [Header("Movement Variables")]
-
     [Tooltip("Player movement speed")]
     [SerializeField] private float speed = 5;
     [Tooltip("Gravity force strength")]
@@ -119,8 +118,6 @@ public class PlayerController : MonoBehaviour
         if (((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING) || doorOpened)
         {
             playerContainer.rotation = Quaternion.Lerp(playerContainer.rotation, currentRotation, rotationSpeed * Time.deltaTime);
-            // print("Updating rotation...");
-            
         }
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius, whatIsInteractable);

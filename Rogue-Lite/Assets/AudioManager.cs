@@ -58,7 +58,13 @@ public class AudioManager : MonoBehaviour
 
     public void DeactivateDynamicTrack(int musicIndex)
     {
-        _tracks[_musicSources[musicIndex]] = 0;
+        for (int i = _musicSources.Length - 1; i >= 0; i--)
+        {
+            if (i >= musicIndex)
+            {
+                _tracks[_musicSources[i]] = 0;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -70,7 +76,7 @@ public class AudioManager : MonoBehaviour
             _musicSources[i].pitch = Mathf.Lerp(_musicSources[i].pitch, _currentPitch, 2 * Time.unscaledDeltaTime);
         }
 
-        _sfxSource.volume = Mathf.Lerp(_sfxSource.volume, _currentSFXVolume, 2 * Time.unscaledDeltaTime);
+        //_sfxSource.volume = Mathf.Lerp(_sfxSource.volume, _currentSFXVolume, 2 * Time.unscaledDeltaTime);
         _sfxSource.pitch = Mathf.Lerp(_sfxSource.pitch, _currentSFXPitch, 2 * Time.unscaledDeltaTime);
     }
     #endregion

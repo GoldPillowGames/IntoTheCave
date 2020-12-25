@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class FPSCounter : MonoBehaviour
 {
+    private Config config;
     float deltaTime = 0.0f;
+
+    private void Start()
+    { 
+        config = FindObjectOfType<Config>();
+    }
 
     void Update()
     {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        if (!config)
+            config = FindObjectOfType<Config>();
+
+        if (!config)
+            return;
+
+        if(config.debug)
+            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
     }
 
     void OnGUI()
     {
+        if (!config)
+            return;
+
+        if (!config.debug)
+            return;
+
         int w = Screen.width, h = Screen.height;
 
         GUIStyle style = new GUIStyle();

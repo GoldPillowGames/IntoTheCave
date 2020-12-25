@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private DeathMenuManager _deathMenuManager;
 
-    private bool _playerIsDead = false;
+    [HideInInspector] public bool _playerIsDead = false;
 
     Color mouseColor;
 
@@ -66,10 +66,5 @@ public class UIController : MonoBehaviour
             _playerIsDead = true;
             _deathMenuManager.PlayDeathMenu();
         }
-
-        
-
-        //originalMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
-        //currentMousePos.color = Color.Lerp(originalMousePos.color, mouseColor, 20 * Time.deltaTime);
     }
 }

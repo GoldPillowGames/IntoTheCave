@@ -5,6 +5,7 @@ using UnityEngine;
 public class Config : MonoBehaviour
 {
     public bool tactile = true;
+    public bool debug = true;
 
     [SerializeField] private GameObject _joystick;
 
