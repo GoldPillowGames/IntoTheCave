@@ -44,10 +44,11 @@ public class DeathMenuManager : MonoBehaviour
         PlayerController[] players = FindObjectsOfType<PlayerController>();
         foreach(PlayerController player in players)
         {
-            player.health = player.maxHealth;
+            player.Revive();
         }
         _textAnimatorPlayer.ShowText("");
         GetComponentInParent<UIController>()._playerIsDead = false;
+        
         Invoke("StartMusic", 0.3f);
     }
 

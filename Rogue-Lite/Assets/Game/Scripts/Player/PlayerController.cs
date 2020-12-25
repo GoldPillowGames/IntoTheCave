@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
     private bool canAttack = true;
     private bool canFinishAttack = true;
     private Vector3 rollDirection;
+    private bool isDead = false;
 
     private bool canRoll = true;
 
@@ -111,6 +112,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isDead)
+            return;
         
         Movement();
 
@@ -281,6 +285,19 @@ public class PlayerController : MonoBehaviour
         
     }
     #endregion
+
+    public void Kill()
+    {
+        isDead = true;
+        animator.SetTrigger("Death");
+    }
+
+    public void Revive()
+    {
+        isDead = false;
+        health = maxHealth;
+        animator.SetTrigger("Revive");
+    }
 
     void HandleMouseMovement()
     {

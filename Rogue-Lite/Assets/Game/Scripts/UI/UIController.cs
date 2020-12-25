@@ -64,6 +64,7 @@ public class UIController : MonoBehaviour
         if(!_playerIsDead && player.health <= 0)
         {
             _playerIsDead = true;
+            player.Kill();
             _deathMenuManager.PlayDeathMenu();
         }
     }
