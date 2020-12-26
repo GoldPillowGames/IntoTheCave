@@ -9,8 +9,11 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="AudioManager.cs" t="Include" />
+        <e p="Bonfire.cs" t="Include" />
         <e p="CameraController.cs" t="Include" />
         <e p="CameraFollower.cs" t="Include" />
+        <e p="DeathMenuManager.cs" t="Include" />
         <e p="DialogueBox.cs" t="Include" />
         <e p="Game" t="Include">
           <e p="Modern UI Pack" t="Include">
@@ -136,6 +139,7 @@
           <e p="Scripts" t="Include">
             <e p="AnimationSoundController.cs" t="Include" />
             <e p="AnimatorController.cs" t="Include" />
+            <e p="Audio.cs" t="Include" />
             <e p="Camera" t="Include">
               <e p="MovementOrientation.cs" t="Include" />
             </e>
@@ -168,6 +172,8 @@
             <e p="Light" t="Include">
               <e p="Lighting.hlsl" t="Include" />
             </e>
+            <e p="StencilSphere.shader" t="Include" />
+            <e p="StencilWall.shader" t="Include" />
             <e p="Toon" t="Include">
               <e p="AwesomeToonHelper.cs" t="Include" />
               <e p="Extra" t="Include">
@@ -247,6 +253,30 @@
             </e>
             <e p="Sprites" t="Include">
               <e p="EmojiOne Attribution.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="GameManager.cs" t="Include" />
+        <e p="Joystick Pack" t="Include">
+          <e p="Examples" t="Include">
+            <e p="JoystickPlayerExample.cs" t="Include" />
+            <e p="JoystickSetterExample.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Base" t="Include">
+              <e p="Joystick.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="DynamicJoystickEditor.cs" t="Include" />
+              <e p="FloatingJoystickEditor.cs" t="Include" />
+              <e p="JoystickEditor.cs" t="Include" />
+              <e p="VariableJoystickEditor.cs" t="Include" />
+            </e>
+            <e p="Joysticks" t="Include">
+              <e p="DynamicJoystick.cs" t="Include" />
+              <e p="FixedJoystick.cs" t="Include" />
+              <e p="FloatingJoystick.cs" t="Include" />
+              <e p="VariableJoystick.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -414,22 +444,25 @@
             <e p="ITargetFollower.cs" t="Include" />
             <e p="MethodDelayer.cs" t="Include" />
             <e p="NavMeshTargetFollower.cs" t="Include" />
+            <e p="RandomStringSelector.cs" t="Include" />
           </e>
           <e p="Enemy" t="Include">
+            <e p="AnimationComboSelector.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
-            <e p="ZombieKnight" t="Include">
+            <e p="EnemyState.cs" t="Include" />
+            <e p="Huesitos" t="Include">
               <e p="AttackState.cs" t="Include" />
               <e p="FollowingState.cs" t="Include" />
-              <e p="ZombieKnightController.cs" t="Include" />
+              <e p="HuesitosController.cs" t="Include" />
             </e>
           </e>
           <e p="Patterns" t="Include">
-            <e p="EnemyState.cs" t="Include" />
             <e p="FiniteStateMachine.cs" t="Include" />
             <e p="State.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
+        <e p="TimeManager.cs" t="Include" />
         <e p="TutorialInfo" t="Include">
           <e p="Scripts" t="Include">
             <e p="Editor" t="Include">
