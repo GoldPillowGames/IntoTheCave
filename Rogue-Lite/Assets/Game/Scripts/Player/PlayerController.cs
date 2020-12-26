@@ -299,38 +299,6 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Revive");
     }
 
-    void HandleMouseMovement()
-    {
-        //if (Input.GetMouseButtonDown(0) && !cursorClicking)
-        //{
-        //    cursorClicking = true;
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    //if (Physics.Raycast(ray))
-        //    //    Instantiate(particle, transform.position, transform.rotation);
-        //    clickPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        //    UI.ShowInput();
-        //    cameraDirection.GetComponent<MovementOrientation>().canUpdatePos = false;
-        //    //Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-        //}
-
-        //if(Input.GetMouseButtonUp(0) && cursorClicking)
-        //{
-        //    cursorClicking = false;
-        //    cameraDirection.GetComponent<MovementOrientation>().canUpdatePos = true;
-        //    UI.HideInput();
-        //    movementDirection = Vector2.zero;
-        //}
-
-        //if (cursorClicking)
-        //{
-            
-        //    Vector2 currentPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        //    movementDirection = (currentPosition - clickPosition).normalized;
-        //    UI.SetMousePos(clickPosition, currentPosition);
-
-        //}
-    }
-
     /// <summary>
     /// Calculates and updates player movement
     /// </summary>
