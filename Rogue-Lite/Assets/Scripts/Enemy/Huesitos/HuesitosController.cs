@@ -34,7 +34,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             get
             {
                 var stateInfo = _anim.GetCurrentAnimatorStateInfo(0);
-                return stateInfo.length * stateInfo.speed;
+                return stateInfo.length;
             }
         }
             
