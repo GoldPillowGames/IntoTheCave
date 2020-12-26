@@ -73,7 +73,7 @@ public class EventTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Entered");
+        //Debug.Log("Trigger Entered");
         switch (eventType)
         {
             case EventType.BATTLE_MUSIC:

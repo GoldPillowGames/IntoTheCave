@@ -1,16 +1,16 @@
-﻿using System;
-using GoldPillowGames.Patterns;
+﻿using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace GoldPillowGames.Enemy.ZombieKnight
+namespace GoldPillowGames.Enemy.Huesitos
 {
-    public class ZombieKnightController : EnemyController
+    public class HuesitosController : EnemyController
     {
         #region Variables
         [SerializeField] private float velocity = 5;
         [SerializeField] private float rotationLerpValue = 15;
         [SerializeField] private float distanceToAttack = 5;
+        [SerializeField] private float detectAngle;
         private Animator _anim;
         #endregion
 
@@ -21,12 +21,23 @@ namespace GoldPillowGames.Enemy.ZombieKnight
         public float DistanceToAttack => distanceToAttack;
         public Transform Transform => transform;
         public FiniteStateMachine StateMachine => stateMachine;
+        public AnimationComboSelector AnimationAttackComboSelector { get; private set; }
+        public float Velocity => velocity;
         
         public float DistanceFromPlayer => Vector3.Distance(Transform.position,
             Player.transform.position);
         public Vector3 DirectionToPlayer =>
             (Player.position - Transform.position).normalized;
-        public float CurrentAnimationLength => _anim.GetCurrentAnimatorStateInfo(0).length;
+
+        public float CurrentAnimationLength
+        {
+            get
+            {
+                var stateInfo = _anim.GetCurrentAnimatorStateInfo(0);
+                return stateInfo.length * stateInfo.speed;
+            }
+        }
+            
         public bool CanAttack => DistanceFromPlayer <= DistanceToAttack;
         #endregion
 
@@ -39,14 +50,12 @@ namespace GoldPillowGames.Enemy.ZombieKnight
             Agent = GetComponent<NavMeshAgent>();
             Player = GameObject.FindGameObjectWithTag("Player").transform;
             _anim = GetComponent<Animator>();
+            AnimationAttackComboSelector = new AnimationComboSelector(new string[]{"IsAttacking1", "IsAttacking2"});
         }
 
         protected override void Start()
         {
             base.Start();
-
-            Agent.speed = velocity;
-            Agent.isStopped = true;
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
         }
@@ -55,13 +64,28 @@ namespace GoldPillowGames.Enemy.ZombieKnight
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, distanceToAttack);
+            
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(Transform.position, Transform.position + Quaternion.Euler(0, detectAngle / 2, 0) * Transform.forward * DistanceToAttack);
+            Gizmos.DrawLine(Transform.position, Transform.position + Quaternion.Euler(0, -detectAngle / 2, 0) * Transform.forward * DistanceToAttack);
         }
         
         public bool IsThereAnObstacleInAttackRange()
         {
-            Physics.Raycast(Transform.position, DirectionToPlayer, out var hitInfo,
-                DistanceToAttack);
+            if (!Physics.Raycast(Transform.position, DirectionToPlayer, out var hitInfo,
+                DistanceToAttack))
+            {
+                return false;
+            }
             return !hitInfo.collider.CompareTag("Player");
+        }
+
+        public bool CanSeePlayer()
+        {
+            Vector2 forward = new Vector2(transform.forward.x, Transform.forward.z);
+            Vector2 toPlayer = new Vector2(Player.position.x - Transform.position.x,
+                Player.position.z - Transform.position.z);
+            return (Vector2.Angle(forward, toPlayer) < (detectAngle / 2));
         }
         #endregion
     }
