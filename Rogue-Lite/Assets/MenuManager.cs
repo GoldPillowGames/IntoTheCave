@@ -40,6 +40,11 @@ public class MenuManager : MonoBehaviour
         {
             ShowMenu(MainMenuType.MAIN_MENU);
         }
+
+        if (Config.data.vSync)
+            QualitySettings.vSyncCount = 1;
+        else
+            QualitySettings.vSyncCount = 0;
     }
 
     public void ShowMenu(MainMenuType menu)
