@@ -5,19 +5,13 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-
-    public Image originalMousePos;
-    public Image currentMousePos;
-
-    public PlayerController player;
-    public Image playerHealthbar;
-    public Image playerHealthbarWhiteBackground;
-
+    [SerializeField] private PlayerController _player;
+    [SerializeField] private Image _playerHealthbar;
+    [SerializeField] private Image _playerHealthbarWhiteBackground;
     [SerializeField] private DeathMenuManager _deathMenuManager;
+    [SerializeField] private GameObject _joystick;
 
     [HideInInspector] public bool _playerIsDead = false;
-
-    Color mouseColor;
 
     private void Awake()
     {
@@ -27,44 +21,29 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(originalMousePos)
-            originalMousePos.color = new Color(1, 1, 1, 0);
-        if(currentMousePos)
-            currentMousePos.color = new Color(1, 1, 1, 0);
-        mouseColor = new Color(1, 1, 1, 0);
-    }
-
-    public void SetMousePos(Vector2 originalMousePos, Vector2 currentMousePos)
-    {
-        this.originalMousePos.rectTransform.position = originalMousePos;
-        this.currentMousePos.rectTransform.position = currentMousePos;
-    }
-
-    public void ShowInput()
-    {
-        mouseColor = new Color(1, 1, 1, 1);
-    }
-
-    public void HideInput()
-    {
-        mouseColor = new Color(1, 1, 1, 0);
+        _joystick.SetActive(Config.data.isTactile ? true : false);
+        CanvasScaler canvasScale = GetComponent<CanvasScaler>();
+        canvasScale.referenceResolution = new Vector2(
+            canvasScale.referenceResolution.x / (Config.data.canvasScale), 
+            canvasScale.referenceResolution.y / (Config.data.canvasScale)
+            );
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerHealthbar.fillAmount = (float)player.health / (float)player.maxHealth;
-        playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(playerHealthbarWhiteBackground.fillAmount, playerHealthbar.fillAmount, 10 * Time.deltaTime);
+        _playerHealthbar.fillAmount = (float)_player.health / (float)_player.maxHealth;
+        _playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(_playerHealthbarWhiteBackground.fillAmount, _playerHealthbar.fillAmount, 10 * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            player.health -= 20;
+            _player.health -= 20;
         }
 
-        if(!_playerIsDead && player.health <= 0)
+        if(!_playerIsDead && _player.health <= 0)
         {
             _playerIsDead = true;
-            player.Kill();
+            _player.Kill();
             _deathMenuManager.PlayDeathMenu();
         }
     }

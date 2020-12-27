@@ -6,15 +6,22 @@ public enum SaveType
     Test,
     Release
 }
+
+public enum Language
+{
+    EN = 0,
+    ES = 1,
+    DE = 2
+}
+
 [System.Serializable]
 public class SaveState
 {
-    public int level = 1;
-    public int expToLevelUp = 100;
-    public int levelProgress = 0;
-    public SaveType saveType = SaveType.Test;
-    public int coins = 0;
-    public bool firstTime = true;
-    public float currentTimeToDisplayAd = 200f;
-    public int currentHP;
+    public bool isTactile = false;
+    public bool isDebug = false;
+    public bool firstTimeLoaded = true;
+    public float brightness = 0;
+    public Language language = 0;
+    public float canvasScale = 1f;
+    
 }

@@ -20,8 +20,10 @@ public class AudioManager : MonoBehaviour
     {
         _tracks = new Dictionary<AudioSource, float>();
         _tracks.Add(_musicSources[0], 1);
+        _musicSources[0].Play();
         for (int i = 1; i < _musicSources.Length; i++)
         {
+            _musicSources[i].Play();
             _tracks.Add(_musicSources[i], 0);
         }
         _currentSFXVolume = _sfxSource.volume;

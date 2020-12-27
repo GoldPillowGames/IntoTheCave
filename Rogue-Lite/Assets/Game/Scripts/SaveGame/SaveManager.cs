@@ -10,19 +10,17 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        // DontDestroyOnLoad(gameObject);
         Instance = this;
 
         Load();
 
         Debug.Log(Helper.Serialize<SaveState>(state));
-        Debug.Log("Level: " + state.level + ", " + "Current EXP: " + state.levelProgress);
     }
 
     public void Save()
     {
         PlayerPrefs.SetString("save", Helper.Serialize<SaveState>(state));
-        print("Data saved...");
+        print("<color=green>Saving Data...</color>");
     }
 
     public void Load()
@@ -41,6 +39,7 @@ public class SaveManager : MonoBehaviour
 
     public void ResetData()
     {
+        Debug.Log("<color=red>Deleting Data...</color>");
         state = new SaveState();
         Save();
     }
