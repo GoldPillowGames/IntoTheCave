@@ -9,12 +9,9 @@ public enum SaveType
 [System.Serializable]
 public class SaveState
 {
-    public int level = 1;
-    public int expToLevelUp = 100;
-    public int levelProgress = 0;
-    public SaveType saveType = SaveType.Test;
-    public int coins = 0;
-    public bool firstTime = true;
-    public float currentTimeToDisplayAd = 200f;
-    public int currentHP;
+    public bool isTactile = false;
+    public bool isDebug = false;
+    public float gamma = 1;
+    public float language = 0;
+    public float canvasScale = 1f;
 }

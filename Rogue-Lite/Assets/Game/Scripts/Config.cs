@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Config : MonoBehaviour
+public static class Config
 {
-    public bool tactile = true;
-    public bool debug = true;
+    public static SaveState data => GameObject.FindObjectOfType<SaveManager>().state;
 
-    [SerializeField] private GameObject _joystick;
-
-    private void Start()
+    public static void SaveGame()
     {
-        if (!tactile)
-        {
-            _joystick.SetActive(false);
-        }
+        SaveManager saveManager = GameObject.FindObjectOfType<SaveManager>();
+        if (saveManager)
+            saveManager.Save();
+        else
+            Debug.LogError("No SaveManager Detected!");
     }
 }

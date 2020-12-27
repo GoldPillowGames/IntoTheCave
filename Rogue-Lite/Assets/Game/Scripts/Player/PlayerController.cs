@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject lights;
     [SerializeField] private CameraController cameraController;
-    [SerializeField] private Config _config;
     [SerializeField] private FixedJoystick joystick;
     public CameraFollower cameraFollower;
 
@@ -103,10 +102,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-        if (!_config)
-        {
-            _config = FindObjectOfType<Config>();
-        }
     }
 
     // Update is called once per frame
@@ -148,7 +143,7 @@ public class PlayerController : MonoBehaviour
         }
 
         #region Input
-        if (Input.GetMouseButton(1) && !_config.tactile)
+        if (Input.GetMouseButton(1) && !Config.data.isTactile)
         {
             animator.SetBool("IsDefending", true);
             playerState = PlayerState.BLOCKING;
@@ -158,12 +153,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsDefending", false);
         }
 
-        if (Input.GetMouseButtonUp(1) && !_config.tactile)
+        if (Input.GetMouseButtonUp(1) && !Config.data.isTactile)
         {
             playerState = PlayerState.NEUTRAL;
         }
 
-        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && !_config.tactile)
+        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && !Config.data.isTactile)
         {
             canAttack = false;
             canFinishAttack = false;
@@ -192,7 +187,7 @@ public class PlayerController : MonoBehaviour
             mousePos.Normalize();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !_config.tactile)
+        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !Config.data.isTactile)
         {
             playerState = PlayerState.ROLLING;
             rollDirection = movement;
@@ -307,7 +302,7 @@ public class PlayerController : MonoBehaviour
         if (!doorOpened)
         {
             #region Horizontal Movement Calculation & Assignation
-            if (!_config.tactile)
+            if (!Config.data.isTactile)
             {
                 Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
                 movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;

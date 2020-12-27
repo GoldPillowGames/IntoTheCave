@@ -10,13 +10,11 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        // DontDestroyOnLoad(gameObject);
         Instance = this;
 
         Load();
 
         Debug.Log(Helper.Serialize<SaveState>(state));
-        Debug.Log("Level: " + state.level + ", " + "Current EXP: " + state.levelProgress);
     }
 
     public void Save()
