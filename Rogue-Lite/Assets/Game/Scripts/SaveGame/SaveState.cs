@@ -11,7 +11,9 @@ public class SaveState
 {
     public bool isTactile = false;
     public bool isDebug = false;
-    public float gamma = 1;
+    public bool firstTimeLoaded = true;
+    public float brightness = 0;
     public float language = 0;
     public float canvasScale = 1f;
+    
 }
