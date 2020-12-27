@@ -20,7 +20,7 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetString("save", Helper.Serialize<SaveState>(state));
-        print("Data saved...");
+        print("<color=green>Saving Data...</color>");
     }
 
     public void Load()
@@ -39,6 +39,7 @@ public class SaveManager : MonoBehaviour
 
     public void ResetData()
     {
+        Debug.Log("<color=red>Deleting Data...</color>");
         state = new SaveState();
         Save();
     }

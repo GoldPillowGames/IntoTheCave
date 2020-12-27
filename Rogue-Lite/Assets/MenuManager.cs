@@ -22,6 +22,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Config.ResetData();
+
         menus = new Dictionary<MainMenuType, GameObject>();
 
         menus.Add(MainMenuType.MAIN_MENU, _mainMenu);
@@ -31,7 +33,7 @@ public class MenuManager : MonoBehaviour
 
         if (Config.data.firstTimeLoaded)
         {
-            ShowMenu(MainMenuType.BRIGHTNESS_MENU);
+            ShowMenu(MainMenuType.LANGUAGE_MENU);
         }
         else
         {
