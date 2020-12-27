@@ -108,7 +108,7 @@ public class RunManager : MonoBehaviour
 
     private void LoadRoom()
     {
-        StartCoroutine(LoadASynchrously(2));
+        StartCoroutine(LoadASynchrously(3));
     }
 
     IEnumerator LoadASynchrously(int sceneIndex)
