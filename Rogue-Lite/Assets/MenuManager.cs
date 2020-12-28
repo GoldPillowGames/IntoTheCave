@@ -84,7 +84,7 @@ public class MenuManager : MonoBehaviour
                 Config.data.vSync = false;
                 #endregion
             }
-            ShowMenu(MainMenuType.LANGUAGE_MENU);
+            ShowMenuInstantly(3);
         }
         else
         {
@@ -101,9 +101,36 @@ public class MenuManager : MonoBehaviour
 
     public void ShowMenu(MainMenuType menu)
     {
-        for(int i = 0; i < menus.Count; i++)
+        Fade.OnPlay = () =>
         {
-            if(menus[(MainMenuType)i] == menus[menu])
+            for (int i = 0; i < menus.Count; i++)
+            {
+                if (menus[(MainMenuType)i] == menus[menu])
+                {
+                    menus[(MainMenuType)i].SetActive(true);
+                }
+                else
+                {
+                    menus[(MainMenuType)i].SetActive(false);
+                }
+            }
+        };
+        Fade.PlayFade();
+
+        
+    }
+
+    public void ShowMenu(int index)
+    {
+        ShowMenu((MainMenuType)index);
+    }
+
+    public void ShowMenuInstantly(int index)
+    {
+        MainMenuType menu = (MainMenuType)index;
+        for (int i = 0; i < menus.Count; i++)
+        {
+            if (menus[(MainMenuType)i] == menus[menu])
             {
                 menus[(MainMenuType)i].SetActive(true);
             }
@@ -112,9 +139,5 @@ public class MenuManager : MonoBehaviour
                 menus[(MainMenuType)i].SetActive(false);
             }
         }
-    }
-    public void ShowMenu(int index)
-    {
-        ShowMenu((MainMenuType) index);
     }
 }

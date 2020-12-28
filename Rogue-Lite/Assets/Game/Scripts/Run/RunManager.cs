@@ -108,7 +108,8 @@ public class RunManager : MonoBehaviour
 
     private void LoadRoom()
     {
-        StartCoroutine(LoadASynchrously(3));
+        Fade.OnPlay = () => { StartCoroutine(LoadASynchrously(3)); };
+        Fade.PlayFade(FadeType.UPPER_LOWER);
     }
 
     IEnumerator LoadASynchrously(int sceneIndex)

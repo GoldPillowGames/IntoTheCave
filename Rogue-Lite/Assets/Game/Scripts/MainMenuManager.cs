@@ -22,7 +22,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadLevel(int index)
     {
-        SceneManager.LoadScene(index);
+        Fade.OnPlay = () => { SceneManager.LoadScene(index); };
+        Fade.PlayFade();
     }
 
     public void ShowSettingsMenu()

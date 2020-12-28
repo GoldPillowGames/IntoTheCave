@@ -199,20 +199,8 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
-        
-    }
-
-    public float[] _attackTime;
-    public float[] _moveTime;
-    public int numberOfAttacks = 3;
-    private float _timeToAttack = 0;
-    private float _timeToMove = 0;
-    private int _attackIndex = 0;
-
-    private void FixedUpdate()
-    {
-        _timeToAttack -= Time.fixedDeltaTime;
-        _timeToMove -= Time.fixedDeltaTime;
+        _timeToAttack -= Time.deltaTime;
+        _timeToMove -= Time.deltaTime;
         if (_timeToMove <= 0)
         {
             animator.SetBool("IsAttacking", false);
@@ -234,6 +222,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public float[] _attackTime;
+    public float[] _moveTime;
+    public int numberOfAttacks = 3;
+    private float _timeToAttack = 0;
+    private float _timeToMove = 0;
+    private int _attackIndex = 0;
+
+    private void FixedUpdate()
+    {
+        
     }
 
     #region Events
