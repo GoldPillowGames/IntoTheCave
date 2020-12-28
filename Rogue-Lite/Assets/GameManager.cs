@@ -71,11 +71,16 @@ public class GameManager : MonoBehaviour
                     break;
             }
 
+
             // Shadow Quality
             universalRenderPipelineAssetType = (GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset).GetType();
             mainLightShadowmapResolutionFieldInfo = universalRenderPipelineAssetType.GetField("m_MainLightShadowmapResolution", BindingFlags.Instance | BindingFlags.NonPublic);
-            if(Config.data.shadowQuality != ShadowQualityState.NO_SHADOWS)
+            if(Config.data.shadowQuality != ShadowQualityState.NO_SHADOWS && Config.data.shadowQuality != ShadowQualityState.ULTRA)
                 mainLightShadowmapResolutionFieldInfo.SetValue(GraphicsSettings.currentRenderPipeline, (int)Config.data.shadowQuality);
+            else if (Config.data.shadowQuality == ShadowQualityState.ULTRA)
+            {
+                mainLightShadowmapResolutionFieldInfo.SetValue(GraphicsSettings.currentRenderPipeline, 4096);
+            }
             else
                 mainLightShadowmapResolutionFieldInfo.SetValue(GraphicsSettings.currentRenderPipeline, 256);
 

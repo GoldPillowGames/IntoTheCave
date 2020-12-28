@@ -37,7 +37,7 @@ public enum ShadowQualityState
     MEDIUM = 1024,
     HIGH = 2048,
     VERY_HIGH = 4096,
-    ULTRA = 4096
+    ULTRA = 4097
 }
 
 public enum ShadowDistanceState
@@ -83,7 +83,7 @@ public class SaveState
     #region Graphics
     public float brightness = 0;
     public Language language = Language.EN;
-    public GraphicsQuality graphicsQuality = GraphicsQuality.CUSTOM;
+    public GraphicsQuality graphicsQuality = GraphicsQuality.HIGH;
 
     #region Custom Settings
     public GeneralGraphicsQuality generalGraphics = GeneralGraphicsQuality.HIGH;
@@ -93,9 +93,7 @@ public class SaveState
     public float renderScale = 1.0f;
     #endregion
 
-    
     public FPSLimit limitedFPS = FPSLimit.NONE;
     public bool vSync = false;
-    
     #endregion
 }

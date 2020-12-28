@@ -34,6 +34,56 @@ public class MenuManager : MonoBehaviour
 
         if (Config.data.firstTimeLoaded)
         {
+            if (Application.isMobilePlatform)
+            {
+                #region UI
+                Config.data.isTactile = true;
+                Config.data.isDebug = true;
+                Config.data.canvasScale = 1.0f;
+                #endregion
+
+                #region Graphics
+                Config.data.brightness = 0;
+                Config.data.language = Language.EN;
+                Config.data.graphicsQuality = GraphicsQuality.LOW;
+
+                #region Custom Settings
+                Config.data.generalGraphics = GeneralGraphicsQuality.LOW;
+                Config.data.shadowQuality = ShadowQualityState.NO_SHADOWS;
+                Config.data.shadowDistance = ShadowDistanceState.CLOSE;
+                Config.data.antialiasingQuality = AntialiasingState.NONE;
+                Config.data.renderScale = 1.0f;
+                #endregion
+
+                Config.data.limitedFPS = FPSLimit.NONE;
+                Config.data.vSync = false;
+                #endregion
+            }
+            else
+            {
+                #region UI
+                Config.data.isTactile = false;
+                Config.data.isDebug = true;
+                Config.data.canvasScale = 1.0f;
+                #endregion
+
+                #region Graphics
+                Config.data.brightness = 0;
+                Config.data.language = Language.EN;
+                Config.data.graphicsQuality = GraphicsQuality.HIGH;
+
+                #region Custom Settings
+                Config.data.generalGraphics = GeneralGraphicsQuality.HIGH;
+                Config.data.shadowQuality = ShadowQualityState.ULTRA;
+                Config.data.shadowDistance = ShadowDistanceState.FAR;
+                Config.data.antialiasingQuality = AntialiasingState.MSAAx2;
+                Config.data.renderScale = 1.0f;
+                #endregion
+
+                Config.data.limitedFPS = FPSLimit.NONE;
+                Config.data.vSync = false;
+                #endregion
+            }
             ShowMenu(MainMenuType.LANGUAGE_MENU);
         }
         else
@@ -45,6 +95,8 @@ public class MenuManager : MonoBehaviour
             QualitySettings.vSyncCount = 1;
         else
             QualitySettings.vSyncCount = 0;
+
+
     }
 
     public void ShowMenu(MainMenuType menu)
