@@ -7,6 +7,7 @@ namespace GoldPillowGames.Enemy
     {
         #region Variables
         protected FiniteStateMachine stateMachine;
+        [SerializeField] protected float health;
         #endregion
 
         #region Methods

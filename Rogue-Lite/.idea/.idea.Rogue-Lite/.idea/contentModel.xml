@@ -11,10 +11,10 @@
       <e p="Assets" t="Include">
         <e p="AudioManager.cs" t="Include" />
         <e p="Bonfire.cs" t="Include" />
+        <e p="BrightnessMenuManager.cs" t="Include" />
         <e p="CameraController.cs" t="Include" />
         <e p="CameraFollower.cs" t="Include" />
         <e p="DeathMenuManager.cs" t="Include" />
-        <e p="DialogueBox.cs" t="Include" />
         <e p="Game" t="Include">
           <e p="Modern UI Pack" t="Include">
             <e p="Editor" t="Include">
@@ -164,6 +164,7 @@
               <e p="SaveManager.cs" t="Include" />
               <e p="SaveState.cs" t="Include" />
             </e>
+            <e p="TableReader.cs" t="Include" />
             <e p="UI" t="Include">
               <e p="UIController.cs" t="Include" />
             </e>
@@ -280,6 +281,8 @@
             </e>
           </e>
         </e>
+        <e p="LanguageManager.cs" t="Include" />
+        <e p="LogoManager.cs" t="Include" />
         <e p="MeleeWeaponTrail" t="Include">
           <e p="Example" t="Include">
             <e p="Scripts" t="Include">
@@ -294,7 +297,9 @@
             <e p="MeleeWeaponTrail.cs" t="Include" />
           </e>
         </e>
+        <e p="MenuManager.cs" t="Include" />
         <e p="NPCBehaviour.cs" t="Include" />
+        <e p="PlayButtonManager.cs" t="Include" />
         <e p="PlayerWeaponry.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Febucci" t="Include">
@@ -427,6 +432,8 @@
             </e>
           </e>
         </e>
+        <e p="PostProcess.cs" t="Include" />
+        <e p="PostProcessManager.cs" t="Include" />
         <e p="QuickOutline" t="Include">
           <e p="README.txt" t="Include" />
           <e p="Resources" t="Include">
@@ -441,13 +448,14 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Core" t="Include">
+            <e p="AgentPropeller.cs" t="Include" />
             <e p="ITargetFollower.cs" t="Include" />
             <e p="MethodDelayer.cs" t="Include" />
             <e p="NavMeshTargetFollower.cs" t="Include" />
             <e p="RandomStringSelector.cs" t="Include" />
+            <e p="RotateTowardsTarget.cs" t="Include" />
           </e>
           <e p="Enemy" t="Include">
-            <e p="AnimationComboSelector.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
             <e p="EnemyState.cs" t="Include" />
             <e p="Huesitos" t="Include">
@@ -455,14 +463,26 @@
               <e p="FollowingState.cs" t="Include" />
               <e p="HuesitosController.cs" t="Include" />
             </e>
+            <e p="HuesitosArcher" t="Include">
+              <e p="Arrow" t="Include">
+                <e p="ArrowController.cs" t="Include" />
+              </e>
+              <e p="BowFiringState.cs" t="Include" />
+              <e p="BowPreparingState.cs" t="Include" />
+              <e p="FollowingState.cs" t="Include" />
+              <e p="HuesitosArcherController.cs" t="Include" />
+            </e>
           </e>
           <e p="Patterns" t="Include">
             <e p="FiniteStateMachine.cs" t="Include" />
+            <e p="ObjectPool.cs" t="Include" />
+            <e p="PoolObjectReturn.cs" t="Include" />
             <e p="State.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="TimeManager.cs" t="Include" />
+        <e p="Translator.cs" t="Include" />
         <e p="TutorialInfo" t="Include">
           <e p="Scripts" t="Include">
             <e p="Editor" t="Include">
@@ -471,6 +491,7 @@
             <e p="Readme.cs" t="Include" />
           </e>
         </e>
+        <e p="UIElement.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

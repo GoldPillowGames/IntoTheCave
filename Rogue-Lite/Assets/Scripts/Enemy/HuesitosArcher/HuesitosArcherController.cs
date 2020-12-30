@@ -1,37 +1,39 @@
 ﻿using System;
 using GoldPillowGames.Core;
+using GoldPillowGames.Enemy.HuesitosArcher.Arrow;
 using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace GoldPillowGames.Enemy.Huesitos
+namespace GoldPillowGames.Enemy.HuesitosArcher
 {
-    public class HuesitosController : EnemyController
+    public class HuesitosArcherController : EnemyController
     {
         #region Variables
         [SerializeField] private float velocity = 5;
         [SerializeField] private float distanceToAttack = 5;
-        [SerializeField] private float detectAngle;
-        [SerializeField] private float pushComboForce = 15;
+        [SerializeField] private float rotationSpeed = 10;
+        [SerializeField] private GameObject arrowPrefab;
+        [SerializeField] private GameObject visualArrow;
         private Animator _anim;
         private AgentPropeller _propeller;
         #endregion
 
         #region Properties
         public Transform Player { get; private set; }
+        
         public NavMeshAgent Agent { get; private set; }
         public Transform Transform => transform;
         public float Velocity => velocity;
-        public Action<int> OnComboHitEnding { get; set; }
-
+        public GameObject VisualArrow => visualArrow;
+        public Action GoToNextStateCallback { set; private get; }
         private float DistanceFromPlayer => Vector3.Distance(Transform.position,
             Player.transform.position);
-
         private Vector3 DirectionToPlayer =>
             (Player.position - Transform.position).normalized;
-
         private bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
-        public bool CanAttack => (PlayerIsInRange && CanSeePlayer()/* && !IsThereAnObstacleInAttackRange()*/);
+        public bool CanAttack => (PlayerIsInRange /*&& !IsThereAnObstacleInAttackRange()*/);
+        public float RotationSpeed => rotationSpeed;
         #endregion
 
         #region Methods
@@ -51,24 +53,11 @@ namespace GoldPillowGames.Enemy.Huesitos
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
         }
-
-        protected override void Update()
-        {
-            base.Update();
-            
-            _propeller.Update(Time.deltaTime);
-        }
-
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, distanceToAttack);
-            
-            Gizmos.color = Color.blue;
-            var position = Transform.position;
-            var forward = Transform.forward;
-            Gizmos.DrawLine(position, position + Quaternion.Euler(0, detectAngle / 2, 0) * forward * distanceToAttack);
-            Gizmos.DrawLine(position, position + Quaternion.Euler(0, -detectAngle / 2, 0) * forward * distanceToAttack);
         }
 
         private bool IsThereAnObstacleInAttackRange()
@@ -81,31 +70,22 @@ namespace GoldPillowGames.Enemy.Huesitos
             return !hitInfo.collider.CompareTag("Player");
         }
 
-        private bool CanSeePlayer()
+        private void GoToNextState()
         {
-            Vector2 forward = new Vector2(transform.forward.x, Transform.forward.z);
-            var playerPosition = Player.position;
-            var selfPosition = Transform.position;
-            
-            Vector2 toPlayer = new Vector2(playerPosition.x - selfPosition.x,
-                playerPosition.z - selfPosition.z);
-            
-            return (Vector2.Angle(forward, toPlayer) < (detectAngle / 2));
+            GoToNextStateCallback?.Invoke();
         }
 
-        private void SetNextComboAnimationID(int hitIndex)
+        private void ShowArrow()
         {
-            OnComboHitEnding?.Invoke(hitIndex);
+            visualArrow.SetActive(true);
         }
-        
-        private void PushCombo(float time)
+
+        private void ThrowArrow()
         {
-            _propeller.StartPush(time, pushComboForce * transform.forward);
-        }
-        
-        private void Push(float time, float force, Vector3 direction)
-        {
-            _propeller.StartPush(time, force * direction);
+            var arrow = ObjectPool.Instance.GetObject(arrowPrefab);
+            // BUG: visual.arrow.position no siempre devuelve la posición exacta del objeto, lo que hace que la flecha se origine mal a veces (ni idea de por qué ocurre).
+            arrow.GetComponent<ArrowController>().Init(visualArrow.transform.position, transform.forward);
+            visualArrow.SetActive(false);
         }
         #endregion
     }

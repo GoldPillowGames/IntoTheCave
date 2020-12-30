@@ -34,7 +34,7 @@ namespace GoldPillowGames.Enemy.Huesitos {
 
             _targetFollower.Update(deltaTime);
             
-            if (_enemyController.CanAttack && _enemyController.CanSeePlayer() && !_enemyController.IsThereAnObstacleInAttackRange())
+            if (_enemyController.CanAttack)
             {
                 stateMachine.SetState(new AttackState(_enemyController, stateMachine, anim));
             }

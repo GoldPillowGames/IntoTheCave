@@ -9,52 +9,33 @@ namespace GoldPillowGames.Enemy.Huesitos
     {
         #region Variables
         private readonly HuesitosController _enemyController;
-        private readonly MethodDelayer _stateChangeDelayer;
         #endregion
         
         #region Methods
-        public AttackState(HuesitosController enemyController, FiniteStateMachine stateMachine, Animator anim) : base(stateMachine, anim)
+        public AttackState(HuesitosController enemyController, FiniteStateMachine stateMachine, Animator anim, int animAttackComboIndex = 1) : base(stateMachine, anim)
         {
             _enemyController = enemyController;
             
-            animationBoolParameterSelector.Add(_enemyController.AnimationAttackComboSelector.GetNextAttackComboBoolParameter());
-            
-            _stateChangeDelayer = new MethodDelayer(GoToNextState);
+            animationBoolParameterSelector.Add("IsAttacking" + animAttackComboIndex);
         }
 
         public override void Enter()
         {
             base.Enter();
-
-            _enemyController.StartCoroutine(SetStateChangeDelay());
-        }
-
-        public override void Update(float deltaTime)
-        {
-            base.Update(deltaTime);
             
-            _stateChangeDelayer.Update(deltaTime);
+            _enemyController.OnComboHitEnding = GoToNextComboState;
         }
 
-        private void GoToNextState()
+        private void GoToNextComboState(int animAttackComboIndex)
         {
-            if (_enemyController.CanAttack && _enemyController.CanSeePlayer() && !_enemyController.IsThereAnObstacleInAttackRange())
+            if (_enemyController.CanAttack)
             {
-                stateMachine.SetState(new AttackState(_enemyController, stateMachine, anim));
+                stateMachine.SetState(new AttackState(_enemyController, stateMachine, anim, animAttackComboIndex));
             }
             else
             {
-                _enemyController.AnimationAttackComboSelector.ResetCombo();
                 stateMachine.SetState(new FollowingState(_enemyController, stateMachine, anim));
             }
-        }
-
-        private IEnumerator SetStateChangeDelay()
-        {
-            // Wait a frame to get the correct animation length once it has been updated in the Animator.
-            yield return 0;
-            
-            _stateChangeDelayer.SetNewDelay(_enemyController.CurrentAnimationLength);
         }
         #endregion
     }
