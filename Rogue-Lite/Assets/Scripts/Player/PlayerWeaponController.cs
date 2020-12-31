@@ -7,28 +7,32 @@ namespace GoldPillowGames.Player
     public class PlayerWeaponController : MonoBehaviour
     {
         private GameObject _player;
-        private Collider _collider;
-        private float _strength = 20; // Provisional, debe venir de las stats del jugador.
-        private float _pushForce = 10; // Provisional, debe venir de las stats del jugador.
+        private bool _isAttacking = false;
         private List<GameObject> _enemiesHit;
 
+        private float _strength = 20; // Provisional, debe venir de las stats del jugador.
+        private float _pushForce = 4; // Provisional, debe venir de las stats del jugador.
+        
         private void Awake()
         {
-            _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
-            _collider = GetComponent<Collider>();
-            _collider.enabled = false;
+            _player = FindObjectOfType<PlayerController>().gameObject;
             _enemiesHit = new List<GameObject>();
         }
 
         public void InitAttack()
         {
             _enemiesHit.Clear();
-            _collider.enabled = true;
+            _isAttacking = true;
+        }
+
+        public void FinishAttack()
+        {
+            _isAttacking = false;
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Enemy") && !_enemiesHit.Contains(other.gameObject))
+            if (_isAttacking && other.CompareTag("Enemy") && !_enemiesHit.Contains(other.gameObject))
             {
                 var enemyController = other.GetComponent<EnemyController>();
                 enemyController.ReceiveDamage(_strength);

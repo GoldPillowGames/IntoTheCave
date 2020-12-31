@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsAttacking", true);
             
             // Attack Variables
-            print(_timeToAttack);
+            //print(_timeToAttack);
             _timeToAttack = _attackTime[_attackIndex];
             _timeToMove = _moveTime[_attackIndex];
             _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
@@ -494,6 +494,11 @@ public class PlayerController : MonoBehaviour
     public void InitAttackInWeapon()
     {
         weapon.InitAttack();
+    }
+
+    public void FinishAttackInWeapon()
+    {
+        weapon.FinishAttack();
     }
     
     private void OnDrawGizmos()

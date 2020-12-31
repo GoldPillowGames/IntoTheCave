@@ -50,7 +50,7 @@ namespace GoldPillowGames.Enemy
         
         public virtual void ReceiveDamage(float damage)
         {
-            health = Mathf.Max(0, damage);
+            health = Mathf.Max(0, health - damage);
             // Update health bar.
         }
         #endregion

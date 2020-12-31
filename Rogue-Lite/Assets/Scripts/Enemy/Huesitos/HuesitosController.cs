@@ -9,6 +9,7 @@ namespace GoldPillowGames.Enemy.Huesitos
     public class HuesitosController : EnemyController
     {
         #region Variables
+        [SerializeField] private HuesitosWeaponController weapon;
         [SerializeField] private float velocity = 5;
         [SerializeField] private float distanceToAttack = 5;
         [SerializeField] private float detectAngle;
@@ -16,6 +17,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         [SerializeField] private float timeDefenseless = 1;
         private Animator _anim;
         private AgentPropeller _propeller;
+        private Collider _collider;
         #endregion
 
         #region Properties
@@ -45,6 +47,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             Player = GameObject.FindGameObjectWithTag("Player").transform;
             _anim = GetComponent<Animator>();
             _propeller = new AgentPropeller(Agent);
+            _collider = GetComponent<Collider>();
         }
 
         protected override void Start()
@@ -114,14 +117,18 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             base.Die();
             
-            // Provisional: activar ragdoll y desactivar componentes en un futuro.
-            Destroy(gameObject);
+            gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+            _collider.enabled = false;
+            Agent.enabled = false;
+            _anim.enabled = false;
+            weapon.Disable();
+            enabled = false;
         }
 
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);
-
+            
             if (health > 0)
             {
                 stateMachine.SetState(new HurtState(this, stateMachine, _anim));
@@ -130,6 +137,16 @@ namespace GoldPillowGames.Enemy.Huesitos
             {
                 stateMachine.SetState(new DeathState(this, stateMachine, _anim));
             }
+        }
+        
+        private void InitAttackInWeapon()
+        {
+            weapon.InitAttack();
+        }
+
+        private void FinishAttackInWeapon()
+        {
+            weapon.FinishAttack();
         }
         #endregion
     }

@@ -40,6 +40,13 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             }
         }
 
+        public override void Exit()
+        {
+            base.Exit();
+
+            _enemyController.GoToNextStateCallback = null;
+        }
+
         private void GoToNextState()
         {
             if (_enemyController.CanAttack)

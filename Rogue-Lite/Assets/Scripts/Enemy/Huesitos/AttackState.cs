@@ -23,7 +23,6 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             base.Enter();
 
-            _enemyController.Agent.updateRotation = false;
             _enemyController.OnComboHitEnding = GoToNextComboState;
         }
 
@@ -31,7 +30,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             base.Exit();
 
-            _enemyController.Agent.updateRotation = true;
+            _enemyController.OnComboHitEnding = null;
         }
 
         private void GoToNextComboState(int animAttackComboIndex)

@@ -14,7 +14,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         #region Methods
         public HurtState(HuesitosArcherController enemyController, FiniteStateMachine stateMachine, Animator anim) : base(stateMachine, anim)
         {
-            animationBoolParameterSelector.Add("isReceivingDamage");
+            animationBoolParameterSelector.Add("IsReceivingDamage");
             _enemyController = enemyController;
             _nextStateDelayer = new MethodDelayer(GoToNextState);
         }
@@ -23,7 +23,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         {
             base.Enter();
             
-            _enemyController.GoToNextStateCallback = GoToNextState;
             _nextStateDelayer.SetNewDelay(_enemyController.TimeDefenseless);
         }
 

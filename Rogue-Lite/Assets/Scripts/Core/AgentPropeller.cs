@@ -19,6 +19,7 @@ namespace GoldPillowGames.Core
 
         public void StartPush(float timePushing, Vector3 pushForce)
         {
+            _agent.updateRotation = false;
             _pushForce = pushForce;
             _pushEndCallback.SetNewDelay(timePushing);
             _isPushing = true;
@@ -36,6 +37,7 @@ namespace GoldPillowGames.Core
         private void EndPushing()
         {
             _agent.velocity = Vector3.zero;
+            _agent.updateRotation = true;
             _isPushing = false;
         }
     }

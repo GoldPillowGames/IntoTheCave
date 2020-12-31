@@ -23,7 +23,6 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             base.Enter();
             
-            _enemyController.GoToNextStateCallback = GoToNextState;
             _nextStateDelayer.SetNewDelay(_enemyController.TimeDefenseless);
         }
 
