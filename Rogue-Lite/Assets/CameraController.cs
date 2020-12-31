@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         cmTransposer = cmCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         //idleDistance = cmTransposer.m_CameraDistance;
         interactDistance = idleDistance / 1.1f;
@@ -39,6 +40,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // cmCamera.UpdateCameraState(new Vector3(0,0,0), Time.deltaTime);
         switch (cameraState)
         {
             case CameraState.IDLE:
@@ -54,5 +56,15 @@ public class CameraController : MonoBehaviour
                 cmTransposer.m_CameraDistance = Mathf.Lerp(cmTransposer.m_CameraDistance, endRoomDistance, 4 * Time.deltaTime);
                 break;
         }
+    }
+
+    public void SetFollowTarget(GameObject gameObject)
+    {
+        cmCamera.Follow = gameObject.transform;
+    }
+
+    public void SetFollowTarget(Transform gameObject)
+    {
+        cmCamera.Follow = gameObject;
     }
 }

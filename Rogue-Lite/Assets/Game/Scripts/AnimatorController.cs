@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class AnimatorController : MonoBehaviour
 {
@@ -9,32 +10,38 @@ public class AnimatorController : MonoBehaviour
 
     void Attack(float attackDistance)
     {
-        playerController.Attack(attackDistance);
+        if(GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.Attack(attackDistance);
     }
 
     void LetAttack()
     {
-        playerController.LetAttack();
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.LetAttack();
     }
 
     void FinishAttack()
     {
-        playerController.FinishAttack();
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.FinishAttack();
     }
 
     void EndRoll()
     {
-        playerController.EndRoll();
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.EndRoll();
     }
 
     void StartRoll()
     {
-        playerController.StartRoll();
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.StartRoll();
     }
 
     void LetRoll()
     {
-        playerController.LetRoll();
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.LetRoll();
     }
 
     void InitAttackInWeapon()

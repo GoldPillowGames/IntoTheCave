@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using GoldPillowGames.Player;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using TMPro;
 
 public enum PlayerState
 {
@@ -9,7 +12,8 @@ public enum PlayerState
     ATTACKING,
     BLOCKING,
     ROLLING,
-    DIALOGUE
+    DIALOGUE,
+    IS_BEING_DAMAGED
 }
 public class PlayerController : MonoBehaviour
 {
@@ -26,7 +30,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIController UI;
     [Tooltip("Player animator")]
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject lights;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private FixedJoystick joystick;
     public CameraFollower cameraFollower;
@@ -64,9 +67,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool debug = false;
     public MeleeWeaponTrail weaponTrail;
 
-    
-
-    
 
     private PlayerState playerState = PlayerState.NEUTRAL;
 
@@ -77,14 +77,25 @@ public class PlayerController : MonoBehaviour
 
     private bool isRolling = false;
 
+    [HideInInspector] public PhotonView PV;
+    [HideInInspector] public bool isMe;
+
     private void Awake()
     {
+        PV = GetComponentInParent<PhotonView>();
+
         controller = GetComponent<CharacterController>();
+
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(cam);
-        DontDestroyOnLoad(lights);
         DontDestroyOnLoad(cameraDirection);
         DontDestroyOnLoad(cameraFollower);
+
+        if(transform.parent != null)
+            DontDestroyOnLoad(transform.parent.gameObject);
+
+        if(GameObject.FindGameObjectWithTag("Light"))
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Light"));
     }
 
     private Vector3 clickPosition;
@@ -100,15 +111,52 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool    doorOpened    = false;
     [HideInInspector] public Vector3 doorDirection = new Vector3(0,0,0);
+    [HideInInspector] public PlayerStatus playerStatus;
 
     private void Start()
     {
+        playerStatus = this.GetComponent<PlayerStatus>();
+
+        if (!PV.IsMine && Config.data.isOnline)
+        {
+            controller.enabled = false;
+            cam.enabled = false;
+            cam.GetComponent<AudioListener>().enabled = false;
+            cam.GetComponent<CameraController>().cmCamera.enabled = false;
+
+            Player[] players = PhotonNetwork.PlayerList;
+            for (int i = 0; i < players.Length; i++)
+            {
+                if(players[i].NickName != PhotonNetwork.NickName)
+                {
+                    this.GetComponentInChildren<TextMeshPro>().text = players[i].NickName;
+                }
+            }
+        }
+        else if (PV.IsMine && Config.data.isOnline)
+        {
+            
+            cam.GetComponent<CameraController>().SetFollowTarget(this.transform);
+            GameManager.Instance.LoadGraphicsSettings(cam);
+            cam.name = PhotonNetwork.NickName;
+            this.GetComponentInChildren<TextMeshPro>().text = PhotonNetwork.NickName;
+        }
+        else if (!Config.data.isOnline)
+        {
+            GameManager.Instance.LoadGraphicsSettings(cam);
+            this.GetComponentInChildren<TextMeshPro>().text = "";
+        }
+
+        isMe = PV.IsMine;
+
         health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!PV.IsMine && Config.data.isOnline)
+            return;
 
         if (isDead)
             return;
@@ -145,7 +193,7 @@ public class PlayerController : MonoBehaviour
         }
 
         #region Input
-        if (Input.GetMouseButton(1) && !Config.data.isTactile)
+        if (Input.GetMouseButton(1) && !Config.data.isTactile && playerState == PlayerState.NEUTRAL)
         {
             animator.SetBool("IsDefending", true);
             playerState = PlayerState.BLOCKING;
@@ -155,20 +203,25 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsDefending", false);
         }
 
-        if (Input.GetMouseButtonUp(1) && !Config.data.isTactile)
+        if (Input.GetMouseButtonUp(1) && !Config.data.isTactile && playerState == PlayerState.BLOCKING)
         {
             playerState = PlayerState.NEUTRAL;
         }
 
-        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && !Config.data.isTactile)
+        
+
+        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && playerState == PlayerState.NEUTRAL /*&& !animator.GetBool("HasAttackedBool")*/ && !Config.data.isTactile)
         {
             canAttack = false;
             canFinishAttack = false;
             playerState = PlayerState.ATTACKING;
-            
-            animator.SetTrigger("Attack1");
-            animator.SetBool("IsAttacking", true);
 
+            print("Attacking");
+            animator.SetTrigger("Attack1");
+            animator.SetBool("Attack1Bool", true);
+            //animator.SetBool("HasAttackedBool", true);
+            animator.SetBool("IsAttacking", true);
+            
             // Attack Variables
             print(_timeToAttack);
             _timeToAttack = _attackTime[_attackIndex];
@@ -201,8 +254,81 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
-        _timeToAttack -= Time.deltaTime;
-        _timeToMove -= Time.deltaTime;
+        // DEBUG
+        if (Input.GetKeyDown(KeyCode.P))
+            TakeDamage(10, new Vector3(1, 0, 1));
+
+        if(playerState == PlayerState.IS_BEING_DAMAGED && _pushTime > 0)
+        {
+            controller.Move(_pushSpeed * _pushDirection * Time.deltaTime);
+            _pushTime -= Time.deltaTime;
+        }
+        else if(playerState == PlayerState.IS_BEING_DAMAGED)
+        {
+            animator.SetBool("IsBeingDamaged", false);
+            playerState = PlayerState.NEUTRAL;
+        }
+    }
+
+    private float _pushTime;
+    [SerializeField] private float _maxPushTime = 0.16f;
+    private Vector3 _pushDirection;
+    private float _pushSpeed = 8;
+
+    public void TakeDamage(int damage, Vector3 pushDirection)
+    {
+        if ((!PV.IsMine && Config.data.isOnline) || playerState == PlayerState.BLOCKING)
+            return;
+
+        playerState = PlayerState.IS_BEING_DAMAGED;
+
+        if(health - damage < 1 && playerStatus.survivesToLetalAttack)
+        {
+            health = 1; 
+            playerStatus.survivesToLetalAttack = false;
+        }
+        else
+        {
+            health -= damage;
+        }
+
+        animator.SetBool("IsBeingDamaged", true);
+
+        this._pushDirection = pushDirection;
+        _pushTime = _maxPushTime;
+    }
+
+
+    public float[] _attackTime;
+    public float[] _moveTime;
+    public int numberOfAttacks = 3;
+    private float _timeToAttack = 0;
+    private float _timeToMove = 0;
+    private int _attackIndex = 0;
+
+    private void FixedUpdate()
+    {
+        if (!PV.IsMine && Config.data.isOnline)
+            return;
+
+        if (isDead)
+            return;
+
+        _timeToAttack -= Time.fixedDeltaTime;
+
+        if (_timeToAttack <= 0)
+        {
+            animator.SetBool("HasAttackedBool", false);
+            animator.SetBool("Attack1Bool", false);
+        }
+        else
+        {
+            animator.SetBool("HasAttackedBool", true);
+            animator.SetBool("Attack1Bool", true);
+        }
+
+
+        _timeToMove -= Time.fixedDeltaTime;
         if (_timeToMove <= 0)
         {
             animator.SetBool("IsAttacking", false);
@@ -224,18 +350,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
-
-    public float[] _attackTime;
-    public float[] _moveTime;
-    public int numberOfAttacks = 3;
-    private float _timeToAttack = 0;
-    private float _timeToMove = 0;
-    private int _attackIndex = 0;
-
-    private void FixedUpdate()
-    {
-        
     }
 
     #region Events
@@ -270,6 +384,7 @@ public class PlayerController : MonoBehaviour
     {
         //canAttack = true;
         //canFinishAttack = true;
+        
         weaponTrail.Emit = false;
     }
 

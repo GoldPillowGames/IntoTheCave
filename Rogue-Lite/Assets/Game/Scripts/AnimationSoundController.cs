@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class AnimationSoundController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class AnimationSoundController : MonoBehaviour
     void PlayAttackSound(int id)
     {
         // audioSource.PlayOneShot(attacks[id]);
-        Audio.PlaySFX(attacks[id]);
+        if(GetComponentInParent<PlayerController>().isMe && Config.data.isOnline)
+            Audio.PlaySFX(attacks[id]);
+        else if(!Config.data.isOnline)
+            Audio.PlaySFX(attacks[id]);
     }
 }

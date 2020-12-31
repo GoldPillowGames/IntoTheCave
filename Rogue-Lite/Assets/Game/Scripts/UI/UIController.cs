@@ -35,11 +35,6 @@ public class UIController : MonoBehaviour
         _playerHealthbar.fillAmount = (float)_player.health / (float)_player.maxHealth;
         _playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(_playerHealthbarWhiteBackground.fillAmount, _playerHealthbar.fillAmount, 10 * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            _player.health -= 20;
-        }
-
         if(!_playerIsDead && _player.health <= 0)
         {
             _playerIsDead = true;

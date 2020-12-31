@@ -1,31 +1,76 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
+using System.IO;
 
 public class RunManager : MonoBehaviour
 {
     #region Variables
     public DoorPosition currentDoor;
 
-    [SerializeField] private CameraController _cameraController;
-    [SerializeField] private TimeManager _timeManager;
+    [SerializeField] private CameraController[] _cameraController;
+    [SerializeField] private TimeManager[] _timeManager;
+    public bool isOnlineManager = false;
     private GameObject[] _doors;
     #endregion
+
+    public void SetUp(bool isOnline)
+    {
+        isOnlineManager = isOnline;
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     #region Methods
     private void Start()
     {
+        //if (Config.data.isOnline && PhotonNetwork.IsMasterClient && !isOnlineManager)
+        //{
+        //    RunManager[] managers = FindObjectsOfType<RunManager>();
+        //    //bool isOnline = false;
+        //    //foreach (RunManager manager in managers)
+        //    //{
+        //    //    if (manager.isOnlineManager)
+        //    //    {
+        //    //        isOnline = true;
+        //    //    }
+        //    //}
+        //    //if (!isOnline)
+        //    //{
+                
+        //    //}
+
+        //    GameObject runManager = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "RunManager"), new Vector3(0, 2.4f, 0), Quaternion.identity);
+        //    runManager.GetComponent<RunManager>().SetUp(true);
+        //}
+        
+        //if (Config.data.isOnline && !isOnlineManager)
+        //{
+        //    Destroy(this.gameObject);
+        //}
+
+        if (isOnlineManager)
+        {
+            this.transform.parent = FindObjectOfType<GameManager>().transform;
+        }
+
+
         SceneManager.activeSceneChanged += OnSceneLoaded;
 
-        if (!_cameraController)
-        {
-            _cameraController = FindObjectOfType<CameraController>();
-        }
+        //if (!_cameraController)
+        //{
+        //    _cameraController = FindObjectOfType<CameraController>();
+        //}
 
-        if (!_timeManager)
-        {
-            _timeManager = FindObjectOfType<TimeManager>();
-        }
+        //if (!_timeManager)
+        //{
+        //    _timeManager = FindObjectOfType<TimeManager>();
+        //}
     }
 
     private void OnSceneLoaded(Scene previousScene, Scene currentScene)
@@ -52,19 +97,22 @@ public class RunManager : MonoBehaviour
             // Comprobación
             if (g.GetComponent<EventTrigger>().doorPosition.Equals(FindObjectOfType<RunManager>().currentDoor))
             {
-                PlayerController player = FindObjectOfType<PlayerController>();
+                PlayerController[] p = FindObjectsOfType<PlayerController>();
                 
-                // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
-                player.enabled = false;
-                player.GetComponent<CharacterController>().enabled = false;
+                foreach(PlayerController player in p)
+                {
+                    // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
+                    player.enabled = false;
+                    player.GetComponent<CharacterController>().enabled = false;
 
-                // Actualizamos la ubicación del jugador
-                player.transform.position = g.transform.position;
+                    // Actualizamos la ubicación del jugador
+                    player.transform.position = g.transform.position;
 
-                // Reactivamos el player controller y el character controller
-                player.enabled = true;
-                player.GetComponent<CharacterController>().enabled = true;
-                player.cameraFollower.ResetFollowing();
+                    // Reactivamos el player controller y el character controller
+                    player.enabled = true;
+                    player.GetComponent<CharacterController>().enabled = true;
+                    player.cameraFollower.ResetFollowing();
+                }
             }
         }
 
@@ -73,7 +121,6 @@ public class RunManager : MonoBehaviour
         {
             player.doorOpened = false;
             player.weaponTrail.Start();
-            
         }
     }
 
@@ -88,15 +135,33 @@ public class RunManager : MonoBehaviour
 
     public void EndCurrentStage()
     {
-        _cameraController.cameraState = CameraState.END_ROOM;
-        _timeManager.timeScale = 0.6f;
+        foreach(CameraController cam in FindObjectsOfType<CameraController>())
+        {
+            cam.cameraState = CameraState.END_ROOM;
+        }
+
+        foreach (TimeManager timer in FindObjectsOfType<TimeManager>())
+        {
+            timer.timeScale = 0.6f;
+        }
+
+        
         Invoke("CallDoorsToOpen", 1f);
     }
 
     private void CallDoorsToOpen()
     {
-        _cameraController.cameraState = CameraState.IDLE;
-        _timeManager.timeScale = 1f;
+        foreach (CameraController cam in FindObjectsOfType<CameraController>())
+        {
+            cam.cameraState = CameraState.IDLE;
+        }
+
+        foreach (TimeManager timer in FindObjectsOfType<TimeManager>())
+        {
+            timer.timeScale = 1f;
+        }
+
+        // _timeManager.timeScale = 1f;
         if (FindObjectOfType<RoomManager>())
             FindObjectOfType<RoomManager>().OpenDoors();
     }
@@ -108,7 +173,12 @@ public class RunManager : MonoBehaviour
 
     private void LoadRoom()
     {
-        Fade.OnPlay = () => { StartCoroutine(LoadASynchrously(3)); };
+        Fade.OnPlay = () => {
+            if (!Config.data.isOnline)
+                StartCoroutine(LoadASynchrously(3));
+            else
+                PhotonNetwork.LoadLevel(3);
+        };
         Fade.PlayFade(FadeType.UPPER_LOWER);
     }
 

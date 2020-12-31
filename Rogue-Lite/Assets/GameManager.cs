@@ -9,11 +9,17 @@ using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     [SerializeField] private UniversalRenderPipelineAsset[] _renderers;
 
     private void Awake()
     {
+        if (Instance)
+            Destroy(this);
+
+        Instance = this;
         DontDestroyOnLoad(this);
+
         for(int i = 0; i < transform.childCount; i++)
         {
             DontDestroyOnLoad(transform.GetChild(i));
@@ -27,6 +33,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
+    }
+
+    public void LoadGraphicsSettings(Camera cam)
+    {
         // General
         QualitySettings.SetQualityLevel((int)Config.data.graphicsQuality, true);
 
@@ -39,14 +50,14 @@ public class GameManager : MonoBehaviour
         {
             case GraphicsQuality.LOW:
                 asset.msaaSampleCount = 0;
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
                 break;
             case GraphicsQuality.MEDIUM:
                 asset.msaaSampleCount = 0;
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.FastApproximateAntialiasing;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.FastApproximateAntialiasing;
                 break;
             case GraphicsQuality.HIGH:
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
                 asset.msaaSampleCount = 4;
                 break;
             default:
@@ -75,7 +86,7 @@ public class GameManager : MonoBehaviour
             // Shadow Quality
             universalRenderPipelineAssetType = (GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset).GetType();
             mainLightShadowmapResolutionFieldInfo = universalRenderPipelineAssetType.GetField("m_MainLightShadowmapResolution", BindingFlags.Instance | BindingFlags.NonPublic);
-            if(Config.data.shadowQuality != ShadowQualityState.NO_SHADOWS && Config.data.shadowQuality != ShadowQualityState.ULTRA)
+            if (Config.data.shadowQuality != ShadowQualityState.NO_SHADOWS && Config.data.shadowQuality != ShadowQualityState.ULTRA)
                 mainLightShadowmapResolutionFieldInfo.SetValue(GraphicsSettings.currentRenderPipeline, (int)Config.data.shadowQuality);
             else if (Config.data.shadowQuality == ShadowQualityState.ULTRA)
             {
@@ -90,7 +101,7 @@ public class GameManager : MonoBehaviour
             {
                 asset.shadowCascadeOption = ShadowCascadesOption.FourCascades;
             }
-            else if(Config.data.shadowQuality == ShadowQualityState.VERY_HIGH || Config.data.shadowQuality == ShadowQualityState.HIGH || Config.data.shadowQuality == ShadowQualityState.MEDIUM)
+            else if (Config.data.shadowQuality == ShadowQualityState.VERY_HIGH || Config.data.shadowQuality == ShadowQualityState.HIGH || Config.data.shadowQuality == ShadowQualityState.MEDIUM)
             {
                 asset.shadowCascadeOption = ShadowCascadesOption.TwoCascades;
             }
@@ -111,22 +122,22 @@ public class GameManager : MonoBehaviour
             if (Config.data.antialiasingQuality == AntialiasingState.NONE)
             {
                 asset.msaaSampleCount = 0;
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
             }
             else if (Config.data.antialiasingQuality == AntialiasingState.FXAA)
             {
                 asset.msaaSampleCount = 0;
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.FastApproximateAntialiasing;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.FastApproximateAntialiasing;
             }
-            else if(Config.data.antialiasingQuality == AntialiasingState.SMAA)
+            else if (Config.data.antialiasingQuality == AntialiasingState.SMAA)
             {
                 asset.msaaSampleCount = 0;
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasingQuality = AntialiasingQuality.High;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasingQuality = AntialiasingQuality.High;
             }
             else if (Config.data.antialiasingQuality == AntialiasingState.MSAAx2 || Config.data.antialiasingQuality == AntialiasingState.MSAAx4 || Config.data.antialiasingQuality == AntialiasingState.MSAAx8)
             {
-                Camera.main.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
+                cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
                 asset.msaaSampleCount = (int)Config.data.antialiasingQuality;
             }
 
@@ -144,8 +155,6 @@ public class GameManager : MonoBehaviour
         // FPS Limit
         if (Config.data.limitedFPS != FPSLimit.NONE)
             Application.targetFrameRate = (int)Config.data.limitedFPS;
-
-        
     }
 
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class PlayerWeaponry : MonoBehaviour
 {
     [Header("Weaponry")]
@@ -39,7 +39,7 @@ public class PlayerWeaponry : MonoBehaviour
         SwapWeapon(currentWeaponIndex);
     }
 
-    void SwapWeapon(int index)
+    public void SwapWeapon(int index)
     {
         currentWeaponIndex = index;
         animator.runtimeAnimatorController = controllers[index];
@@ -117,6 +117,10 @@ public class PlayerWeaponry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GetComponentInParent<PhotonView>().IsMine && Config.data.isOnline)
+            return;
+
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwapWeapon(0);
