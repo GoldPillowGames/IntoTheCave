@@ -60,15 +60,19 @@ public class EventTrigger : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         // musicManager = FindObjectOfType<MusicManager>();
         // audioSource = musicManager.GetComponent<AudioSource>();
-        if(!player)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+        
         // audioSource.volume = 0;
-        respawnPoint = player.position;
+        
     }
 
     private void Update()
     {
-
+        if (!player && GameObject.FindGameObjectWithTag("Player"))
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+            respawnPoint = player.position;
+        }
+            
     }
 
     private void OnTriggerEnter(Collider other)
@@ -118,44 +122,99 @@ public class EventTrigger : MonoBehaviour
                     if (!activated && eventType == EventType.ROOM_DOOR)
                     {
                         activated = true;
-                        // Localizamos el run manager
-                        RunManager runManager = FindObjectOfType<RunManager>();
-                        if (runManager)
+                        if (!Config.data.isOnline)
                         {
-                            PlayerController[] players = FindObjectsOfType<PlayerController>();
-                            foreach (PlayerController player in players)
+                            // Localizamos el run manager
+                            RunManager runManager = FindObjectOfType<RunManager>();
+                            if (runManager)
                             {
-                                player.doorOpened = true;
-                                switch (doorPosition)
+                                PlayerController[] players = FindObjectsOfType<PlayerController>();
+                                foreach (PlayerController player in players)
                                 {
-                                    case DoorPosition.TOP:
-                                        player.doorDirection = -player.transform.right;
-                                        break;
-                                    case DoorPosition.BOTTOM:
-                                        player.doorDirection = player.transform.right;
-                                        break;
-                                    case DoorPosition.LEFT:
-                                        player.doorDirection = -player.transform.forward;
-                                        break;
-                                    case DoorPosition.RIGHT:
-                                        player.doorDirection = player.transform.forward;
-                                        break;
+                                    player.doorOpened = true;
+                                    switch (doorPosition)
+                                    {
+                                        case DoorPosition.TOP:
+                                            player.doorDirection = -player.transform.right;
+                                            break;
+                                        case DoorPosition.BOTTOM:
+                                            player.doorDirection = player.transform.right;
+                                            break;
+                                        case DoorPosition.LEFT:
+                                            player.doorDirection = -player.transform.forward;
+                                            break;
+                                        case DoorPosition.RIGHT:
+                                            player.doorDirection = player.transform.forward;
+                                            break;
+                                    }
+                                    player.currentRotation = Quaternion.LookRotation(player.doorDirection);
+                                    player.cameraFollower.StopFollowing();
                                 }
-                                player.currentRotation = Quaternion.LookRotation(player.doorDirection);
-                                player.cameraFollower.StopFollowing();
+                                runManager.currentDoor = nextDoorPosition; // Actualizamos la puerta por la que debe aparecer el jugador
+                                runManager.LoadNextRoom();                 // Cargamos la siguiente escena
                             }
-                            runManager.currentDoor = nextDoorPosition; // Actualizamos la puerta por la que debe aparecer el jugador
-                            runManager.LoadNextRoom();                 // Cargamos la siguiente escena
+                            else
+                            {
+                                Debug.LogError("No Run Manager Detected, check if it was loaded.");
+                            }
                         }
                         else
                         {
-                            Debug.LogError("No Run Manager Detected, check if it was loaded.");
+                            GetComponent<Photon.Pun.PhotonView>().RPC("UbicatePlayers", Photon.Pun.RpcTarget.All);
                         }
+                        
                     }
                 }
                 break;
             default:
                 break;
+        }
+    }
+
+    [Photon.Pun.PunRPC]
+    private void UbicatePlayers()
+    {
+        // Localizamos el run manager
+        RunManager runManager = FindObjectOfType<RunManager>();
+
+        if (runManager)
+        {
+            PlayerController[] players = FindObjectsOfType<PlayerController>();
+            foreach (PlayerController player in players)
+            {
+                if (player.PV.IsMine)
+                {
+                    player.doorOpened = true;
+                }
+                
+                print("Door Position: " + doorPosition);
+                switch (doorPosition)
+                {
+                    case DoorPosition.TOP:
+                        player.doorDirection = -player.transform.right;
+                        break;
+                    case DoorPosition.BOTTOM:
+                        player.doorDirection = player.transform.right;
+                        break;
+                    case DoorPosition.LEFT:
+                        player.doorDirection = -player.transform.forward;
+                        break;
+                    case DoorPosition.RIGHT:
+                        player.doorDirection = player.transform.forward;
+                        break;
+                }
+                if (player.PV.IsMine)
+                {
+                    player.currentRotation = Quaternion.LookRotation(player.doorDirection);
+                    player.cameraFollower.StopFollowing();
+                }
+            }
+            runManager.currentDoor = nextDoorPosition; // Actualizamos la puerta por la que debe aparecer el jugador
+            runManager.LoadNextRoom();                 // Cargamos la siguiente escena
+        }
+        else
+        {
+            Debug.LogError("No Run Manager Detected, check if it was loaded.");
         }
     }
 

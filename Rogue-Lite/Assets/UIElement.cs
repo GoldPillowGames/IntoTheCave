@@ -10,12 +10,18 @@ public class UIElement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCameraTransform = Camera.main.transform;
+        if(Camera.main)
+         mainCameraTransform = Camera.main.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(mainCameraTransform);
+        if(Camera.main && mainCameraTransform == null)
+            mainCameraTransform = Camera.main.transform;
+        else{
+            transform.LookAt(mainCameraTransform);
+        }
+        
     }
 }

@@ -95,5 +95,6 @@ public class SaveState
 
     public FPSLimit limitedFPS = FPSLimit.NONE;
     public bool vSync = false;
+    public bool isOnline = false;
     #endregion
 }

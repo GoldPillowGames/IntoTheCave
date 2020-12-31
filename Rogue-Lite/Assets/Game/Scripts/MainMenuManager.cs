@@ -26,6 +26,12 @@ public class MainMenuManager : MonoBehaviour
         Fade.PlayFade();
     }
 
+    public void SetOnlineMode(bool online)
+    {
+        Config.data.isOnline = online;
+        Config.SaveData();
+    }
+
     public void ShowSettingsMenu()
     {
         settingsMenu.SetActive(true);
