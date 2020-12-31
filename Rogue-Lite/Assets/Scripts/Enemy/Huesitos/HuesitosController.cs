@@ -109,7 +109,15 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             _propeller.StartPush(time, force * direction);
         }
-        
+
+        protected override void Die()
+        {
+            base.Die();
+            
+            // Provisional: activar ragdoll y desactivar componentes en un futuro.
+            Destroy(gameObject);
+        }
+
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);

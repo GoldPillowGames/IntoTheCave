@@ -36,4 +36,9 @@ public class AnimatorController : MonoBehaviour
     {
         playerController.LetRoll();
     }
+
+    void InitAttackInWeapon()
+    {
+        playerController.InitAttackInWeapon();
+    }
 }

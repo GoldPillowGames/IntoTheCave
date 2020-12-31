@@ -27,6 +27,13 @@ namespace GoldPillowGames.Enemy.Huesitos
             _nextStateDelayer.SetNewDelay(_enemyController.TimeDefenseless);
         }
 
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
+            
+            _nextStateDelayer.Update(deltaTime);
+        }
+
         private void GoToNextState()
         {
             if (_enemyController.CanAttack)

@@ -1,4 +1,5 @@
-﻿using GoldPillowGames.Patterns;
+﻿using GoldPillowGames.Core;
+using GoldPillowGames.Patterns;
 using UnityEngine;
 
 namespace GoldPillowGames.Enemy.HuesitosArcher
@@ -7,6 +8,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
     {
         #region Variables
         private readonly HuesitosArcherController _enemyController;
+        private readonly MethodDelayer _nextStateDelayer;
         #endregion
         
         #region Methods
@@ -14,6 +16,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         {
             animationBoolParameterSelector.Add("isReceivingDamage");
             _enemyController = enemyController;
+            _nextStateDelayer = new MethodDelayer(GoToNextState);
         }
 
         public override void Enter()
@@ -21,6 +24,14 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             base.Enter();
             
             _enemyController.GoToNextStateCallback = GoToNextState;
+            _nextStateDelayer.SetNewDelay(_enemyController.TimeDefenseless);
+        }
+
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
+            
+            _nextStateDelayer.Update(deltaTime);
         }
 
         private void GoToNextState()

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GoldPillowGames.Player;
 using UnityEngine;
 
 public enum PlayerState
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CameraController cameraController;
     [SerializeField] private FixedJoystick joystick;
     public CameraFollower cameraFollower;
+    [SerializeField] private PlayerWeaponController weapon;
 
     [Header("Movement Variables")]
     [Tooltip("Player movement speed")]
@@ -374,6 +376,11 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(groundChecker.position, groundCheckerArea, whatIsGround);
     }
 
+    public void InitAttackInWeapon()
+    {
+        weapon.InitAttack();
+    }
+    
     private void OnDrawGizmos()
     {
         if (debug)

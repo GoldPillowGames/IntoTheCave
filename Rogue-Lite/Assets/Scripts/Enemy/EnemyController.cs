@@ -42,6 +42,11 @@ namespace GoldPillowGames.Enemy
         {
             
         }
+
+        protected virtual void Die()
+        {
+            
+        }
         
         public virtual void ReceiveDamage(float damage)
         {

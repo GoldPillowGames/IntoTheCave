@@ -22,13 +22,21 @@ namespace GoldPillowGames.Enemy.Huesitos
         public override void Enter()
         {
             base.Enter();
-            
+
+            _enemyController.Agent.updateRotation = false;
             _enemyController.OnComboHitEnding = GoToNextComboState;
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            _enemyController.Agent.updateRotation = true;
         }
 
         private void GoToNextComboState(int animAttackComboIndex)
         {
-            if (_enemyController.PlayerIsInRange)
+            if (_enemyController.CanAttack || (animAttackComboIndex != 1 && _enemyController.PlayerIsInRange))
             {
                 stateMachine.SetState(new AttackState(_enemyController, stateMachine, anim, animAttackComboIndex));
             }

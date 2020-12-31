@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GoldPillowGames.Enemy;
 using UnityEngine;
 
-namespace GoldPillowGames.Player.Weapon
+namespace GoldPillowGames.Player
 {
-    public class WeaponController : MonoBehaviour
+    public class PlayerWeaponController : MonoBehaviour
     {
         private GameObject _player;
         private Collider _collider;
@@ -21,15 +20,10 @@ namespace GoldPillowGames.Player.Weapon
             _enemiesHit = new List<GameObject>();
         }
 
-        public void ActivateWeapon()
+        public void InitAttack()
         {
-            _collider.enabled = true;
-        }
-
-        public void DeactivateWeapon()
-        {
-            _collider.enabled = false;
             _enemiesHit.Clear();
+            _collider.enabled = true;
         }
         
         private void OnTriggerEnter(Collider other)

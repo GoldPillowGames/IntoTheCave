@@ -15,6 +15,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         [SerializeField] private float rotationSpeed = 10;
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private GameObject visualArrow;
+        [SerializeField] private float timeDefenseless = 1;
         private Animator _anim;
         private AgentPropeller _propeller;
         #endregion
@@ -25,6 +26,8 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         public NavMeshAgent Agent { get; private set; }
         public Transform Transform => transform;
         public float Velocity => velocity;
+        public float RotationSpeed => rotationSpeed;
+        public float TimeDefenseless => timeDefenseless;
         public GameObject VisualArrow => visualArrow;
         private float DistanceFromPlayer => Vector3.Distance(Transform.position,
             Player.transform.position);
@@ -32,7 +35,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             (Player.position - Transform.position).normalized;
         private bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
         public bool CanAttack => (PlayerIsInRange /*&& !IsThereAnObstacleInAttackRange()*/);
-        public float RotationSpeed => rotationSpeed;
         #endregion
 
         #region Methods
@@ -52,7 +54,14 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
         }
-        
+
+        protected override void Update()
+        {
+            base.Update();
+            
+            _propeller.Update(Time.deltaTime);
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -82,6 +91,19 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             visualArrow.SetActive(false);
         }
 
+        public override void Push(float time, float force, Vector3 direction)
+        {
+            _propeller.StartPush(time, force * direction);
+        }
+        
+        protected override void Die()
+        {
+            base.Die();
+            
+            // Provisional: activar ragdoll y desactivar componentes en un futuro.
+            Destroy(gameObject);
+        }
+        
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);
