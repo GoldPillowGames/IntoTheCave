@@ -1,4 +1,5 @@
-﻿using GoldPillowGames.Patterns;
+﻿using System;
+using GoldPillowGames.Patterns;
 using UnityEngine;
 
 namespace GoldPillowGames.Enemy
@@ -6,8 +7,9 @@ namespace GoldPillowGames.Enemy
     public abstract class EnemyController : MonoBehaviour
     {
         #region Variables
-        protected FiniteStateMachine stateMachine;
         [SerializeField] protected float health;
+        protected FiniteStateMachine stateMachine;
+        public Action GoToNextStateCallback { set; private get; }
         #endregion
 
         #region Methods
@@ -29,6 +31,22 @@ namespace GoldPillowGames.Enemy
         protected virtual void FixedUpdate()
         {
             stateMachine.FixedUpdate(Time.deltaTime);
+        }
+
+        protected void GoToNextState()
+        {
+            GoToNextStateCallback?.Invoke();
+        }
+
+        public virtual void Push(float time, float force, Vector3 direction)
+        {
+            
+        }
+        
+        public virtual void ReceiveDamage(float damage)
+        {
+            health = Mathf.Max(0, damage);
+            // Update health bar.
         }
         #endregion
     }

@@ -26,7 +26,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         public Transform Transform => transform;
         public float Velocity => velocity;
         public GameObject VisualArrow => visualArrow;
-        public Action GoToNextStateCallback { set; private get; }
         private float DistanceFromPlayer => Vector3.Distance(Transform.position,
             Player.transform.position);
         private Vector3 DirectionToPlayer =>
@@ -70,11 +69,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             return !hitInfo.collider.CompareTag("Player");
         }
 
-        private void GoToNextState()
-        {
-            GoToNextStateCallback?.Invoke();
-        }
-
         private void ShowArrow()
         {
             visualArrow.SetActive(true);
@@ -87,6 +81,21 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             arrow.GetComponent<ArrowController>().Init(visualArrow.transform.position, transform.forward);
             visualArrow.SetActive(false);
         }
+
+        public override void ReceiveDamage(float damage)
+        {
+            base.ReceiveDamage(damage);
+
+            if (health > 0)
+            {
+                stateMachine.SetState(new HurtState(this, stateMachine, _anim));
+            }
+            else
+            {
+                stateMachine.SetState(new DeathState(this, stateMachine, _anim));
+            }
+        }
+
         #endregion
     }
 }

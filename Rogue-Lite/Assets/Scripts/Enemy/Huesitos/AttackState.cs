@@ -28,7 +28,7 @@ namespace GoldPillowGames.Enemy.Huesitos
 
         private void GoToNextComboState(int animAttackComboIndex)
         {
-            if (_enemyController.CanAttack)
+            if (_enemyController.PlayerIsInRange)
             {
                 stateMachine.SetState(new AttackState(_enemyController, stateMachine, anim, animAttackComboIndex));
             }

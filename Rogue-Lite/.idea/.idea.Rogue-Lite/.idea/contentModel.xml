@@ -15,6 +15,7 @@
         <e p="CameraController.cs" t="Include" />
         <e p="CameraFollower.cs" t="Include" />
         <e p="DeathMenuManager.cs" t="Include" />
+        <e p="FadeManager.cs" t="Include" />
         <e p="Game" t="Include">
           <e p="Modern UI Pack" t="Include">
             <e p="Editor" t="Include">
@@ -166,6 +167,9 @@
             </e>
             <e p="TableReader.cs" t="Include" />
             <e p="UI" t="Include">
+              <e p="Fade" t="Include">
+                <e p="Fade.cs" t="Include" />
+              </e>
               <e p="UIController.cs" t="Include" />
             </e>
           </e>
@@ -298,8 +302,8 @@
           </e>
         </e>
         <e p="MenuManager.cs" t="Include" />
+        <e p="MeshCombiner.cs" t="Include" />
         <e p="NPCBehaviour.cs" t="Include" />
-        <e p="PlayButtonManager.cs" t="Include" />
         <e p="PlayerWeaponry.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Febucci" t="Include">
@@ -460,8 +464,10 @@
             <e p="EnemyState.cs" t="Include" />
             <e p="Huesitos" t="Include">
               <e p="AttackState.cs" t="Include" />
+              <e p="DeathState.cs" t="Include" />
               <e p="FollowingState.cs" t="Include" />
               <e p="HuesitosController.cs" t="Include" />
+              <e p="HurtState.cs" t="Include" />
             </e>
             <e p="HuesitosArcher" t="Include">
               <e p="Arrow" t="Include">
@@ -469,8 +475,10 @@
               </e>
               <e p="BowFiringState.cs" t="Include" />
               <e p="BowPreparingState.cs" t="Include" />
+              <e p="DeathState.cs" t="Include" />
               <e p="FollowingState.cs" t="Include" />
               <e p="HuesitosArcherController.cs" t="Include" />
+              <e p="HurtState.cs" t="Include" />
             </e>
           </e>
           <e p="Patterns" t="Include">
@@ -479,8 +487,14 @@
             <e p="PoolObjectReturn.cs" t="Include" />
             <e p="State.cs" t="Include" />
           </e>
+          <e p="Player" t="Include">
+            <e p="Weapon" t="Include">
+              <e p="WeaponController.cs" t="Include" />
+            </e>
+          </e>
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
+        <e p="SettingsMenuManager.cs" t="Include" />
         <e p="TimeManager.cs" t="Include" />
         <e p="Translator.cs" t="Include" />
         <e p="TutorialInfo" t="Include">

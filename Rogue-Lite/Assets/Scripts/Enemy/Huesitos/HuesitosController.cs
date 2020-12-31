@@ -13,6 +13,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         [SerializeField] private float distanceToAttack = 5;
         [SerializeField] private float detectAngle;
         [SerializeField] private float pushComboForce = 15;
+        [SerializeField] private float timeDefenseless = 1;
         private Animator _anim;
         private AgentPropeller _propeller;
         #endregion
@@ -22,6 +23,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         public NavMeshAgent Agent { get; private set; }
         public Transform Transform => transform;
         public float Velocity => velocity;
+        public float TimeDefenseless => timeDefenseless;
         public Action<int> OnComboHitEnding { get; set; }
 
         private float DistanceFromPlayer => Vector3.Distance(Transform.position,
@@ -30,7 +32,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         private Vector3 DirectionToPlayer =>
             (Player.position - Transform.position).normalized;
 
-        private bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
+        public bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
         public bool CanAttack => (PlayerIsInRange && CanSeePlayer()/* && !IsThereAnObstacleInAttackRange()*/);
         #endregion
 
@@ -100,12 +102,26 @@ namespace GoldPillowGames.Enemy.Huesitos
         
         private void PushCombo(float time)
         {
-            _propeller.StartPush(time, pushComboForce * transform.forward);
+            Push(time, pushComboForce, transform.forward);
         }
-        
-        private void Push(float time, float force, Vector3 direction)
+
+        public override void Push(float time, float force, Vector3 direction)
         {
             _propeller.StartPush(time, force * direction);
+        }
+        
+        public override void ReceiveDamage(float damage)
+        {
+            base.ReceiveDamage(damage);
+
+            if (health > 0)
+            {
+                stateMachine.SetState(new HurtState(this, stateMachine, _anim));
+            }
+            else
+            {
+                stateMachine.SetState(new DeathState(this, stateMachine, _anim));
+            }
         }
         #endregion
     }
