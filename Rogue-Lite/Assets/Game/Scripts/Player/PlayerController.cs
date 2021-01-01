@@ -111,6 +111,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector3 doorDirection = new Vector3(0,0,0);
     [HideInInspector] public PlayerStatus playerStatus;
 
+    [SerializeField] private TextMeshPro _nickname;
+    [SerializeField] private TextMeshPro _itemDescription;
+
     private void Start()
     {
         playerStatus = this.GetComponent<PlayerStatus>();
@@ -127,7 +130,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(players[i].NickName != PhotonNetwork.NickName)
                 {
-                    this.GetComponentInChildren<TextMeshPro>().text = players[i].NickName;
+                    _nickname.text = players[i].NickName;
                 }
             }
         }
@@ -137,17 +140,23 @@ public class PlayerController : MonoBehaviour
             cam.GetComponent<CameraController>().SetFollowTarget(this.transform);
             GameManager.Instance.LoadGraphicsSettings(cam);
             cam.name = PhotonNetwork.NickName;
-            this.GetComponentInChildren<TextMeshPro>().text = PhotonNetwork.NickName;
+            _nickname.text = PhotonNetwork.NickName;
         }
         else if (!Config.data.isOnline)
         {
             GameManager.Instance.LoadGraphicsSettings(cam);
-            this.GetComponentInChildren<TextMeshPro>().text = "";
+            _nickname.text = "";
         }
 
         isMe = PV.IsMine;
 
         health = maxHealth;
+    }
+
+    public void ShowItemDescription(string description)
+    {
+        _itemDescription.text = description;
+        _itemDescription.GetComponentInParent<Animator>().SetTrigger("ShowUp");
     }
 
     // Update is called once per frame
@@ -158,7 +167,9 @@ public class PlayerController : MonoBehaviour
 
         if (isDead)
             return;
-        
+
+        maxHealth = playerStatus.health;
+
         Movement();
 
         // Updates where the player is looking to if he is moving
@@ -225,7 +236,7 @@ public class PlayerController : MonoBehaviour
             _timeToAttack = _attackTime[_attackIndex];
             _timeToMove = _moveTime[_attackIndex];
             _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
-            
+            print(_attackIndex);
 
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit cameraRayHit;
@@ -240,7 +251,7 @@ public class PlayerController : MonoBehaviour
             mousePos.Normalize();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !Config.data.isTactile)
+        if (Input.GetKeyDown(KeyCode.Space) && playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !Config.data.isTactile)
         {
             playerState = PlayerState.ROLLING;
             rollDirection = movement;
@@ -258,6 +269,7 @@ public class PlayerController : MonoBehaviour
 
         if(playerState == PlayerState.IS_BEING_DAMAGED && _pushTime > 0)
         {
+            animator.SetBool("IsBeingDamaged", true);
             controller.Move(_pushSpeed * _pushDirection * Time.deltaTime);
             _pushTime -= Time.deltaTime;
         }
@@ -280,7 +292,7 @@ public class PlayerController : MonoBehaviour
 
         playerState = PlayerState.IS_BEING_DAMAGED;
 
-        if(health - damage < 1 && playerStatus.survivesToLetalAttack)
+        if(health - damage < 1 && health > 1 && playerStatus.survivesToLetalAttack)
         {
             health = 1; 
             playerStatus.survivesToLetalAttack = false;
@@ -404,9 +416,8 @@ public class PlayerController : MonoBehaviour
 
     public void Revive()
     {
-        isDead = false;
-        health = maxHealth;
-        animator.SetTrigger("Revive");
+        Fade.OnPlay = GameManager.Instance.EndRun;
+        Fade.PlayFade(FadeType.INSTANT);
     }
 
     /// <summary>
@@ -430,8 +441,8 @@ public class PlayerController : MonoBehaviour
 
             if (playerState == PlayerState.NEUTRAL)
             {
-                _attackIndex = 0;
-                controller.Move(movement * speed * Time.deltaTime);
+                // _attackIndex = 0;
+                controller.Move(movement * speed * playerStatus.movementSpeed * Time.deltaTime);
             }
 
             #endregion

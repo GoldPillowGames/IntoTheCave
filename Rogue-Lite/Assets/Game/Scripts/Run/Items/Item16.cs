@@ -1,9 +1,9 @@
 ﻿public class Item16 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 16;
-        base.Start();
+        base.Awake();
     }
 
     // Less Initial Life For Enemies

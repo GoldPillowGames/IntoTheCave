@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Photon.Pun;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
@@ -15,6 +15,15 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
+        if (Config.data.isOnline)
+        {
+            if (!GetComponentInParent<PhotonView>().IsMine)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        
+
         DontDestroyOnLoad(this);
     }
 

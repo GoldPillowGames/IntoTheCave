@@ -24,8 +24,13 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(transform.GetChild(i));
         }
+    }
 
-        
+    public void EndRun()
+    {
+        Config.SaveData();
+        DeleteAllDontDestroyOnLoad();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     private System.Type universalRenderPipelineAssetType;
@@ -34,6 +39,34 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
+    }
+
+    public void DeleteAllDontDestroyOnLoad()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).GetComponent<RunManager>())
+                transform.GetChild(i).GetComponent<RunManager>().ResetOnSceneLoaded();
+
+            if (transform.GetChild(i).GetComponent<SaveManager>())
+                transform.GetChild(i).transform.parent = null;
+            else
+                Destroy(transform.GetChild(i).gameObject);
+        }
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            Destroy(player);
+        }
+
+        foreach (EventTrigger trigger in FindObjectsOfType<EventTrigger>())
+        {
+            Destroy(trigger.gameObject);
+        }
+
+        Destroy(GameObject.FindGameObjectWithTag("Light"));
+
+        Destroy(this.gameObject);
     }
 
     public void LoadGraphicsSettings(Camera cam)

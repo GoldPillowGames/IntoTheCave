@@ -60,7 +60,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel(5);
+        PhotonNetwork.LoadLevel(4);
     }
 
     public override void OnJoinedRoom()

@@ -1,9 +1,9 @@
 ﻿public class Item22 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 22;
-        base.Start();
+        base.Awake();
     }
 
     // Random Object

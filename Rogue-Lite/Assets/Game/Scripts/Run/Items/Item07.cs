@@ -1,9 +1,9 @@
 ﻿public class Item07 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 7;
-        base.Start();
+        base.Awake();
     }
 
     public override void OnPickUpItem(PlayerStatus player)

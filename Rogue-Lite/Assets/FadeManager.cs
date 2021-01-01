@@ -7,7 +7,8 @@ public enum FadeType
     CASUAL,
     UPPER_LOWER,
     LEFT,
-    RIGHT
+    RIGHT,
+    INSTANT
 }
 
 public class FadeManager : MonoBehaviour
@@ -31,6 +32,10 @@ public class FadeManager : MonoBehaviour
             case FadeType.UPPER_LOWER:
                 loader.SetActive(true);
                 anim.SetTrigger("PlayFadeUPDOWN");
+                break;
+            case FadeType.INSTANT:
+                loader.SetActive(false);
+                anim.SetTrigger("PlayFadeInstant");
                 break;
             default:
                 loader.SetActive(false);

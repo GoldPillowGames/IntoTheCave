@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class Item : MonoBehaviour
 {
-    protected string description;
+    protected string description = "Item Description";
     protected int id;
 
     private bool deactivated = false;
@@ -14,15 +14,14 @@ public class Item : MonoBehaviour
     private SphereCollider sphereCollider;
     private Rigidbody rb;
 
-    // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void Awake()
     {
         sphereCollider = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
         radius = sphereCollider.radius * transform.localScale.y * 3;
-        
+        print((int)Config.data.language + 2);
+        print("ID: " + id);
     }
-
 
     // Update is called once per frame
     void Update()
@@ -41,35 +40,41 @@ public class Item : MonoBehaviour
         }
             
 
-        if(Physics.CheckSphere(transform.position, radius, 1 << 10))
+        if(Physics.CheckSphere(transform.position, radius, 1 << 10) && !deactivated)
         {
             if(!Config.data.isOnline)
                 PickUpItem();
-            else
+            else if(GetComponent<PhotonView>().isRuntimeInstantiated)
                 GetComponent<PhotonView>().RPC("PickUpItem", RpcTarget.All);
         }
     }
 
     [PunRPC]
-    void PickUpItem()
+    public void PickUpItem()
     {
-        deactivated = true;
-        PlayerStatus[] players = FindObjectsOfType<PlayerStatus>();
-        float auxDistance = Mathf.Infinity;
-        foreach(PlayerStatus player in players)
+        if(id != 0)
         {
-            OnPickUpItem(player);
-            float currentDistance = Vector3.Magnitude(player.transform.position - transform.position);
-            if (currentDistance < auxDistance)
+            description = TableReader.GetString("Items/Items", 2, id - 1);
+            deactivated = true;
+            PlayerStatus[] players = FindObjectsOfType<PlayerStatus>();
+            float auxDistance = Mathf.Infinity;
+            foreach (PlayerStatus player in players)
             {
-                playerToFollow = player.transform;
-                auxDistance = currentDistance;
+                OnPickUpItem(player);
+                player.GetComponent<PlayerController>().ShowItemDescription(description);
+                float currentDistance = Vector3.Magnitude(player.transform.position - transform.position);
+                if (currentDistance < auxDistance)
+                {
+                    playerToFollow = player.transform;
+                    auxDistance = currentDistance;
+                }
             }
+
+            sphereCollider.enabled = false;
+            rb.isKinematic = true;
+            // Destroy(this.gameObject);
         }
 
-        sphereCollider.enabled = false;
-        rb.isKinematic = true;
-        // Destroy(this.gameObject);
     }
 
     public virtual void OnPickUpItem(PlayerStatus player)

@@ -1,9 +1,9 @@
 ﻿public class Item15 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 15;
-        base.Start();
+        base.Awake();
     }
 
     // Survives to a letal Attack

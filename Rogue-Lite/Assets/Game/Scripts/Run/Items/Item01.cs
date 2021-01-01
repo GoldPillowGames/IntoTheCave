@@ -5,15 +5,15 @@ using Photon.Pun;
 
 public class Item01 : Item
 {
-    public override void Start()
+
+    public override void Awake()
     {
         id = 1;
-        base.Start();
+        base.Awake();
     }
 
     public override void OnPickUpItem(PlayerStatus player)
     {
-        
         player.health += player.health * 5 / 100;
     }
 }

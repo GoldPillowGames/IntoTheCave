@@ -14,6 +14,9 @@ public class RunManager : MonoBehaviour
     [SerializeField] private TimeManager[] _timeManager;
     public bool isOnlineManager = false;
     private GameObject[] _doors;
+    private GameObject[] _previousDoors;
+    private int currentRoom = 0;
+    private int currentStage = 0;
     #endregion
 
     public void SetUp(bool isOnline)
@@ -73,10 +76,29 @@ public class RunManager : MonoBehaviour
         //}
     }
 
+    public void ResetOnSceneLoaded()
+    {
+        SceneManager.activeSceneChanged -= OnSceneLoaded;
+    }
+
     private void OnSceneLoaded(Scene previousScene, Scene currentScene)
     {
+        //bool apply = false;
+
+        //foreach (GameObject g in previousScene.GetRootGameObjects())
+        //{
+        //    if (g.GetComponent<RunManager>())
+        //    {
+        //        apply = true;
+        //    }
+        //}
+
+        //if (!apply)
+        //    return;
+
         // Reiniciamos el array de puertas
         _doors = new GameObject[4];
+        // _previousDoors = new GameObject[4];
         int currentIndex = 0;
 
         // Obtenemos las puertas de la escena actual
@@ -85,14 +107,52 @@ public class RunManager : MonoBehaviour
             if (g.CompareTag("Door"))
             {
                 _doors[currentIndex] = g;
+                _doors[currentIndex].GetComponent<EventTrigger>().Awake();
                 currentIndex++;
             }
         }
-        
+
+        //// Obtenemos las puertas de la escena actual
+        //foreach (GameObject g in previousScene.GetRootGameObjects)
+        //{
+        //    if (g.CompareTag("Door"))
+        //    {
+        //        _previousDoors[currentIndex] = g;
+        //        currentIndex++;
+        //    }
+        //}
+
+        //for(int i = 0; i < _previousDoors.Length; i++)
+        //{
+        //    for(int j = 0; j < _doors.Length; j++)
+        //    {
+        //        print(i);
+        //        if (_previousDoors[i].GetComponent<EventTrigger>().doorPosition == _doors[j].GetComponent<EventTrigger>().doorPosition)
+        //        {
+        //            _previousDoors[i].transform.position = _doors[j].transform.position;
+        //            Destroy(_doors[j]);
+        //            _doors[j] = _previousDoors[i];
+        //        }
+        //    }
+        //}
+
+        //// Obtenemos las puertas de la escena actual
+        //foreach (GameObject g in currentScene.GetRootGameObjects())
+        //{
+        //    if (g.CompareTag("Door"))
+        //    {
+        //        _doors[currentIndex] = g;
+        //        currentIndex++;
+        //    }
+        //}
+        EventTrigger[] _myDoors = FindObjectsOfType<EventTrigger>();
         // Comprobamos por cada una de las puertas si su ubicación coincide con la deseada
-        foreach (GameObject g in _doors)
+        foreach (EventTrigger g in _myDoors)
         {
             g.GetComponent<BoxCollider>().enabled = false;
+
+            if (g.GetComponent<EventTrigger>().eventType != EventType.ROOM_DOOR)
+                continue;
 
             // Comprobación
             if (g.GetComponent<EventTrigger>().doorPosition.Equals(FindObjectOfType<RunManager>().currentDoor))
@@ -105,8 +165,25 @@ public class RunManager : MonoBehaviour
                     player.enabled = false;
                     player.GetComponent<CharacterController>().enabled = false;
 
+                    float distanceFromDoor = 4.5f;
                     // Actualizamos la ubicación del jugador
-                    player.transform.position = g.transform.position;
+                    switch (FindObjectOfType<RunManager>().currentDoor)
+                    {
+                        case DoorPosition.BOTTOM:
+                            player.transform.position = g.transform.position - transform.right * distanceFromDoor;
+                            break;
+                        case DoorPosition.TOP:
+                            player.transform.position = g.transform.position + transform.right * distanceFromDoor;
+                            break;
+                        case DoorPosition.LEFT:
+                            player.transform.position = g.transform.position + transform.forward * distanceFromDoor;
+                            break;
+                        case DoorPosition.RIGHT:
+                            player.transform.position = g.transform.position - transform.forward * distanceFromDoor;
+                            break;
+                    }
+                    
+                    
 
                     // Reactivamos el player controller y el character controller
                     player.enabled = true;
@@ -163,7 +240,17 @@ public class RunManager : MonoBehaviour
 
         // _timeManager.timeScale = 1f;
         if (FindObjectOfType<RoomManager>())
+        {
             FindObjectOfType<RoomManager>().OpenDoors();
+        }
+            
+
+        ItemSpawner itemSpawner = FindObjectOfType<ItemSpawner>();
+        if (itemSpawner)
+        {
+            itemSpawner.SpawnRandomItem();
+        }
+
     }
 
     public void LoadNextRoom()
@@ -171,14 +258,125 @@ public class RunManager : MonoBehaviour
         Invoke("LoadRoom", 1.2f);
     }
 
-    private void LoadRoom()
+    
+    public void LoadRoom()
+    {
+        if (Config.data.isOnline)
+        {
+            GetComponent<PhotonView>().RPC("ChangeRoom", RpcTarget.All);
+            return;
+        }
+
+
+        Fade.OnPlay = () => {
+
+            currentRoom++;
+            int roomToLoad = Random.Range(5, 9);
+
+            if (currentRoom == 10)
+            {
+                switch (currentStage)
+                {
+                    case 1:
+                        print("Boss Fight Reached");
+                        roomToLoad = 9;
+                        currentRoom = 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                switch(currentStage)
+                {
+                    case 0:
+                        if(currentRoom == 1)
+                        {
+                            currentStage = 1;
+                            roomToLoad = 6;
+                        }
+                        break;
+                    case 1:
+                        if (currentRoom == 1)
+                        {
+                            currentStage = 1;
+                            roomToLoad = 6;
+                        }
+                        else
+                        {
+                            roomToLoad = Random.Range(5, 9);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (!Config.data.isOnline)
+                StartCoroutine(LoadASynchrously(roomToLoad));
+            else
+                PhotonNetwork.LoadLevel(roomToLoad);
+
+        };
+        Fade.PlayFade(FadeType.UPPER_LOWER);
+    }
+
+    [PunRPC]
+    public void ChangeRoom()
     {
         Fade.OnPlay = () => {
-            if (!Config.data.isOnline)
-                StartCoroutine(LoadASynchrously(3));
+
+            currentRoom++;
+            int roomToLoad = Random.Range(5, 10);
+
+            if (currentRoom == 10)
+            {
+                switch (currentStage)
+                {
+                    case 1:
+                        print("Boss Fight Reached");
+                        roomToLoad = 9;
+                        currentRoom = 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
             else
-                PhotonNetwork.LoadLevel(3);
+            {
+                switch (currentStage)
+                {
+                    case 0:
+                        if (currentRoom == 1)
+                        {
+                            currentStage = 1;
+                            roomToLoad = 6;
+                        }
+                        break;
+                    case 1:
+                        if (currentRoom == 1)
+                        {
+                            currentStage = 1;
+                            roomToLoad = 6;
+                        }
+                        else
+                        {
+                            roomToLoad = Random.Range(5, 10);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (!Config.data.isOnline)
+                StartCoroutine(LoadASynchrously(roomToLoad));
+            else if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.LoadLevel(roomToLoad);
+
         };
+        // if (PhotonNetwork.IsMasterClient) // Quizas eliminar
         Fade.PlayFade(FadeType.UPPER_LOWER);
     }
 

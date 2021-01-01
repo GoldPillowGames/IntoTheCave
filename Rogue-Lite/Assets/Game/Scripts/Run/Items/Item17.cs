@@ -1,9 +1,9 @@
 ﻿public class Item17 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 17;
-        base.Start();
+        base.Awake();
     }
 
     // Increases Player Heal

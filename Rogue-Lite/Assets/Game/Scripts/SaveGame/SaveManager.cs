@@ -23,11 +23,20 @@ public class SaveManager : MonoBehaviour
         print("<color=green>Saving Data...</color>");
     }
 
+    private void Update()
+    {
+        if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void Load()
     {
         if (PlayerPrefs.HasKey("save"))
         {
             state = Helper.Deserialize<SaveState>(PlayerPrefs.GetString("save"));
+            Debug.Log("Loading data...");
         }
         else
         {

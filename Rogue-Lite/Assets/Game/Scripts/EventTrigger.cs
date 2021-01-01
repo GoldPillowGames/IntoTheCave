@@ -34,8 +34,29 @@ public class EventTrigger : MonoBehaviour
     private LayerMask playerLayer;
     private Vector3 respawnPoint;
 
-    private void Awake()
+    public void Awake()
     {
+        
+
+        if(eventType == EventType.ROOM_DOOR)
+        {
+            EventTrigger[] eventTriggers = FindObjectsOfType<EventTrigger>();
+
+            foreach(EventTrigger trigger in eventTriggers)
+            {
+                if(eventType == EventType.ROOM_DOOR && trigger != this)
+                {
+                    if(doorPosition == trigger.doorPosition)
+                    {
+                        trigger.transform.position = this.transform.position;
+                        Destroy(this.gameObject);
+                    }
+                }
+            }
+
+            DontDestroyOnLoad(this);
+        }
+
         playerLayer = 10;
         switch (doorPosition)
         {

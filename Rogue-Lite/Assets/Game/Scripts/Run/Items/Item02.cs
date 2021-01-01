@@ -1,9 +1,9 @@
 ﻿public class Item02 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 2;
-        base.Start();
+        base.Awake();
     }
 
 

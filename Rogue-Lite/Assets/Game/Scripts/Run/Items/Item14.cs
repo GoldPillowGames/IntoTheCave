@@ -1,9 +1,9 @@
 ﻿public class Item14 : Item
 {
-    public override void Start()
+    public override void Awake()
     {
         id = 14;
-        base.Start();
+        base.Awake();
     }
 
     // Agility
