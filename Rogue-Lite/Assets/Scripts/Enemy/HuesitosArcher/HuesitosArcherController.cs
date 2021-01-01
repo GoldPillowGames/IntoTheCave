@@ -32,7 +32,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         private Vector3 DirectionToPlayer =>
             (Player.position - Transform.position).normalized;
         private bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
-        public bool CanAttack => (PlayerIsInRange /*&& !IsThereAnObstacleInAttackRange()*/);
+        public bool CanAttack => (PlayerIsInRange && !IsThereAnObstacleInAttackRange());
         #endregion
 
         #region Methods
@@ -52,6 +52,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             base.Start();
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
+            transform.forward = DirectionToPlayer;
         }
 
         protected override void Update()
@@ -70,7 +71,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         private bool IsThereAnObstacleInAttackRange()
         {
             if (!Physics.Raycast(Transform.position, DirectionToPlayer, out var hitInfo,
-                distanceToAttack))
+                distanceToAttack, LayerMask.GetMask("Ground", "Player")))
             {
                 return false;
             }

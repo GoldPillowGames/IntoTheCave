@@ -35,7 +35,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             (Player.position - Transform.position).normalized;
 
         public bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
-        public bool CanAttack => (PlayerIsInRange && CanSeePlayer()/* && !IsThereAnObstacleInAttackRange()*/);
+        public bool CanAttack => (PlayerIsInRange && CanSeePlayer() && !IsThereAnObstacleInAttackRange());
         #endregion
 
         #region Methods
@@ -55,6 +55,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             base.Start();
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
+            transform.forward = DirectionToPlayer;
         }
 
         protected override void Update()
@@ -78,8 +79,9 @@ namespace GoldPillowGames.Enemy.Huesitos
 
         private bool IsThereAnObstacleInAttackRange()
         {
+            
             if (!Physics.Raycast(Transform.position, DirectionToPlayer, out var hitInfo,
-                distanceToAttack))
+                distanceToAttack, LayerMask.GetMask("Ground", "Player")))
             {
                 return false;
             }
