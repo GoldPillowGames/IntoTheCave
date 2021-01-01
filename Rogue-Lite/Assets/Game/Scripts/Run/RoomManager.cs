@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class RoomManager : MonoBehaviour
 {
@@ -15,14 +17,14 @@ public class RoomManager : MonoBehaviour
     {
         Audio.ActivateTrack(1);
 
-        _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("Prefabs/Enemies");
+        _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");
         
         SpawnEnemies();
     }
 
     private void SpawnEnemies()
     {
-        var numEnemiesToSpawn = Random.Range(_minEnemies, _maxEnemies + 1);
+        var numEnemiesToSpawn = Mathf.Min(Random.Range(_minEnemies, _maxEnemies + 1), _enemySpawnPositions.Length);
         
         var enemySpawnPositionsList = _enemySpawnPositions.ToList();
 
@@ -30,9 +32,14 @@ public class RoomManager : MonoBehaviour
         {
             var randomIndex = Random.Range(0, enemySpawnPositionsList.Count);
             var randomPosition = enemySpawnPositionsList[randomIndex].position;
-
-            Instantiate(SelectRandomEnemy(), randomPosition, Quaternion.identity);
-            
+            if (!Config.data.isOnline)
+            {
+                Instantiate(SelectRandomEnemy(), randomPosition, Quaternion.identity);
+            }
+            else if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Enemies", SelectRandomEnemy().name), randomPosition, Quaternion.identity);
+            }
             enemySpawnPositionsList.RemoveAt(randomIndex);
         }
     }

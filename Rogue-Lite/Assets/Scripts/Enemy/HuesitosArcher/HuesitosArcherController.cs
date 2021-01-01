@@ -41,7 +41,8 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             base.Awake();
 
             Agent = GetComponent<NavMeshAgent>();
-            Player = GameObject.FindGameObjectWithTag("Player").transform;
+            // Player = GameObject.FindGameObjectWithTag("Player").transform;
+            Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
             _propeller = new AgentPropeller(Agent);
             _collider = GetComponent<BoxCollider>();

@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
         }
 
         #region Input
-        if (Input.GetMouseButton(1) && !Config.data.isTactile && playerState == PlayerState.NEUTRAL)
+        if (Input.GetMouseButton(1) && !Config.data.isTactile && playerState == PlayerState.NEUTRAL || playerState == PlayerState.BLOCKING)
         {
             animator.SetBool("IsDefending", true);
             playerState = PlayerState.BLOCKING;
@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private float _pushTime;
-    [SerializeField] private float _maxPushTime = 0.16f;
+    [SerializeField] private float _maxPushTime = 0.10f;
     private Vector3 _pushDirection;
     private float _pushSpeed = 8;
 
@@ -293,8 +293,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         playerState = PlayerState.IS_BEING_DAMAGED;
-
-        if(health - damage < 1 && health > 1 && playerStatus.survivesToLetalAttack)
+        LetAttack();
+        if (health - damage < 1 && health > 1 && playerStatus.survivesToLetalAttack)
         {
             health = 1; 
             playerStatus.survivesToLetalAttack = false;
@@ -326,7 +326,7 @@ public class PlayerController : MonoBehaviour
         if (isDead)
             return;
 
-        _timeToAttack -= Time.fixedDeltaTime;
+        _timeToAttack -= Time.deltaTime;
 
         if (_timeToAttack <= 0)
         {

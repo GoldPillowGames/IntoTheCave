@@ -336,7 +336,7 @@ public class RunManager : MonoBehaviour
                 {
                     case 1:
                         print("Boss Fight Reached");
-                        roomToLoad = 9;
+                        roomToLoad = 10;
                         currentRoom = 0;
                         break;
                     default:

@@ -3032,6 +3032,7 @@ GameObject:
   - component: {fileID: 8153243061164702232}
   - component: {fileID: 7057375345428689207}
   - component: {fileID: 1841427695903988204}
+  - component: {fileID: 223613104}
   m_Layer: 0
   m_Name: espada
   m_TagString: Weapon
@@ -3157,7 +3158,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8153243061164702234}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -3193,6 +3194,19 @@ BoxCollider:
   m_Size: {x: 0.028026458, y: 0.029543586, z: 0.08130322}
   m_Center: {x: 0.0001872706, y: 0.000000029550163, z: 0.0032526269}
 --- !u!114 &1841427695903988204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153243061164702234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601f9433dcc6b64ba70388b53c7104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 9072301941133235391}
+--- !u!114 &223613104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3512,6 +3526,9 @@ GameObject:
   - component: {fileID: 8153243061968557896}
   - component: {fileID: 8153243061968557898}
   - component: {fileID: 8153243061968557899}
+  - component: {fileID: 5147660581632813619}
+  - component: {fileID: 8470327173356122396}
+  - component: {fileID: 4449051469033068616}
   m_Layer: 0
   m_Name: Huesitos
   m_TagString: Enemy
@@ -3621,12 +3638,91 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  weapon: {fileID: 1841427695903988204}
+  weapon: {fileID: 223613104}
   velocity: 8
   distanceToAttack: 4.5
   detectAngle: 45
   pushComboForce: 15
   timeDefenseless: 0.3
+--- !u!114 &5147660581632813619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072301941133235391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 8470327173356122396}
+  - {fileID: 4449051469033068616}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8470327173356122396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072301941133235391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsFollowing1
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsFollowing2
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsAttacking1
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsAttacking2
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsReceivingDamage
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsDying1
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsDying2
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
+--- !u!114 &4449051469033068616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072301941133235391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &9088012174248507920
 GameObject:
   m_ObjectHideFlags: 0

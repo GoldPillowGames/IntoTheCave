@@ -11,6 +11,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
 
         private void Awake()
         {
+            DontDestroyOnLoad(this);
             _rigidbody = GetComponent<Rigidbody>();
         }
         
