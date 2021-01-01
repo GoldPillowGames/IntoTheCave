@@ -466,6 +466,7 @@ public class PlayerController : MonoBehaviour
             if (playerState == PlayerState.NEUTRAL)
             {
                 canAttack = true;
+                _attackIndex = 0;
                 animator.SetBool("IsWalking", true);
                 currentRotation = Quaternion.LookRotation(movement);
             }
