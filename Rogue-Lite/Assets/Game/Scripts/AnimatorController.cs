@@ -7,7 +7,7 @@ public class AnimatorController : MonoBehaviour
 {
 
     [SerializeField] PlayerController playerController;
-
+    
     void Attack(float attackDistance)
     {
         if(GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
@@ -42,5 +42,17 @@ public class AnimatorController : MonoBehaviour
     {
         if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
             playerController.LetRoll();
+    }
+
+    void InitAttackInWeapon()
+    {
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.InitAttackInWeapon();
+    }
+    
+    void FinishAttackInWeapon()
+    {
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.FinishAttackInWeapon();
     }
 }

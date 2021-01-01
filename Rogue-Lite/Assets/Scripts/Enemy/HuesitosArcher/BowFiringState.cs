@@ -30,7 +30,8 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         {
             base.Exit();
             
-            _enemyController.VisualArrow.SetActive(false);
+            _enemyController.HideVisualArrow();
+            _enemyController.GoToNextStateCallback = null;
         }
 
         private void GoToNextState()

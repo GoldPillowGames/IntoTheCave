@@ -23,8 +23,14 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             base.Enter();
             
-            _enemyController.GoToNextStateCallback = GoToNextState;
             _nextStateDelayer.SetNewDelay(_enemyController.TimeDefenseless);
+        }
+
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
+            
+            _nextStateDelayer.Update(deltaTime);
         }
 
         private void GoToNextState()

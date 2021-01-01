@@ -1,6 +1,5 @@
 ﻿using System;
 using GoldPillowGames.Core;
-using GoldPillowGames.Enemy.HuesitosArcher.Arrow;
 using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,10 +12,11 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         [SerializeField] private float velocity = 5;
         [SerializeField] private float distanceToAttack = 5;
         [SerializeField] private float rotationSpeed = 10;
-        [SerializeField] private GameObject arrowPrefab;
-        [SerializeField] private GameObject visualArrow;
+        [SerializeField] private float timeDefenseless = 1;
+        [SerializeField] private BowController bowController;
         private Animator _anim;
         private AgentPropeller _propeller;
+        private BoxCollider _collider;
         #endregion
 
         #region Properties
@@ -25,14 +25,14 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         public NavMeshAgent Agent { get; private set; }
         public Transform Transform => transform;
         public float Velocity => velocity;
-        public GameObject VisualArrow => visualArrow;
+        public float RotationSpeed => rotationSpeed;
+        public float TimeDefenseless => timeDefenseless;
         private float DistanceFromPlayer => Vector3.Distance(Transform.position,
             Player.transform.position);
         private Vector3 DirectionToPlayer =>
             (Player.position - Transform.position).normalized;
         private bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
-        public bool CanAttack => (PlayerIsInRange /*&& !IsThereAnObstacleInAttackRange()*/);
-        public float RotationSpeed => rotationSpeed;
+        public bool CanAttack => (PlayerIsInRange && !IsThereAnObstacleInAttackRange());
         #endregion
 
         #region Methods
@@ -44,6 +44,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             Player = GameObject.FindGameObjectWithTag("Player").transform;
             _anim = GetComponent<Animator>();
             _propeller = new AgentPropeller(Agent);
+            _collider = GetComponent<BoxCollider>();
         }
 
         protected override void Start()
@@ -51,8 +52,16 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             base.Start();
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
+            transform.forward = DirectionToPlayer;
         }
-        
+
+        protected override void Update()
+        {
+            base.Update();
+            
+            _propeller.Update(Time.deltaTime);
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -62,26 +71,45 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         private bool IsThereAnObstacleInAttackRange()
         {
             if (!Physics.Raycast(Transform.position, DirectionToPlayer, out var hitInfo,
-                distanceToAttack))
+                distanceToAttack, LayerMask.GetMask("Ground", "Player")))
             {
                 return false;
             }
             return !hitInfo.collider.CompareTag("Player");
         }
 
-        private void ShowArrow()
+        private void ShowVisualArrow()
         {
-            visualArrow.SetActive(true);
+            bowController.ShowVisualArrow();
         }
 
+        public void HideVisualArrow()
+        {
+            bowController.HideVisualArrow();
+        }
+        
         private void ThrowArrow()
         {
-            var arrow = ObjectPool.Instance.GetObject(arrowPrefab);
-            // BUG: visual.arrow.position no siempre devuelve la posición exacta del objeto, lo que hace que la flecha se origine mal a veces (ni idea de por qué ocurre).
-            arrow.GetComponent<ArrowController>().Init(visualArrow.transform.position, transform.forward);
-            visualArrow.SetActive(false);
+            bowController.ThrowArrow();
         }
 
+        public override void Push(float time, float force, Vector3 direction)
+        {
+            _propeller.StartPush(time, force * direction);
+        }
+        
+        protected override void Die()
+        {
+            base.Die();
+            
+            gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+            _collider.enabled = false;
+            Agent.enabled = false;
+            _anim.enabled = false;
+            bowController.Disable();
+            enabled = false;
+        }
+        
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);

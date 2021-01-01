@@ -9,6 +9,7 @@ namespace GoldPillowGames.Enemy.Huesitos
     public class HuesitosController : EnemyController
     {
         #region Variables
+        [SerializeField] private HuesitosWeaponController weapon;
         [SerializeField] private float velocity = 5;
         [SerializeField] private float distanceToAttack = 5;
         [SerializeField] private float detectAngle;
@@ -16,6 +17,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         [SerializeField] private float timeDefenseless = 1;
         private Animator _anim;
         private AgentPropeller _propeller;
+        private Collider _collider;
         #endregion
 
         #region Properties
@@ -33,7 +35,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             (Player.position - Transform.position).normalized;
 
         public bool PlayerIsInRange => DistanceFromPlayer <= distanceToAttack;
-        public bool CanAttack => (PlayerIsInRange && CanSeePlayer()/* && !IsThereAnObstacleInAttackRange()*/);
+        public bool CanAttack => (PlayerIsInRange && CanSeePlayer() && !IsThereAnObstacleInAttackRange());
         #endregion
 
         #region Methods
@@ -45,6 +47,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             Player = GameObject.FindGameObjectWithTag("Player").transform;
             _anim = GetComponent<Animator>();
             _propeller = new AgentPropeller(Agent);
+            _collider = GetComponent<Collider>();
         }
 
         protected override void Start()
@@ -52,6 +55,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             base.Start();
             
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
+            transform.forward = DirectionToPlayer;
         }
 
         protected override void Update()
@@ -75,8 +79,9 @@ namespace GoldPillowGames.Enemy.Huesitos
 
         private bool IsThereAnObstacleInAttackRange()
         {
+            
             if (!Physics.Raycast(Transform.position, DirectionToPlayer, out var hitInfo,
-                distanceToAttack))
+                distanceToAttack, LayerMask.GetMask("Ground", "Player")))
             {
                 return false;
             }
@@ -109,11 +114,23 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             _propeller.StartPush(time, force * direction);
         }
-        
+
+        protected override void Die()
+        {
+            base.Die();
+            
+            gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+            _collider.enabled = false;
+            Agent.enabled = false;
+            _anim.enabled = false;
+            weapon.Disable();
+            enabled = false;
+        }
+
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);
-
+            
             if (health > 0)
             {
                 stateMachine.SetState(new HurtState(this, stateMachine, _anim));
@@ -122,6 +139,16 @@ namespace GoldPillowGames.Enemy.Huesitos
             {
                 stateMachine.SetState(new DeathState(this, stateMachine, _anim));
             }
+        }
+        
+        private void InitAttackInWeapon()
+        {
+            weapon.InitAttack();
+        }
+
+        private void FinishAttackInWeapon()
+        {
+            weapon.FinishAttack();
         }
         #endregion
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GoldPillowGames.Player;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CameraController cameraController;
     [SerializeField] private FixedJoystick joystick;
     public CameraFollower cameraFollower;
+    [SerializeField] private PlayerWeaponController weapon;
 
     [Header("Movement Variables")]
     [Tooltip("Player movement speed")]
@@ -232,7 +234,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsAttacking", true);
             
             // Attack Variables
-            print(_timeToAttack);
+            //print(_timeToAttack);
             _timeToAttack = _attackTime[_attackIndex];
             _timeToMove = _moveTime[_attackIndex];
             _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
@@ -500,6 +502,16 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(groundChecker.position, groundCheckerArea, whatIsGround);
     }
 
+    public void InitAttackInWeapon()
+    {
+        weapon.InitAttack();
+    }
+
+    public void FinishAttackInWeapon()
+    {
+        weapon.FinishAttack();
+    }
+    
     private void OnDrawGizmos()
     {
         if (debug)
