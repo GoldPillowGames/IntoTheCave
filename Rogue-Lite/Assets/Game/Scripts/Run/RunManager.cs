@@ -264,62 +264,24 @@ public class RunManager : MonoBehaviour
         if (Config.data.isOnline)
         {
             GetComponent<PhotonView>().RPC("ChangeRoom", RpcTarget.All);
-            return;
+        }
+        else
+        {
+            ChangeRoom();
         }
 
+        
+        //Fade.OnPlay = () => {
 
-        Fade.OnPlay = () => {
+        //    ChangeRoom();
 
-            currentRoom++;
-            int roomToLoad = Random.Range(5, 9);
+        //    //if (!Config.data.isOnline)
+        //    //    StartCoroutine(LoadASynchrously(roomToLoad));
+        //    //else
+        //    //    PhotonNetwork.LoadLevel(roomToLoad);
 
-            if (currentRoom == 10)
-            {
-                switch (currentStage)
-                {
-                    case 1:
-                        print("Boss Fight Reached");
-                        roomToLoad = 9;
-                        currentRoom = 0;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                switch(currentStage)
-                {
-                    case 0:
-                        if(currentRoom == 1)
-                        {
-                            currentStage = 1;
-                            roomToLoad = 6;
-                        }
-                        break;
-                    case 1:
-                        if (currentRoom == 1)
-                        {
-                            currentStage = 1;
-                            roomToLoad = 6;
-                        }
-                        else
-                        {
-                            roomToLoad = Random.Range(5, 9);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            if (!Config.data.isOnline)
-                StartCoroutine(LoadASynchrously(roomToLoad));
-            else
-                PhotonNetwork.LoadLevel(roomToLoad);
-
-        };
-        Fade.PlayFade(FadeType.UPPER_LOWER);
+        //};
+        //Fade.PlayFade(FadeType.UPPER_LOWER);
     }
 
     [PunRPC]

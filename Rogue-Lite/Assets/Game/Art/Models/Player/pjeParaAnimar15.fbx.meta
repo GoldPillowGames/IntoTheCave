@@ -84,7 +84,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: InitAttackInWeapon
+        functionName: SetAttackIndex
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -104,8 +104,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
+      - time: 0.088607594
+        functionName: InitAttackInWeapon
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.29073623
         functionName: LetAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.5485232
+        functionName: FinishAttackInWeapon
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -117,13 +131,6 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: FinishAttackInWeapon
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
         messageOptions: 0
       transformMask: []
       maskType: 3
@@ -155,6 +162,13 @@ ModelImporter:
       curves: []
       events:
       - time: 0
+        functionName: SetAttackIndex
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.22362868
         functionName: InitAttackInWeapon
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -175,6 +189,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
+      - time: 0.4514768
+        functionName: FinishAttackInWeapon
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.46135238
         functionName: LetAttack
         data: 
@@ -184,13 +205,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.65173364
         functionName: FinishAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: FinishAttackInWeapon
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -266,6 +280,13 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
+        messageOptions: 0
+      - time: 0
+        functionName: SetAttackIndex
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3

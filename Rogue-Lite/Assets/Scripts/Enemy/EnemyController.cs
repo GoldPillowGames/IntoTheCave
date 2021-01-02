@@ -1,6 +1,7 @@
 ﻿using System;
 using GoldPillowGames.Patterns;
 using UnityEngine;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy
 {
@@ -8,6 +9,8 @@ namespace GoldPillowGames.Enemy
     {
         #region Variables
         [SerializeField] protected float health;
+
+        public float Health => health;
         protected FiniteStateMachine stateMachine;
         public Action GoToNextStateCallback { set; private get; }
         #endregion
@@ -50,8 +53,17 @@ namespace GoldPillowGames.Enemy
         
         public virtual void ReceiveDamage(float damage)
         {
-            health = Mathf.Max(0, health - damage);
+            if(!Config.data.isOnline)
+                health = Mathf.Max(0, health - damage);
+            else
+                GetComponent<PhotonView>().RPC("ReceiveDamageSync", RpcTarget.All, damage);
             // Update health bar.
+        }
+
+        [PunRPC]
+        public virtual void ReceiveDamageSync(float damage)
+        {
+            health = Mathf.Max(0, health - damage);
         }
         #endregion
     }
