@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackMaxDashTimer = 0.1f;
     [SerializeField] private float timeToDash;
     [SerializeField] private float maxTimeToDash = 0.05f;
+    [SerializeField] private LayerMask normalLayer;
+    [SerializeField] private LayerMask rollingLayer;
 
     [Header("State Variables")]
     public int health;
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail weaponTrail;
 
 
-    private PlayerState playerState = PlayerState.NEUTRAL;
+    [SerializeField] private PlayerState playerState = PlayerState.NEUTRAL;
 
     [HideInInspector] public Quaternion currentRotation;     // Current looking rotation
     private CharacterController controller; // Character controller
@@ -221,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && playerState == PlayerState.NEUTRAL /*&& !animator.GetBool("HasAttackedBool")*/ && !Config.data.isTactile)
+        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && (playerState == PlayerState.NEUTRAL) /*&& !animator.GetBool("HasAttackedBool")*/ && !Config.data.isTactile)
         {
             canAttack = false;
             canFinishAttack = false;
@@ -237,7 +239,7 @@ public class PlayerController : MonoBehaviour
             //print(_timeToAttack);
             _timeToAttack = _attackTime[_attackIndex];
             _timeToMove = _moveTime[_attackIndex];
-            _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
+            // _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
             print(_attackIndex);
 
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -251,6 +253,15 @@ public class PlayerController : MonoBehaviour
 
             Vector3 mousePos = Input.mousePosition;
             mousePos.Normalize();
+        }
+
+        if(playerState == PlayerState.ROLLING)
+        {
+            this.gameObject.layer = 15;
+        }
+        else if (!isDead)
+        {
+            this.gameObject.layer = 10;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !Config.data.isTactile)
@@ -282,6 +293,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetAttackIndex(int index)
+    {
+        _attackIndex = index;
+    }
+
     private float _pushTime;
     [SerializeField] private float _maxPushTime = 0.10f;
     private Vector3 _pushDirection;
@@ -303,6 +319,8 @@ public class PlayerController : MonoBehaviour
         {
             health -= damage;
         }
+
+        CameraShaker.Shake(0.2f, 2f, 1.75f);
 
         animator.SetBool("IsBeingDamaged", true);
 
@@ -340,7 +358,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        _timeToMove -= Time.fixedDeltaTime;
+        _timeToMove -= Time.deltaTime;
         if (_timeToMove <= 0)
         {
             animator.SetBool("IsAttacking", false);
@@ -466,7 +484,7 @@ public class PlayerController : MonoBehaviour
             if (playerState == PlayerState.NEUTRAL)
             {
                 canAttack = true;
-                _attackIndex = 0;
+                // _attackIndex = 0;
                 animator.SetBool("IsWalking", true);
                 currentRotation = Quaternion.LookRotation(movement);
             }

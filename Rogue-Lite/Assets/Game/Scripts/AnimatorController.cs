@@ -14,6 +14,12 @@ public class AnimatorController : MonoBehaviour
             playerController.Attack(attackDistance);
     }
 
+    void SetAttackIndex(int index)
+    {
+        if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
+            playerController.SetAttackIndex(index);
+    }
+
     void LetAttack()
     {
         if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)

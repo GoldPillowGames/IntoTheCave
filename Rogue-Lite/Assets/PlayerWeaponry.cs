@@ -64,8 +64,8 @@ public class PlayerWeaponry : MonoBehaviour
                 trail._tip = weaponTrails1[1];
                 playerController._attackTime = attackTimer1;
                 playerController._moveTime = moveTimer1;
-                playerController.numberOfAttacks = 3;
-                animator.SetBool("HasAttack3", true);
+                playerController.numberOfAttacks = 2;
+                animator.SetBool("HasAttack3", false);
                 //GetComponent<PlayerController>().weaponTrail = weapon1[0].GetComponent<MeleeWeaponTrail>();
                 break;
             case 1:

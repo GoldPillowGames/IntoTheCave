@@ -48,6 +48,7 @@ public class EventTrigger : MonoBehaviour
                 {
                     if(doorPosition == trigger.doorPosition)
                     {
+                        trigger.activated = false;
                         trigger.transform.position = this.transform.position;
                         Destroy(this.gameObject);
                     }
@@ -140,6 +141,31 @@ public class EventTrigger : MonoBehaviour
             case EventType.ROOM_DOOR:
                 if (other.CompareTag("Player") && !activated)
                 {
+                    if (Config.data.isOnline)
+                    {
+                        if (Photon.Pun.PhotonNetwork.IsMasterClient)
+                        {
+                            if (other.GetComponent<PlayerController>())
+                            {
+                                if (!other.GetComponent<PlayerController>().isMe)
+                                    return;
+                            }
+                            else
+                            {
+                                if (other.GetComponentInParent<PlayerController>())
+                                {
+                                    if (!other.GetComponentInParent<PlayerController>().isMe)
+                                        return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    
+
                     if (!activated && eventType == EventType.ROOM_DOOR)
                     {
                         activated = true;
@@ -195,6 +221,8 @@ public class EventTrigger : MonoBehaviour
     [Photon.Pun.PunRPC]
     private void UbicatePlayers()
     {
+        activated = true; // Provisional
+
         // Localizamos el run manager
         RunManager runManager = FindObjectOfType<RunManager>();
 
@@ -244,10 +272,10 @@ public class EventTrigger : MonoBehaviour
         switch (eventType)
         {
             case EventType.ROOM_DOOR:
-                if (other.CompareTag("Player") && activated)
-                {
-                    activated = false;
-                }
+                //if (other.CompareTag("Player") && activated)
+                //{
+                //    activated = false;
+                //}
                 break;
             default:
                 break;
