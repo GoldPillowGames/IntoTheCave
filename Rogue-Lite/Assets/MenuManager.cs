@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _languageMenu;
     [SerializeField] private GameObject _settingsMenu;
 
+    [SerializeField] private GameObject _brightnessBackground;
+
     private Dictionary<MainMenuType, GameObject> menus;
 
     // Start is called before the first frame update
@@ -88,7 +90,8 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            ShowMenu(MainMenuType.MAIN_MENU);
+            ShowMenuInstantly(0);
+            // ShowMenu(MainMenuType.MAIN_MENU);
         }
 
         if (Config.data.vSync)
@@ -97,6 +100,22 @@ public class MenuManager : MonoBehaviour
             QualitySettings.vSyncCount = 0;
 
 
+    }
+
+    private void Update()
+    {
+        if (menus[MainMenuType.BRIGHTNESS_MENU].activeSelf && !_brightnessBackground.activeSelf)
+        {
+            _brightnessBackground.SetActive(true);
+        }else if(!menus[MainMenuType.BRIGHTNESS_MENU].activeSelf && _brightnessBackground.activeSelf)
+        {
+            _brightnessBackground.SetActive(false);
+        }
+    }
+
+    public void OpenAd(string url)
+    {
+        Application.OpenURL(url);
     }
 
     public void ShowMenu(MainMenuType menu)
@@ -116,8 +135,6 @@ public class MenuManager : MonoBehaviour
             }
         };
         Fade.PlayFade();
-
-        
     }
 
     public void ShowMenu(int index)

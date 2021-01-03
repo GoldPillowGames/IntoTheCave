@@ -7,10 +7,22 @@ using Michsky.UI.ModernUIPack;
 
 public class SettingsMenuManager : MonoBehaviour
 {
+    [Header("Pages")]
+    [SerializeField] private GameObject[] _pages;
+    [SerializeField] private HorizontalSelector _graphicsSettingsPage;
+
+    [Header("Page 1")]
     [SerializeField] private HorizontalSelector _graphicsSettings;
     [SerializeField] private HorizontalSelector _generalGraphicsSettings;
     [SerializeField] private HorizontalSelector _shadowQuality;
     [SerializeField] private HorizontalSelector _antialiasingSettings;
+
+    [Header("Page 2")]
+    [SerializeField] private HorizontalSelector _uiScale;
+    [SerializeField] private HorizontalSelector _vSync;
+    [SerializeField] private HorizontalSelector _fpsSync;
+    [SerializeField] private HorizontalSelector _renderScale;
+    [SerializeField] private HorizontalSelector _showFPS;
 
     [SerializeField] private GameObject _customSettings;
 
@@ -64,11 +76,155 @@ public class SettingsMenuManager : MonoBehaviour
         _antialiasingSettings.defaultIndex = (int)Config.data.antialiasingQuality;
         _antialiasingSettings.index = (int)Config.data.antialiasingQuality;
         _antialiasingSettings.UpdateUI();
+
+
+        switch (Config.data.canvasScale)
+        {
+            case 0.8f:
+                SetSelector(_uiScale, 0);
+                break;
+            case 0.85f:
+                SetSelector(_uiScale, 1);
+                break;
+            case 0.9f:
+                SetSelector(_uiScale, 2);
+                break;
+            case 0.95f:
+                SetSelector(_uiScale, 3);
+                break;
+            case 1.00f:
+                SetSelector(_uiScale, 4);
+                break;
+            case 1.05f:
+                SetSelector(_uiScale, 5);
+                break;
+            case 1.10f:
+                SetSelector(_uiScale, 6);
+                break;
+            case 1.15f:
+                SetSelector(_uiScale, 7);
+                break;
+            case 1.20f:
+                SetSelector(_uiScale, 8);
+                break;
+            default:
+                break;
+        }
+        // SetSelector(_uiScale, (int)Config.data.canvasScale);
+        switch (Config.data.vSync)
+        {
+            case false:
+                SetSelector(_vSync, 0);
+                break;
+            case true:
+                SetSelector(_vSync, 1);
+                break;
+        }
+
+        switch (Config.data.limitedFPS)
+        {
+            case FPSLimit.NONE:
+                SetSelector(_showFPS, 0);
+                break;
+            case FPSLimit.VERY_LOW:
+                SetSelector(_uiScale, 1);
+                break;
+            case FPSLimit.LOW:
+                SetSelector(_uiScale, 2);
+                break;
+            case FPSLimit.MEDIUM:
+                SetSelector(_uiScale, 3);
+                break;
+            case FPSLimit.HIGH:
+                SetSelector(_uiScale, 4);
+                break;
+            case FPSLimit.VERY_HIGH:
+                SetSelector(_uiScale, 5);
+                break;
+            case FPSLimit.ULTRA:
+                SetSelector(_uiScale, 6);
+                break;
+            default:
+                break;
+        }
+
+        //switch (Config.data.isDebug)
+        //{
+        //    case false:
+        //        SetSelector(_showFPS, 0);
+        //        break;
+        //    case true:
+        //        SetSelector(_showFPS, 1);
+        //        break;
+        //}
+
+        switch (Config.data.renderScale)
+        {
+            case 0.8f:
+                SetSelector(_renderScale, 0);
+                break;
+            case 0.85f:
+                SetSelector(_renderScale, 1);
+                break;
+            case 0.9f:
+                SetSelector(_renderScale, 2);
+                break;
+            case 0.95f:
+                SetSelector(_renderScale, 3);
+                break;
+            case 1.00f:
+                SetSelector(_renderScale, 4);
+                break;
+            case 1.05f:
+                SetSelector(_renderScale, 5);
+                break;
+            case 1.10f:
+                SetSelector(_renderScale, 6);
+                break;
+            case 1.15f:
+                SetSelector(_renderScale, 7);
+                break;
+            case 1.20f:
+                SetSelector(_renderScale, 8);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void SetSelector(HorizontalSelector selector, int index)
+    {
+        selector.defaultIndex = index;
+        selector.index = index;
+        selector.UpdateUI();
+    }
+
+    public void UpdateUIScale(float scale)
+    {
+        print("Updated UI Scale");
+        Config.data.canvasScale = scale;
+    }
+
+    public void UpdateVSync(bool vSync)
+    {
+        Config.data.vSync = vSync;
+    }
+
+    public void UpdateFPSLimit(int limit)
+    {
+        Config.data.limitedFPS = (FPSLimit)limit;
+    }
+
+    public void UpdateRenderScale(float scale)
+    {
+        Config.data.renderScale = scale;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!_pages[0].activeSelf)
+            return;
         if (_graphicsSettings.index == 3)
         {
             //Image[] childrenImage = _customSettings.GetComponentsInChildren<Image>();
@@ -124,6 +280,21 @@ public class SettingsMenuManager : MonoBehaviour
             foreach (Button button in childrenButtons)
             {
                 button.interactable = false;
+            }
+        }
+    }
+
+    public void ShowGraphicsPage(int index)
+    {
+        for(int i = 0; i < _pages.Length; i++)
+        {
+            if(index == i)
+            {
+                _pages[i].SetActive(true);
+            }
+            else
+            {
+                _pages[i].SetActive(false);
             }
         }
     }

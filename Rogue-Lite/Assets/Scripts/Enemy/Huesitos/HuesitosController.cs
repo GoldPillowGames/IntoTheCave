@@ -124,6 +124,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             _collider.enabled = false;
             Agent.enabled = false;
             _anim.enabled = false;
+            weapon.transform.parent = null;
             weapon.Disable();
             enabled = false;
         }
