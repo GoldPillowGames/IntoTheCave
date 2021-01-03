@@ -449,9 +449,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   velocity: 8
-  distanceToAttack: 15
+  distanceToAttack: 14
+  distanceToStopAttacking: 16
   rotationSpeed: 10
   timeDefenseless: 0.3
+  minTimeToFire: 1
+  maxTimeToFire: 1.5
   bowController: {fileID: 6495443336633505170}
 --- !u!54 &1191569126
 Rigidbody:

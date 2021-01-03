@@ -3,6 +3,7 @@ using GoldPillowGames.Core;
 using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace GoldPillowGames.Enemy.HuesitosArcher
 {
@@ -11,8 +12,11 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         #region Variables
         [SerializeField] private float velocity = 5;
         [SerializeField] private float distanceToAttack = 5;
+        [SerializeField] private float distanceToStopAttacking = 8;
         [SerializeField] private float rotationSpeed = 10;
         [SerializeField] private float timeDefenseless = 1;
+        [SerializeField] private float minTimeToFire = 1;
+        [SerializeField] private float maxTimeToFire = 1.5f;
         [SerializeField] private BowController bowController;
         private Animator _anim;
         private AgentPropeller _propeller;
@@ -27,6 +31,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         public float Velocity => velocity;
         public float RotationSpeed => rotationSpeed;
         public float TimeDefenseless => timeDefenseless;
+        public float TimeToFire => Random.Range(minTimeToFire, maxTimeToFire);
         private float DistanceFromPlayer => Vector3.Distance(Transform.position,
             Player.transform.position);
         private Vector3 DirectionToPlayer =>
@@ -56,9 +61,9 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             transform.forward = DirectionToPlayer;
         }
 
-        protected override void Update()
+        protected override void FixedUpdate()
         {
-            base.Update();
+            base.FixedUpdate();
             
             _propeller.Update(Time.deltaTime);
         }
@@ -67,6 +72,8 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, distanceToAttack);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, distanceToStopAttacking);
         }
 
         private bool IsThereAnObstacleInAttackRange()

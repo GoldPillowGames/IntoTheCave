@@ -9,16 +9,18 @@ namespace GoldPillowGames.Enemy
     {
         #region Variables
         [SerializeField] protected float health;
-
-        public float Health => health;
         protected FiniteStateMachine stateMachine;
+        private RoomManager _roomManager;
         public Action GoToNextStateCallback { set; private get; }
+        
+        public float Health => health;
         #endregion
 
         #region Methods
         protected virtual void Awake()
         {
             stateMachine = new FiniteStateMachine();
+            _roomManager = FindObjectOfType<RoomManager>(); // Make Singleton.
         }
 
         protected virtual void Start()
@@ -35,7 +37,7 @@ namespace GoldPillowGames.Enemy
         {
             stateMachine.FixedUpdate(Time.deltaTime);
         }
-
+        
         protected void GoToNextState()
         {
             GoToNextStateCallback?.Invoke();
@@ -48,7 +50,7 @@ namespace GoldPillowGames.Enemy
 
         protected virtual void Die()
         {
-            
+            _roomManager.EnemyDied();
         }
         
         public virtual void ReceiveDamage(float damage)
@@ -57,7 +59,6 @@ namespace GoldPillowGames.Enemy
                 health = Mathf.Max(0, health - damage);
             else
                 GetComponent<PhotonView>().RPC("ReceiveDamageSync", RpcTarget.All, damage);
-            // Update health bar.
         }
 
         [PunRPC]
