@@ -20,7 +20,7 @@ namespace GoldPillowGames.Core
 
         public void Update(float deltaTime)
         {
-            // We could create a timer in order to not calculate the path every frame (change if game is lagged with multiple followers).
+            // We could create a timer in order to not calculate the path every frame (change if game is lagged with multiple enemies).
             _agent.SetDestination(_target.position);
         }
     }

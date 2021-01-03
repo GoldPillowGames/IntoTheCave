@@ -9,7 +9,7 @@ namespace GoldPillowGames.Enemy
         #region Variables
         protected readonly RandomStringSelector animationBoolParameterSelector;
         protected readonly Animator anim;
-        private string _animatorBoolParameterName;
+        private string animatorBoolParameterName;
         #endregion
         
         #region Methods
@@ -23,15 +23,15 @@ namespace GoldPillowGames.Enemy
         {
             base.Enter();
 
-            _animatorBoolParameterName = animationBoolParameterSelector.ChooseRandom();
-            anim.SetBool(_animatorBoolParameterName, true);
+            animatorBoolParameterName = animationBoolParameterSelector.ChooseRandom();
+            anim.SetBool(animatorBoolParameterName, true);
         }
 
         public override void Exit()
         {
             base.Exit();
             
-            anim.SetBool(_animatorBoolParameterName, false);
+            anim.SetBool(animatorBoolParameterName, false);
         }
         #endregion
     }

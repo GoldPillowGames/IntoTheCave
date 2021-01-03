@@ -3032,6 +3032,7 @@ GameObject:
   - component: {fileID: 8153243061164702232}
   - component: {fileID: 7057375345428689207}
   - component: {fileID: 1841427695903988204}
+  - component: {fileID: 223613104}
   m_Layer: 16
   m_Name: espada
   m_TagString: Weapon
@@ -3193,6 +3194,19 @@ BoxCollider:
   m_Size: {x: 0.028026458, y: 0.029543586, z: 0.08130322}
   m_Center: {x: 0.0001872706, y: 0.000000029550163, z: 0.0032526269}
 --- !u!114 &1841427695903988204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153243061164702234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601f9433dcc6b64ba70388b53c7104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 9072301941133235391}
+--- !u!114 &223613104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3625,7 +3639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  weapon: {fileID: 0}
+  weapon: {fileID: 223613104}
   velocity: 8
   distanceToAttack: 4.5
   detectAngle: 45

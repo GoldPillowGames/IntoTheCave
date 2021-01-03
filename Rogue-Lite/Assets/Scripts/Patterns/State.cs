@@ -7,8 +7,7 @@
         #endregion
 
         #region Methods
-
-        protected State(FiniteStateMachine stateMachine)
+        public State(FiniteStateMachine stateMachine)
         {
             this.stateMachine = stateMachine;
         }

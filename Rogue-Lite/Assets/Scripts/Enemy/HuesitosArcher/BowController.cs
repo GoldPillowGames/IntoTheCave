@@ -37,7 +37,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         
         public void Disable()
         {
-            HideVisualArrow();
             //_collider.enabled = true;
             //_rigidbody.isKinematic = false;
         }

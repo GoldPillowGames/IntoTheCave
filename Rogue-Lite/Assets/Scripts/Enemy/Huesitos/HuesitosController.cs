@@ -59,9 +59,9 @@ namespace GoldPillowGames.Enemy.Huesitos
             transform.forward = DirectionToPlayer;
         }
 
-        protected override void FixedUpdate()
+        protected override void Update()
         {
-            base.FixedUpdate();
+            base.Update();
             
             _propeller.Update(Time.deltaTime);
         }

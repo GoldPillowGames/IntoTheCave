@@ -9,7 +9,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         #region Variables
         private readonly HuesitosArcherController _enemyController;
         private readonly RotateTowardsTarget _rotateTowards;
-        private readonly MethodDelayer _fireDelayer;
         #endregion
         
         #region Methods
@@ -18,7 +17,6 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             _enemyController = enemyController;
 
             _rotateTowards = new RotateTowardsTarget(_enemyController.transform, _enemyController.Player, _enemyController.RotationSpeed);
-            _fireDelayer = new MethodDelayer(Fire);
             
             animationBoolParameterSelector.Add("IsPreparing");
         }
@@ -26,8 +24,8 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         public override void Enter()
         {
             base.Enter();
-            
-            _fireDelayer.SetNewDelay(_enemyController.TimeToFire);
+
+            _enemyController.GoToNextStateCallback = GoToNextState;
         }
 
         public override void Update(float deltaTime)
@@ -42,16 +40,23 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             }
         }
 
-        public override void FixedUpdate(float deltaTime)
+        public override void Exit()
         {
-            base.FixedUpdate(deltaTime);
-            
-            _fireDelayer.Update(deltaTime);
+            base.Exit();
+
+            _enemyController.GoToNextStateCallback = null;
         }
 
-        private void Fire()
+        private void GoToNextState()
         {
-            stateMachine.SetState(new BowFiringState(_enemyController, stateMachine, anim));
+            if (_enemyController.CanAttack)
+            {
+                stateMachine.SetState(new BowFiringState(_enemyController, stateMachine, anim));
+            }
+            else
+            {
+                stateMachine.SetState(new FollowingState(_enemyController, stateMachine, anim));
+            }
         }
         #endregion
     }

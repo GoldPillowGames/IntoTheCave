@@ -26,9 +26,9 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             _nextStateDelayer.SetNewDelay(_enemyController.TimeDefenseless);
         }
 
-        public override void FixedUpdate(float deltaTime)
+        public override void Update(float deltaTime)
         {
-            base.FixedUpdate(deltaTime);
+            base.Update(deltaTime);
             
             _nextStateDelayer.Update(deltaTime);
         }
