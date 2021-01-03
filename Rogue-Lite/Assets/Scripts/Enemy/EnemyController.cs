@@ -50,7 +50,8 @@ namespace GoldPillowGames.Enemy
 
         protected virtual void Die()
         {
-            _roomManager.EnemyDied();
+            if (_roomManager != null)
+                _roomManager.EnemyDied();
         }
         
         public virtual void ReceiveDamage(float damage)

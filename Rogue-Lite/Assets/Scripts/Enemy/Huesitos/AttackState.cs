@@ -17,6 +17,8 @@ namespace GoldPillowGames.Enemy.Huesitos
             _enemyController = enemyController;
             
             animationBoolParameterSelector.Add("IsAttacking" + animAttackComboIndex);
+            
+            _enemyController.SetComboAttackDamageFromIndex(animAttackComboIndex - 1);
         }
 
         public override void Enter()
