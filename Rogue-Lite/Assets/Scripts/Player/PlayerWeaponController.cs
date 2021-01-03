@@ -10,7 +10,6 @@ namespace GoldPillowGames.Player
         private bool _isAttacking = false;
         private List<GameObject> _enemiesHit;
 
-        private float _strength = 20; // Provisional, debe venir de las stats del jugador.
         private float _pushForce = 4; // Provisional, debe venir de las stats del jugador.
         
         private void Awake()

@@ -6,12 +6,11 @@ namespace GoldPillowGames.Enemy.Huesitos
     public class HuesitosWeaponController : MonoBehaviour
     {
         [SerializeField] private GameObject enemy;
-        private bool _isAttacking = false;
+        private bool _isAttacking;
         private List<GameObject> _playersHit;
         private MeshCollider _collider;
         private Rigidbody _rigidbody;
-
-        private int _strength = 20; // Provisional, debe venir de las stats del enemigo.
+        private int _damage;
         
         private void Awake()
         {
@@ -37,7 +36,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             if (_isAttacking && other.CompareTag("Player") && !_playersHit.Contains(other.gameObject))
             {
                 var playerController = other.GetComponent<PlayerController>();
-                playerController.TakeDamage(_strength, (other.transform.position - enemy.transform.position).normalized);
+                playerController.TakeDamage(_damage, (other.transform.position - enemy.transform.position).normalized);
                 _playersHit.Add(other.gameObject);
             }
         }
@@ -46,6 +45,11 @@ namespace GoldPillowGames.Enemy.Huesitos
         {
             _collider.enabled = true;
             _rigidbody.isKinematic = false;
+        }
+
+        public void SetDamage(int comboAttackDamage)
+        {
+            _damage = comboAttackDamage;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         [SerializeField] private float detectAngle;
         [SerializeField] private float pushComboForce = 15;
         [SerializeField] private float timeDefenseless = 1;
+        [SerializeField] private int[] comboAttackDamages = {15, 20};
         private Animator _anim;
         private AgentPropeller _propeller;
         private Collider _collider;
@@ -140,6 +141,11 @@ namespace GoldPillowGames.Enemy.Huesitos
             {
                 stateMachine.SetState(new DeathState(this, stateMachine, _anim));
             }
+        }
+
+        public void SetComboAttackDamageFromIndex(int comboIndex)
+        {
+            weapon.SetDamage(comboAttackDamages[comboIndex]);
         }
         
         private void InitAttackInWeapon()
