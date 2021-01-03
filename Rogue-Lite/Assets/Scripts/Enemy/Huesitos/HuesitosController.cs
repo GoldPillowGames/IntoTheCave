@@ -122,6 +122,10 @@ namespace GoldPillowGames.Enemy.Huesitos
             base.Die();
             
             gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+            foreach(Transform child in GetComponentsInChildren<Transform>())
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+            }
             _collider.enabled = false;
             Agent.enabled = false;
             _anim.enabled = false;

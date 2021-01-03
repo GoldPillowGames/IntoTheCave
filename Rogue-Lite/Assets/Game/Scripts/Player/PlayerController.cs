@@ -305,7 +305,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage, Vector3 pushDirection)
     {
-        if ((!PV.IsMine && Config.data.isOnline) || playerState == PlayerState.BLOCKING)
+        if ((!PV.IsMine && Config.data.isOnline) || playerState == PlayerState.BLOCKING || playerState == PlayerState.ROLLING)
             return;
 
         playerState = PlayerState.IS_BEING_DAMAGED;
