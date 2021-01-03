@@ -173,11 +173,10 @@ public class GameManager : MonoBehaviour
                 cam.GetComponent<UniversalAdditionalCameraData>().antialiasing = AntialiasingMode.None;
                 asset.msaaSampleCount = (int)Config.data.antialiasingQuality;
             }
-
-
-            // Render Scale
-            asset.renderScale = Config.data.renderScale;
         }
+
+        // Render Scale
+        asset.renderScale = Config.data.renderScale;
 
         // vSync
         if (Config.data.vSync)

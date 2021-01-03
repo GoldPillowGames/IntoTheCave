@@ -20,8 +20,8 @@ public static class TableReader
         }
         int languageIndex = (int)Config.data.language;
 
-        Debug.Log("Column: " + column);
-        Debug.Log("Row: " + row);
+        //Debug.Log("Column: " + column);
+        //Debug.Log("Row: " + row);
 
         return values[row][column + languageIndex];
     }
