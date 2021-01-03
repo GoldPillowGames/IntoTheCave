@@ -12,7 +12,8 @@ public class RoomManager : MonoBehaviour
     // Provisional:
     private int _minEnemies = 2;
     private int _maxEnemies = 4;
-
+    private int _numEnemies;
+    
     void Start()
     {
         Audio.ActivateTrack(1);
@@ -24,30 +25,47 @@ public class RoomManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        var numEnemiesToSpawn = Mathf.Min(Random.Range(_minEnemies, _maxEnemies + 1), _enemySpawnPositions.Length);
+        _numEnemies = Mathf.Min(Random.Range(_minEnemies, _maxEnemies + 1), _enemySpawnPositions.Length);
         
         var enemySpawnPositionsList = _enemySpawnPositions.ToList();
 
-        for (var i = 0; i < numEnemiesToSpawn; i++)
+        for (var i = 0; i < _numEnemies; i++)
         {
             var randomIndex = Random.Range(0, enemySpawnPositionsList.Count);
             var randomPosition = enemySpawnPositionsList[randomIndex].position;
-            if (!Config.data.isOnline)
-            {
-                Instantiate(SelectRandomEnemy(), randomPosition, Quaternion.identity);
-            }
-            else if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Enemies", SelectRandomEnemy().name), randomPosition, Quaternion.identity);
-            }
+            var enemyToSpawn = SelectRandomEnemy();
+            
+            InstantiateEnemy(enemyToSpawn, randomPosition);
+            
             enemySpawnPositionsList.RemoveAt(randomIndex);
         }
     }
 
+    public void EnemyDied()
+    {
+        _numEnemies--;
+        if (_numEnemies == 0)
+        {
+            FindObjectOfType<RunManager>().EndCurrentStage();
+        }
+    }
+    
     private GameObject SelectRandomEnemy()
     {
         var randomIndex = Random.Range(0, _posibleEnemiesToSpawn.Length);
         return _posibleEnemiesToSpawn[randomIndex];
+    }
+
+    private void InstantiateEnemy(GameObject enemyToInstantiate, Vector3 position)
+    {
+        if (!Config.data.isOnline)
+        {
+            Instantiate(enemyToInstantiate, position, Quaternion.identity);
+        }
+        else if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Enemies", enemyToInstantiate.name), position, Quaternion.identity);
+        }
     }
     
     public void OpenDoors()

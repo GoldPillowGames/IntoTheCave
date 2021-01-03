@@ -26,16 +26,21 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            switch (other.tag)
             {
-                other.GetComponent<PlayerController>().TakeDamage(_damage, (other.transform.position - transform.position).normalized);
-                DestroyArrow();
+                case "Player":
+                    other.GetComponent<PlayerController>().TakeDamage(_damage, (other.transform.position - transform.position).normalized);
+                    DestroyArrow();
+                    break;
+                case "Ground":
+                    DestroyArrow();
+                    break;
             }
         }
 
         private void DestroyArrow()
         {
-            // Poner partículas etc.
+            // Put particles, etc.
             gameObject.SetActive(false);
         }
     }
