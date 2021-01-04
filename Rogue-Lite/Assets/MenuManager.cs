@@ -7,7 +7,8 @@ public enum MainMenuType
     MAIN_MENU = 0,
     SETTINGS_MENU = 1,
     BRIGHTNESS_MENU = 2,
-    LANGUAGE_MENU = 3
+    LANGUAGE_MENU = 3,
+    CREDITS_MENU = 4
 }
 
 public class MenuManager : MonoBehaviour
@@ -16,8 +17,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _brightnessMenu;
     [SerializeField] private GameObject _languageMenu;
     [SerializeField] private GameObject _settingsMenu;
+    [SerializeField] private GameObject _creditsMenu;
 
     [SerializeField] private GameObject _brightnessBackground;
+
+    [SerializeField] private Animator _creditsAnimator;
 
     private Dictionary<MainMenuType, GameObject> menus;
 
@@ -33,6 +37,7 @@ public class MenuManager : MonoBehaviour
         menus.Add(MainMenuType.BRIGHTNESS_MENU, _brightnessMenu);
         menus.Add(MainMenuType.LANGUAGE_MENU, _languageMenu);
         menus.Add(MainMenuType.SETTINGS_MENU, _settingsMenu);
+        menus.Add(MainMenuType.CREDITS_MENU, _creditsMenu);
 
         if (Config.data.firstTimeLoaded)
         {
@@ -127,6 +132,17 @@ public class MenuManager : MonoBehaviour
                 if (menus[(MainMenuType)i] == menus[menu])
                 {
                     menus[(MainMenuType)i].SetActive(true);
+
+                    if (menu == MainMenuType.CREDITS_MENU)
+                    {
+                        print(menu);
+                        _creditsAnimator.SetBool("IsPlaying", true);
+                    }
+                    else
+                    {
+                        print(menu);
+                        _creditsAnimator.SetBool("IsPlaying", false);
+                    }
                 }
                 else
                 {

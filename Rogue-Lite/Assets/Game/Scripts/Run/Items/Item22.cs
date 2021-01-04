@@ -9,6 +9,6 @@
     // Random Object
     public override void OnPickUpItem(PlayerStatus player)
     {
-        player.push = player.push * 10 / 100;
+        player.push += player.push * 10 / 100;
     }
 }

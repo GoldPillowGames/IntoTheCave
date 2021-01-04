@@ -24,6 +24,7 @@ public class EventTrigger : MonoBehaviour
     public float musicTransitionSpeed = 0.75f;
     public int cameraIndex = 0;
     public DoorPosition doorPosition;
+    public int doorIndex = 0;
     DoorPosition nextDoorPosition;
 
     private float objectiveVolume = 0;
@@ -36,10 +37,20 @@ public class EventTrigger : MonoBehaviour
 
     public void Awake()
     {
-        
-
         if(eventType == EventType.ROOM_DOOR)
         {
+            if (Config.data.isOnline)
+            {
+                if (Photon.Pun.PhotonNetwork.IsMasterClient)
+                {
+                    GetComponent<BoxCollider>().isTrigger = true;
+                }
+                else
+                {
+                    GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
+
             EventTrigger[] eventTriggers = FindObjectsOfType<EventTrigger>();
 
             foreach(EventTrigger trigger in eventTriggers)
@@ -49,6 +60,7 @@ public class EventTrigger : MonoBehaviour
                     if(doorPosition == trigger.doorPosition)
                     {
                         trigger.activated = false;
+                        trigger.transform.localScale = this.transform.localScale;
                         trigger.transform.position = this.transform.position;
                         Destroy(this.gameObject);
                     }

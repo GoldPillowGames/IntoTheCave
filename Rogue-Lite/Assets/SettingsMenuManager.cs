@@ -7,7 +7,14 @@ using Michsky.UI.ModernUIPack;
 
 public class SettingsMenuManager : MonoBehaviour
 {
-    [Header("Pages")]
+    [Header("Menus")]
+    [SerializeField] private GameObject[] _menus;
+
+    [SerializeField] private HorizontalSelector _languageSelector;
+    [SerializeField] private HorizontalSelector _showFPSSelector;
+
+
+    [Header("Pages / Graphics Settings")]
     [SerializeField] private GameObject[] _pages;
     [SerializeField] private HorizontalSelector _graphicsSettingsPage;
 
@@ -22,11 +29,11 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private HorizontalSelector _vSync;
     [SerializeField] private HorizontalSelector _fpsSync;
     [SerializeField] private HorizontalSelector _renderScale;
-    [SerializeField] private HorizontalSelector _showFPS;
+    [SerializeField] private HorizontalSelector _limitFPS;
 
     [SerializeField] private GameObject _customSettings;
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -124,25 +131,25 @@ public class SettingsMenuManager : MonoBehaviour
         switch (Config.data.limitedFPS)
         {
             case FPSLimit.NONE:
-                SetSelector(_showFPS, 0);
+                SetSelector(_limitFPS, 0);
                 break;
             case FPSLimit.VERY_LOW:
-                SetSelector(_uiScale, 1);
+                SetSelector(_limitFPS, 1);
                 break;
             case FPSLimit.LOW:
-                SetSelector(_uiScale, 2);
+                SetSelector(_limitFPS, 2);
                 break;
             case FPSLimit.MEDIUM:
-                SetSelector(_uiScale, 3);
+                SetSelector(_limitFPS, 3);
                 break;
             case FPSLimit.HIGH:
-                SetSelector(_uiScale, 4);
+                SetSelector(_limitFPS, 4);
                 break;
             case FPSLimit.VERY_HIGH:
-                SetSelector(_uiScale, 5);
+                SetSelector(_limitFPS, 5);
                 break;
             case FPSLimit.ULTRA:
-                SetSelector(_uiScale, 6);
+                SetSelector(_limitFPS, 6);
                 break;
             default:
                 break;
@@ -190,6 +197,23 @@ public class SettingsMenuManager : MonoBehaviour
             default:
                 break;
         }
+
+        SetSelector(_languageSelector, (int)Config.data.language);
+        
+
+        switch (Config.data.isDebug)
+        {
+            case true:
+                SetSelector(_showFPSSelector, 1);
+                break;
+            case false:
+                SetSelector(_showFPSSelector, 0);
+                break;
+            default:
+                break;
+        }
+
+        OpenSettingsMenu(0);
     }
 
     void SetSelector(HorizontalSelector selector, int index)
@@ -220,68 +244,90 @@ public class SettingsMenuManager : MonoBehaviour
         Config.data.renderScale = scale;
     }
 
+    public void SetLanguage(int languageIndex)
+    {
+        Config.data.language = (Language)languageIndex;
+    }
+
+    public void ShowFPS(bool show)
+    {
+        print(show);
+        Config.data.isDebug = show;
+        // print(Config.data.isDebug);
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+
+
         if (!_pages[0].activeSelf)
             return;
-        if (_graphicsSettings.index == 3)
+
+
+        #region Graphics Settings
+        if (_menus[1].activeSelf)
         {
-            //Image[] childrenImage = _customSettings.GetComponentsInChildren<Image>();
-            //foreach(Image image in childrenImage){
-            //    // image.raycastTarget = true;
-            //    image.color = new Color(1, 1, 1, 1f);
-            //}
-
-            TextMeshProUGUI[] childrenText = _customSettings.GetComponentsInChildren<TextMeshProUGUI>();
-            foreach (TextMeshProUGUI text in childrenText)
+            if (_graphicsSettings.index == 3)
             {
-                text.color = new Color(1, 1, 1, 1f);
-                text.faceColor = new Color(1, 1, 1, 1f);
-            }
-
-            HorizontalSelector[] childrenSelector = _customSettings.GetComponentsInChildren<HorizontalSelector>();
-            foreach (HorizontalSelector children in childrenSelector)
-            {
-                children.enabled = true;
-                //Image[] childrenImage = children.GetComponentsInChildren<Image>();
-                //foreach (Image image in childrenImage)
-                //{
-                //    image.color = new Color(1, 1, 1, 0.01f);
+                //Image[] childrenImage = _customSettings.GetComponentsInChildren<Image>();
+                //foreach(Image image in childrenImage){
+                //    // image.raycastTarget = true;
+                //    image.color = new Color(1, 1, 1, 1f);
                 //}
+
+                TextMeshProUGUI[] childrenText = _customSettings.GetComponentsInChildren<TextMeshProUGUI>();
+                foreach (TextMeshProUGUI text in childrenText)
+                {
+                    text.color = new Color(1, 1, 1, 1f);
+                    text.faceColor = new Color(1, 1, 1, 1f);
+                }
+
+                HorizontalSelector[] childrenSelector = _customSettings.GetComponentsInChildren<HorizontalSelector>();
+                foreach (HorizontalSelector children in childrenSelector)
+                {
+                    children.enabled = true;
+                    //Image[] childrenImage = children.GetComponentsInChildren<Image>();
+                    //foreach (Image image in childrenImage)
+                    //{
+                    //    image.color = new Color(1, 1, 1, 0.01f);
+                    //}
+                }
+                Button[] childrenButtons = _customSettings.GetComponentsInChildren<Button>();
+                foreach (Button button in childrenButtons)
+                {
+                    button.interactable = true;
+                }
             }
-            Button[] childrenButtons = _customSettings.GetComponentsInChildren<Button>();
-            foreach (Button button in childrenButtons)
+            else
             {
-                button.interactable = true;
+                HorizontalSelector[] childrenSelector = _customSettings.GetComponentsInChildren<HorizontalSelector>();
+                foreach (HorizontalSelector children in childrenSelector)
+                {
+                    children.enabled = false;
+                    Image[] childrenImage = children.GetComponentsInChildren<Image>();
+                    //foreach (Image image in childrenImage)
+                    //{
+                    //    image.color = new Color(1, 1, 1, 0.01f);
+                    //}
+                }
+
+                TextMeshProUGUI[] childrenText = _customSettings.GetComponentsInChildren<TextMeshProUGUI>();
+                foreach (TextMeshProUGUI text in childrenText)
+                {
+                    text.color = new Color(1, 1, 1, 0.25f);
+                    text.faceColor = new Color(1, 1, 1, 0.25f);
+                }
+
+                Button[] childrenButtons = _customSettings.GetComponentsInChildren<Button>();
+                foreach (Button button in childrenButtons)
+                {
+                    button.interactable = false;
+                }
             }
         }
-        else
-        {
-            HorizontalSelector[] childrenSelector = _customSettings.GetComponentsInChildren<HorizontalSelector>();
-            foreach (HorizontalSelector children in childrenSelector)
-            {
-                children.enabled = false;
-                Image[] childrenImage = children.GetComponentsInChildren<Image>();
-                //foreach (Image image in childrenImage)
-                //{
-                //    image.color = new Color(1, 1, 1, 0.01f);
-                //}
-            }
-
-            TextMeshProUGUI[] childrenText = _customSettings.GetComponentsInChildren<TextMeshProUGUI>();
-            foreach (TextMeshProUGUI text in childrenText)
-            {
-                text.color = new Color(1, 1, 1, 0.25f);
-                text.faceColor = new Color(1, 1, 1, 0.25f);
-            }
-
-            Button[] childrenButtons = _customSettings.GetComponentsInChildren<Button>();
-            foreach (Button button in childrenButtons)
-            {
-                button.interactable = false;
-            }
-        }
+        #endregion
     }
 
     public void ShowGraphicsPage(int index)
@@ -364,6 +410,21 @@ public class SettingsMenuManager : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void OpenSettingsMenu(int index)
+    {
+        for(int i = 0; i < _menus.Length; i++)
+        {
+            if(i == index)
+            {
+                _menus[i].SetActive(true);
+            }
+            else
+            {
+                _menus[i].SetActive(false);
+            }
         }
     }
 
