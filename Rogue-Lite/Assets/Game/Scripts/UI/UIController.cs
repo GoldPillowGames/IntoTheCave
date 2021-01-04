@@ -48,7 +48,8 @@ public class UIController : MonoBehaviour
         {
             _playerIsDead = true;
             _player.Kill();
-            _deathMenuManager.PlayDeathMenu();
+            if(!Config.data.isOnline)
+                _deathMenuManager.PlayDeathMenu();
         }
     }
 }

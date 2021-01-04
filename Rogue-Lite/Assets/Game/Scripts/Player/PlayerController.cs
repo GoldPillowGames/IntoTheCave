@@ -276,10 +276,6 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
-        // DEBUG
-        if (Input.GetKeyDown(KeyCode.P))
-            TakeDamage(10, new Vector3(1, 0, 1));
-
         if(playerState == PlayerState.IS_BEING_DAMAGED && _pushTime > 0)
         {
             animator.SetBool("IsBeingDamaged", true);
@@ -430,9 +426,20 @@ public class PlayerController : MonoBehaviour
 
     public void Kill()
     {
-        isDead = true;
-        animator.SetTrigger("Death");
+        if (!Config.data.isOnline)
+        {
+            isDead = true;
+            animator.SetTrigger("Death");
+        }
+        else
+        {
+            // PV.RPC("DisconnectPlayer", RpcTarget.All); 
+            FindObjectOfType<GameManager>().DisconnectPlayer();
+        }
+        
     }
+
+    
 
     public void Revive()
     {

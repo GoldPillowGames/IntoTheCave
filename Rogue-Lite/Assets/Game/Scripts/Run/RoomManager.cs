@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
 {
 
     [SerializeField] private Transform[] _enemySpawnPositions;
+    // [SerializeField] private GameObject[] _doors;
     private GameObject[] _posibleEnemiesToSpawn;
     
     // Provisional:
@@ -72,6 +73,17 @@ public class RoomManager : MonoBehaviour
     {
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("Door"))
         {
+            if (g.GetComponent<EventTrigger>())
+            {
+                if (g.GetComponent<EventTrigger>().canBeDeactivated)
+                {
+                    g.GetComponent<EventTrigger>().activated = false;
+                }
+                else
+                {
+                    g.GetComponent<EventTrigger>().activated = true;
+                }
+            }
             g.GetComponent<BoxCollider>().enabled = true;
         }
         Audio.DeactivateTrack(1);

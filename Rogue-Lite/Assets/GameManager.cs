@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Reflection;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Photon.Pun;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
 
 
@@ -39,6 +40,23 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
+    }
+
+    [PunRPC]
+    public void DisconnectPlayer()
+    {
+        StartCoroutine(DisconnectAndLoad());
+    }
+
+    IEnumerator DisconnectAndLoad()
+    {
+        PhotonNetwork.LeaveRoom();
+        while (PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+        DeleteAllDontDestroyOnLoad();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void DeleteAllDontDestroyOnLoad()

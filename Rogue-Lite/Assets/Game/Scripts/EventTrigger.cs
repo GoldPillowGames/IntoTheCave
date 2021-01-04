@@ -25,12 +25,13 @@ public class EventTrigger : MonoBehaviour
     public int cameraIndex = 0;
     public DoorPosition doorPosition;
     public int doorIndex = 0;
+    public bool canBeDeactivated = true;
     DoorPosition nextDoorPosition;
 
     private float objectiveVolume = 0;
     //private MusicManager musicManager;
     private AudioSource audioSource;
-    private bool activated = false;
+    public bool activated = false;
     private Transform player;
     private LayerMask playerLayer;
     private Vector3 respawnPoint;
@@ -39,18 +40,6 @@ public class EventTrigger : MonoBehaviour
     {
         if(eventType == EventType.ROOM_DOOR)
         {
-            if (Config.data.isOnline)
-            {
-                if (Photon.Pun.PhotonNetwork.IsMasterClient)
-                {
-                    GetComponent<BoxCollider>().isTrigger = true;
-                }
-                else
-                {
-                    GetComponent<BoxCollider>().isTrigger = false;
-                }
-            }
-
             EventTrigger[] eventTriggers = FindObjectsOfType<EventTrigger>();
 
             foreach(EventTrigger trigger in eventTriggers)
@@ -60,6 +49,7 @@ public class EventTrigger : MonoBehaviour
                     if(doorPosition == trigger.doorPosition)
                     {
                         trigger.activated = false;
+                        trigger.canBeDeactivated = true;
                         trigger.transform.localScale = this.transform.localScale;
                         trigger.transform.position = this.transform.position;
                         Destroy(this.gameObject);
@@ -106,7 +96,22 @@ public class EventTrigger : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
             respawnPoint = player.position;
         }
-            
+
+        if (eventType == EventType.ROOM_DOOR)
+        {
+            if (Config.data.isOnline)
+            {
+                if (Photon.Pun.PhotonNetwork.IsMasterClient)
+                {
+                    GetComponent<BoxCollider>().isTrigger = true;
+                }
+                else
+                {
+                    GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -181,6 +186,13 @@ public class EventTrigger : MonoBehaviour
                     if (!activated && eventType == EventType.ROOM_DOOR)
                     {
                         activated = true;
+
+                        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Door"))
+                        {
+                            g.transform.position = new Vector3(9999, 9999, 9999);
+                        }
+
+                        canBeDeactivated = false;
                         if (!Config.data.isOnline)
                         {
                             // Localizamos el run manager
@@ -225,6 +237,7 @@ public class EventTrigger : MonoBehaviour
                     }
                 }
                 break;
+
             default:
                 break;
         }
@@ -234,6 +247,12 @@ public class EventTrigger : MonoBehaviour
     private void UbicatePlayers()
     {
         activated = true; // Provisional
+        canBeDeactivated = false;
+
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Door"))
+        {
+            g.transform.position = new Vector3(9999, 9999, 9999);
+        }
 
         // Localizamos el run manager
         RunManager runManager = FindObjectOfType<RunManager>();
