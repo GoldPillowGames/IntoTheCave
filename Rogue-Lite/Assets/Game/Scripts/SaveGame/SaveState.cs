@@ -76,7 +76,7 @@ public class SaveState
 
     #region UI
     public bool isTactile = false;
-    public bool isDebug = true;
+    public bool isDebug = false;
     public float canvasScale = 1.0f;
     #endregion
 
