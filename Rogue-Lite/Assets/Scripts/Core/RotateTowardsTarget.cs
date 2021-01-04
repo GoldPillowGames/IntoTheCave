@@ -13,7 +13,7 @@ namespace GoldPillowGames.Core
 
         public RotateTowardsTarget(Transform self, Transform target, float rotationSpeed)
         {
-            this._self = self;
+            _self = self;
             _target = target;
             _rotationSpeed = rotationSpeed;
         }
@@ -23,7 +23,12 @@ namespace GoldPillowGames.Core
             _direction = (_target.position - _self.position).normalized;
  
             _lookRotation = Quaternion.LookRotation(_direction);
- 
+
+            /*if (Quaternion.Angle(_self.rotation, _lookRotation) < 15)
+            {
+                return;
+            }*/
+            
             _self.rotation = Quaternion.Slerp(_self.rotation, _lookRotation, deltaTime * _rotationSpeed);
         }
     }
