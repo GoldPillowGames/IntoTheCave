@@ -101,6 +101,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             bowController.ThrowArrow();
         }
 
+        [Photon.Pun.PunRPC]
         public override void Push(float time, float force, Vector3 direction)
         {
             _propeller.StartPush(time, force * direction);
@@ -122,6 +123,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             enabled = false;
         }
         
+        [Photon.Pun.PunRPC]
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);

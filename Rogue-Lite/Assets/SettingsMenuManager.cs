@@ -27,7 +27,7 @@ public class SettingsMenuManager : MonoBehaviour
     [Header("Page 2")]
     [SerializeField] private HorizontalSelector _uiScale;
     [SerializeField] private HorizontalSelector _vSync;
-    [SerializeField] private HorizontalSelector _fpsSync;
+    // [SerializeField] private HorizontalSelector _fpsSync;
     [SerializeField] private HorizontalSelector _renderScale;
     [SerializeField] private HorizontalSelector _limitFPS;
 
@@ -265,10 +265,12 @@ public class SettingsMenuManager : MonoBehaviour
         if (!_pages[0].activeSelf)
             return;
 
-
+        
         #region Graphics Settings
         if (_menus[1].activeSelf)
         {
+
+            
             if (_graphicsSettings.index == 3)
             {
                 //Image[] childrenImage = _customSettings.GetComponentsInChildren<Image>();

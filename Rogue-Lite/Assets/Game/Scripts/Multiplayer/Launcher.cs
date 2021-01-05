@@ -29,6 +29,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     void Start()
     {
         Debug.Log("Connecting to Master");
+        PhotonNetwork.OfflineMode = false;
         PhotonNetwork.ConnectUsingSettings();
     }
 

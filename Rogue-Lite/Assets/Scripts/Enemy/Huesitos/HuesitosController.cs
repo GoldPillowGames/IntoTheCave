@@ -112,6 +112,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             Push(time, pushComboForce, transform.forward);
         }
 
+        [Photon.Pun.PunRPC]
         public override void Push(float time, float force, Vector3 direction)
         {
             _propeller.StartPush(time, force * direction);
@@ -134,6 +135,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             enabled = false;
         }
 
+        [Photon.Pun.PunRPC]
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);

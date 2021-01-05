@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Photon.Pun;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
-
+using AwesomeToon;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,24 +39,36 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        if (!Config.data.dynamicCelShadingEffect)
+        {
+            foreach (AwesomeToon.AwesomeToonHelper toonHelper in FindObjectsOfType<AwesomeToonHelper>())
+            {
+                toonHelper.update = false;
+            }
+        }
+        
     }
 
     [PunRPC]
     public void DisconnectPlayer()
     {
-        StartCoroutine(DisconnectAndLoad());
+        // PhotonNetwork.LeaveRoom();
+        // DeleteAllDontDestroyOnLoad();
+        FindObjectOfType<RunManager>().ResetOnSceneLoaded();
+        PhotonNetwork.LeaveRoom();
+        
+        // StartCoroutine(DisconnectAndLoad());
     }
 
     IEnumerator DisconnectAndLoad()
     {
-        PhotonNetwork.LeaveRoom();
+        
         while (PhotonNetwork.InRoom)
         {
             yield return null;
         }
-        DeleteAllDontDestroyOnLoad();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        
+        
     }
 
     public void DeleteAllDontDestroyOnLoad()
@@ -84,6 +96,58 @@ public class GameManager : MonoBehaviour
 
         Destroy(GameObject.FindGameObjectWithTag("Light"));
 
+        //if (Config.data.isOnline)
+        //{
+        //    PhotonNetwork.Destroy(FindObjectOfType<OnlineRoomManager>().gameObject);
+        //}
+
+        Destroy(this.gameObject);
+    }
+
+    public void DeleteAllDontDestroyOnLoadAndLoadScene(int index)
+    {
+        foreach (AwesomeToonHelper a in FindObjectsOfType<AwesomeToonHelper>())
+        {
+            a.enabled = false;
+        }
+
+        foreach (ItemSpawner item in FindObjectsOfType<ItemSpawner>())
+        {
+            item.enabled = false;
+            Destroy(item.gameObject);
+        }
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).GetComponent<RunManager>())
+                transform.GetChild(i).GetComponent<RunManager>().ResetOnSceneLoaded();
+
+            if (transform.GetChild(i).GetComponent<SaveManager>())
+                transform.GetChild(i).transform.parent = null;
+            else
+                Destroy(transform.GetChild(i).gameObject);
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            Destroy(player);
+        }
+
+        foreach (EventTrigger trigger in FindObjectsOfType<EventTrigger>())
+        {
+            Destroy(trigger.gameObject);
+        }
+
+        
+
+        Destroy(GameObject.FindGameObjectWithTag("Light"));
+
+        //if (Config.data.isOnline)
+        //{
+        //    PhotonNetwork.Destroy(FindObjectOfType<OnlineRoomManager>().gameObject);
+        //}
+        UnityEngine.SceneManagement.SceneManager.LoadScene(index);
         Destroy(this.gameObject);
     }
 

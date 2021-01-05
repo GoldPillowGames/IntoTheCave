@@ -433,12 +433,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // PV.RPC("DisconnectPlayer", RpcTarget.All); 
-            FindObjectOfType<GameManager>().DisconnectPlayer();
+            PV.RPC("DisconnectPlayer", RpcTarget.All); 
         }
         
     }
 
+    
     
 
     public void Revive()
