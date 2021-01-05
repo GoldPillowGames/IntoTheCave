@@ -39,8 +39,7 @@ namespace GoldPillowGames.Enemy.Huesitos
 
         private void Update()
         {
-            transform.localPosition = _initialLocalPosition;
-            transform.localRotation = _initialLocalRotation;
+
         }
 
         private void OnTriggerEnter(Collider other)

@@ -90,6 +90,7 @@ namespace GoldPillowGames.Enemy.SinCabeza
             orb.GetComponent<OrbController>().Init(orbSpawner.position, transform.forward);
         }
 
+        [Photon.Pun.PunRPC]
         public override void Push(float time, float force, Vector3 direction)
         {
             _propeller.StartPush(time, force * direction);
@@ -109,7 +110,8 @@ namespace GoldPillowGames.Enemy.SinCabeza
             _anim.enabled = false;
             enabled = false;
         }
-        
+
+        [Photon.Pun.PunRPC]
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);

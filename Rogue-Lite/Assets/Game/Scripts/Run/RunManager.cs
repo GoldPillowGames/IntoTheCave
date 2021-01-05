@@ -341,10 +341,18 @@ public class RunManager : MonoBehaviour
                     {
                         case 1:
                             print("Boss Fight Reached");
-                            roomToLoad = 10;
+                            roomToLoad = 9;
                             currentRoom = 0;
+                            currentStage = 2;
+                            break;
+                        case 2:
+                            print("Boss Fight Reached");
+                            roomToLoad = 9;
+                            currentRoom = 0;
+                            currentStage = 3;
                             break;
                         default:
+                            roomToLoad = Random.Range(5, 10);
                             break;
                     }
                 }
@@ -360,17 +368,29 @@ public class RunManager : MonoBehaviour
                             }
                             break;
                         case 1:
-                            if (currentRoom == 1)
-                            {
-                                currentStage = 1;
-                                roomToLoad = 6;
-                            }
-                            else
-                            {
-                                roomToLoad = Random.Range(5, 10);
-                            }
+                            //if (currentRoom == 1)
+                            //{
+                            //    currentStage = 1;
+                            //    roomToLoad = 6;
+                            //}
+                            //else
+                            //{
+                            roomToLoad = Random.Range(5, 10);
+                            //}
+                            break;
+                        case 2:
+                            //if (currentRoom == 1)
+                            //{
+                            //    currentStage = 1;
+                            //    roomToLoad = 6;
+                            //}
+                            //else
+                            //{
+                            roomToLoad = Random.Range(11, 15);
+                            //}
                             break;
                         default:
+                            roomToLoad = Random.Range(5, 10);
                             break;
                     }
                 }
