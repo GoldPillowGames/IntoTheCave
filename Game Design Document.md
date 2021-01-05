@@ -156,6 +156,14 @@ Un tablón de corcho, con papeles pegados, que muestra las estadísticas de tu �
 - **Boss 2 (criatura con 2 brazos y una esfera debajo del cuerpo para moverse):** 
 - **Boss fijo al suelo:** se trata de un boss de gran tamaño y fijo al suelo que ataca con los brazos. Deben esquivarse estos ataques, habiendo tiempo entre ellos para atacar, ya que se mueve de forma lenta. Puede haber ataques de 2 tipos. Uno en el que golpee el suelo y otro que haga un barrido con el brazo o el puño. 
 
+#### Escenario del campamento 
+
+Se trata de un escenario predefinido en el que está la entrada a la cueva, y una serie de estructuras (descritas anteriormente) rodeando dicha entrada, formándose una especie de círculo en el centro para caminar, e ir a las distintas estructuras para interactuar con los personajes y comprar o equiparse cosas. El objetivo de que sea todo un círculo es que al jugador no le sea tedioso ir de un lado a otro, y que, si además si quiere ir directamente a jugar, pueda entrar a la cueva rápidamente sin demasiado recorrido. 
+
+#### Escenarios en la cueva 
+Las salas están generadas de antemano, cambiando únicamente el contenido de estas en cada run. Además, el jugador puede elegir entre una de varias salidas en cada sala, por lo que no verá todos los tipos de salas en cada partida. 
+Por su parte, el contenido de las salas no será 100% aleatorio. Los elementos estáticos, como trampas o muros, tendrán asignados unos puntos de spawn en cada sala, implicando esto que en cada punto de spawn, o aparece una trampa o muro de cualquier tipo, o no aparece nada. Los enemigos por su parte también tendrán unas posibilidades de aparecer concretas. Por ejemplo, los enemigos a distancia siempre estarán alejados, y los enemigos cuerpo a cuerpo estarán cerca del jugador. 
+
 #### Items que se pueden encontrar durante las partidas
 A la hora de entrar en una habitación, se ve en la entrada un icono con el tipo de mejora que habrá en esa habitación, siendo estos tipos los siguientes: 
 Item01: recupera un 5% de la vida del jugador. 
