@@ -55,13 +55,18 @@ namespace GoldPillowGames.Enemy
                 _roomManager.EnemyDied();
         }
 
+        virtual protected void CheckClosestPlayer()
+        {
+
+        }
+
         [PunRPC]
         public virtual void ReceiveDamage(float damage)
         {
-            //if(!Config.data.isOnline)
-            health = Mathf.Max(0, health - damage);
-            //else
-            //    GetComponent<PhotonView>().RPC("ReceiveDamageSync", RpcTarget.All, damage);
+            if(!Config.data.isOnline)
+                health = Mathf.Max(0, health - damage);
+            else
+                GetComponent<PhotonView>().RPC("ReceiveDamageSync", RpcTarget.All, damage);
         }
 
         [PunRPC]

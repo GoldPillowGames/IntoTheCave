@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player animator")]
     [SerializeField] private Animator animator;
     [SerializeField] private CameraController cameraController;
-    [SerializeField] private FixedJoystick joystick;
+    [SerializeField] private FixedJoystick _leftJoystick;
+    [SerializeField] private FixedJoystick _rightJoystick;
     public CameraFollower cameraFollower;
     [SerializeField] private PlayerWeaponController weapon;
 
@@ -163,6 +164,8 @@ public class PlayerController : MonoBehaviour
         _itemDescription.GetComponentInParent<Animator>().SetTrigger("ShowUp");
     }
 
+    private Vector3 lastMovementDir = Vector3.zero;
+
     // Update is called once per frame
     void Update()
     {
@@ -223,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (Input.GetMouseButton(0) /*&& canAttack*/ && _timeToAttack <= 0 && (playerState == PlayerState.NEUTRAL) /*&& !animator.GetBool("HasAttackedBool")*/ && !Config.data.isTactile)
+        if (((Input.GetMouseButton(0) && !Config.data.isTactile) /*|| (_rightJoystick.Horizontal != 0 || _rightJoystick.Vertical != 0)*/) /*&& canAttack*/ && _timeToAttack <= 0 && (playerState == PlayerState.NEUTRAL) /*&& !animator.GetBool("HasAttackedBool")*/ )
         {
             canAttack = false;
             canFinishAttack = false;
@@ -242,17 +245,29 @@ public class PlayerController : MonoBehaviour
             // _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
             print(_attackIndex);
 
-            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit cameraRayHit;
-            if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsCursorClick))
+            if (!Config.data.isTactile)
             {
-                clickPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
-                lookDirection = (clickPosition - transform.position).normalized;
-                currentRotation = Quaternion.LookRotation(lookDirection.normalized, transform.up);
+                Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit cameraRayHit;
+                if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsCursorClick))
+                {
+                    clickPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
+                    lookDirection = (clickPosition - transform.position).normalized;
+                    currentRotation = Quaternion.LookRotation(lookDirection.normalized, transform.up);
+                }
+
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.Normalize();
+            }
+            else
+            {
+                // Vector3 mousePos = Input.mousePosition;
+                // clickPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
+                // lookDirection = new Vector3(-_rightJoystick.Horizontal, 0, -_rightJoystick.Vertical);
+                // currentRotation = Quaternion.LookRotation(lookDirection.normalized, transform.up);
             }
 
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.Normalize();
+            
         }
 
         if(playerState == PlayerState.ROLLING)
@@ -286,6 +301,54 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsBeingDamaged", false);
             playerState = PlayerState.NEUTRAL;
+        }
+
+        if (isTactileAttacking)
+        {
+            TactileAttack();
+        }
+    }
+
+    public bool isTactileAttacking = false;
+
+    public void TactileAttack()
+    {
+        if (_timeToAttack <= 0 && (playerState == PlayerState.NEUTRAL))
+        {
+            canAttack = false;
+            canFinishAttack = false;
+            playerState = PlayerState.ATTACKING;
+
+            print("Attacking");
+            animator.SetTrigger("Attack1");
+            animator.SetBool("Attack1Bool", true);
+            //animator.SetBool("HasAttackedBool", true);
+            animator.SetBool("IsAttacking", true);
+
+            // Attack Variables
+            //print(_timeToAttack);
+            _timeToAttack = _attackTime[_attackIndex];
+            _timeToMove = _moveTime[_attackIndex];
+            // _attackIndex = _attackIndex == numberOfAttacks - 1 ? 0 : _attackIndex+1;
+            print(_attackIndex);
+
+            lookDirection = lastMovementDir;
+            currentRotation = Quaternion.LookRotation(lookDirection.normalized, transform.up);
+        }
+        
+    }
+
+    public void Roll()
+    {
+        if (playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll)
+        {
+            playerState = PlayerState.ROLLING;
+            rollDirection = movement;
+            currentRotation = Quaternion.LookRotation(rollDirection);
+            movement = Vector3.zero;
+            canRoll = false;
+            animator.SetBool("IsRolling", true);
+            StartRoll();
         }
     }
 
@@ -438,9 +501,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    
-    
-
     public void Revive()
     {
         Fade.OnPlay = GameManager.Instance.EndRun;
@@ -459,11 +519,14 @@ public class PlayerController : MonoBehaviour
             {
                 Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
                 movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
+                lastMovementDir = movement.normalized;
             }
             else
             {
-                Vector2 input = new Vector2(joystick.Horizontal, joystick.Vertical).normalized;
+                Vector2 input = new Vector2(_leftJoystick.Horizontal, _leftJoystick.Vertical).normalized;
                 movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
+                if(input != Vector2.zero)
+                    lastMovementDir = movement.normalized;
             }
 
             if (playerState == PlayerState.NEUTRAL)

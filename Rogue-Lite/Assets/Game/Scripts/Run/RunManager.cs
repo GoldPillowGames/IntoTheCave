@@ -74,25 +74,33 @@ public class RunManager : MonoBehaviour
 
         SceneManager.activeSceneChanged -= OnSceneLoaded;
 
-        SceneManager.activeSceneChanged += OnSceneLoaded;
-        //if (!Config.data.isOnline)
-        //    SceneManager.activeSceneChanged += OnSceneLoaded;
-        //else
-        //{
-        //    if(PhotonNetwork.IsMasterClient)
-                
+        // SceneManager.activeSceneChanged += OnSceneLoaded;
+        if (!Config.data.isOnline)
+            SceneManager.activeSceneChanged += OnSceneLoaded;
+        else
+        {
+            if (GetComponent<Photon.Pun.PhotonView>().IsMine)
+            {
+                SceneManager.activeSceneChanged += OnSceneLoaded;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
         //}
 
-        //if (!_cameraController)
-        //{
-        //    _cameraController = FindObjectOfType<CameraController>();
-        //}
+                //if (!_cameraController)
+                //{
+                //    _cameraController = FindObjectOfType<CameraController>();
+                //}
 
-        //if (!_timeManager)
-        //{
-        //    _timeManager = FindObjectOfType<TimeManager>();
-        //}
-    }
+                //if (!_timeManager)
+                //{
+                //    _timeManager = FindObjectOfType<TimeManager>();
+                //}
+        }
 
     public void ResetOnSceneLoaded()
     {
@@ -351,6 +359,12 @@ public class RunManager : MonoBehaviour
                             currentRoom = 0;
                             currentStage = 3;
                             break;
+                         case 3:
+                            print("Boss Fight Reached");
+                            roomToLoad = 15;
+                            currentRoom = 0;
+                            currentStage = 3;
+                            break;
                         default:
                             roomToLoad = Random.Range(5, 10);
                             break;
@@ -388,6 +402,9 @@ public class RunManager : MonoBehaviour
                             //{
                             roomToLoad = Random.Range(11, 15);
                             //}
+                            break;
+                        case 3:
+                            roomToLoad = Random.Range(15, 18);
                             break;
                         default:
                             roomToLoad = Random.Range(5, 10);
