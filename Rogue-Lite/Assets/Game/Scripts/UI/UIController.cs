@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Photon.Pun;
+using TMPro;
+
 public class UIController : MonoBehaviour
 {
     public PlayerController player;
@@ -15,6 +17,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _rightJoystick;
     [SerializeField] private GameObject _rollButton;
     [SerializeField] private Button _attackButton;
+
+    [Header("Gold")]
+    [SerializeField] private TextMeshProUGUI _goldText;
+    [SerializeField] private Animator _goldAnim;
+    private float _gold;
+    private int _currentGold;
 
     [HideInInspector] public bool _playerIsDead = false;
 
@@ -27,6 +35,7 @@ public class UIController : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
         
 
         DontDestroyOnLoad(this);
@@ -46,6 +55,10 @@ public class UIController : MonoBehaviour
             canvasScale.referenceResolution.x / (Config.data.canvasScale), 
             canvasScale.referenceResolution.y / (Config.data.canvasScale)
             );
+
+        _goldText.text = Config.data.gold.ToString();
+        _gold = Config.data.gold;
+        _currentGold = Config.data.gold;
     }
 
     // Update is called once per frame
@@ -60,6 +73,32 @@ public class UIController : MonoBehaviour
             player.Kill();
             if(!Config.data.isOnline)
                 _deathMenuManager.PlayDeathMenu();
+        }
+
+        if (_currentGold != Config.data.gold)
+        {
+            _currentGold = Config.data.gold;
+            
+        } 
+        
+
+        if (_gold < Config.data.gold)
+        {
+            _gold += Time.unscaledDeltaTime * 100;
+            int _goldInt = (int)_gold;
+            _goldText.text = _goldInt.ToString();
+            _goldAnim.SetBool("TakingGold", true);
+        }
+        else
+        {
+            _goldAnim.SetBool("TakingGold", false);
+        }
+        
+        if(_gold > Config.data.gold)
+        {
+            _gold = Config.data.gold;
+            int _goldInt = (int)_gold;
+            _goldText.text = _goldInt.ToString();
         }
     }
 

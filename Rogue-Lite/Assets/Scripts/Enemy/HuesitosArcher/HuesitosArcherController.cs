@@ -159,7 +159,21 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             bowController.HideVisualArrow();
         }
         
+        
         private void ThrowArrow()
+        {
+            if (!Config.data.isOnline)
+                bowController.ThrowArrow();
+            else
+            {
+                if (photonView.IsMine)
+                    photonView.RPC("OnlineThrowArrow", RpcTarget.All);
+            }
+               
+        }
+
+        [PunRPC]
+        private void OnlineThrowArrow()
         {
             bowController.ThrowArrow();
         }
@@ -186,8 +200,28 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             _anim.enabled = false;
             bowController.Disable();
             enabled = false;
+
+            if (!Config.data.isOnline)
+            {
+                GiveGold();
+            }
+            else
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RPC("GiveGold", RpcTarget.All);
+                }
+            }
+
         }
-        
+
+        [PunRPC]
+        protected override void GiveGold()
+        {
+            base.GiveGold();
+        }
+
+
         [Photon.Pun.PunRPC]
         public override void ReceiveDamage(float damage)
         {

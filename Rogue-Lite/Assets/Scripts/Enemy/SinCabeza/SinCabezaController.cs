@@ -148,6 +148,21 @@ namespace GoldPillowGames.Enemy.SinCabeza
         
         public void ThrowOrb()
         {
+            if (!Config.data.isOnline)
+            {
+                var orb = ObjectPool.Instance.GetObject(orbPrefab);
+                orb.GetComponent<OrbController>().Init(orbSpawner.position, transform.forward);
+            }
+            else
+            {
+                if(photonView.IsMine)
+                    photonView.RPC("OnlineThrowOrb", RpcTarget.All);
+            }
+        }
+
+        [PunRPC]
+        public void OnlineThrowOrb()
+        {
             var orb = ObjectPool.Instance.GetObject(orbPrefab);
             orb.GetComponent<OrbController>().Init(orbSpawner.position, transform.forward);
         }
@@ -173,6 +188,25 @@ namespace GoldPillowGames.Enemy.SinCabeza
             Agent.enabled = false;
             _anim.enabled = false;
             enabled = false;
+
+            if (!Config.data.isOnline)
+            {
+                GiveGold();
+            }
+            else
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RPC("GiveGold", RpcTarget.All);
+                }
+            }
+
+        }
+
+        [PunRPC]
+        protected override void GiveGold()
+        {
+            base.GiveGold();
         }
 
         [Photon.Pun.PunRPC]

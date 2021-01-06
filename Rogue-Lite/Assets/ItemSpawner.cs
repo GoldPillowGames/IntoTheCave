@@ -31,7 +31,7 @@ public class ItemSpawner : MonoBehaviour
             print("Item Spawned: item" + index.ToString("00"));
             Instantiate(item, transform.position, Quaternion.identity);
         }
-        else
+        else if(GetComponent<Photon.Pun.PhotonView>().IsMine)
         {
             print("PhotonNetwork.Instantiate");
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Item" + index.ToString("00")), transform.position, Quaternion.identity);

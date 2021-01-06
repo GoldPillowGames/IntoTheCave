@@ -98,4 +98,6 @@ public class SaveState
     public bool vSync = false;
     public bool isOnline = false;
     #endregion
+
+    public int gold = 0;
 }

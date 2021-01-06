@@ -202,7 +202,9 @@ public class RunManager : MonoBehaviour
             if (g.GetComponent<EventTrigger>().doorPosition.Equals(currentDoor))
             {
                 PlayerController[] p = FindObjectsOfType<PlayerController>();
-                
+
+                float distanceFromDoor = 4.75f;
+
                 foreach (PlayerController player in p)
                 {
                     // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
@@ -210,8 +212,6 @@ public class RunManager : MonoBehaviour
                     player.GetComponent<CharacterController>().enabled = false;
 
                     
-
-                    float distanceFromDoor = 4.5f;
                     // Actualizamos la ubicación del jugador
                     switch (currentDoor)
                     {
@@ -228,8 +228,8 @@ public class RunManager : MonoBehaviour
                             player.transform.position = g.transform.position - transform.forward * distanceFromDoor;
                             break;
                     }
-                    
-                    
+
+                    distanceFromDoor += 3;
 
                     // Reactivamos el player controller y el character controller
                     player.enabled = true;

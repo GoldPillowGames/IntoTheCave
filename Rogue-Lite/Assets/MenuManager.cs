@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         // Debug
-        Config.ResetData();
+        Config.SaveData();
 
         menus = new Dictionary<MainMenuType, GameObject>();
 

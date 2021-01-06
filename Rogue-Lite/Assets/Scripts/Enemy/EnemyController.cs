@@ -9,6 +9,7 @@ namespace GoldPillowGames.Enemy
     {
         #region Variables
         [SerializeField] protected float health;
+        [SerializeField] protected int gold = 10;
         protected FiniteStateMachine stateMachine;
         private RoomManager _roomManager;
         public Action GoToNextStateCallback { set; private get; }
@@ -38,6 +39,11 @@ namespace GoldPillowGames.Enemy
             stateMachine.FixedUpdate(Time.deltaTime);
         }
         
+        protected virtual void GiveGold()
+        {
+            Config.data.gold += gold;
+        }
+
         protected void GoToNextState()
         {
             GoToNextStateCallback?.Invoke();
