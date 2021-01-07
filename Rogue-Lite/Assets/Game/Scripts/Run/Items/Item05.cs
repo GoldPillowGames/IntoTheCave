@@ -6,8 +6,9 @@
         base.Awake();
     }
 
+    // 25% current gold
     public override void OnPickUpItem(PlayerStatus player)
     {
-        player.gold += player.gold * 25 / 100;
+        Config.data.gold += Config.data.gold * 10 / 100;
     }
 }

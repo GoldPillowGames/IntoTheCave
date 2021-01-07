@@ -9,6 +9,6 @@
     // Random Object
     public override void OnPickUpItem(PlayerStatus player)
     {
-        player.enemiesThreshold -= 3;
+        player.enemiesThreshold += 0.03f;
     }
 }

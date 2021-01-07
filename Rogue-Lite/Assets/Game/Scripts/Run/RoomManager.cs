@@ -78,10 +78,13 @@ public class RoomManager : MonoBehaviour
                 if (g.GetComponent<EventTrigger>().canBeDeactivated)
                 {
                     g.GetComponent<EventTrigger>().activated = false;
+                    if(g.GetComponent<EventTrigger>().doorPosition == DoorPosition.TOP || g.GetComponent<EventTrigger>().doorPosition == DoorPosition.LEFT)
+                    g.GetComponent<EventTrigger>().isOpen = true;
                 }
                 else
                 {
                     g.GetComponent<EventTrigger>().activated = true;
+                    g.GetComponent<EventTrigger>().isOpen = false;
                 }
             }
             g.GetComponent<BoxCollider>().enabled = true;

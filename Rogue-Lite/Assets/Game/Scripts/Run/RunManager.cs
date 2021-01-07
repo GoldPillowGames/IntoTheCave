@@ -250,10 +250,10 @@ public class RunManager : MonoBehaviour
     private void Update()
     {
         // DEBUG
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            EndCurrentStage();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    EndCurrentStage();
+        //}
     }
 
     public void EndCurrentStage()
@@ -274,6 +274,13 @@ public class RunManager : MonoBehaviour
 
     private void CallDoorsToOpen()
     {
+        GameObject[] doors = GameObject.FindGameObjectsWithTag("DoorModel");
+        foreach (GameObject door in doors)
+        {
+            if (door.GetComponent<Animator>())
+                door.GetComponent<Animator>().SetBool("IsOpen", true);
+        }
+
         foreach (CameraController cam in FindObjectsOfType<CameraController>())
         {
             cam.cameraState = CameraState.IDLE;

@@ -37,6 +37,13 @@ namespace GoldPillowGames.Player
                 CameraShaker.Shake(0.1f, 1.75f, 2f);
                 PlayerStatus player = GetComponentInParent<PlayerStatus>();
                 DamageText.Spawn((int)player.damage, other.ClosestPoint(transform.position));
+                player.GetComponent<PlayerController>().health += player.damage * (int)player.healthSteal / 100 * (int)player.heal;
+                if(player.GetComponent<PlayerController>().health > player.health)
+                {
+                    player.GetComponent<PlayerController>().health = player.health;
+                }
+
+
                 if (!Config.data.isOnline)
                 {
                     enemyController.ReceiveDamage(player.damage);

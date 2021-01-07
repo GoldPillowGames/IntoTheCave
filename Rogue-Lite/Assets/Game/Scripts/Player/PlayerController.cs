@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail weaponTrail;
 
 
-    [SerializeField] private PlayerState playerState = PlayerState.NEUTRAL;
+    public PlayerState playerState = PlayerState.NEUTRAL;
 
     [HideInInspector] public Quaternion currentRotation;     // Current looking rotation
     private CharacterController controller; // Character controller
@@ -165,10 +165,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private Vector3 lastMovementDir = Vector3.zero;
+    Quaternion originalRotation;
+    Transform objectToSee;
 
     // Update is called once per frame
     void Update()
     {
+        
+
+
         if (!PV.IsMine && Config.data.isOnline)
             return;
 
@@ -176,7 +181,6 @@ public class PlayerController : MonoBehaviour
             return;
 
         maxHealth = playerStatus.health;
-
         Movement();
 
         // Updates where the player is looking to if he is moving
@@ -190,6 +194,14 @@ public class PlayerController : MonoBehaviour
         if(hitColliders.Length > 0)
         {
             interactableDetected = true;
+            foreach(Collider col in hitColliders)
+            {
+                NPCBehaviour npc = col.GetComponent<NPCBehaviour>();
+                if (npc)
+                {
+                    npc.ShowInteractBox();
+                }
+            }
         }
 
         Collider[] hitColliders2 = Physics.OverlapSphere(transform.position, outRadius, whatIsInteractable);
@@ -201,6 +213,7 @@ public class PlayerController : MonoBehaviour
 
         if (interactableDetected)
         {
+            if(cameraController.cameraState != CameraState.DIALOGUE)
             cameraController.cameraState = CameraState.INTERACT;
         }
         else if(cameraController.cameraState != CameraState.END_ROOM)

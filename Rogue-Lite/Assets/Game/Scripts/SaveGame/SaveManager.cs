@@ -10,9 +10,17 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         Instance = this;
 
         Load();
+
+        DontDestroyOnLoad(this);
 
         Debug.Log(Helper.Serialize<SaveState>(state));
     }

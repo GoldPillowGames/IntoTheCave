@@ -9,6 +9,6 @@
 
     public override void OnPickUpItem(PlayerStatus player)
     {
-        player.damage += player.damage * 5 / 100;
+        player.damage += player.damage * 10 / 100;
     }
 }

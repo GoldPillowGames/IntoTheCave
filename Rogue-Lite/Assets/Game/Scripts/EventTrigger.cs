@@ -26,6 +26,7 @@ public class EventTrigger : MonoBehaviour
     public DoorPosition doorPosition;
     public int doorIndex = 0;
     public bool canBeDeactivated = true;
+    public bool isOpen = false;
     DoorPosition nextDoorPosition;
 
     private float objectiveVolume = 0;
@@ -35,11 +36,18 @@ public class EventTrigger : MonoBehaviour
     private Transform player;
     private LayerMask playerLayer;
     private Vector3 respawnPoint;
+    private BoxCollider collider;
 
     public void Awake()
     {
+        collider = GetComponent<BoxCollider>();
         if(eventType == EventType.ROOM_DOOR)
         {
+            if(doorPosition == DoorPosition.TOP)
+            {
+                isOpen = true;
+            }
+
             EventTrigger[] eventTriggers = FindObjectsOfType<EventTrigger>();
 
             foreach(EventTrigger trigger in eventTriggers)
@@ -50,6 +58,7 @@ public class EventTrigger : MonoBehaviour
                     {
                         trigger.activated = false;
                         trigger.canBeDeactivated = true;
+                        trigger.isOpen = false;
                         trigger.transform.localScale = this.transform.localScale;
                         trigger.transform.position = this.transform.position;
                         Destroy(this.gameObject);
@@ -103,11 +112,33 @@ public class EventTrigger : MonoBehaviour
             {
                 if (Photon.Pun.PhotonNetwork.IsMasterClient)
                 {
-                    GetComponent<BoxCollider>().isTrigger = true;
+                    if (!isOpen)
+                    {
+                        if (!collider.enabled)
+                            collider.enabled = true;
+                        collider.isTrigger = false;
+                    }
+                    else
+                    {
+                        collider.isTrigger = true;
+                    }
                 }
                 else
                 {
-                    GetComponent<BoxCollider>().isTrigger = false;
+                    collider.isTrigger = false;
+                }
+            }
+            else
+            {
+                if (!isOpen)
+                {
+                    if(!collider.enabled)
+                        collider.enabled = true;
+                    collider.isTrigger = false;
+                }
+                else
+                {
+                    collider.isTrigger = true;
                 }
             }
         }
@@ -193,6 +224,7 @@ public class EventTrigger : MonoBehaviour
                         }
 
                         canBeDeactivated = false;
+                        isOpen = false;
                         if (!Config.data.isOnline)
                         {
                             // Localizamos el run manager

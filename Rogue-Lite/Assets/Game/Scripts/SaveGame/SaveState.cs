@@ -100,4 +100,8 @@ public class SaveState
     #endregion
 
     public int gold = 0;
+
+    public int herreroDialogueIndex = 1;
+    public int armeroDialogueIndex = 1;
+    public int tintoneroDialogueIndex = 1;
 }

@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour
             {
                 #region UI
                 Config.data.isTactile = true;
-                Config.data.isDebug = true;
+                Config.data.isDebug = false;
                 Config.data.canvasScale = 1.0f;
                 #endregion
 
@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviour
             {
                 #region UI
                 Config.data.isTactile = false;
-                Config.data.isDebug = true;
+                Config.data.isDebug = false;
                 Config.data.canvasScale = 1.0f;
                 #endregion
 

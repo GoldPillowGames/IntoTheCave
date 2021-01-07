@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
 
     public float idleDistance = 42;
     public float interactDistance;
+    public float dialogueDistance;
     public float endRoomDistance = 30;
 
     // Shake
@@ -61,6 +62,7 @@ public class CameraController : MonoBehaviour
                 cmTransposer.m_CameraDistance = Mathf.Lerp(cmTransposer.m_CameraDistance, interactDistance, 4 * Time.deltaTime);
                 break;
             case CameraState.DIALOGUE:
+                cmTransposer.m_CameraDistance = Mathf.Lerp(cmTransposer.m_CameraDistance, dialogueDistance, 4 * Time.deltaTime);
                 break;
             case CameraState.END_ROOM:
                 cmTransposer.m_CameraDistance = Mathf.Lerp(cmTransposer.m_CameraDistance, endRoomDistance, 4 * Time.deltaTime);

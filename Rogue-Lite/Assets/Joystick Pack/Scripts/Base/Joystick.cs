@@ -97,10 +97,13 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void Update()
     {
-        if(Input.touchCount == 0 || Input.touchCount > 1)
+        if(Input.touchCount == 0)
         {
             input = Vector2.zero;
             handle.anchoredPosition = Vector2.zero;
+        }else if (Input.touchCount > 1)
+        {
+            input = Vector2.zero;
         }
     }
 

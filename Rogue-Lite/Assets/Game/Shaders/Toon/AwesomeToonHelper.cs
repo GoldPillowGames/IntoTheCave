@@ -52,12 +52,22 @@ namespace AwesomeToon {
             GetLights();
         }
 
+        public Material GetMaterial(int index)
+        {
+            return material[index];
+        }
+
+        public void SetMaterial(int index, Material mat)
+        {
+            material[index] = mat;
+        }
+
         void OnValidate() {
             Init();
             Update();
         }
 
-        void Init() {
+        public void Init() {
             // if (!material) return;
             if (material.Length <= 0) return;
             if (instanceMaterial) {
