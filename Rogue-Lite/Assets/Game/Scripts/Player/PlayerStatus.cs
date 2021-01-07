@@ -21,7 +21,7 @@ public class PlayerStatus : MonoBehaviour
     public bool survivesToLetalAttack = false;
     public float lessInitialLifeForEnemies = 0; // Por implementar
     public float heal = 20; // Por implementar
-    public float push = 1.0f; // Por implementar
+    public float push = 4.0f; // Por implementar
     public bool spawnGrenadeWhenRolls = false; // Por implementar
     public float enemiesThreshold = 0.0f; // Por implementar
     public bool canRoll = true;

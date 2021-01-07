@@ -38,6 +38,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             
             if (!_enemyController.CanAttack)
             {
+                _enemyController.HideVisualArrow();
                 stateMachine.SetState(new FollowingState(_enemyController, stateMachine, anim));
             }
         }
