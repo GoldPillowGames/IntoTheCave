@@ -33,10 +33,20 @@ namespace GoldPillowGames.Player
             {
                 var enemyController = other.GetComponent<EnemyController>();
                 CameraShaker.Shake(0.1f, 1.75f, 2f);
-                PlayerStatus playerStatus = GetComponentInParent<PlayerStatus>();
-                DamageText.Spawn((int)playerStatus.damage, other.ClosestPoint(transform.position));
-                enemyController.ReceiveDamage(playerStatus.damage);
-                enemyController.Push(0.5f, playerStatus.push, (other.transform.position - player.transform.position).normalized);
+
+                PlayerStatus player = GetComponentInParent<PlayerStatus>();
+                DamageText.Spawn((int)player.damage, other.ClosestPoint(transform.position));
+                if (!Config.data.isOnline)
+                {
+                    enemyController.ReceiveDamage(player.damage);
+                    enemyController.Push(0.5f, player.push, (other.transform.position - _player.transform.position).normalized);
+                }
+                else
+                {
+                    enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("ReceiveDamage", Photon.Pun.RpcTarget.All, (float)player.damage);
+                    enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("Push", Photon.Pun.RpcTarget.All, 0.5f, player.push, (other.transform.position - _player.transform.position).normalized);
+                }
+                
                 _enemiesHit.Add(other.gameObject);
             }
         }

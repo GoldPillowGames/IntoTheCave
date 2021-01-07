@@ -232,6 +232,7 @@ public class EventTrigger : MonoBehaviour
                         else
                         {
                             GetComponent<Photon.Pun.PhotonView>().RPC("UbicatePlayers", Photon.Pun.RpcTarget.All);
+                            // UbicatePlayers();
                         }
                         
                     }

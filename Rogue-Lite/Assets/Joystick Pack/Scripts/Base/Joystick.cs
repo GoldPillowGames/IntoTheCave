@@ -95,6 +95,15 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             input = new Vector2(0f, input.y);
     }
 
+    private void Update()
+    {
+        if(Input.touchCount == 0 || Input.touchCount > 1)
+        {
+            input = Vector2.zero;
+            handle.anchoredPosition = Vector2.zero;
+        }
+    }
+
     private float SnapFloat(float value, AxisOptions snapAxis)
     {
         if (value == 0)

@@ -45,6 +45,8 @@ namespace AwesomeToon {
         SkinnedMeshRenderer skinRenderer;
         MeshRenderer meshRenderer;
 
+        public bool update = true;
+
         void Start() {
             Init();
             GetLights();
@@ -113,8 +115,8 @@ namespace AwesomeToon {
             if (Application.isEditor && !Application.isPlaying) {
                 GetLights();
             }
-
-            UpdateMaterial();
+            if(update)
+                UpdateMaterial();
         }
 
         void UpdateMaterial() {

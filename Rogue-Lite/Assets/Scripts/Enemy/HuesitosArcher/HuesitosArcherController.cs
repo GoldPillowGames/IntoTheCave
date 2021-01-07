@@ -4,6 +4,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy.HuesitosArcher
 {
@@ -21,6 +22,8 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         private Animator _anim;
         private AgentPropeller _propeller;
         private BoxCollider _collider;
+        private PhotonView photonView;
+        private PlayerController[] _players;
         #endregion
 
         #region Properties
@@ -45,27 +48,87 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         {
             base.Awake();
 
+            photonView = GetComponent<PhotonView>();
+            _players = FindObjectsOfType<PlayerController>();
             Agent = GetComponent<NavMeshAgent>();
             // Player = GameObject.FindGameObjectWithTag("Player").transform;
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
             _propeller = new AgentPropeller(Agent);
             _collider = GetComponent<BoxCollider>();
+
+            if (!photonView.IsMine && Config.data.isOnline)
+            {
+                Agent.enabled = false;
+            }
         }
 
         protected override void Start()
         {
             base.Start();
-            
+
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = DirectionToPlayer;
         }
 
+        protected override void Update()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.Update();
+        }
+
         protected override void FixedUpdate()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             base.FixedUpdate();
-            
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             _propeller.Update(Time.deltaTime);
+        }
+
+        protected override void CheckClosestPlayer()
+        {
+            base.CheckClosestPlayer();
+
+            if (_players.Length < 2)
+                _players = FindObjectsOfType<PlayerController>();
+
+            float distance = Mathf.Infinity;
+            PlayerController closestPlayer = null;
+
+            foreach (PlayerController p in _players)
+            {
+                if (p != null)
+                {
+                    if ((p.transform.position - transform.position).magnitude < distance)
+                    {
+                        distance = (p.transform.position - transform.position).magnitude;
+                        closestPlayer = p;
+                    }
+                }
+            }
+
+            if (closestPlayer != null)
+            {
+                if (Player != closestPlayer)
+                {
+                    Player = closestPlayer.transform;
+                }
+            }
         }
 
         private void OnDrawGizmos()
@@ -96,13 +159,30 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             bowController.HideVisualArrow();
         }
         
+        
         private void ThrowArrow()
+        {
+            if (!Config.data.isOnline)
+                bowController.ThrowArrow();
+            else
+            {
+                if (photonView.IsMine)
+                    photonView.RPC("OnlineThrowArrow", RpcTarget.All);
+            }
+               
+        }
+
+        [PunRPC]
+        private void OnlineThrowArrow()
         {
             bowController.ThrowArrow();
         }
 
+        [Photon.Pun.PunRPC]
         public override void Push(float time, float force, Vector3 direction)
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             _propeller.StartPush(time, force * direction);
         }
         
@@ -120,10 +200,34 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
             _anim.enabled = false;
             bowController.Disable();
             enabled = false;
+
+            if (!Config.data.isOnline)
+            {
+                GiveGold();
+            }
+            else
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RPC("GiveGold", RpcTarget.All);
+                }
+            }
+
         }
-        
+
+        [PunRPC]
+        protected override void GiveGold()
+        {
+            base.GiveGold();
+        }
+
+
+        [Photon.Pun.PunRPC]
         public override void ReceiveDamage(float damage)
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
             base.ReceiveDamage(damage);
 
             if (health > 0)

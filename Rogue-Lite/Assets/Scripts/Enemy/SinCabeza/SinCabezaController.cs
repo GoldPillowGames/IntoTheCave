@@ -3,6 +3,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy.SinCabeza
 {
@@ -20,6 +21,8 @@ namespace GoldPillowGames.Enemy.SinCabeza
         private Animator _anim;
         private AgentPropeller _propeller;
         private BoxCollider _collider;
+        private PhotonView photonView;
+        private PlayerController[] _players;
         #endregion
 
         #region Properties
@@ -44,26 +47,85 @@ namespace GoldPillowGames.Enemy.SinCabeza
         {
             base.Awake();
 
+            photonView = GetComponent<PhotonView>();
+            _players = FindObjectsOfType<PlayerController>();
             Agent = GetComponent<NavMeshAgent>();
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
             _propeller = new AgentPropeller(Agent);
             _collider = GetComponent<BoxCollider>();
+
+            if (!photonView.IsMine && Config.data.isOnline)
+            {
+                Agent.enabled = false;
+            }
         }
 
         protected override void Start()
         {
             base.Start();
-            
+
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = -DirectionToPlayer;
         }
 
+        protected override void Update()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.Update();
+        }
+
         protected override void FixedUpdate()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             base.FixedUpdate();
-            
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             _propeller.Update(Time.deltaTime);
+        }
+
+        protected override void CheckClosestPlayer()
+        {
+            if (_players.Length < 2)
+                _players = FindObjectsOfType<PlayerController>();
+
+            float distance = Mathf.Infinity;
+            PlayerController closestPlayer = null;
+
+            foreach (PlayerController p in _players)
+            {
+                if (p != null)
+                {
+                    if ((p.transform.position - transform.position).magnitude < distance)
+                    {
+                        distance = (p.transform.position - transform.position).magnitude;
+                        closestPlayer = p;
+                    }
+                }
+
+            }
+
+            if (closestPlayer != null)
+            {
+                if (Player != closestPlayer)
+                {
+                    Player = closestPlayer.transform;
+                }
+            }
         }
 
         private void OnDrawGizmos()
@@ -86,12 +148,30 @@ namespace GoldPillowGames.Enemy.SinCabeza
         
         public void ThrowOrb()
         {
+            if (!Config.data.isOnline)
+            {
+                var orb = ObjectPool.Instance.GetObject(orbPrefab);
+                orb.GetComponent<OrbController>().Init(orbSpawner.position, transform.forward);
+            }
+            else
+            {
+                if(photonView.IsMine)
+                    photonView.RPC("OnlineThrowOrb", RpcTarget.All);
+            }
+        }
+
+        [PunRPC]
+        public void OnlineThrowOrb()
+        {
             var orb = ObjectPool.Instance.GetObject(orbPrefab);
             orb.GetComponent<OrbController>().Init(orbSpawner.position, transform.forward);
         }
 
+        [Photon.Pun.PunRPC]
         public override void Push(float time, float force, Vector3 direction)
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             _propeller.StartPush(time, force * direction);
         }
         
@@ -108,10 +188,33 @@ namespace GoldPillowGames.Enemy.SinCabeza
             Agent.enabled = false;
             _anim.enabled = false;
             enabled = false;
+
+            if (!Config.data.isOnline)
+            {
+                GiveGold();
+            }
+            else
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RPC("GiveGold", RpcTarget.All);
+                }
+            }
+
         }
-        
+
+        [PunRPC]
+        protected override void GiveGold()
+        {
+            base.GiveGold();
+        }
+
+        [Photon.Pun.PunRPC]
         public override void ReceiveDamage(float damage)
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
             base.ReceiveDamage(damage);
 
             if (health > 0)

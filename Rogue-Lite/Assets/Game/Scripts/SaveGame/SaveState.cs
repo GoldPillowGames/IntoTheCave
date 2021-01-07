@@ -91,10 +91,13 @@ public class SaveState
     public ShadowDistanceState shadowDistance = ShadowDistanceState.FAR;
     public AntialiasingState antialiasingQuality = AntialiasingState.MSAAx2;
     public float renderScale = 1.0f;
+    public bool dynamicCelShadingEffect = true;
     #endregion
 
     public FPSLimit limitedFPS = FPSLimit.NONE;
     public bool vSync = false;
     public bool isOnline = false;
     #endregion
+
+    public int gold = 0;
 }

@@ -11,7 +11,7 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private GameObject[] _menus;
 
     [SerializeField] private HorizontalSelector _languageSelector;
-    [SerializeField] private HorizontalSelector _showFPSSelector;
+    [SerializeField] private HorizontalSelector[] _showFPSSelector;
 
 
     [Header("Pages / Graphics Settings")]
@@ -19,17 +19,17 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private HorizontalSelector _graphicsSettingsPage;
 
     [Header("Page 1")]
-    [SerializeField] private HorizontalSelector _graphicsSettings;
-    [SerializeField] private HorizontalSelector _generalGraphicsSettings;
-    [SerializeField] private HorizontalSelector _shadowQuality;
+    [SerializeField] private HorizontalSelector[] _graphicsSettings;
+    [SerializeField] private HorizontalSelector[] _generalGraphicsSettings;
+    [SerializeField] private HorizontalSelector[] _shadowQuality;
     [SerializeField] private HorizontalSelector _antialiasingSettings;
 
     [Header("Page 2")]
     [SerializeField] private HorizontalSelector _uiScale;
-    [SerializeField] private HorizontalSelector _vSync;
-    [SerializeField] private HorizontalSelector _fpsSync;
+    [SerializeField] private HorizontalSelector[] _vSync;
+    // [SerializeField] private HorizontalSelector _fpsSync;
     [SerializeField] private HorizontalSelector _renderScale;
-    [SerializeField] private HorizontalSelector _limitFPS;
+    [SerializeField] private HorizontalSelector[] _limitFPS;
 
     [SerializeField] private GameObject _customSettings;
 
@@ -37,48 +37,69 @@ public class SettingsMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _graphicsSettings.defaultIndex = (int)Config.data.graphicsQuality;
-        _graphicsSettings.index = (int)Config.data.graphicsQuality;
-        _graphicsSettings.UpdateUI();
+        InitSelectors();
+        OpenSettingsMenu(0);
+    }
 
-        _generalGraphicsSettings.defaultIndex = (int)Config.data.generalGraphics;
-        _generalGraphicsSettings.index = (int)Config.data.generalGraphics;
-        _generalGraphicsSettings.UpdateUI();
-
-        switch (Config.data.shadowQuality)
+    void InitSelectors()
+    {
+        foreach (HorizontalSelector s in _graphicsSettings)
         {
-            case ShadowQualityState.NO_SHADOWS:
-                _shadowQuality.defaultIndex = 0;
-                _shadowQuality.index = 0;
-                break;
-            case ShadowQualityState.VERY_LOW:
-                _shadowQuality.defaultIndex = 1;
-                _shadowQuality.index = 1;
-                break;
-            case ShadowQualityState.LOW:
-                _shadowQuality.defaultIndex = 2;
-                _shadowQuality.index = 2;
-                break;
-            case ShadowQualityState.MEDIUM:
-                _shadowQuality.defaultIndex = 3;
-                _shadowQuality.index = 3;
-                break;
-            case ShadowQualityState.HIGH:
-                _shadowQuality.defaultIndex = 4;
-                _shadowQuality.index = 4;
-                break;
-            case ShadowQualityState.VERY_HIGH:
-                _shadowQuality.defaultIndex = 5;
-                _shadowQuality.index = 5;
-                break;
-            case ShadowQualityState.ULTRA:
-                _shadowQuality.defaultIndex = 6;
-                _shadowQuality.index = 6;
-                break;
-            default:
-                break;
+            s.defaultIndex = (int)Config.data.graphicsQuality;
+            s.index = (int)Config.data.graphicsQuality;
+            s.UpdateUI();
         }
-        _shadowQuality.UpdateUI();
+
+        //_graphicsSettings[(int)Config.data.language].defaultIndex = (int)Config.data.graphicsQuality;
+        //_graphicsSettings[(int)Config.data.language].index = (int)Config.data.graphicsQuality;
+        //_graphicsSettings[(int)Config.data.language].UpdateUI();
+
+        foreach (HorizontalSelector s in _generalGraphicsSettings)
+        {
+            s.defaultIndex = (int)Config.data.generalGraphics;
+            s.index = (int)Config.data.generalGraphics;
+            s.UpdateUI();
+        }
+
+        foreach (HorizontalSelector s in _shadowQuality)
+        {
+            switch (Config.data.shadowQuality)
+            {
+                case ShadowQualityState.NO_SHADOWS:
+                    s.defaultIndex = 0;
+                    s.index = 0;
+                    break;
+                case ShadowQualityState.VERY_LOW:
+                    s.defaultIndex = 1;
+                    s.index = 1;
+                    break;
+                case ShadowQualityState.LOW:
+                    s.defaultIndex = 2;
+                    s.index = 2;
+                    break;
+                case ShadowQualityState.MEDIUM:
+                    s.defaultIndex = 3;
+                    s.index = 3;
+                    break;
+                case ShadowQualityState.HIGH:
+                    s.defaultIndex = 4;
+                    s.index = 4;
+                    break;
+                case ShadowQualityState.VERY_HIGH:
+                    s.defaultIndex = 5;
+                    s.index = 5;
+                    break;
+                case ShadowQualityState.ULTRA:
+                    s.defaultIndex = 6;
+                    s.index = 6;
+                    break;
+                default:
+                    break;
+            }
+            s.UpdateUI();
+        }
+
+
 
         _antialiasingSettings.defaultIndex = (int)Config.data.antialiasingQuality;
         _antialiasingSettings.index = (int)Config.data.antialiasingQuality;
@@ -117,43 +138,53 @@ public class SettingsMenuManager : MonoBehaviour
             default:
                 break;
         }
-        // SetSelector(_uiScale, (int)Config.data.canvasScale);
-        switch (Config.data.vSync)
-        {
-            case false:
-                SetSelector(_vSync, 0);
-                break;
-            case true:
-                SetSelector(_vSync, 1);
-                break;
-        }
 
-        switch (Config.data.limitedFPS)
+        foreach(HorizontalSelector s in _vSync)
         {
-            case FPSLimit.NONE:
-                SetSelector(_limitFPS, 0);
-                break;
-            case FPSLimit.VERY_LOW:
-                SetSelector(_limitFPS, 1);
-                break;
-            case FPSLimit.LOW:
-                SetSelector(_limitFPS, 2);
-                break;
-            case FPSLimit.MEDIUM:
-                SetSelector(_limitFPS, 3);
-                break;
-            case FPSLimit.HIGH:
-                SetSelector(_limitFPS, 4);
-                break;
-            case FPSLimit.VERY_HIGH:
-                SetSelector(_limitFPS, 5);
-                break;
-            case FPSLimit.ULTRA:
-                SetSelector(_limitFPS, 6);
-                break;
-            default:
-                break;
+            // SetSelector(_uiScale, (int)Config.data.canvasScale);
+            switch (Config.data.vSync)
+            {
+                case false:
+                    SetSelector(s, 0);
+                    break;
+                case true:
+                    SetSelector(s, 1);
+                    break;
+            }
         }
+        
+        foreach(HorizontalSelector s in _limitFPS)
+        {
+            switch (Config.data.limitedFPS)
+            {
+                case FPSLimit.NONE:
+                    SetSelector(s, 0);
+                    break;
+                case FPSLimit.VERY_LOW:
+                    SetSelector(s, 1);
+                    break;
+                case FPSLimit.LOW:
+                    SetSelector(s, 2);
+                    break;
+                case FPSLimit.MEDIUM:
+                    SetSelector(s, 3);
+                    break;
+                case FPSLimit.HIGH:
+                    SetSelector(s, 4);
+                    break;
+                case FPSLimit.VERY_HIGH:
+                    SetSelector(s, 5);
+                    break;
+                case FPSLimit.ULTRA:
+                    SetSelector(s, 6);
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+
+
 
         //switch (Config.data.isDebug)
         //{
@@ -199,21 +230,24 @@ public class SettingsMenuManager : MonoBehaviour
         }
 
         SetSelector(_languageSelector, (int)Config.data.language);
-        
 
-        switch (Config.data.isDebug)
+        foreach (HorizontalSelector s in _showFPSSelector)
         {
-            case true:
-                SetSelector(_showFPSSelector, 1);
-                break;
-            case false:
-                SetSelector(_showFPSSelector, 0);
-                break;
-            default:
-                break;
+            switch (Config.data.isDebug)
+            {
+                case true:
+                    SetSelector(s, 1);
+                    break;
+                case false:
+                    SetSelector(s, 0);
+                    break;
+                default:
+                    break;
+            }
         }
+            
 
-        OpenSettingsMenu(0);
+        UpdateLanguage();
     }
 
     void SetSelector(HorizontalSelector selector, int index)
@@ -247,6 +281,18 @@ public class SettingsMenuManager : MonoBehaviour
     public void SetLanguage(int languageIndex)
     {
         Config.data.language = (Language)languageIndex;
+
+        for (int i = 0; i < _showFPSSelector.Length; i++)
+        {
+            if (i == (int)Config.data.language)
+            {
+                _showFPSSelector[i].gameObject.SetActive(true);
+            }
+            else
+                _showFPSSelector[i].gameObject.SetActive(false);
+        }
+        UpdateLanguage();
+        InitSelectors();
     }
 
     public void ShowFPS(bool show)
@@ -265,11 +311,13 @@ public class SettingsMenuManager : MonoBehaviour
         if (!_pages[0].activeSelf)
             return;
 
-
+        
         #region Graphics Settings
         if (_menus[1].activeSelf)
         {
-            if (_graphicsSettings.index == 3)
+
+            
+            if (_graphicsSettings[(int)Config.data.language].index == 3)
             {
                 //Image[] childrenImage = _customSettings.GetComponentsInChildren<Image>();
                 //foreach(Image image in childrenImage){
@@ -425,6 +473,65 @@ public class SettingsMenuManager : MonoBehaviour
             {
                 _menus[i].SetActive(false);
             }
+        }
+
+        if(index == 1)
+        {
+            UpdateLanguage();
+            InitSelectors();
+        }
+    }
+
+    void UpdateLanguage()
+    {
+        for (int i = 0; i < _graphicsSettings.Length; i++)
+        {
+            if (i == (int)Config.data.language)
+            {
+                _graphicsSettings[i].gameObject.SetActive(true);
+            }
+            else
+                _graphicsSettings[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < _generalGraphicsSettings.Length; i++)
+        {
+            if (i == (int)Config.data.language)
+            {
+                _generalGraphicsSettings[i].gameObject.SetActive(true);
+            }
+            else
+                _generalGraphicsSettings[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < _shadowQuality.Length; i++)
+        {
+            if (i == (int)Config.data.language)
+            {
+                _shadowQuality[i].gameObject.SetActive(true);
+            }
+            else
+                _shadowQuality[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < _vSync.Length; i++)
+        {
+            if (i == (int)Config.data.language)
+            {
+                _vSync[i].gameObject.SetActive(true);
+            }
+            else
+                _vSync[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < _limitFPS.Length; i++)
+        {
+            if (i == (int)Config.data.language)
+            {
+                _limitFPS[i].gameObject.SetActive(true);
+            }
+            else
+                _limitFPS[i].gameObject.SetActive(false);
         }
     }
 

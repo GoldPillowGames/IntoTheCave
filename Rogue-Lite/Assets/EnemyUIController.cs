@@ -28,8 +28,8 @@ public class EnemyUIController : MonoBehaviour
     void Update()
     {
         _healthbar.fillAmount = _enemyController.Health / _maxHealth;
-        
-        if(_healthbar.fillAmount != _currentHealth)
+
+        if (_healthbar.fillAmount != _currentHealth)
         {
             _currentHealth = _healthbar.fillAmount;
             _timeToUpdateHealth = _maxTimeToUpdateHealth;

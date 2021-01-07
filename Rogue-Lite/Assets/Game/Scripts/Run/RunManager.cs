@@ -45,16 +45,24 @@ public class RunManager : MonoBehaviour
         //    //}
         //    //if (!isOnline)
         //    //{
-                
+
         //    //}
 
         //    GameObject runManager = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "RunManager"), new Vector3(0, 2.4f, 0), Quaternion.identity);
         //    runManager.GetComponent<RunManager>().SetUp(true);
         //}
-        
+
         //if (Config.data.isOnline && !isOnlineManager)
         //{
         //    Destroy(this.gameObject);
+        //}
+        //RunManager[] run = FindObjectsOfType<RunManager>();
+        //for(int i = 0; i < run.Length; i++)
+        //{
+        //    if(run[i] != this)
+        //    {
+        //        Destroy(this.gameObject);
+        //    }
         //}
 
         if (isOnlineManager)
@@ -63,20 +71,43 @@ public class RunManager : MonoBehaviour
         }
 
 
-        SceneManager.activeSceneChanged += OnSceneLoaded;
 
-        //if (!_cameraController)
-        //{
-        //    _cameraController = FindObjectOfType<CameraController>();
+        SceneManager.activeSceneChanged -= OnSceneLoaded;
+
+        // SceneManager.activeSceneChanged += OnSceneLoaded;
+        if (!Config.data.isOnline)
+            SceneManager.activeSceneChanged += OnSceneLoaded;
+        else
+        {
+            if (GetComponent<Photon.Pun.PhotonView>().IsMine)
+            {
+                SceneManager.activeSceneChanged += OnSceneLoaded;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
         //}
 
-        //if (!_timeManager)
-        //{
-        //    _timeManager = FindObjectOfType<TimeManager>();
-        //}
-    }
+                //if (!_cameraController)
+                //{
+                //    _cameraController = FindObjectOfType<CameraController>();
+                //}
+
+                //if (!_timeManager)
+                //{
+                //    _timeManager = FindObjectOfType<TimeManager>();
+                //}
+        }
 
     public void ResetOnSceneLoaded()
+    {
+        SceneManager.activeSceneChanged -= OnSceneLoaded;
+    }
+
+    private void OnDestroy()
     {
         SceneManager.activeSceneChanged -= OnSceneLoaded;
     }
@@ -146,6 +177,9 @@ public class RunManager : MonoBehaviour
         //    }
         //}
         EventTrigger[] _myDoors = FindObjectsOfType<EventTrigger>();
+
+        print("Entra en el Run Manager");
+
         // Comprobamos por cada una de las puertas si su ubicación coincide con la deseada
         foreach (EventTrigger g in _myDoors)
         {
@@ -154,20 +188,32 @@ public class RunManager : MonoBehaviour
             if (g.GetComponent<EventTrigger>().eventType != EventType.ROOM_DOOR)
                 continue;
 
+            RunManager runManager = FindObjectOfType<RunManager>();
+
+            foreach(RunManager run in FindObjectsOfType<RunManager>())
+            {
+                if(run != null)
+                {
+                    runManager = run;
+                }
+            }
+
             // Comprobación
-            if (g.GetComponent<EventTrigger>().doorPosition.Equals(FindObjectOfType<RunManager>().currentDoor))
+            if (g.GetComponent<EventTrigger>().doorPosition.Equals(currentDoor))
             {
                 PlayerController[] p = FindObjectsOfType<PlayerController>();
-                
-                foreach(PlayerController player in p)
+
+                float distanceFromDoor = 4.75f;
+
+                foreach (PlayerController player in p)
                 {
                     // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
                     player.enabled = false;
                     player.GetComponent<CharacterController>().enabled = false;
 
-                    float distanceFromDoor = 4.5f;
+                    
                     // Actualizamos la ubicación del jugador
-                    switch (FindObjectOfType<RunManager>().currentDoor)
+                    switch (currentDoor)
                     {
                         case DoorPosition.BOTTOM:
                             player.transform.position = g.transform.position - transform.right * distanceFromDoor;
@@ -182,8 +228,8 @@ public class RunManager : MonoBehaviour
                             player.transform.position = g.transform.position - transform.forward * distanceFromDoor;
                             break;
                     }
-                    
-                    
+
+                    distanceFromDoor += 3;
 
                     // Reactivamos el player controller y el character controller
                     player.enabled = true;
@@ -264,6 +310,7 @@ public class RunManager : MonoBehaviour
         if (Config.data.isOnline)
         {
             GetComponent<PhotonView>().RPC("ChangeRoom", RpcTarget.All);
+            // ChangeRoom();
         }
         else
         {
@@ -289,53 +336,95 @@ public class RunManager : MonoBehaviour
     {
         Fade.OnPlay = () => {
 
-            currentRoom++;
-            int roomToLoad = Random.Range(5, 10);
 
-            if (currentRoom == 10)
+            currentRoom++;
+            int roomToLoad = SceneManager.GetActiveScene().buildIndex;
+
+            while(roomToLoad == SceneManager.GetActiveScene().buildIndex)
             {
-                switch (currentStage)
+                print("Room repetida");
+                if (currentRoom == 10)
                 {
-                    case 1:
-                        print("Boss Fight Reached");
-                        roomToLoad = 10;
-                        currentRoom = 0;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                switch (currentStage)
-                {
-                    case 0:
-                        if (currentRoom == 1)
-                        {
-                            currentStage = 1;
-                            roomToLoad = 6;
-                        }
-                        break;
-                    case 1:
-                        if (currentRoom == 1)
-                        {
-                            currentStage = 1;
-                            roomToLoad = 6;
-                        }
-                        else
-                        {
+                    switch (currentStage)
+                    {
+                        case 1:
+                            print("Boss Fight Reached");
+                            roomToLoad = 9;
+                            currentRoom = 0;
+                            currentStage = 2;
+                            break;
+                        case 2:
+                            print("Boss Fight Reached");
+                            roomToLoad = 9;
+                            currentRoom = 0;
+                            currentStage = 3;
+                            break;
+                         case 3:
+                            print("Boss Fight Reached");
+                            roomToLoad = 15;
+                            currentRoom = 0;
+                            currentStage = 3;
+                            break;
+                        default:
                             roomToLoad = Random.Range(5, 10);
-                        }
-                        break;
-                    default:
-                        break;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (currentStage)
+                    {
+                        case 0:
+                            if (currentRoom == 1)
+                            {
+                                currentStage = 1;
+                                roomToLoad = 6;
+                            }
+                            break;
+                        case 1:
+                            //if (currentRoom == 1)
+                            //{
+                            //    currentStage = 1;
+                            //    roomToLoad = 6;
+                            //}
+                            //else
+                            //{
+                            roomToLoad = Random.Range(5, 10);
+                            //}
+                            break;
+                        case 2:
+                            //if (currentRoom == 1)
+                            //{
+                            //    currentStage = 1;
+                            //    roomToLoad = 6;
+                            //}
+                            //else
+                            //{
+                            roomToLoad = Random.Range(11, 15);
+                            //}
+                            break;
+                        case 3:
+                            roomToLoad = Random.Range(15, 18);
+                            break;
+                        default:
+                            roomToLoad = Random.Range(5, 10);
+                            break;
+                    }
                 }
             }
 
             if (!Config.data.isOnline)
+            {
                 StartCoroutine(LoadASynchrously(roomToLoad));
+                // print(FindObjectsOfType<RunManager>().Length);
+            }
             else if (PhotonNetwork.IsMasterClient)
+            {
+                print("Change Room");
+                // StartCoroutine(LoadASynchrously(roomToLoad));
                 PhotonNetwork.LoadLevel(roomToLoad);
+            }
+                
 
         };
         // if (PhotonNetwork.IsMasterClient) // Quizas eliminar

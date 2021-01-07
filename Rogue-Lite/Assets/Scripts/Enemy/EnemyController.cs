@@ -10,6 +10,7 @@ namespace GoldPillowGames.Enemy
     {
         #region Variables
         [SerializeField] protected float health;
+        [SerializeField] protected int gold = 10;
         protected FiniteStateMachine stateMachine;
         private RoomManager _roomManager;
         public Action GoToNextStateCallback { set; private get; }
@@ -70,11 +71,17 @@ namespace GoldPillowGames.Enemy
             stateMachine.FixedUpdate(Time.deltaTime);
         }
         
-        public void GoToNextState()
+        protected virtual void GiveGold()
+        {
+            Config.data.gold += gold;
+        }
+
+        protected void GoToNextState()
         {
             GoToNextStateCallback?.Invoke();
         }
 
+        [PunRPC]
         public virtual void Push(float time, float force, Vector3 direction)
         {
             
@@ -93,7 +100,13 @@ namespace GoldPillowGames.Enemy
                 child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
             }
         }
-        
+
+        virtual protected void CheckClosestPlayer()
+        {
+
+        }
+
+        [PunRPC]
         public virtual void ReceiveDamage(float damage)
         {
             if(!Config.data.isOnline)
