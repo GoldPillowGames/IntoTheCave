@@ -613,6 +613,11 @@ public class PlayerController : MonoBehaviour
     {
         weapon.FinishAttack();
     }
+
+    public void SetNewCurrentWeapon(PlayerWeaponController newCurrentWeapon)
+    {
+        weapon = newCurrentWeapon;
+    }
     
     private void OnDrawGizmos()
     {

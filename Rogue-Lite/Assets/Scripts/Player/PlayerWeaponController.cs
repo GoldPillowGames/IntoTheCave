@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GoldPillowGames.Enemy;
 using UnityEngine;
 
@@ -6,15 +7,12 @@ namespace GoldPillowGames.Player
 {
     public class PlayerWeaponController : MonoBehaviour
     {
-        private GameObject _player;
-        private bool _isAttacking = false;
+        [SerializeField] private PlayerController player;
+        private bool _isAttacking;
         private List<GameObject> _enemiesHit;
-
-        private float _pushForce = 4; // Provisional, debe venir de las stats del jugador.
         
         private void Awake()
         {
-            _player = FindObjectOfType<PlayerController>().gameObject;
             _enemiesHit = new List<GameObject>();
         }
 
@@ -35,6 +33,7 @@ namespace GoldPillowGames.Player
             {
                 var enemyController = other.GetComponent<EnemyController>();
                 CameraShaker.Shake(0.1f, 1.75f, 2f);
+
                 PlayerStatus player = GetComponentInParent<PlayerStatus>();
                 DamageText.Spawn((int)player.damage, other.ClosestPoint(transform.position));
                 player.GetComponent<PlayerController>().health += player.damage * (int)player.healthSteal / 100 * (int)player.heal;
@@ -47,16 +46,21 @@ namespace GoldPillowGames.Player
                 if (!Config.data.isOnline)
                 {
                     enemyController.ReceiveDamage(player.damage);
-                    enemyController.Push(0.5f, _pushForce * player.push, (other.transform.position - _player.transform.position).normalized);
+                    enemyController.Push(0.5f, player.push, (other.transform.position - _player.transform.position).normalized);
                 }
                 else
                 {
                     enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("ReceiveDamage", Photon.Pun.RpcTarget.All, (float)player.damage);
-                    enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("Push", Photon.Pun.RpcTarget.All, 0.5f, _pushForce * player.push, (other.transform.position - _player.transform.position).normalized);
+                    enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("Push", Photon.Pun.RpcTarget.All, 0.5f, player.push, (other.transform.position - _player.transform.position).normalized);
                 }
                 
                 _enemiesHit.Add(other.gameObject);
             }
+        }
+
+        private void OnEnable()
+        {
+            player.SetNewCurrentWeapon(this);
         }
     }
 }
