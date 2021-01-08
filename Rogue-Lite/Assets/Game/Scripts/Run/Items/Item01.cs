@@ -14,6 +14,6 @@ public class Item01 : Item
 
     public override void OnPickUpItem(PlayerStatus player)
     {
-        player.health += player.health * 5 / 100;
+        player.health += player.health * 10 / 100;
     }
 }

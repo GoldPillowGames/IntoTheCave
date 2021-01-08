@@ -99,10 +99,15 @@ public class SettingsMenuManager : MonoBehaviour
             s.UpdateUI();
         }
 
+        int antialiasing = (int)Config.data.antialiasingQuality;
 
+        if(antialiasing == 8)
+        {
+            antialiasing = 5;
+        }
 
-        _antialiasingSettings.defaultIndex = (int)Config.data.antialiasingQuality;
-        _antialiasingSettings.index = (int)Config.data.antialiasingQuality;
+        _antialiasingSettings.defaultIndex = antialiasing;
+        _antialiasingSettings.index = antialiasing;
         _antialiasingSettings.UpdateUI();
 
 

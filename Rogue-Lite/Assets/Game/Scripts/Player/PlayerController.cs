@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     public MeleeWeaponTrail weaponTrail;
 
 
-    [SerializeField] private PlayerState playerState = PlayerState.NEUTRAL;
+    public PlayerState playerState = PlayerState.NEUTRAL;
 
     [HideInInspector] public Quaternion currentRotation;     // Current looking rotation
     private CharacterController controller; // Character controller
@@ -165,10 +165,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private Vector3 lastMovementDir = Vector3.zero;
+    Quaternion originalRotation;
+    Transform objectToSee;
 
     // Update is called once per frame
     void Update()
     {
+        
+
+
         if (!PV.IsMine && Config.data.isOnline)
             return;
 
@@ -176,7 +181,6 @@ public class PlayerController : MonoBehaviour
             return;
 
         maxHealth = playerStatus.health;
-
         Movement();
 
         // Updates where the player is looking to if he is moving
@@ -190,6 +194,14 @@ public class PlayerController : MonoBehaviour
         if(hitColliders.Length > 0)
         {
             interactableDetected = true;
+            foreach(Collider col in hitColliders)
+            {
+                NPCBehaviour npc = col.GetComponent<NPCBehaviour>();
+                if (npc)
+                {
+                    npc.ShowInteractBox();
+                }
+            }
         }
 
         Collider[] hitColliders2 = Physics.OverlapSphere(transform.position, outRadius, whatIsInteractable);
@@ -201,6 +213,7 @@ public class PlayerController : MonoBehaviour
 
         if (interactableDetected)
         {
+            if(cameraController.cameraState != CameraState.DIALOGUE)
             cameraController.cameraState = CameraState.INTERACT;
         }
         else if(cameraController.cameraState != CameraState.END_ROOM)
@@ -226,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (((Input.GetMouseButton(0) && !Config.data.isTactile) /*|| (_rightJoystick.Horizontal != 0 || _rightJoystick.Vertical != 0)*/) /*&& canAttack*/ && _timeToAttack <= 0 && (playerState == PlayerState.NEUTRAL) /*&& !animator.GetBool("HasAttackedBool")*/ )
+        if (((Input.GetMouseButton(0) && !Config.data.isTactile) /*|| (_rightJoystick.Horizontal != 0 || _rightJoystick.Vertical != 0)*/) /*&& canAttack*/ && _timeToAttack <= 0 && (playerState == PlayerState.NEUTRAL || playerState == PlayerState.ATTACKING) /*&& !animator.GetBool("HasAttackedBool")*/ )
         {
             canAttack = false;
             canFinishAttack = false;
@@ -277,9 +290,14 @@ public class PlayerController : MonoBehaviour
         else if (!isDead)
         {
             this.gameObject.layer = 10;
+            canRoll = true;
+            animator.SetBool("IsRolling", false);
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !Config.data.isTactile)
+        
+
+        if (rollTimer <= 0 && Input.GetKeyDown(KeyCode.Space) && playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll && !Config.data.isTactile)
         {
             playerState = PlayerState.ROLLING;
             rollDirection = movement;
@@ -287,6 +305,7 @@ public class PlayerController : MonoBehaviour
             movement = Vector3.zero;
             canRoll = false;
             animator.SetBool("IsRolling", true);
+            rollTimer = maxRollTimer;
             StartRoll();
         }
         #endregion
@@ -308,6 +327,9 @@ public class PlayerController : MonoBehaviour
             TactileAttack();
         }
     }
+
+    public float rollTimer;
+    private float maxRollTimer = 0.5f;
 
     public bool isTactileAttacking = false;
 
@@ -340,7 +362,7 @@ public class PlayerController : MonoBehaviour
 
     public void Roll()
     {
-        if (playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll)
+        if (rollTimer <= 0 && playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll)
         {
             playerState = PlayerState.ROLLING;
             rollDirection = movement;
@@ -348,6 +370,7 @@ public class PlayerController : MonoBehaviour
             movement = Vector3.zero;
             canRoll = false;
             animator.SetBool("IsRolling", true);
+            rollTimer = maxRollTimer;
             StartRoll();
         }
     }
@@ -402,6 +425,11 @@ public class PlayerController : MonoBehaviour
 
         if (isDead)
             return;
+
+        if (rollTimer > 0)
+        {
+            rollTimer -= Time.deltaTime;
+        }
 
         _timeToAttack -= Time.deltaTime;
 

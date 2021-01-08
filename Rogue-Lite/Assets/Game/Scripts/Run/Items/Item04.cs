@@ -6,8 +6,9 @@
         base.Awake();
     }
 
+    // Gold Per Enemy
     public override void OnPickUpItem(PlayerStatus player)
     {
-        player.goldPerEnemy += player.goldPerEnemy * 10 / 100;
+        player.goldPerEnemy += 10;
     }
 }

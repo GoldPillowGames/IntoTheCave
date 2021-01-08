@@ -9,6 +9,8 @@ public class DialogueController : MonoBehaviour
 {
     public GameObject container;
     public string NPC_Name;
+    public Transform dialogueContainer;
+    public char separator = ';';
 
     private TextMeshPro dialogueText;
     private TextAnimatorPlayer textAnimatorPlayer;
@@ -22,6 +24,7 @@ public class DialogueController : MonoBehaviour
 
     private int currentSentenceIndex = 1;
     private int currentDialogueIndex = 1;
+    private Animator anim;
 
     // Load the data from the database
     string sentecesDBcontent;
@@ -31,8 +34,9 @@ public class DialogueController : MonoBehaviour
     List<string[]> values;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        anim = GetComponent<Animator>();
         dialogueText = GetComponentInChildren<TextMeshPro>();
         textAnimatorPlayer = GetComponentInChildren<TextAnimatorPlayer>();
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -51,35 +55,100 @@ public class DialogueController : MonoBehaviour
 
         for (int i = 1; i < sentencesData.Length; i++)
         {
-            
-            values.Add(sentencesData[i].Split(','));
+            values.Add(sentencesData[i].Split(separator));
         }
         print("Values: " + values[1].Length);
         int random = UnityEngine.Random.Range(0, values.Count);
-        //ShowSentence(random);
-        ShowSentence(0);
+        // ShowSentence(random);
+        // ShowSentence(0);
+
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    transform.GetChild(i).gameObject.SetActive(false);
+        //}
     }
 
-    // Update is called once per frame
-    void Update()
+    private bool isInDialogue = false;
+
+    public void StartDialogue(int dialogueIndex)
+    {
+        anim.SetBool("IsInDialogue", true);
+
+        //for (int i = 0; i < dialogueContainer.transform.childCount; i++)
+        //{
+        //    dialogueContainer.transform.GetChild(i).gameObject.SetActive(true);
+        //}
+        
+        for(int i = 0; i < sentencesData.Length; i++)
+        {
+            if (int.Parse(values[i][1]) == dialogueIndex)
+            {
+                ShowSentence(i);
+                currentDialogueIndex = dialogueIndex;
+                isInDialogue = true;
+                return;
+            }
+        }
+        EndDialogue();
+    }
+
+    public void EndDialogue()
+    {
+        anim.SetBool("IsInDialogue", false);
+        //for (int i = 0; i < dialogueContainer.transform.childCount; i++)
+        //{
+        //    dialogueContainer.transform.GetChild(i).gameObject.SetActive(false);
+        //}
+        GetComponentInParent<NPCBehaviour>().StopDialogue();
+
+        isInDialogue = false;
+    }
+
+    public void ShowLastSentence()
+    {
+        ShowSentence(currentSentenceIndex + 1);
+        isInDialogue = true;
+    }
+
+    public void UpdateDialogue()
     {
         if (!dialogueText)
             return;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && isInDialogue)
         {
             //int random = UnityEngine.Random.Range(0, values.Count);
             //sentence = values[random][1];
             //textAnimatorPlayer.ShowText(sentence);
-            if(currentDialogueIndex == int.Parse(values[currentSentenceIndex+1][1]))
+            if (values[currentSentenceIndex + 2][1] == "")
             {
-                ShowSentence(currentSentenceIndex+1);
+                // EndDialogue();
+                if (values[currentSentenceIndex + 1][1] == "")
+                {
+                    EndDialogue();
+                }
+                else
+                {
+                    GetComponentInParent<NPCBehaviour>().ShowMenu();
+                    isInDialogue = false;
+                }
+
+            }
+            else if (currentDialogueIndex == int.Parse(values[currentSentenceIndex + 2][1]))
+            {
+                ShowSentence(currentSentenceIndex + 1);
+            }
+            else if (currentDialogueIndex == int.Parse(values[currentSentenceIndex + 1][1]))
+            {
+                GetComponentInParent<NPCBehaviour>().ShowMenu();
+                isInDialogue = false;
             }
             else
             {
-                print("currentSentenceIndex: " + currentSentenceIndex);
-                print("currentDialogueIndex: " + currentDialogueIndex);
-                print("int.Parse(values[currentSentenceIndex + 1][1]): " + int.Parse(values[currentSentenceIndex + 1][1]));
+                //print("currentSentenceIndex: " + currentSentenceIndex);
+                //print("currentDialogueIndex: " + currentDialogueIndex);
+                //print("int.Parse(values[currentSentenceIndex + 1][1]): " + int.Parse(values[currentSentenceIndex + 1][1]));
+                EndDialogue();
             }
         }
 
@@ -91,23 +160,29 @@ public class DialogueController : MonoBehaviour
         //}
     }
 
-    public void ShowSentence(int sentenceIndex)
+    // Update is called once per frame
+    protected virtual void Update()
     {
-        sentence = values[sentenceIndex][2];
+        
+    }
+
+    public virtual void ShowSentence(int sentenceIndex)
+    {
+        sentence = values[sentenceIndex][(int)Config.data.language + 4];
         currentSentenceIndex = int.Parse(values[sentenceIndex][0]) - 1;
         currentDialogueIndex = int.Parse(values[sentenceIndex][1]);
         textAnimatorPlayer.ShowText(sentence);
 
     }
 
-    public void HideQuote()
+    public virtual void HideQuote()
     {
         Invoke("FinallyHideQuote", 2.5f);
     }
 
 
 
-    void FinallyHideQuote()
+    public virtual void FinallyHideQuote()
     {
         hideText = true;
     }
