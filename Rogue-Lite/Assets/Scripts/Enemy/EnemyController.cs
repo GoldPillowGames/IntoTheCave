@@ -38,6 +38,7 @@ namespace GoldPillowGames.Enemy
             {
                 rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
                 rb.isKinematic = true;
+                rb.interpolation = RigidbodyInterpolation.None;
             }
         }
         
@@ -53,6 +54,7 @@ namespace GoldPillowGames.Enemy
             {
                 rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
                 rb.isKinematic = false;
+                rb.interpolation = RigidbodyInterpolation.Interpolate;
             }
         }
 
@@ -76,7 +78,7 @@ namespace GoldPillowGames.Enemy
             Config.data.gold += gold;
         }
 
-        protected void GoToNextState()
+        public void GoToNextState()
         {
             GoToNextStateCallback?.Invoke();
         }
