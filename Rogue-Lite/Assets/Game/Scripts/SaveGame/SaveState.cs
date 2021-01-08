@@ -104,4 +104,6 @@ public class SaveState
     public int herreroDialogueIndex = 1;
     public int armeroDialogueIndex = 1;
     public int tintoneroDialogueIndex = 1;
+
+    public bool firstSinglePlayer = true;
 }

@@ -59,4 +59,18 @@ public static class Audio
         if (manager)
             manager.DeactivateDynamicTrack(trackIndex);
     }
+
+    public static void ChangeTracks(List<AudioClip> clips)
+    {
+        AudioManager manager = GameObject.FindObjectOfType<AudioManager>();
+        if (manager)
+            manager.ChangeTracks(clips);
+    }
+
+    public static void ChangeTracks(AudioClip[] clips)
+    {
+        AudioManager manager = GameObject.FindObjectOfType<AudioManager>();
+        if (manager)
+            manager.ChangeTracks(clips);
+    }
 }

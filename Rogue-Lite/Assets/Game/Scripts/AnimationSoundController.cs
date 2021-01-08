@@ -7,6 +7,7 @@ public class AnimationSoundController : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] attacks;
+    [SerializeField] AudioClip[] steps;
 
     void PlayAttackSound(int id)
     {
@@ -15,5 +16,10 @@ public class AnimationSoundController : MonoBehaviour
             Audio.PlaySFX(attacks[id]);
         else if(!Config.data.isOnline)
             Audio.PlaySFX(attacks[id]);
+    }
+
+    void PlayStepSound()
+    {
+        Audio.PlaySFX(steps[Random.Range(0, steps.Length)]);
     }
 }

@@ -8,6 +8,8 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] GameObject settingsMenu;
 
+    [SerializeField] private Animator _firstTimeAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,19 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadLevel(int index)
     {
-        Fade.OnPlay = () => { SceneManager.LoadScene(index); };
+        Fade.OnPlay = () => { 
+            if(!Config.data.firstSinglePlayer || index != 2)
+                SceneManager.LoadScene(index); 
+            else if (Config.data.firstSinglePlayer)
+            {
+                _firstTimeAnim.gameObject.SetActive(true);
+                _firstTimeAnim.SetBool("Play", true);
+            }
+            else if(index == 2)
+            {
+                SceneManager.LoadScene(2);
+            }
+        };
         Fade.PlayFade();
     }
 

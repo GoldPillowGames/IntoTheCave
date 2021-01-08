@@ -12,6 +12,11 @@ public class RunManager : MonoBehaviour
 
     [SerializeField] private CameraController[] _cameraController;
     [SerializeField] private TimeManager[] _timeManager;
+    [SerializeField] private AudioClip[] _musicStage0;
+    [SerializeField] private AudioClip[] _musicStage1;
+    [SerializeField] private AudioClip[] _musicStage2;
+    [SerializeField] private AudioClip[] _musicStage3;
+
     public bool isOnlineManager = false;
     private GameObject[] _doors;
     private GameObject[] _previousDoors;
@@ -26,6 +31,7 @@ public class RunManager : MonoBehaviour
 
     private void Awake()
     {
+        
         DontDestroyOnLoad(this);
     }
 
@@ -100,6 +106,7 @@ public class RunManager : MonoBehaviour
                 //{
                 //    _timeManager = FindObjectOfType<TimeManager>();
                 //}
+                Audio.ChangeTracks(_musicStage0);
         }
 
     public void ResetOnSceneLoaded()
@@ -207,35 +214,49 @@ public class RunManager : MonoBehaviour
 
                 foreach (PlayerController player in p)
                 {
-                    // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
-                    player.enabled = false;
-                    player.GetComponent<CharacterController>().enabled = false;
-
-                    
-                    // Actualizamos la ubicación del jugador
-                    switch (currentDoor)
+                    if (player.isMe || !Config.data.isOnline)
                     {
-                        case DoorPosition.BOTTOM:
-                            player.transform.position = g.transform.position - transform.right * distanceFromDoor;
-                            break;
-                        case DoorPosition.TOP:
-                            player.transform.position = g.transform.position + transform.right * distanceFromDoor;
-                            break;
-                        case DoorPosition.LEFT:
-                            player.transform.position = g.transform.position + transform.forward * distanceFromDoor;
-                            break;
-                        case DoorPosition.RIGHT:
-                            player.transform.position = g.transform.position - transform.forward * distanceFromDoor;
-                            break;
+                        if (PhotonNetwork.IsMasterClient || !Config.data.isOnline)
+                        {
+                            distanceFromDoor = 4.75f;
+                        }
+                        else
+                        {
+                            distanceFromDoor = 8.75f;
+                        }
+                        // Desactivamos el player controller y el character controller para cambiar la posición del jugador sin errores
+                        player.enabled = false;
+                        player.GetComponent<CharacterController>().enabled = false;
+
+
+                        // Actualizamos la ubicación del jugador
+                        switch (currentDoor)
+                        {
+                            case DoorPosition.BOTTOM:
+                                player.transform.position = g.transform.position - transform.right * distanceFromDoor;
+                                break;
+                            case DoorPosition.TOP:
+                                player.transform.position = g.transform.position + transform.right * distanceFromDoor;
+                                break;
+                            case DoorPosition.LEFT:
+                                player.transform.position = g.transform.position + transform.forward * distanceFromDoor;
+                                break;
+                            case DoorPosition.RIGHT:
+                                player.transform.position = g.transform.position - transform.forward * distanceFromDoor;
+                                break;
+                        }
+
+                        distanceFromDoor += 7;
+
+                        // Reactivamos el player controller y el character controller
+                        player.enabled = true;
+                        player.GetComponent<CharacterController>().enabled = true;
+                        player.cameraFollower.ResetFollowing();
                     }
-
-                    distanceFromDoor += 3;
-
-                    // Reactivamos el player controller y el character controller
-                    player.enabled = true;
-                    player.GetComponent<CharacterController>().enabled = true;
-                    player.cameraFollower.ResetFollowing();
+                    
                 }
+
+
             }
         }
 
@@ -384,6 +405,7 @@ public class RunManager : MonoBehaviour
                         case 0:
                             if (currentRoom == 1)
                             {
+                                Audio.ChangeTracks(_musicStage1);
                                 currentStage = 1;
                                 roomToLoad = 6;
                             }
@@ -391,6 +413,7 @@ public class RunManager : MonoBehaviour
                         case 1:
                             //if (currentRoom == 1)
                             //{
+                            //    Audio.ChangeTracks(_musicStage1);
                             //    currentStage = 1;
                             //    roomToLoad = 6;
                             //}
@@ -400,6 +423,12 @@ public class RunManager : MonoBehaviour
                             //}
                             break;
                         case 2:
+                            if (currentRoom == 1)
+                            {
+                                Audio.ChangeTracks(_musicStage2);
+                                //currentStage = 1;
+                                //roomToLoad = 6;
+                            }
                             //if (currentRoom == 1)
                             //{
                             //    currentStage = 1;
@@ -411,7 +440,14 @@ public class RunManager : MonoBehaviour
                             //}
                             break;
                         case 3:
-                            roomToLoad = Random.Range(15, 18);
+                            if (currentRoom == 1)
+                            {
+                                Audio.ChangeTracks(_musicStage3);
+                                //currentStage = 1;
+                                //roomToLoad = 6;
+                            }
+
+                            roomToLoad = Random.Range(15, 19);
                             break;
                         default:
                             roomToLoad = Random.Range(5, 10);

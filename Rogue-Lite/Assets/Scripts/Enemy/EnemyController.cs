@@ -83,7 +83,7 @@ namespace GoldPillowGames.Enemy
                 Config.data.gold += (gold / 2) + FindObjectOfType<PlayerStatus>().goldPerEnemy;
         }
 
-        protected void GoToNextState()
+        public void GoToNextState()
         {
             GoToNextStateCallback?.Invoke();
         }

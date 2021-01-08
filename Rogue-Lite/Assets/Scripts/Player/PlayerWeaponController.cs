@@ -8,6 +8,8 @@ namespace GoldPillowGames.Player
     public class PlayerWeaponController : MonoBehaviour
     {
         [SerializeField] private PlayerController player;
+        [SerializeField] private float weaponPush = 4;
+        [SerializeField] private AudioClip[] impactClip;
         private bool _isAttacking;
         private List<GameObject> _enemiesHit;
         
@@ -42,16 +44,22 @@ namespace GoldPillowGames.Player
                     player.GetComponent<PlayerController>().health = player.health;
                 }
 
+                if (impactClip.Length != 0 && _enemiesHit.Count == 0)
+                {
+                    print("Sound");
+                    Audio.PlaySFX(impactClip[UnityEngine.Random.Range(0, impactClip.Length)], 0.4f);
+                }
+
 
                 if (!Config.data.isOnline)
                 {
                     enemyController.ReceiveDamage(player.damage);
-                    enemyController.Push(0.5f, player.push, (other.transform.position - _player.transform.position).normalized);
+                    enemyController.Push(0.5f, weaponPush* player.push, (other.transform.position - player.transform.position).normalized);
                 }
                 else
                 {
                     enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("ReceiveDamage", Photon.Pun.RpcTarget.All, (float)player.damage);
-                    enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("Push", Photon.Pun.RpcTarget.All, 0.5f, player.push, (other.transform.position - _player.transform.position).normalized);
+                    enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("Push", Photon.Pun.RpcTarget.All, 0.5f, weaponPush* player.push, (other.transform.position - player.transform.position).normalized);
                 }
                 
                 _enemiesHit.Add(other.gameObject);

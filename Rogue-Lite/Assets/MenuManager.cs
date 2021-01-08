@@ -31,6 +31,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private UniversalRenderPipelineAsset[] _renderers;
 
+   
+
     private Dictionary<MainMenuType, GameObject> menus;
 
     // Start is called before the first frame update
@@ -128,6 +130,16 @@ public class MenuManager : MonoBehaviour
 
     private System.Type universalRenderPipelineAssetType;
     private FieldInfo mainLightShadowmapResolutionFieldInfo;
+
+    public void SetDynamicMusicTrack(int index)
+    {
+        Audio.ActivateTrack(index);
+    }
+
+    public void StopDynamicMusicTrack(int index)
+    {
+        Audio.DeactivateTrack(index);
+    }
 
     public void LoadGraphicsSettings(Camera cam)
     {

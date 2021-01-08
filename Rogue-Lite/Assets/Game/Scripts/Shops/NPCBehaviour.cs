@@ -6,6 +6,9 @@ public class NPCBehaviour : MonoBehaviour
 {
     public GameObject menu;
     public DialogueController dialogueController;
+    public AudioSource audioSource;
+    public AudioClip[] voiceSounds;
+
     protected int dialogueIndex;
     protected Quaternion originalRotation;
 
@@ -14,6 +17,9 @@ public class NPCBehaviour : MonoBehaviour
     protected float maxTimeToStopInteracting = 0.3f;
     protected bool interacted = false;
     protected PlayerController player;
+
+    protected bool playSound = true;
+    protected bool playSound2 = true;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -51,6 +57,28 @@ public class NPCBehaviour : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 6 * Time.deltaTime);
             player.cameraFollower.transform.position = Vector3.Lerp(player.cameraFollower.transform.position, (this.transform.position + player.transform.position) / 2, 3* Time.deltaTime);
         }
+    }
+
+    public virtual void PlayVoiceSound()
+    {
+        if (playSound)
+        {
+            if (playSound2)
+            {
+                audioSource.PlayOneShot(voiceSounds[Random.Range(0, voiceSounds.Length)]);
+                playSound = false;
+            }
+            else
+            {
+                playSound2 = true;
+            }
+            
+        }
+        else
+        {
+            playSound = true;
+        }
+        
     }
 
     public virtual void ShowInteractBox()
