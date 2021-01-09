@@ -1,31 +1,27 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using GoldPillowGames.Core;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-namespace GoldPillowGames.Enemy.Roquita
+namespace GoldPillowGames.Enemy.Pinchitos
 {
-    public class RoquitaController : EnemyController
+    public class PinchitosController : EnemyController
     {
         #region Variables
         [SerializeField] private float velocity = 5;
         [SerializeField] private float distanceToAttack = 5;
         [SerializeField] private float detectAngle;
         [SerializeField] private float pushAttackForce = 15;
-        [SerializeField] private float minTimeToJump = 3;
-        [SerializeField] private float maxTimeToJump = 8;
-        [SerializeField] private float jumpAttackRadius = 5;
-        [SerializeField] private int quickHandDamage = 15;
-        [SerializeField] private int strongHandDamage = 20;
-        [SerializeField] private int jumpDamage = 25;
-        [SerializeField] private GameObject body;
-        [SerializeField] private RoquitaParticlesController earthquakeParticles;
-        [SerializeField] private GameObject healthBar;
-        [SerializeField] private RoquitaHandController quickHand;
-        [SerializeField] private RoquitaHandController strongHand;
-        [SerializeField] private ParticleSystem landingParticles;
+        [SerializeField] private float rotationSpeed = 10;
+        [SerializeField] private float minTimeToThrowSpikeBall = 1.0f;
+        [SerializeField] private float maxTimeToThrowSpikeBall = 4.0f;
+        [SerializeField] private int attackMelee1Damage = 20;
+        [SerializeField] private int attackMelee21Damage = 12;
+        [SerializeField] private int attackMelee22Damage = 16;
+        [SerializeField] private int attackCannonDamage = 18;
+        private SpikeBallController _spikeBall;
+        private StaticSpikeBallController _staticSpikeBall;
         private Animator _anim;
         private AgentPropeller _propeller;
         private Collider _collider;
@@ -35,11 +31,14 @@ namespace GoldPillowGames.Enemy.Roquita
         public Transform Player { get; private set; }
         public NavMeshAgent Agent { get; private set; }
         public float Velocity => velocity;
-        public float TimeToJump => Random.Range(minTimeToJump, maxTimeToJump);
+        public float RotationSpeed => rotationSpeed;
+        public bool CanRotate { get; set; }
+        public bool HasDied { get; set; }
+        public bool CanThrow { get; set; } = true;
 
+        public float TimeToThrowSpikeBall => Random.Range(minTimeToThrowSpikeBall, maxTimeToThrowSpikeBall);
         private float DistanceFromPlayer => Vector3.Distance(transform.position,
             Player.transform.position);
-
         private Vector3 DirectionToPlayer =>
             (Player.position - transform.position).normalized;
 
@@ -57,6 +56,9 @@ namespace GoldPillowGames.Enemy.Roquita
             _anim = GetComponentInChildren<Animator>();
             _propeller = new AgentPropeller(Agent);
             _collider = GetComponent<Collider>();
+
+            _spikeBall = GetComponentInChildren<SpikeBallController>();
+            _staticSpikeBall = GetComponentInChildren<StaticSpikeBallController>();
         }
 
         protected override void Start()
@@ -66,8 +68,7 @@ namespace GoldPillowGames.Enemy.Roquita
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = DirectionToPlayer;
             
-            quickHand.SetDamage(quickHandDamage);
-            strongHand.SetDamage(strongHandDamage);
+            _spikeBall.SetDamage(attackCannonDamage);
         }
 
         protected override void FixedUpdate()
@@ -77,6 +78,28 @@ namespace GoldPillowGames.Enemy.Roquita
             _propeller.Update(Time.deltaTime);
         }
 
+        public void ThrowSpikeBall()
+        {
+            CanRotate = false;
+            _spikeBall.InitThrow(Player.position);
+        }
+
+        public void SpikeBallsOnDie()
+        {
+            _staticSpikeBall.OnEnemyDie();
+            _spikeBall.OnEnemyDie();
+        }
+        
+        public void EnableStaticSpikeBall()
+        {
+            _staticSpikeBall.InitAttack();
+        }
+
+        public void DisableStaticSpikeBall()
+        {
+            _staticSpikeBall.FinishAttack();
+        }
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -87,15 +110,22 @@ namespace GoldPillowGames.Enemy.Roquita
             var forward = transform.forward;
             Gizmos.DrawLine(position, position + Quaternion.Euler(0, detectAngle / 2, 0) * forward * distanceToAttack);
             Gizmos.DrawLine(position, position + Quaternion.Euler(0, -detectAngle / 2, 0) * forward * distanceToAttack);
-            
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, jumpAttackRadius);
         }
 
         private bool IsThereAnObstacleInAttackRange()
         {
             if (!Physics.Raycast(transform.position, DirectionToPlayer, out var hitInfo,
                 distanceToAttack, LayerMask.GetMask("Ground", "Player")))
+            {
+                return false;
+            }
+            return !hitInfo.collider.CompareTag("Player");
+        }
+        
+        public bool IsThereAnObstacleInFrontOfPlayer()
+        {
+            if (!Physics.Raycast(transform.position, DirectionToPlayer, out var hitInfo,
+                Mathf.Infinity, LayerMask.GetMask("Ground", "Player")))
             {
                 return false;
             }
@@ -113,84 +143,32 @@ namespace GoldPillowGames.Enemy.Roquita
             
             return (Vector2.Angle(forward, toPlayer) < (detectAngle / 2));
         }
-
-        public void HideRoquita()
-        {
-            body.SetActive(false);
-        }
-
-        public void ShowRoquita()
-        {
-            body.SetActive(true);
-        }
-        
-        public void JumpAreaLandingAttack()
-        {
-            var playerCollidersHit = Physics.OverlapSphere(transform.position, jumpAttackRadius,
-                LayerMask.GetMask("Player")).Where(col => col.CompareTag("Player"));
-            foreach (var playerCollider in playerCollidersHit)
-            {
-                playerCollider.GetComponent<PlayerController>().TakeDamage(jumpDamage,
-                    (playerCollider.transform.position - transform.position).normalized);
-            }
-            
-            earthquakeParticles.Stop();
-            landingParticles.Play();
-            
-            CameraShaker.Shake(0.4f, 3, 4);
-        }
-
-        public void DisableCollider()
-        {
-            _collider.enabled = false;
-            healthBar.SetActive(false);
-        }
-
-        public void EnableCollider()
-        {
-            _collider.enabled = true;
-            healthBar.SetActive(true);
-        }
-
-        public void InitAttackStrongHand()
-        {
-            strongHand.InitAttack();
-        }
-        
-        public void FinishAttackStrongHand()
-        {
-            strongHand.FinishAttack();
-        }
-        
-        public void InitAttackQuickHand()
-        {
-            quickHand.InitAttack();
-        }
-        
-        public void FinishAttackQuickHand()
-        {
-            quickHand.FinishAttack();
-        }
-        
-        public void PrepareToLand()
-        {
-            var currentPosition = transform.position;
-            var playerPosition = Player.position;
-            
-            Agent.Warp(new Vector3(playerPosition.x, currentPosition.y, playerPosition.z));
-            
-            earthquakeParticles.Play(transform.position);
-        }
         
         public void AttackPush(float time)
         {
             _propeller.StartPush(time, pushAttackForce * transform.forward);
         }
 
+        public void SetMelee1Damage()
+        {
+            _staticSpikeBall.SetDamage(attackMelee1Damage);
+        }
+        
+        public void SetMelee21Damage()
+        {
+            _staticSpikeBall.SetDamage(attackMelee21Damage);
+        }
+        
+        public void SetMelee22Damage()
+        {
+            _staticSpikeBall.SetDamage(attackMelee22Damage);
+        }
+        
         protected override void Die()
         {
             base.Die();
-            
+
+            HasDied = true;
             _collider.enabled = false;
             Agent.enabled = false;
             _anim.enabled = false;

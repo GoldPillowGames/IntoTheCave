@@ -12,9 +12,6 @@ namespace GoldPillowGames.Enemy.Huesitos
         private MeshCollider _collider;
         private Rigidbody _rigidbody;
         private int _damage;
-
-        private Vector3 _initialLocalPosition;
-        private Quaternion _initialLocalRotation;
         
         private void Awake()
         {
@@ -22,8 +19,6 @@ namespace GoldPillowGames.Enemy.Huesitos
             _collider = GetComponent<MeshCollider>();
             _rigidbody = GetComponent<Rigidbody>();
             _collider.enabled = false;
-            _initialLocalPosition = transform.localPosition;
-            _initialLocalRotation = transform.localRotation;
         }
 
         public void InitAttack()
@@ -35,11 +30,6 @@ namespace GoldPillowGames.Enemy.Huesitos
         public void FinishAttack()
         {
             _isAttacking = false;
-        }
-
-        private void Update()
-        {
-
         }
 
         private void OnTriggerEnter(Collider other)
