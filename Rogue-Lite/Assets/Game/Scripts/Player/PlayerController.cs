@@ -156,6 +156,9 @@ public class PlayerController : MonoBehaviour
 
         isMe = PV.IsMine;
 
+        playerStatus.UpdateStatus();
+
+        maxHealth = playerStatus.health;
         health = maxHealth;
     }
 

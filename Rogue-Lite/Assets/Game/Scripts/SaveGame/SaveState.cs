@@ -110,4 +110,12 @@ public class SaveState
     public float masterVolume;
     public float musicVolume;
     public float sfxVolume;
+
+    public int dungeonsStarted = 0;
+    public int dungeonsCompleted = 0;
+
+    public int hpLevel = 0;
+    public int strengthLevel = 0;
+    public int dungeonLevel = 1;
+    public int playerLevel => hpLevel + strengthLevel + 1;
 }

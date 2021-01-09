@@ -24,4 +24,13 @@ public class PlayerStatus : MonoBehaviour
     public bool spawnGrenadeWhenRolls = false; // Por implementar
     public float enemiesThreshold = 0.0f; // Por implementar
     public bool canRoll = true;
+
+    public void UpdateStatus()
+    {
+        if (!Config.data.isOnline)
+        {
+            damage = damage + 2 * Config.data.strengthLevel;
+            health = health + 3 * Config.data.hpLevel;
+        }
+    }
 }

@@ -26,7 +26,9 @@ public class MainMenuManager : MonoBehaviour
     {
         Fade.OnPlay = () => { 
             if(!Config.data.firstSinglePlayer || index != 2)
-                SceneManager.LoadScene(index); 
+            {
+                SceneManager.LoadScene(index);
+            }
             else if (Config.data.firstSinglePlayer)
             {
                 _firstTimeAnim.gameObject.SetActive(true);
