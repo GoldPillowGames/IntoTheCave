@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Michsky.UI.ModernUIPack;
+using UnityEngine.Audio;
 
 public class SettingsMenuManager : MonoBehaviour
 {
@@ -33,10 +34,23 @@ public class SettingsMenuManager : MonoBehaviour
 
     [SerializeField] private GameObject _customSettings;
 
-    
+    [Header("Audio")]
+    [SerializeField] private AudioMixer mixer;
+    [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider sfxVolumeSlider;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        masterVolumeSlider.value = Config.data.masterVolume;
+        musicVolumeSlider.value = Config.data.musicVolume;
+        sfxVolumeSlider.value = Config.data.sfxVolume;
+        SetMasterVolume(Config.data.masterVolume);
+        SetMusicVolume(Config.data.musicVolume);
+        SetSFXVolume(Config.data.sfxVolume);
+
         InitSelectors();
         OpenSettingsMenu(0);
     }
@@ -310,13 +324,21 @@ public class SettingsMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_menus[2].gameObject.activeSelf)
+        {
+            print("Volume");
+            SetMasterVolume(masterVolumeSlider.value);
+            SetMusicVolume(musicVolumeSlider.value);
+            SetSFXVolume(sfxVolumeSlider.value);
 
-
-
+            Config.data.masterVolume = masterVolumeSlider.value;
+            Config.data.musicVolume = musicVolumeSlider.value;
+            Config.data.sfxVolume = sfxVolumeSlider.value;
+        }
+        
         if (!_pages[0].activeSelf)
             return;
 
-        
         #region Graphics Settings
         if (_menus[1].activeSelf)
         {
@@ -544,5 +566,20 @@ public class SettingsMenuManager : MonoBehaviour
     {
         Config.SaveData();
         GetComponentInParent<MenuManager>().ShowMenu(0);
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        mixer.SetFloat("Volume", volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        mixer.SetFloat("Music_Volume", volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        mixer.SetFloat("SFX_Volume", volume);
     }
 }

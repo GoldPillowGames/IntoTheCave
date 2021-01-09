@@ -20,6 +20,6 @@ public class AnimationSoundController : MonoBehaviour
 
     void PlayStepSound()
     {
-        Audio.PlaySFX(steps[Random.Range(0, steps.Length)]);
+        Audio.PlaySFX(steps[Random.Range(0, steps.Length)], 1.4f);
     }
 }

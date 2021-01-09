@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     [SerializeField] private AudioSource[] _musicSources = new AudioSource[4];
     [SerializeField] private AudioSource _sfxSource;
+    [SerializeField] private AudioMixer mixer;
 
     private Dictionary<AudioSource, float> _tracks;
     private float _currentPitch = 1;
@@ -28,11 +30,19 @@ public class AudioManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(this);
+
+       
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        mixer.SetFloat("Volume", Config.data.masterVolume);
+
+        mixer.SetFloat("Music_Volume", Config.data.musicVolume);
+
+        mixer.SetFloat("SFX_Volume", Config.data.sfxVolume);
+
         _tracks = new Dictionary<AudioSource, float>();
         _tracks.Add(_musicSources[0], 1);
         _musicSources[0].Play();
@@ -43,6 +53,7 @@ public class AudioManager : MonoBehaviour
         }
         _currentSFXVolume = _sfxSource.volume;
         _currentSFXPitch = _sfxSource.pitch;
+        
     }
 
     public void PlaySFX(AudioClip clip)
