@@ -7,15 +7,16 @@ namespace GoldPillowGames.Player
 {
     public class PlayerWeaponController : MonoBehaviour
     {
-        [SerializeField] private PlayerController player;
         [SerializeField] private float weaponPush = 4;
         [SerializeField] private AudioClip[] impactClip;
+        private PlayerController _player;
         private bool _isAttacking;
         private List<GameObject> _enemiesHit;
         
         private void Awake()
         {
             _enemiesHit = new List<GameObject>();
+            _player = GetComponentInParent<PlayerController>();
         }
 
         public void InitAttack()
@@ -68,7 +69,7 @@ namespace GoldPillowGames.Player
 
         private void OnEnable()
         {
-            player.SetNewCurrentWeapon(this);
+            _player.SetNewCurrentWeapon(this);
         }
     }
 }
