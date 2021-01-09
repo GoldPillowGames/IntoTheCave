@@ -11,7 +11,6 @@ namespace GoldPillowGames.Enemy.Roquita
     {
         #region Variables
         [SerializeField] private float velocity = 5;
-        [SerializeField] private float jumpFollowVelocity = 15;
         [SerializeField] private float distanceToAttack = 5;
         [SerializeField] private float detectAngle;
         [SerializeField] private float pushAttackForce = 15;
@@ -22,10 +21,11 @@ namespace GoldPillowGames.Enemy.Roquita
         [SerializeField] private int strongHandDamage = 20;
         [SerializeField] private int jumpDamage = 25;
         [SerializeField] private GameObject body;
-        [SerializeField] private RoquitaParticlesController landingParticles;
+        [SerializeField] private RoquitaParticlesController earthquakeParticles;
         [SerializeField] private GameObject healthBar;
         [SerializeField] private RoquitaHandController quickHand;
         [SerializeField] private RoquitaHandController strongHand;
+        [SerializeField] private ParticleSystem landingParticles;
         private Animator _anim;
         private AgentPropeller _propeller;
         private Collider _collider;
@@ -134,9 +134,10 @@ namespace GoldPillowGames.Enemy.Roquita
                     (playerCollider.transform.position - transform.position).normalized);
             }
             
-            landingParticles.Stop();
+            earthquakeParticles.Stop();
+            landingParticles.Play();
             
-            CameraShaker.Shake(0.4f, 3, 1);
+            CameraShaker.Shake(0.4f, 3, 4);
         }
 
         public void DisableCollider()
@@ -176,9 +177,9 @@ namespace GoldPillowGames.Enemy.Roquita
             var currentPosition = transform.position;
             var playerPosition = Player.position;
             
-            transform.position = new Vector3(playerPosition.x, currentPosition.y, playerPosition.z);
-
-            landingParticles.Play(transform.position);
+            Agent.Warp(new Vector3(playerPosition.x, currentPosition.y, playerPosition.z));
+            
+            earthquakeParticles.Play(transform.position);
         }
         
         public void AttackPush(float time)

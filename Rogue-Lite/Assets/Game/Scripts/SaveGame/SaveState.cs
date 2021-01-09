@@ -106,4 +106,8 @@ public class SaveState
     public int tintoneroDialogueIndex = 1;
 
     public bool firstSinglePlayer = true;
+
+    public float masterVolume;
+    public float musicVolume;
+    public float sfxVolume;
 }

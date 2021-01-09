@@ -13,7 +13,8 @@ public enum PlayerState
     BLOCKING,
     ROLLING,
     DIALOGUE,
-    IS_BEING_DAMAGED
+    IS_BEING_DAMAGED,
+    PAUSE_MENU
 }
 public class PlayerController : MonoBehaviour
 {
@@ -171,8 +172,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FindObjectOfType<PauseMenuManager>().ActivatePauseMenu();
+            if (!Config.data.isOnline)
+            {
+                FindObjectOfType<TimeManager>().timeScale = 0.0f;
+
+                Time.timeScale = 0.0f;
+            }
+        }
 
         if (!PV.IsMine && Config.data.isOnline)
             return;
