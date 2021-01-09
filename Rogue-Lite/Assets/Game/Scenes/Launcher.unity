@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df25b1b8e3a16af44a9a2af4d1c3eea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNameInputField: {fileID: 1957848227}
+  roomNameInputField: {fileID: 114045031983053345}
   roomNameText: {fileID: 970253357}
   errorText: {fileID: 1478774907}
   roomListContent: {fileID: 524859661}
@@ -7639,6 +7639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 0}
+  _firstTimeAnim: {fileID: 0}
 --- !u!114 &1068054555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8350,6 +8351,18 @@ MonoBehaviour:
     vSync: 1
     isOnline: 0
     gold: 0
+    herreroDialogueIndex: 1
+    armeroDialogueIndex: 1
+    tintoneroDialogueIndex: 1
+    firstSinglePlayer: 1
+    masterVolume: 0
+    musicVolume: 0
+    sfxVolume: 0
+    dungeonsStarted: 0
+    dungeonsCompleted: 0
+    hpLevel: 0
+    strengthLevel: 0
+    dungeonLevel: 1
 --- !u!4 &1226304501
 Transform:
   m_ObjectHideFlags: 0
@@ -12927,6 +12940,7 @@ MonoBehaviour:
   - {fileID: 1707914224}
   - {fileID: 1707914223}
   _sfxSource: {fileID: 1707914222}
+  mixer: {fileID: 0}
 --- !u!4 &1707914226
 Transform:
   m_ObjectHideFlags: 0

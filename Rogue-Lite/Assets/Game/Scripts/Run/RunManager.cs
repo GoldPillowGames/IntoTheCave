@@ -406,6 +406,10 @@ public class RunManager : MonoBehaviour
                             if (currentRoom == 1)
                             {
                                 Audio.ChangeTracks(_musicStage1);
+
+                                if(!Config.data.isOnline)
+                                    Config.data.dungeonsStarted++;
+
                                 currentStage = 1;
                                 roomToLoad = 6;
                             }

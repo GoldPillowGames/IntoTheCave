@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _rightJoystick;
     [SerializeField] private GameObject _rollButton;
     [SerializeField] private Button _attackButton;
+    [SerializeField] private TextMeshProUGUI _healthText;
 
     [Header("Gold")]
     [SerializeField] private TextMeshProUGUI _goldText;
@@ -79,8 +80,9 @@ public class UIController : MonoBehaviour
         {
             _currentGold = Config.data.gold;
             
-        } 
-        
+        }
+
+        _healthText.text = player.health.ToString();
 
         if (_gold < Config.data.gold)
         {

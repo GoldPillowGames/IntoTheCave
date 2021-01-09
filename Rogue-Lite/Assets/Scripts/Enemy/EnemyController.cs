@@ -64,7 +64,10 @@ namespace GoldPillowGames.Enemy
         {
             maxHealth = health;
             // Perk -> Less initial life
-            health -= health * FindObjectOfType<PlayerStatus>().lessInitialLifeForEnemies / 100;
+            if(Config.data.isOnline)
+                health -= health * FindObjectOfType<PlayerStatus>().lessInitialLifeForEnemies / 100;
+            else
+                health -= health * FindObjectOfType<PlayerStatus>().lessInitialLifeForEnemies / 100 * Config.data.dungeonLevel;
         }
 
         protected virtual void Update()

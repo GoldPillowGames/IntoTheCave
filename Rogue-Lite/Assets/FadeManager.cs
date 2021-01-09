@@ -45,6 +45,19 @@ public class FadeManager : MonoBehaviour
         
     }
 
+    public void SetTimeEffect(bool a)
+    {
+        if (a)
+        {
+            anim.updateMode = AnimatorUpdateMode.Normal;
+        }
+        else
+        {
+            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+        }
+        
+    }
+
     public void PlayFade()
     {
         PlayFade(FadeType.CASUAL);

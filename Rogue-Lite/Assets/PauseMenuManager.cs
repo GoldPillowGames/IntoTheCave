@@ -60,11 +60,13 @@ public class PauseMenuManager : MonoBehaviour
     public void BackToMenu()
     {
         Audio.ChangeTracks(audios);
+        Fade.SetTimeEffect(false);
         Fade.OnPlay = () =>
         {
             Time.timeScale = 1.0f;
             FindObjectOfType<GameManager>().DeleteAllDontDestroyOnLoad();
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            Fade.SetTimeEffect(true);
         };
 
 
