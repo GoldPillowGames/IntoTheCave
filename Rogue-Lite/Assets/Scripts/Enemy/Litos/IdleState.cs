@@ -15,7 +15,7 @@ namespace GoldPillowGames.Enemy.Litos {
         {
             _enemyController = enemyController;
             
-            animationBoolParameterSelector.Add("IsFollowing");
+            animationBoolParameterSelector.Add("IsIdle");
         }
         #endregion
     }

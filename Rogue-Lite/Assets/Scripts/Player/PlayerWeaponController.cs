@@ -34,6 +34,7 @@ namespace GoldPillowGames.Player
         { 
             if (_isAttacking && other.CompareTag("Enemy") && !_enemiesHit.Contains(other.gameObject))
             {
+                Debug.Log("KEK");
                 var enemyController = other.GetComponent<EnemyController>();
                 CameraShaker.Shake(0.1f, 1.75f, 2f);
 
