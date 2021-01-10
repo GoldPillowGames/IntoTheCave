@@ -20,6 +20,9 @@ public class AnimationSoundController : MonoBehaviour
 
     void PlayStepSound()
     {
-        Audio.PlaySFX(steps[Random.Range(0, steps.Length)], 1.4f);
+        if (GetComponentInParent<PlayerController>().isMe && Config.data.isOnline)
+            Audio.PlaySFX(steps[Random.Range(0, steps.Length)], 1.4f);
+        else if (!Config.data.isOnline)
+            Audio.PlaySFX(steps[Random.Range(0, steps.Length)], 1.4f);
     }
 }

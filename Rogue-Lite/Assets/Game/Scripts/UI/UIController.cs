@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _rollButton;
     [SerializeField] private Button _attackButton;
     [SerializeField] private TextMeshProUGUI _healthText;
+    [SerializeField] private GameObject deathMenu;
 
     [Header("Gold")]
     [SerializeField] private TextMeshProUGUI _goldText;
@@ -62,6 +63,31 @@ public class UIController : MonoBehaviour
         _currentGold = Config.data.gold;
     }
 
+    public void ShowDeathMenu()
+    {
+        Fade.SetTimeEffect(true);
+        Time.timeScale = 0.0f;
+        deathMenu.SetActive(true);
+    }
+
+    public void EndGame()
+    {
+        // player.Kill();
+        // player.Disconnect();
+        
+
+        Audio.ChangeTracks(GetComponent<PauseMenuManager>().audios);
+        Fade.SetTimeEffect(false);
+        Fade.OnPlay = () =>
+        {
+            Time.timeScale = 1.0f;
+            FindObjectOfType<GameManager>().DisconnectPlayer();
+            Fade.SetTimeEffect(true);
+        };
+
+        Fade.PlayFade();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -72,8 +98,12 @@ public class UIController : MonoBehaviour
         {
             _playerIsDead = true;
             player.Kill();
-            if(!Config.data.isOnline)
+            if (!Config.data.isOnline)
+            {
+                
                 _deathMenuManager.PlayDeathMenu();
+            }
+                
         }
 
         if (_currentGold != Config.data.gold)
