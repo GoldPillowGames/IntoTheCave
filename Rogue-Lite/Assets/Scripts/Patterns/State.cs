@@ -1,4 +1,6 @@
-﻿namespace GoldPillowGames.Patterns
+﻿using UnityEngine;
+
+namespace GoldPillowGames.Patterns
 {
     public abstract class State
     {
@@ -26,6 +28,21 @@
         public virtual void FixedUpdate(float deltaTime)
         {
 
+        }
+        
+        public virtual void OnCollisionStay(Collision other)
+        {
+            
+        }
+        
+        public virtual void OnCollisionExit(Collision other)
+        {
+            
+        }
+
+        public virtual void OnCollisionEnter(Collision other)
+        {
+            
         }
 
         public virtual void Exit()
