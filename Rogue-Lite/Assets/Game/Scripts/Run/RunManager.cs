@@ -21,7 +21,8 @@ public class RunManager : MonoBehaviour
     private GameObject[] _doors;
     private GameObject[] _previousDoors;
     private int currentRoom = 0;
-    private int currentStage = 0;
+    public int currentStage { get; private set; }
+
     #endregion
 
     public void SetUp(bool isOnline)
@@ -368,9 +369,8 @@ public class RunManager : MonoBehaviour
             currentRoom++;
             int roomToLoad = SceneManager.GetActiveScene().buildIndex;
 
-            while(roomToLoad == SceneManager.GetActiveScene().buildIndex)
+            while(roomToLoad == SceneManager.GetActiveScene().buildIndex && currentRoom != 0)
             {
-                print("Room repetida");
                 if (currentRoom == 10)
                 {
                     switch (currentStage)
@@ -379,6 +379,7 @@ public class RunManager : MonoBehaviour
                             print("Boss Fight Reached");
                             roomToLoad = 9;
                             currentRoom = 0;
+                            // Audio.ActivateTrack(3);
                             currentStage = 2;
                             break;
                         case 2:
@@ -407,8 +408,7 @@ public class RunManager : MonoBehaviour
                             {
                                 Audio.ChangeTracks(_musicStage1);
 
-                                if(!Config.data.isOnline)
-                                    Config.data.dungeonsStarted++;
+                                
 
                                 currentStage = 1;
                                 roomToLoad = 6;
@@ -423,6 +423,7 @@ public class RunManager : MonoBehaviour
                             //}
                             //else
                             //{
+                            
                             roomToLoad = Random.Range(5, 10);
                             //}
                             break;
@@ -460,6 +461,8 @@ public class RunManager : MonoBehaviour
                 }
             }
 
+
+            print("Room to Load: " + roomToLoad);
             if (!Config.data.isOnline)
             {
                 StartCoroutine(LoadASynchrously(roomToLoad));

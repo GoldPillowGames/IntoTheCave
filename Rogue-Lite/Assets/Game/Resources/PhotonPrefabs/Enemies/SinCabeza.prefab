@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 2548218510892690333}
   - component: {fileID: 2548218510892690334}
   - component: {fileID: 2548218510892690335}
+  - component: {fileID: 8509603309389245832}
   m_Layer: 16
   m_Name: SinCabeza
   m_TagString: Enemy
@@ -572,6 +573,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &8509603309389245832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548218510892690328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff80860b51b4219439590f796a908176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 5027173863504268992}
+  emissiveMaterialIndexes: 01000000
 --- !u!1 &2761248435312989296
 GameObject:
   m_ObjectHideFlags: 0

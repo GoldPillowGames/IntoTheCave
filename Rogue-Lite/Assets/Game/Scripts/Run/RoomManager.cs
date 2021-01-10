@@ -19,7 +19,23 @@ public class RoomManager : MonoBehaviour
     {
         Audio.ActivateTrack(1);
 
-        _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");
+        RunManager runManager = FindObjectOfType<RunManager>();
+        switch (runManager.currentStage)
+        {
+            case 1:
+                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");
+                break;
+            case 2:
+                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies2");
+                break;
+            case 3:
+                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies3");
+                break;
+            default:
+                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");
+                break;
+        }
+        
         
         SpawnEnemies();
     }

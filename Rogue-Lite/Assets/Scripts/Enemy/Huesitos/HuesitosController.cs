@@ -22,6 +22,7 @@ namespace GoldPillowGames.Enemy.Huesitos
         private Collider _collider;
         private PhotonView photonView;
         private PlayerController[] _players;
+        
         #endregion
 
         #region Properties
@@ -46,6 +47,8 @@ namespace GoldPillowGames.Enemy.Huesitos
         protected override void Awake()
         {
             base.Awake();
+            // currentEmissiveColor = 
+
             photonView = GetComponent<PhotonView>();
 
             _players = FindObjectsOfType<PlayerController>();
@@ -111,9 +114,15 @@ namespace GoldPillowGames.Enemy.Huesitos
 
         protected override void Update()
         {
+
             if (!photonView.IsMine && Config.data.isOnline)
                 return;
+
+            
+
             base.Update();
+
+            
         }
 
         protected override void FixedUpdate()
@@ -188,7 +197,6 @@ namespace GoldPillowGames.Enemy.Huesitos
         protected override void Die()
         {
             base.Die();
-            
             gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
             foreach(Transform child in GetComponentsInChildren<Transform>())
             {

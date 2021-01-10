@@ -533,6 +533,7 @@ public class PlayerController : MonoBehaviour
         if (!Config.data.isOnline)
         {
             isDead = true;
+            Config.data.dungeonsStarted++;
             animator.SetTrigger("Death");
         }
         else
