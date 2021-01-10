@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player container reference")]
     [SerializeField] private Transform playerContainer;
     [Tooltip("UI reference")]
-    [SerializeField] private UIController UI;
+    public UIController UI;
     [Tooltip("Player animator")]
     [SerializeField] private Animator animator;
     [SerializeField] private CameraController cameraController;
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
     private bool canAttack = true;
     private bool canFinishAttack = true;
     private Vector3 rollDirection;
-    private bool isDead = false;
+    [HideInInspector] public bool isDead = false;
 
     private bool canRoll = true;
 
@@ -537,9 +537,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            PV.RPC("DisconnectPlayer", RpcTarget.All); 
+            PV.RPC("ShowDeathMenu", RpcTarget.All);
         }
         
+    }
+
+    
+
+    public void Disconnect()
+    {
+        PV.RPC("DisconnectPlayer", RpcTarget.All);
     }
 
     public void Revive()

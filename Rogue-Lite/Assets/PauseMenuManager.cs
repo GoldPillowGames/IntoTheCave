@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private AudioClip[] audios;
+    public AudioClip[] audios;
 
     private void Update()
     {
