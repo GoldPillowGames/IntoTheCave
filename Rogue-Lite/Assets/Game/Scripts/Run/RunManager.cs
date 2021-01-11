@@ -14,8 +14,11 @@ public class RunManager : MonoBehaviour
     [SerializeField] private TimeManager[] _timeManager;
     [SerializeField] private AudioClip[] _musicStage0;
     [SerializeField] private AudioClip[] _musicStage1;
+    [SerializeField] private AudioClip _bossStage1;
     [SerializeField] private AudioClip[] _musicStage2;
+    [SerializeField] private AudioClip _bossStage2;
     [SerializeField] private AudioClip[] _musicStage3;
+    [SerializeField] private AudioClip _bossStage0;
 
     public bool isOnlineManager = false;
     private GameObject[] _doors;
@@ -377,7 +380,8 @@ public class RunManager : MonoBehaviour
                     {
                         case 1:
                             print("Boss Fight Reached");
-                            roomToLoad = 9;
+                            roomToLoad = 10;
+                           // Audio.ChangeTracks(_bossStage0);
                             currentRoom = 0;
                             // Audio.ActivateTrack(3);
                             currentStage = 2;

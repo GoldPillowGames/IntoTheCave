@@ -121,14 +121,14 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 67c4da854f0634c4aa7db6725ab3ef66, type: 2}
---- !u!21 &28320138
+--- !u!21 &51117119
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
+  m_Name: Instance of Negro 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -155,7 +155,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &54932832
@@ -235,10 +235,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2099076668}
-  - {fileID: 1966552208}
-  - {fileID: 175532357}
-  - {fileID: 28320138}
+  - {fileID: 1690362880}
+  - {fileID: 1738824253}
+  - {fileID: 1581743315}
+  - {fileID: 349611171}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -344,10 +344,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 696198798}
-  - {fileID: 1462006913}
-  - {fileID: 1686939115}
-  - {fileID: 1556631092}
+  - {fileID: 690503470}
+  - {fileID: 833474596}
+  - {fileID: 159623106}
+  - {fileID: 1284989213}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -692,14 +692,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &136468171
+--- !u!21 &110006601
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Paredes 1
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -722,13 +722,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -30
-    - Vector1_F3D721CB: 10
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
     m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
+    - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
 --- !u!1 &150067013
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,81 +772,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &165058165
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &166107732
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Paredes 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -30
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &175532357
+--- !u!21 &159623106
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -881,43 +807,6 @@ Material:
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
     - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &198170314
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &205233493
@@ -1111,43 +1000,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &218854010
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &267514803
 Material:
   serializedVersion: 6
@@ -1185,6 +1037,80 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
+--- !u!21 &271895612
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Paredes 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -30
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &272855974
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &288240700
 Material:
   serializedVersion: 6
@@ -1259,6 +1185,43 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
+--- !u!21 &304623499
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &312030867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1328,169 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!21 &313341886
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1001 &321939442
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1882124403}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 304623499}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &337902024
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &343228397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1583,43 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!21 &349611171
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &357849026
 Material:
   serializedVersion: 6
@@ -1531,14 +1694,14 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &421213482
+--- !u!21 &389587985
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Paredes
+  m_Name: Instance of Negro 2
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1561,14 +1724,51 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -30
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &466124450
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.20754719, g: 0.18241963, b: 0.13216448, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &467529270
+--- !u!21 &488428815
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1602,7 +1802,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &493308961
@@ -1642,14 +1842,14 @@ Material:
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 3.5, g: 3.3490195, b: 2.937255, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &509748154
+--- !u!21 &512054807
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1676,7 +1876,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &542615405
@@ -1786,10 +1986,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 897047942}
-  - {fileID: 165058165}
-  - {fileID: 1772084583}
-  - {fileID: 1649164626}
+  - {fileID: 389587985}
+  - {fileID: 337902024}
+  - {fileID: 2135878612}
+  - {fileID: 488428815}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1818,6 +2018,43 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556517992}
   m_Mesh: {fileID: 402002399913536366, guid: 6e513377f3d7bae4387841563f76aca2, type: 3}
+--- !u!21 &582837296
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &593526092
 Material:
   serializedVersion: 6
@@ -1855,7 +2092,96 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &604852952
+--- !u!1001 &647545816
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 582837296}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 901376824}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (15)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &653151396
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1892,14 +2218,14 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &625265645
+--- !u!21 &667888966
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
+  m_Name: Instance of Negro 2
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1923,20 +2249,20 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
+    - Vector1_F3D721CB: 15
     m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &646280976
+--- !u!21 &684007046
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
+  m_Name: Instance of Paredes 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1959,14 +2285,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
+    - Vector1_B4EAFF5: -30
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &696198798
+--- !u!21 &690503470
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2054,6 +2380,117 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!21 &833474596
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &858262198
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Paredes
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -30
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.20754719, g: 0.18241963, b: 0.13216448, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &864243714
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &869843133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,51 +2557,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &897047942
+--- !u!21 &896003837
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 2
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &925729997
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
+  m_Name: Instance of Negro
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -2192,6 +2592,80 @@ Material:
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &901376824
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &916439912
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &928560418
@@ -2245,14 +2719,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!21 &956875302
+--- !u!21 &939157507
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -2276,10 +2750,10 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
+    - Vector1_F3D721CB: 15
     m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &958346363
@@ -2749,43 +3223,6 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
---- !u!21 &978048438
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &989027307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2852,12 +3289,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 166107732}
+      objectReference: {fileID: 271895612}
     - target: {fileID: -8265325170106652248, guid: 5c3d30db6b86a7249b562d76342d8036,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 467529270}
+      objectReference: {fileID: 1470093651}
+    - target: {fileID: -8265325170106652248, guid: 5c3d30db6b86a7249b562d76342d8036,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -1897590426153234156, guid: 5c3d30db6b86a7249b562d76342d8036,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -2907,7 +3349,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1021455926}
+      objectReference: {fileID: 110006601}
+    - target: {fileID: 5783886952137374697, guid: 5c3d30db6b86a7249b562d76342d8036,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6143586690321687329, guid: 5c3d30db6b86a7249b562d76342d8036,
         type: 3}
       propertyPath: m_Enabled
@@ -3052,51 +3499,14 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2739947768988236751, guid: 5c3d30db6b86a7249b562d76342d8036, type: 3}
---- !u!21 &1021455926
+--- !u!21 &1043263773
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1075305437
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
+  m_Name: Instance of Piedra 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3123,7 +3533,44 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1056115768
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1086423568
@@ -3163,14 +3610,14 @@ Material:
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &1122929429
+--- !u!21 &1117663971
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro
+  m_Name: Instance of Negro 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3197,17 +3644,106 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1164459382
+--- !u!1001 &1136379334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2094056065}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1525511043}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (18)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &1192831449
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 2
+  m_Name: Instance of Rocas 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3231,13 +3767,13 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1249244676
+--- !u!21 &1242681548
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -3311,14 +3847,14 @@ Material:
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &1297824293
+--- !u!21 &1278399343
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3345,7 +3881,81 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1284989213
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1302493012
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1315504149
@@ -3543,10 +4153,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1164459382}
-  - {fileID: 1297824293}
-  - {fileID: 509748154}
-  - {fileID: 218854010}
+  - {fileID: 667888966}
+  - {fileID: 51117119}
+  - {fileID: 1117663971}
+  - {fileID: 512054807}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3575,14 +4185,14 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374930557}
   m_Mesh: {fileID: 402002399913536366, guid: 6e513377f3d7bae4387841563f76aca2, type: 3}
---- !u!21 &1399020025
+--- !u!21 &1399409191
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3612,14 +4222,14 @@ Material:
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1419163736
+--- !u!21 &1429378483
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
+  m_Name: Instance of Piedra 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3646,7 +4256,7 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1437183908
@@ -3764,80 +4374,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1461219949
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1462006913
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1466692530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4336,14 +4872,14 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1466692530}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1478196130
+--- !u!21 &1470093651
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -4373,6 +4909,132 @@ Material:
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1470260486
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1001 &1489735885
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 272855974}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1056115768}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (19)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
 --- !u!1 &1509836481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4417,6 +5079,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.321175, z: 0.1}
   m_Center: {x: 0.0006322572, y: -0.0048713796, z: 7.8378587e-10}
+--- !u!21 &1525511043
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1538098531
 Material:
   serializedVersion: 6
@@ -4454,14 +5153,14 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &1556631092
+--- !u!21 &1555771745
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
+  m_Name: Instance of Negro
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -4488,10 +5187,84 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1604454386
+--- !u!21 &1581743315
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1593917436
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1596602663
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -4528,7 +5301,44 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1614285300
+--- !u!21 &1603486125
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1609285797
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -4727,6 +5537,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1630190036
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1633434410
 Material:
   serializedVersion: 6
@@ -4801,6 +5648,43 @@ Material:
     - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 3.5, g: 3.3490195, b: 2.937255, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
+--- !u!21 &1638426033
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1641887765
 Material:
   serializedVersion: 6
@@ -4838,43 +5722,95 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &1649164626
-Material:
-  serializedVersion: 6
+--- !u!1001 &1642407219
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1593917436}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2020295400}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (17)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
 --- !u!1 &1664189019
 GameObject:
   m_ObjectHideFlags: 0
@@ -5037,14 +5973,51 @@ Material:
     - Color_FB31D65A: {r: 0.20754719, g: 0.18241963, b: 0.13216448, a: 0}
     - _L1_color: {r: 3.5, g: 3.3490195, b: 2.937255, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &1686939115
+--- !u!21 &1678573731
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1690362880
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 2
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -5071,47 +6044,10 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1772084583
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1783379299
+--- !u!21 &1690617701
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -5146,6 +6082,43 @@ Material:
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1738824253
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1795398534
@@ -5185,6 +6158,132 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
+--- !u!1001 &1796297980
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1638426033}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1429378483}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &1797457011
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &1808634007
 Material:
   serializedVersion: 6
@@ -5411,14 +6510,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1830639271
+--- !u!21 &1861130300
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas 3
+  m_Name: Instance of Piedra 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -5445,9 +6544,98 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1001 &1867841352
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1678573731}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1861130300}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (16)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
 --- !u!21 &1878509680
 Material:
   serializedVersion: 6
@@ -5485,6 +6673,43 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
+--- !u!21 &1882124403
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1887589166
 GameObject:
   m_ObjectHideFlags: 0
@@ -5669,44 +6894,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1910413352
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Paredes 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -30
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1913907411
+--- !u!21 &1932477262
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -5849,6 +7037,43 @@ Transform:
   m_Father: {fileID: 869843134}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45.000004, y: 193.73499, z: 90.00001}
+--- !u!21 &1946191235
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Paredes 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -30
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.14159274, b: 0.20784314, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1961235185
 GameObject:
   m_ObjectHideFlags: 0
@@ -6001,14 +7226,14 @@ Material:
     - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 2.937255, g: 3.4709027, b: 3.5, a: 0.99}
     - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
---- !u!21 &1966552208
+--- !u!21 &1971132530
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
+  m_Name: Instance of Rocas 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -6032,12 +7257,91 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.13333334, g: 0.15449387, b: 0.2, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1 &1976387250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1976387253}
+  - component: {fileID: 1976387252}
+  - component: {fileID: 1976387251}
+  m_Layer: 0
+  m_Name: BlackFloor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1976387251
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976387250}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5bc42521bb148144e8d794e174ea7822, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1976387252
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976387250}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1976387253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976387250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalScale: {x: 400, y: 1, z: 400}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2016302709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6188,14 +7492,103 @@ Transform:
   m_Father: {fileID: 869843134}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 130, z: 90}
---- !u!21 &2018178875
+--- !u!1001 &2017264710
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1043263773}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 313341886}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -22.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (14)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &2020295400
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
+  m_Name: Instance of Piedra 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -6219,20 +7612,20 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &2099076668
+--- !u!21 &2094056065
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 2
+  m_Name: Instance of Piedra 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -6256,10 +7649,10 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &2130817752
@@ -6593,6 +7986,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &2135878612
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!21 &2136676179
 Material:
   serializedVersion: 6

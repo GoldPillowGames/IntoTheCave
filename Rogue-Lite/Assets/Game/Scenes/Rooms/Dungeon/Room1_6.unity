@@ -200,6 +200,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &78162178
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Blanco 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &109678915
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,43 +280,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &137769105
-Material:
-  serializedVersion: 6
+--- !u!1001 &127437992
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1517654392}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1996422729}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
 --- !u!1 &161106761
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +389,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &216219216
+--- !u!21 &192532137
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -413,14 +492,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &228390857
+--- !u!21 &227681923
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 2
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -447,118 +526,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &273311668
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &289132770
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &310234054
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3773585, g: 0.116547145, b: 0.05517978, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &312030867
@@ -667,51 +635,14 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!21 &320232343
+--- !u!21 &319033029
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Blanco
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &330357008
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
+  m_Name: Instance of Negro 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -738,7 +669,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &341828187
@@ -863,6 +794,43 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!21 &351933544
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &353830954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,12 +897,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1452757845}
+      objectReference: {fileID: 78162178}
     - target: {fileID: -7511558181221131132, guid: 119580c7499472341b27dabdaa826c7b,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 924893646}
+      objectReference: {fileID: 1503052572}
     - target: {fileID: 919132149155446097, guid: 119580c7499472341b27dabdaa826c7b,
         type: 3}
       propertyPath: m_Name
@@ -972,6 +940,43 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
+--- !u!21 &364249121
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Blanco
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &367987340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,14 +1070,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &396395437
+--- !u!21 &368955481
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &393524570
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1099,10 +1141,126 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &477378005
+--- !u!21 &396935757
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1001 &436360238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 396935757}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 645853804}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &458504161
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1137,6 +1295,117 @@ Material:
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
     - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &461094993
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Blanco 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &493803151
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Blanco
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &515538977
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &528227646
@@ -1205,12 +1474,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1498798354}
+      objectReference: {fileID: 515538977}
     - target: {fileID: -7511558181221131132, guid: 25b8d68134b3ab54e8076d1fbb05e58c,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 1058033659}
+      objectReference: {fileID: 192532137}
     - target: {fileID: 919132149155446097, guid: 25b8d68134b3ab54e8076d1fbb05e58c,
         type: 3}
       propertyPath: m_Name
@@ -1248,80 +1517,6 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
---- !u!21 &532357961
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &550142067
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Cajas2
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &608054633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,14 +1560,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &612624360
+--- !u!21 &610053951
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
+  m_Name: Instance of Cajas1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1396,20 +1591,20 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.2924528, g: 0.18520327, b: 0.05380029, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &701844830
+--- !u!21 &645853804
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 3
+  m_Name: Instance of Piedra 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1433,10 +1628,47 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &649023177
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Blanco
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &712184338
@@ -1520,12 +1752,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1663206107}
+      objectReference: {fileID: 2139482877}
     - target: {fileID: -7605210880839464467, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 1669856038}
+      objectReference: {fileID: 393524570}
     - target: {fileID: -6284851600734773504, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
       propertyPath: m_Layer
@@ -1575,7 +1807,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1748664353}
+      objectReference: {fileID: 903655753}
     - target: {fileID: 99477192169778262, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -1630,12 +1862,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1275998088}
+      objectReference: {fileID: 610053951}
     - target: {fileID: 540317151967476696, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 550142067}
+      objectReference: {fileID: 1660559827}
     - target: {fileID: 919132149155446097, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
       propertyPath: m_Name
@@ -1670,7 +1902,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1229394018}
+      objectReference: {fileID: 1984362272}
     - target: {fileID: 5783886952137374697, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
       propertyPath: m_Layer
@@ -1680,6 +1912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783886952137374697, guid: f14b11ba58cbd464180f106828b9fa37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925714656828593406, guid: f14b11ba58cbd464180f106828b9fa37,
         type: 3}
@@ -1912,14 +2149,51 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4598328164830326108, guid: f14b11ba58cbd464180f106828b9fa37, type: 3}
---- !u!21 &750593339
+--- !u!21 &723276870
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 1
+  m_Name: Instance of Negro 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &729597434
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -1946,7 +2220,7 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3773585, g: 0.116547145, b: 0.05517978, a: 0}
+    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &755289170
@@ -2015,12 +2289,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1108107206}
+      objectReference: {fileID: 368955481}
     - target: {fileID: -7511558181221131132, guid: 25b8d68134b3ab54e8076d1fbb05e58c,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 1916338923}
+      objectReference: {fileID: 493803151}
     - target: {fileID: 919132149155446097, guid: 25b8d68134b3ab54e8076d1fbb05e58c,
         type: 3}
       propertyPath: m_Name
@@ -2058,43 +2332,6 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
---- !u!21 &779631372
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Blanco
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &795636395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2161,17 +2398,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 137769105}
+      objectReference: {fileID: 2044662973}
     - target: {fileID: -7511558181221131132, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 310234054}
+      objectReference: {fileID: 1885135586}
     - target: {fileID: -7511558181221131132, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 320232343}
+      objectReference: {fileID: 364249121}
     - target: {fileID: 919132149155446097, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Name
@@ -2210,6 +2447,43 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
+--- !u!21 &860388444
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 2
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &869843133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,7 +2520,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &897652959
+--- !u!21 &903655753
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Rocas
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.1981132, g: 0.17303756, b: 0.13363296, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &909979572
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2283,81 +2594,7 @@ Material:
     - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &898497814
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &924893646
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1003016188
+--- !u!21 &1023196307
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2394,14 +2631,14 @@ Material:
     - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1015456649
+--- !u!21 &1053254340
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
+  m_Name: Instance of Negro 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -2428,81 +2665,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1036496812
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 2
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1058033659
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Blanco
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1063341994
@@ -2630,22 +2793,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1515659127}
+      objectReference: {fileID: 1023196307}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 289132770}
+      objectReference: {fileID: 1846803805}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 396395437}
+      objectReference: {fileID: 1053254340}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 1518628174}
+      objectReference: {fileID: 227681923}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8db65eb7c7589fb4b98726c151fea5e4, type: 3}
 --- !u!4 &1072528733 stripped
@@ -2654,14 +2817,14 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1072528732}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1108107206
+--- !u!21 &1081049353
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 3
+  m_Name: Instance of Piedra 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -2688,91 +2851,17 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1207192469
+--- !u!21 &1132863296
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1229394018
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1275998088
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Cajas1
+  m_Name: Instance of Blanco
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -2799,44 +2888,7 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.2924528, g: 0.18520327, b: 0.05380029, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1299986610
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Blanco 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0}
+    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1302827211
@@ -2905,12 +2957,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 898497814}
+      objectReference: {fileID: 729597434}
     - target: {fileID: -7511558181221131132, guid: 52e95c9ba8a815847b9d4b81bd0167d1,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 1299986610}
+      objectReference: {fileID: 461094993}
     - target: {fileID: 919132149155446097, guid: 52e95c9ba8a815847b9d4b81bd0167d1,
         type: 3}
       propertyPath: m_Name
@@ -2948,6 +3000,43 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
+--- !u!21 &1355072420
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 2
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1382923775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,6 +3067,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1400775630
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3773585, g: 0.116547145, b: 0.05517978, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1437183908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,14 +3219,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1452757845
+--- !u!21 &1441370809
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Blanco 1
+  m_Name: Instance of Negro 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1442875468
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3127,17 +3290,17 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0}
+    - Color_FB31D65A: {r: 0.3773585, g: 0.116547145, b: 0.05517978, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1498798354
+--- !u!21 &1444447812
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 3
+  m_Name: Instance of Negro 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3161,13 +3324,13 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
+    - Vector1_F3D721CB: 15
     m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1515659127
+--- !u!21 &1494171546
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -3204,51 +3367,14 @@ Material:
     - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1518628174
+--- !u!21 &1503052572
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 1
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
-    m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1571673764
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 1
+  m_Name: Instance of Piedra 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3275,7 +3401,123 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3773585, g: 0.116547145, b: 0.05517978, a: 0}
+    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1001 &1512092249
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1632465303}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1755527374}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &1517654392
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1604240958
@@ -3439,14 +3681,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1663206107
+--- !u!21 &1632465303
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Paredes
+  m_Name: Instance of Piedra 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3469,11 +3711,85 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -30
+    - Vector1_B4EAFF5: -1
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.20754719, g: 0.18241963, b: 0.13216448, a: 0}
+    - Color_FB31D65A: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1660559827
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Cajas2
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1664119024
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1664189019
@@ -3601,14 +3917,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1669856038
+--- !u!21 &1682724996
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro
+  m_Name: Instance of Negro 1
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3635,7 +3951,7 @@ Material:
     - Vector1_F3D721CB: 15
     m_Colors:
     - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1688240455
@@ -3724,22 +4040,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 228390857}
+      objectReference: {fileID: 1355072420}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 612624360}
+      objectReference: {fileID: 1901200637}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 1207192469}
+      objectReference: {fileID: 723276870}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 1015456649}
+      objectReference: {fileID: 458504161}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8db65eb7c7589fb4b98726c151fea5e4, type: 3}
 --- !u!4 &1688240456 stripped
@@ -3748,14 +4064,14 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1688240455}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1748664353
+--- !u!21 &1755527374
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Rocas
+  m_Name: Instance of Piedra 4
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -3782,44 +4098,7 @@ Material:
     - Vector1_F3D721CB: 10
     m_Colors:
     - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.1981132, g: 0.17303756, b: 0.13363296, a: 0}
-    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1803795311
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Piedra 3
-  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_879D3127:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C51C0C54:
-        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_4B6791BB: 0
-    - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
-    m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1830528353
@@ -3937,6 +4216,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1846803805
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1878979185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4003,17 +4319,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1803795311}
+      objectReference: {fileID: 2098849394}
     - target: {fileID: -7511558181221131132, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 1571673764}
+      objectReference: {fileID: 1400775630}
     - target: {fileID: -7511558181221131132, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 216219216}
+      objectReference: {fileID: 1132863296}
     - target: {fileID: 919132149155446097, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Name
@@ -4052,6 +4368,43 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
+--- !u!21 &1885135586
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3773585, g: 0.116547145, b: 0.05517978, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1896671671
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,14 +4511,14 @@ Transform:
   m_Father: {fileID: 869843134}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45.000004, y: 287.487, z: 90.00001}
---- !u!21 &1916338923
+--- !u!21 &1901200637
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Blanco
+  m_Name: Instance of Negro 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -4189,10 +4542,10 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 10
+    - Vector1_F3D721CB: 15
     m_Colors:
-    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_FB31D65A: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1925797641
@@ -4271,22 +4624,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1003016188}
+      objectReference: {fileID: 860388444}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 701844830}
+      objectReference: {fileID: 1664119024}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2109761476}
+      objectReference: {fileID: 1441370809}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 477378005}
+      objectReference: {fileID: 1949917332}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8db65eb7c7589fb4b98726c151fea5e4, type: 3}
 --- !u!4 &1925797642 stripped
@@ -4401,6 +4754,43 @@ Transform:
   m_Father: {fileID: 869843134}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45.000004, y: 193.73499, z: 90.00001}
+--- !u!21 &1949917332
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1961235185
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,17 +4972,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 897652959}
+      objectReference: {fileID: 909979572}
     - target: {fileID: -7511558181221131132, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 750593339}
+      objectReference: {fileID: 1442875468}
     - target: {fileID: -7511558181221131132, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 779631372}
+      objectReference: {fileID: 649023177}
     - target: {fileID: 919132149155446097, guid: 60cd02143396bd5498a2b17393b517b0,
         type: 3}
       propertyPath: m_Name
@@ -4631,6 +5021,80 @@ MonoBehaviour:
     m_Bits: 0
   raycastFadeSpeed: 10
   update: 1
+--- !u!21 &1984362272
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Negro
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 15
+    m_Colors:
+    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FB31D65A: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 3.5, g: 3.3490195, b: 2.937255, a: 0.99}
+    - _L1_dir: {r: 0.5701765, g: 0.8181528, b: -0.07432971, a: 0}
+--- !u!21 &1996422729
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 4
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &2014264465
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,14 +5231,14 @@ Transform:
   m_Father: {fileID: 869843134}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 130, z: 90}
---- !u!21 &2109761476
+--- !u!21 &2044662973
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of Negro 4
+  m_Name: Instance of Piedra 3
   m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
     type: 3}
   m_ShaderKeywords: 
@@ -4798,10 +5262,126 @@ Material:
     m_Floats:
     - Vector1_4B6791BB: 0
     - Vector1_B4EAFF5: -1
-    - Vector1_F3D721CB: 15
+    - Vector1_F3D721CB: 10
     m_Colors:
-    - Color_CC297A7C: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FB31D65A: {r: 0.1509434, g: 0.14447781, b: 0.1260235, a: 0}
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!1001 &2092021688
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2740117264123343520, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 351933544}
+    - target: {fileID: 5039212080097333239, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1081049353}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539751865022277772, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063665498919645750, guid: b3a5a0530ef4a9f44ad88f269dcbc21b,
+        type: 3}
+      propertyPath: m_Name
+      value: Tramp (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3a5a0530ef4a9f44ad88f269dcbc21b, type: 3}
+--- !u!21 &2098849394
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Piedra 3
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -1
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.3764706, g: 0.18095833, b: 0.054901954, a: 0}
     - _L1_color: {r: 0, g: 0, b: 0, a: 1}
     - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &2138677391
@@ -4910,6 +5490,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UsePipelineSettings: 0
+--- !u!21 &2139482877
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of Paredes
+  m_Shader: {fileID: -6465566751694194690, guid: 6faaa8b19e34a15438a965f878058c31,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_879D3127:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C51C0C54:
+        m_Texture: {fileID: 2800000, guid: 1b6eed24ad2007f438a896b3937193e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4B6791BB: 0
+    - Vector1_B4EAFF5: -30
+    - Vector1_F3D721CB: 10
+    m_Colors:
+    - Color_CC297A7C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FB31D65A: {r: 0.20754719, g: 0.18241963, b: 0.13216448, a: 0}
+    - _L1_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &7027058101992679942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4981,22 +5598,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1036496812}
+      objectReference: {fileID: 1494171546}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 330357008}
+      objectReference: {fileID: 1444447812}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 273311668}
+      objectReference: {fileID: 319033029}
     - target: {fileID: 8522136219379816880, guid: 8db65eb7c7589fb4b98726c151fea5e4,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 532357961}
+      objectReference: {fileID: 1682724996}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8db65eb7c7589fb4b98726c151fea5e4, type: 3}
 --- !u!4 &7027058101992679943 stripped

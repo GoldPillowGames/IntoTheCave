@@ -41,7 +41,7 @@ public class Armero : NPCBehaviour
     {
         base.CloseMenu();
         Config.data.armeroDialogueIndex++;
-        if (Config.data.armeroDialogueIndex > 4)
+        if (Config.data.armeroDialogueIndex > 7)
         {
             Config.data.armeroDialogueIndex = 2;
         }
@@ -52,7 +52,7 @@ public class Armero : NPCBehaviour
     {
         base.CloseMenuPermanently();
         Config.data.armeroDialogueIndex++;
-        if (Config.data.armeroDialogueIndex > 4)
+        if (Config.data.armeroDialogueIndex > 7)
         {
             Config.data.armeroDialogueIndex = 2;
         }
