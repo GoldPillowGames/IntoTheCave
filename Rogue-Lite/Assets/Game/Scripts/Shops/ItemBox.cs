@@ -10,10 +10,11 @@ public class ItemBox : MonoBehaviour
 
     public void BuyItem()
     {
-        if (price <= Config.data.gold)
-        {
+        //if (price <= Config.data.gold)
+        //{
             GetComponentInParent<ItemShop>().SelectItem(this);
-        }
+            print("Item");
+        //}
         
     }
 }
