@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Litos
 {
-    public class DeathState : EnemyState
+    public class DeathState : AnimatedState
     {
         #region Variables
         private readonly LitosController _enemyController;

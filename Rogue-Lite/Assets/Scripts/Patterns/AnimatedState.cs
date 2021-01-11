@@ -1,10 +1,9 @@
 ﻿using GoldPillowGames.Core;
-using GoldPillowGames.Patterns;
 using UnityEngine;
 
-namespace GoldPillowGames.Enemy
+namespace GoldPillowGames.Patterns
 {
-    public class EnemyState : State
+    public class AnimatedState : State
     {
         #region Variables
         protected readonly RandomStringSelector animationBoolParameterSelector;
@@ -13,7 +12,7 @@ namespace GoldPillowGames.Enemy
         #endregion
         
         #region Methods
-        protected EnemyState(FiniteStateMachine stateMachine, Animator anim) : base(stateMachine)
+        protected AnimatedState(FiniteStateMachine stateMachine, Animator anim) : base(stateMachine)
         {
             this.anim = anim;
             animationBoolParameterSelector = new RandomStringSelector();
@@ -24,12 +23,23 @@ namespace GoldPillowGames.Enemy
             base.Enter();
 
             _animatorBoolParameterName = animationBoolParameterSelector.ChooseRandom();
+
+            if (_animatorBoolParameterName == default)
+            {
+                return;
+            }
+            
             anim.SetBool(_animatorBoolParameterName, true);
         }
 
         public override void Exit()
         {
             base.Exit();
+            
+            if (_animatorBoolParameterName == default)
+            {
+                return;
+            }
             
             anim.SetBool(_animatorBoolParameterName, false);
         }

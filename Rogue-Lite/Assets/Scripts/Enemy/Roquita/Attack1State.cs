@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Roquita
 {
-    public class Attack1State : EnemyState
+    public class Attack1State : AnimatedState
     {
         #region Variables
         private readonly RoquitaController _enemyController;

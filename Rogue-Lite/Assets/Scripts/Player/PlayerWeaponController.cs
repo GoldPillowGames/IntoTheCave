@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GoldPillowGames.Enemy;
+using GoldPillowGames.Enemy.Litos.SlapHand;
 using UnityEngine;
 
 namespace GoldPillowGames.Player
@@ -31,10 +32,14 @@ namespace GoldPillowGames.Player
         }
         
         private void OnTriggerStay(Collider other)
-        { 
-            if (_isAttacking && other.CompareTag("Enemy") && !_enemiesHit.Contains(other.gameObject))
+        {
+            if (!_isAttacking || _enemiesHit.Contains(other.gameObject))
             {
-                Debug.Log("KEK");
+                return;
+            }
+            
+            if (other.CompareTag("Enemy"))
+            {
                 var enemyController = other.GetComponent<EnemyController>();
                 CameraShaker.Shake(0.1f, 1.75f, 2f);
 

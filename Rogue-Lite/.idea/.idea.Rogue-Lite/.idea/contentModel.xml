@@ -880,10 +880,10 @@
             <e p="NavMeshTargetFollower.cs" t="Include" />
             <e p="RandomStringSelector.cs" t="Include" />
             <e p="RotateTowardsTarget.cs" t="Include" />
+            <e p="TransformXZTargetFollower.cs" t="Include" />
           </e>
           <e p="Enemy" t="Include">
             <e p="EnemyController.cs" t="Include" />
-            <e p="EnemyState.cs" t="Include" />
             <e p="Huesitos" t="Include">
               <e p="AttackState.cs" t="Include" />
               <e p="DeathState.cs" t="Include" />
@@ -907,6 +907,13 @@
               <e p="IdleState.cs" t="Include" />
               <e p="LitosAnimatorEvents.cs" t="Include" />
               <e p="LitosController.cs" t="Include" />
+              <e p="SlapHand" t="Include">
+                <e p="FollowingState.cs" t="Include" />
+                <e p="IdleState.cs" t="Include" />
+                <e p="LitosSlapHandController.cs" t="Include" />
+                <e p="RecoveringState.cs" t="Include" />
+                <e p="SlapAttackState.cs" t="Include" />
+              </e>
             </e>
             <e p="Pinchitos" t="Include">
               <e p="AttackCannonState.cs" t="Include" />
@@ -942,6 +949,7 @@
             </e>
           </e>
           <e p="Patterns" t="Include">
+            <e p="AnimatedState.cs" t="Include" />
             <e p="FiniteStateMachine.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
             <e p="PoolObjectReturn.cs" t="Include" />

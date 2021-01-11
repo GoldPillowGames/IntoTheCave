@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.SinCabeza
 {
-    public class AttackState : EnemyState
+    public class AttackState : AnimatedState
     {
         #region Variables
         private readonly SinCabezaController _enemyController;

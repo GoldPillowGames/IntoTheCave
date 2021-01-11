@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GoldPillowGames.Core;
+using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -212,7 +213,7 @@ namespace GoldPillowGames.Enemy.Roquita
             }
         }
         
-        public void ResetState(EnemyState state)
+        public void ResetState(AnimatedState state)
         { 
             var currentState = _anim.GetCurrentAnimatorStateInfo(0);
             var stateName = currentState.fullPathHash;

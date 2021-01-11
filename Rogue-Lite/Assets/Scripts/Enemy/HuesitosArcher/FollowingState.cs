@@ -3,7 +3,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 
 namespace GoldPillowGames.Enemy.HuesitosArcher {
-    public class FollowingState : EnemyState
+    public class FollowingState : AnimatedState
     {
         #region Variables
         private readonly HuesitosArcherController _enemyController;

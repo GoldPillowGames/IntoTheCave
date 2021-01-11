@@ -4,7 +4,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Litos {
-    public class IdleState : EnemyState
+    public class IdleState : AnimatedState
     {
         #region Variables
         private readonly LitosController _enemyController;
