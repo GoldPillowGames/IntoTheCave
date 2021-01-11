@@ -388,13 +388,13 @@ public class RunManager : MonoBehaviour
                             break;
                         case 2:
                             print("Boss Fight Reached");
-                            roomToLoad = 9;
+                            roomToLoad = 16;
                             currentRoom = 0;
                             currentStage = 3;
                             break;
                          case 3:
                             print("Boss Fight Reached");
-                            roomToLoad = 15;
+                            roomToLoad = 16;
                             currentRoom = 0;
                             currentStage = 3;
                             break;
@@ -456,7 +456,7 @@ public class RunManager : MonoBehaviour
                                 //roomToLoad = 6;
                             }
 
-                            roomToLoad = Random.Range(15, 19);
+                            roomToLoad = Random.Range(16, 19);
                             break;
                         default:
                             roomToLoad = Random.Range(5, 10);
