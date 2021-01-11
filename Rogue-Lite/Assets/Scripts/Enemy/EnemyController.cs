@@ -24,7 +24,7 @@ namespace GoldPillowGames.Enemy
         {
             stateMachine = new FiniteStateMachine();
             _roomManager = FindObjectOfType<RoomManager>(); // Make Singleton.
-            //DisableChildrenRagdoll();
+            DisableChildrenRagdoll();
         }
 
         private void DisableChildrenRagdoll()
