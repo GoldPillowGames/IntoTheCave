@@ -86,7 +86,6 @@ public class NPCBehaviour : MonoBehaviour
         if (interacting)
             return;
         timeToStopInteracting = maxTimeToStopInteracting;
-        Debug.Log("Showing Interact Box");
     }
 
     

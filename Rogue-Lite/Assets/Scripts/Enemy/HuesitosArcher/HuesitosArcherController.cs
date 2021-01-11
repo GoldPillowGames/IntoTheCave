@@ -19,11 +19,13 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         [SerializeField] private float minTimeToFire = 1;
         [SerializeField] private float maxTimeToFire = 1.5f;
         [SerializeField] private BowController bowController;
+        
         private Animator _anim;
         private AgentPropeller _propeller;
         private BoxCollider _collider;
         private PhotonView photonView;
         private PlayerController[] _players;
+        
         #endregion
 
         #region Properties
@@ -83,6 +85,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         {
             if (!photonView.IsMine && Config.data.isOnline)
                 return;
+
             base.Update();
         }
 

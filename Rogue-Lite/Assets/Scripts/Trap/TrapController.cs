@@ -82,7 +82,7 @@ namespace GoldPillowGames.Trap
         private void PrepareToComeUp()
         {
             _isPreparingToComeUp = true;
-            CameraShaker.Shake(timeToComeUp, 1, 4);
+            CameraShaker.Shake(timeToComeUp, 0.3f, 1);
             Invoke(nameof(ComeUp), timeToComeUp);
         }
 

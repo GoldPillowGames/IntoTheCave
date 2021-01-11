@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CursorTexture
 {
@@ -17,10 +18,16 @@ public class CursorManager : MonoBehaviour
     
     public Sprite idleSprite;
     public Sprite clickSprite;
+    public Image cursorImage;
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Application.isMobilePlatform)
+        {
+            Destroy(this);
+        }
+
+        if (Instance != null)
         {
             Destroy(this.gameObject);
         }
@@ -46,12 +53,16 @@ public class CursorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         SetTexture(CursorTexture.IDLE);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
+        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorImage.rectTransform.position = Input.mousePosition;
+        Cursor.visible = false;
     }
 }

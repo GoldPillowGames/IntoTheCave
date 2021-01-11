@@ -25,7 +25,8 @@ public class ItemShop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentItem != null)
+            buyButton.interactable = currentItem.price <= Config.data.gold ? true : false;
     }
 
     public void SelectItem(ItemBox item)

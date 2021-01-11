@@ -42,7 +42,7 @@ public class Herrero : NPCBehaviour
         base.CloseMenu();
         
         Config.data.herreroDialogueIndex++;
-        if (Config.data.herreroDialogueIndex > 4)
+        if (Config.data.herreroDialogueIndex > 6)
         {
             Config.data.herreroDialogueIndex = 2;
         }
@@ -53,7 +53,7 @@ public class Herrero : NPCBehaviour
     {
         base.CloseMenuPermanently();
         Config.data.herreroDialogueIndex++;
-        if (Config.data.herreroDialogueIndex > 4)
+        if (Config.data.herreroDialogueIndex > 6)
         {
             Config.data.herreroDialogueIndex = 2;
         }

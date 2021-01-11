@@ -14,14 +14,18 @@ public class RunManager : MonoBehaviour
     [SerializeField] private TimeManager[] _timeManager;
     [SerializeField] private AudioClip[] _musicStage0;
     [SerializeField] private AudioClip[] _musicStage1;
+    [SerializeField] private AudioClip _bossStage1;
     [SerializeField] private AudioClip[] _musicStage2;
+    [SerializeField] private AudioClip _bossStage2;
     [SerializeField] private AudioClip[] _musicStage3;
+    [SerializeField] private AudioClip _bossStage0;
 
     public bool isOnlineManager = false;
     private GameObject[] _doors;
     private GameObject[] _previousDoors;
     private int currentRoom = 0;
-    private int currentStage = 0;
+    public int currentStage { get; private set; }
+
     #endregion
 
     public void SetUp(bool isOnline)
@@ -368,28 +372,29 @@ public class RunManager : MonoBehaviour
             currentRoom++;
             int roomToLoad = SceneManager.GetActiveScene().buildIndex;
 
-            while(roomToLoad == SceneManager.GetActiveScene().buildIndex)
+            while(roomToLoad == SceneManager.GetActiveScene().buildIndex && currentRoom != 0)
             {
-                print("Room repetida");
                 if (currentRoom == 10)
                 {
                     switch (currentStage)
                     {
                         case 1:
                             print("Boss Fight Reached");
-                            roomToLoad = 9;
+                            roomToLoad = 10;
+                           // Audio.ChangeTracks(_bossStage0);
                             currentRoom = 0;
+                            // Audio.ActivateTrack(3);
                             currentStage = 2;
                             break;
                         case 2:
                             print("Boss Fight Reached");
-                            roomToLoad = 9;
+                            roomToLoad = 16;
                             currentRoom = 0;
                             currentStage = 3;
                             break;
                          case 3:
                             print("Boss Fight Reached");
-                            roomToLoad = 15;
+                            roomToLoad = 16;
                             currentRoom = 0;
                             currentStage = 3;
                             break;
@@ -407,8 +412,7 @@ public class RunManager : MonoBehaviour
                             {
                                 Audio.ChangeTracks(_musicStage1);
 
-                                if(!Config.data.isOnline)
-                                    Config.data.dungeonsStarted++;
+                                
 
                                 currentStage = 1;
                                 roomToLoad = 6;
@@ -423,6 +427,7 @@ public class RunManager : MonoBehaviour
                             //}
                             //else
                             //{
+                            
                             roomToLoad = Random.Range(5, 10);
                             //}
                             break;
@@ -451,7 +456,7 @@ public class RunManager : MonoBehaviour
                                 //roomToLoad = 6;
                             }
 
-                            roomToLoad = Random.Range(15, 19);
+                            roomToLoad = Random.Range(16, 19);
                             break;
                         default:
                             roomToLoad = Random.Range(5, 10);
@@ -460,6 +465,8 @@ public class RunManager : MonoBehaviour
                 }
             }
 
+
+            print("Room to Load: " + roomToLoad);
             if (!Config.data.isOnline)
             {
                 StartCoroutine(LoadASynchrously(roomToLoad));
