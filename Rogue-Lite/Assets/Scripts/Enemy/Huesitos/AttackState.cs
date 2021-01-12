@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Huesitos
 {
-    public class AttackState : EnemyState
+    public class AttackState : AnimatedState
     {
         #region Variables
         private readonly HuesitosController _enemyController;

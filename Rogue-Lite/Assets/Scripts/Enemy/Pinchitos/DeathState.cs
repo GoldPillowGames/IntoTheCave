@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Pinchitos
 {
-    public class DeathState : EnemyState
+    public class DeathState : AnimatedState
     {
         #region Variables
         private readonly PinchitosController _enemyController;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.SinCabeza
 {
-    public class DeathState : EnemyState
+    public class DeathState : AnimatedState
     {
         #region Variables
         private readonly SinCabezaController _enemyController;

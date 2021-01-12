@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
 {
 
     [SerializeField] private Transform[] _enemySpawnPositions;
+    [SerializeField] private bool isBossRoom;
     // [SerializeField] private GameObject[] _doors;
     private GameObject[] _posibleEnemiesToSpawn;
     
@@ -20,16 +21,46 @@ public class RoomManager : MonoBehaviour
         Audio.ActivateTrack(1);
 
         RunManager runManager = FindObjectOfType<RunManager>();
-        switch (runManager.currentStage)
+        int currentStage = runManager.currentStage;
+        if (isBossRoom)
+        {
+            currentStage--;
+        }
+        
+        switch (currentStage)
         {
             case 1:
-                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");
+                if (isBossRoom)
+                {
+                    _posibleEnemiesToSpawn = new GameObject[1]
+                        {Resources.Load<GameObject>("PhotonPrefabs/Bosses/Roquita")};
+                }
+                else
+                {
+                    _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");
+                }
                 break;
             case 2:
-                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies2");
+                if (isBossRoom)
+                {
+                    _posibleEnemiesToSpawn = new GameObject[1]
+                        {Resources.Load<GameObject>("PhotonPrefabs/Bosses/Pinchitos")}; // Se llama en el primer boss.
+                }
+                else
+                {
+                    _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies2");
+                }
                 break;
             case 3:
-                _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies3");
+                if (isBossRoom)
+                {
+                    _posibleEnemiesToSpawn = new GameObject[1]
+                        {Resources.Load<GameObject>("PhotonPrefabs/Bosses/Litos")}; // Se llama en el segundo boss.
+                }
+                else
+                {
+                    _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies3");
+                }
                 break;
             default:
                 _posibleEnemiesToSpawn = Resources.LoadAll<GameObject>("PhotonPrefabs/Enemies");

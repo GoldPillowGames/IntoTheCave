@@ -35,6 +35,9 @@ namespace GoldPillowGames.Core
         
         public string ChooseRandom()
         {
+            if (_posibleStrings.Count == 0)
+                return default;
+            
             var randomId = Random.Range(0, _posibleStrings.Count - 1);
             return _posibleStrings[randomId];
         }

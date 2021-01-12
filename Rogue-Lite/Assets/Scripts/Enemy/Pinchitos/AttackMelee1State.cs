@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Pinchitos
 {
-    public class AttackMelee1State : EnemyState
+    public class AttackMelee1State : AnimatedState
     {
         #region Variables
         private readonly PinchitosController _enemyController;

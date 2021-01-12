@@ -3,7 +3,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Pinchitos {
-    public class FollowingState : EnemyState
+    public class FollowingState : AnimatedState
     {
         #region Variables
         private readonly PinchitosController _enemyController;

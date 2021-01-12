@@ -21,6 +21,7 @@
         <e p="DamageText.cs" t="Include" />
         <e p="DamageTextController.cs" t="Include" />
         <e p="DeathMenuManager.cs" t="Include" />
+        <e p="EmissiveMaterialController.cs" t="Include" />
         <e p="EnemyUIController.cs" t="Include" />
         <e p="FadeManager.cs" t="Include" />
         <e p="FirstTimeAnimatorController.cs" t="Include" />
@@ -217,6 +218,7 @@
               <e p="Herrero.cs" t="Include" />
               <e p="ItemBox.cs" t="Include" />
               <e p="ItemShop.cs" t="Include" />
+              <e p="Maga.cs" t="Include" />
               <e p="NPCBehaviour.cs" t="Include" />
               <e p="Tintonero.cs" t="Include" />
             </e>
@@ -343,6 +345,7 @@
         </e>
         <e p="LanguageManager.cs" t="Include" />
         <e p="LogoManager.cs" t="Include" />
+        <e p="MagicianShop.cs" t="Include" />
         <e p="MeleeWeaponTrail" t="Include">
           <e p="Example" t="Include">
             <e p="Scripts" t="Include">
@@ -880,10 +883,10 @@
             <e p="NavMeshTargetFollower.cs" t="Include" />
             <e p="RandomStringSelector.cs" t="Include" />
             <e p="RotateTowardsTarget.cs" t="Include" />
+            <e p="TransformXZTargetFollower.cs" t="Include" />
           </e>
           <e p="Enemy" t="Include">
             <e p="EnemyController.cs" t="Include" />
-            <e p="EnemyState.cs" t="Include" />
             <e p="Huesitos" t="Include">
               <e p="AttackState.cs" t="Include" />
               <e p="DeathState.cs" t="Include" />
@@ -905,8 +908,22 @@
             <e p="Litos" t="Include">
               <e p="DeathState.cs" t="Include" />
               <e p="IdleState.cs" t="Include" />
+              <e p="LaserHand" t="Include">
+                <e p="FollowingState.cs" t="Include" />
+                <e p="IdleState.cs" t="Include" />
+                <e p="LaserAttackState.cs" t="Include" />
+                <e p="LitosLaserHandController.cs" t="Include" />
+                <e p="RecoveringState.cs" t="Include" />
+              </e>
               <e p="LitosAnimatorEvents.cs" t="Include" />
               <e p="LitosController.cs" t="Include" />
+              <e p="SlapHand" t="Include">
+                <e p="FollowingState.cs" t="Include" />
+                <e p="IdleState.cs" t="Include" />
+                <e p="LitosSlapHandController.cs" t="Include" />
+                <e p="RecoveringState.cs" t="Include" />
+                <e p="SlapAttackState.cs" t="Include" />
+              </e>
             </e>
             <e p="Pinchitos" t="Include">
               <e p="AttackCannonState.cs" t="Include" />
@@ -942,12 +959,15 @@
             </e>
           </e>
           <e p="Patterns" t="Include">
+            <e p="AnimatedState.cs" t="Include" />
             <e p="FiniteStateMachine.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
             <e p="PoolObjectReturn.cs" t="Include" />
             <e p="State.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
+            <e p="CrossbowArrowController.cs" t="Include" />
+            <e p="PlayerCrossbowController.cs" t="Include" />
             <e p="PlayerWeaponController.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />

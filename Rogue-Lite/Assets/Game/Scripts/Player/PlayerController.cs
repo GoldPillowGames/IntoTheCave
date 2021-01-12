@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FixedJoystick _rightJoystick;
     public CameraFollower cameraFollower;
     [SerializeField] private PlayerWeaponController weapon;
+    [SerializeField] private PlayerCrossbowController crossbow;
 
     [Header("Movement Variables")]
     [Tooltip("Player movement speed")]
@@ -162,6 +163,11 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
     }
 
+    public void ThrowArrow()
+    {
+        crossbow.ThrowArrow();
+    }
+    
     public void ShowItemDescription(string description)
     {
         _itemDescription.text = description;

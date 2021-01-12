@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.HuesitosArcher
 {
-    public class BowFiringState : EnemyState
+    public class BowFiringState : AnimatedState
     {
         #region Variables
         private readonly HuesitosArcherController _enemyController;

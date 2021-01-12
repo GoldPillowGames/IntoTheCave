@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Pinchitos
 {
-    public class AttackCannonState : EnemyState
+    public class AttackCannonState : AnimatedState
     {
         #region Variables
         private readonly PinchitosController _enemyController;

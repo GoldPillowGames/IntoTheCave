@@ -10,11 +10,10 @@ namespace GoldPillowGames.Enemy
     {
         #region Variables
         [SerializeField] protected float health;
-        
         [SerializeField] protected int gold = 10;
         protected FiniteStateMachine stateMachine;
         private RoomManager _roomManager;
-        protected float maxHealth;
+        private float _maxHealth;
         public Action GoToNextStateCallback { set; private get; }
         
         public float Health => health;
@@ -44,7 +43,7 @@ namespace GoldPillowGames.Enemy
             }
         }
         
-        private void EnableChildrenRagdoll()
+        protected void EnableChildrenRagdoll()
         {
             var childColliders = GetComponentsInChildren<Collider>().Where(col => col.gameObject != this.gameObject);;
             foreach (var col in childColliders)
@@ -64,7 +63,7 @@ namespace GoldPillowGames.Enemy
         {
             if(!Config.data.isOnline)
                 health *= Config.data.dungeonLevel;
-            maxHealth = health;
+            _maxHealth = health;
 
             // Perk -> Less initial hp
             if(Config.data.isOnline)
@@ -126,7 +125,7 @@ namespace GoldPillowGames.Enemy
         {
             if (!Config.data.isOnline)
             {
-                if(health - damage <= maxHealth * FindObjectOfType<PlayerStatus>().enemiesThreshold)
+                if(health - damage <= _maxHealth * FindObjectOfType<PlayerStatus>().enemiesThreshold)
                 {
                     health = 0;
                 }
@@ -142,7 +141,7 @@ namespace GoldPillowGames.Enemy
         [PunRPC]
         public virtual void ReceiveDamageSync(float damage)
         {
-            if (health - damage <= maxHealth * FindObjectOfType<PlayerStatus>().enemiesThreshold)
+            if (health - damage <= _maxHealth * FindObjectOfType<PlayerStatus>().enemiesThreshold)
             {
                 health = 0;
             }
