@@ -16,7 +16,7 @@ public static class TableReader
 
         for (int i = 1; i < sentencesData.Length; i++)
         {
-            values.Add(sentencesData[i].Split(','));
+            values.Add(sentencesData[i].Split(';'));
         }
         int languageIndex = (int)Config.data.language;
 

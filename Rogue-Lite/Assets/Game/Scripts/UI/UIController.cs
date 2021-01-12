@@ -12,11 +12,12 @@ public class UIController : MonoBehaviour
     public PlayerController player;
     [SerializeField] private Image _playerHealthbar;
     [SerializeField] private Image _playerHealthbarWhiteBackground;
-    [SerializeField] private DeathMenuManager _deathMenuManager;
+    public DeathMenuManager deathMenuManager;
     [SerializeField] private GameObject _leftJoystick;
     [SerializeField] private GameObject _rightJoystick;
     [SerializeField] private GameObject _rollButton;
     [SerializeField] private Button _attackButton;
+    [SerializeField] private Button _specialSkill;
     [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] private GameObject deathMenu;
 
@@ -51,6 +52,7 @@ public class UIController : MonoBehaviour
         // _rightJoystick.SetActive(Config.data.isTactile ? true : false);
         _rollButton.SetActive(Config.data.isTactile ? true : false);
         _attackButton.gameObject.SetActive(Config.data.isTactile ? true : false);
+        _specialSkill.gameObject.SetActive(Config.data.isTactile ? true : false);
 
         CanvasScaler canvasScale = GetComponent<CanvasScaler>();
         canvasScale.referenceResolution = new Vector2(
@@ -94,17 +96,7 @@ public class UIController : MonoBehaviour
         _playerHealthbar.fillAmount = (float)player.health / (float)player.maxHealth;
         _playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(_playerHealthbarWhiteBackground.fillAmount, _playerHealthbar.fillAmount, 10 * Time.deltaTime);
 
-        if(!_playerIsDead && player.health <= 0)
-        {
-            _playerIsDead = true;
-            player.Kill();
-            if (!Config.data.isOnline)
-            {
-                
-                _deathMenuManager.PlayDeathMenu();
-            }
-                
-        }
+        
 
         if (_currentGold != Config.data.gold)
         {

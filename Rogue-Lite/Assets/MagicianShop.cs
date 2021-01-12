@@ -117,12 +117,12 @@ public class MagicianShop : ItemShop
         
         currentDungeonLevel = Config.data.dungeonLevel;
 
-        hpTitle.localPosition = !(Config.data.dungeonsCompleted > 0) ? hpTitlePos[0] : hpTitlePos[1];
-        hp.localPosition = !(Config.data.dungeonsCompleted > 0) ? hpPos[0] : hpPos[1];
-        strengthTitle.localPosition = !(Config.data.dungeonsCompleted > 0) ? strengthTitlePos[0] : strengthTitlePos[1];
-        strength.localPosition = !(Config.data.dungeonsCompleted > 0) ? strengthPos[0] : strengthPos[1];
-        dungeonLevelTitle.gameObject.SetActive(!(Config.data.dungeonsCompleted > 0) ? true : false);
-        dungeonLevelSelector.SetActive(!(Config.data.dungeonsCompleted > 0) ? true : false);
+        hpTitle.localPosition = (Config.data.dungeonsCompleted > 0) ? hpTitlePos[0] : hpTitlePos[1];
+        hp.localPosition = (Config.data.dungeonsCompleted > 0) ? hpPos[0] : hpPos[1];
+        strengthTitle.localPosition = (Config.data.dungeonsCompleted > 0) ? strengthTitlePos[0] : strengthTitlePos[1];
+        strength.localPosition = (Config.data.dungeonsCompleted > 0) ? strengthPos[0] : strengthPos[1];
+        dungeonLevelTitle.gameObject.SetActive((Config.data.dungeonsCompleted > 0) ? true : false);
+        dungeonLevelSelector.SetActive((Config.data.dungeonsCompleted > 0) ? true : false);
         currentHPLevel = Config.data.hpLevel;
         currentStrengthLevel = Config.data.strengthLevel;
         currentPlayerLevel = Config.data.playerLevel;
@@ -142,7 +142,24 @@ public class MagicianShop : ItemShop
         if(currentLevelText)
             currentLevelText.text = currentPlayerLevel.ToString();
         if (goldToPayText)
-            goldToPayText.text = "Cost: " + goldToPay.ToString();
+        {
+            switch (Config.data.language)
+            {
+                case Language.EN:
+                    goldToPayText.text = "Cost: " + goldToPay.ToString();
+                    break;
+                case Language.ES:
+                    goldToPayText.text = "Coste: " + goldToPay.ToString();
+                    break;
+                case Language.DE:
+                    goldToPayText.text = "Preis: " + goldToPay.ToString();
+                    break;
+                default:
+                    goldToPayText.text = "Cost: " + goldToPay.ToString();
+                    break;
+            }
+        }
+            
         if(currentDungeonLevelText)
             currentDungeonLevelText.text = currentDungeonLevel.ToString();
 
@@ -160,8 +177,24 @@ public class MagicianShop : ItemShop
         if(currentLevelText)
             currentLevelText.text = currentPlayerLevel.ToString();
         if (goldToPayText)
-            goldToPayText.text = "Cost: " + goldToPay.ToString();
-        if(currentDungeonLevelText)
+        {
+            switch (Config.data.language)
+            {
+                case Language.EN:
+                    goldToPayText.text = "Cost: " + goldToPay.ToString();
+                    break;
+                case Language.ES:
+                    goldToPayText.text = "Coste: " + goldToPay.ToString();
+                    break;
+                case Language.DE:
+                    goldToPayText.text = "Preis: " + goldToPay.ToString();
+                    break;
+                default:
+                    goldToPayText.text = "Cost: " + goldToPay.ToString();
+                    break;
+            }
+        }
+        if (currentDungeonLevelText)
             currentDungeonLevelText.text = currentDungeonLevel.ToString();
 
         payButton.interactable = goldToPay <= Config.data.gold && Config.data.playerLevel < currentPlayerLevel ? true : false;

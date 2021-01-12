@@ -178,26 +178,41 @@ public class PlayerController : MonoBehaviour
     Quaternion originalRotation;
     Transform objectToSee;
 
+    public void OpenPauseMenu()
+    {
+        FindObjectOfType<PauseMenuManager>().ActivatePauseMenu();
+        if (!Config.data.isOnline)
+        {
+            FindObjectOfType<TimeManager>().timeScale = 0.0f;
+            Time.timeScale = 0.0f;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            FindObjectOfType<PauseMenuManager>().ActivatePauseMenu();
-            if (!Config.data.isOnline)
-            {
-                FindObjectOfType<TimeManager>().timeScale = 0.0f;
-
-                Time.timeScale = 0.0f;
-            }
-        }
-
         if (!PV.IsMine && Config.data.isOnline)
             return;
 
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+        {
+            OpenPauseMenu();
+        }
+
         if (isDead)
             return;
+
+
+        if (health <= 0)
+        {
+            print("Kill player");
+            Kill();
+            if (!Config.data.isOnline)
+            {
+                UI.deathMenuManager.PlayDeathMenu();
+            }
+
+        }
 
         maxHealth = playerStatus.health;
         Movement();
@@ -541,14 +556,15 @@ public class PlayerController : MonoBehaviour
 
     public void Kill()
     {
-        if (!Config.data.isOnline)
+        if (!Config.data.isOnline && !isDead)
         {
             isDead = true;
             Config.data.dungeonsStarted++;
             animator.SetTrigger("Death");
         }
-        else
+        else if(!isDead)
         {
+            isDead = true;
             PV.RPC("ShowDeathMenu", RpcTarget.All);
         }
         

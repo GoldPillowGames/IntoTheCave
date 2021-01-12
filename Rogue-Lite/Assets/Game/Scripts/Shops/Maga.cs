@@ -27,7 +27,22 @@ public class Maga : NPCBehaviour
 
     public override void StartConversation()
     {
-        base.StartConversation();
+        if (!interacting)
+        {
+            interacting = true;
+            player.playerState = PlayerState.DIALOGUE;
+            if(Config.data.newGamePlusStarted == false && Config.data.dungeonsCompleted > 0)
+            {
+                Config.data.newGamePlusStarted = true;
+                dialogueController.StartDialogue(7);
+            }
+            else
+            {
+                dialogueController.StartDialogue(dialogueIndex);
+            }
+            //dialogueController.StartDialogue(dialogueIndex);
+            Debug.Log("Starting Conversation");
+        }
     }
 
     public override void ShowMenu()
