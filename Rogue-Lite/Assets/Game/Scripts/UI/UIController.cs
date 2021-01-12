@@ -112,7 +112,7 @@ public class UIController : MonoBehaviour
             
         }
 
-        _healthText.text = player.health.ToString();
+        _healthText.text = player.health > 0 ? player.health.ToString() : "0";
 
         if (_gold < Config.data.gold)
         {

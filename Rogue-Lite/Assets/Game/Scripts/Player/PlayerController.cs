@@ -403,16 +403,21 @@ public class PlayerController : MonoBehaviour
         if ((!PV.IsMine && Config.data.isOnline) || playerState == PlayerState.BLOCKING || playerState == PlayerState.ROLLING)
             return;
 
+        int calculatedDamage = damage;
+
+        if (!Config.data.isOnline)
+            calculatedDamage = damage * Config.data.dungeonLevel;
+
         playerState = PlayerState.IS_BEING_DAMAGED;
         LetAttack();
-        if (health - damage < 1 && health > 1 && playerStatus.survivesToLetalAttack)
+        if (health - calculatedDamage < 1 && health > 1 && playerStatus.survivesToLetalAttack)
         {
             health = 1; 
             playerStatus.survivesToLetalAttack = false;
         }
         else
         {
-            health -= damage;
+            health -= calculatedDamage;
         }
 
         CameraShaker.Shake(0.2f, 2f, 1.75f);

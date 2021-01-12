@@ -62,12 +62,15 @@ namespace GoldPillowGames.Enemy
 
         protected virtual void Start()
         {
+            if(!Config.data.isOnline)
+                health *= Config.data.dungeonLevel;
             maxHealth = health;
-            // Perk -> Less initial life
+
+            // Perk -> Less initial hp
             if(Config.data.isOnline)
                 health -= health * FindObjectOfType<PlayerStatus>().lessInitialLifeForEnemies / 100;
             else
-                health -= health * FindObjectOfType<PlayerStatus>().lessInitialLifeForEnemies / 100 * Config.data.dungeonLevel;
+                health -= health * FindObjectOfType<PlayerStatus>().lessInitialLifeForEnemies / 100;
         }
 
         protected virtual void Update()
@@ -83,7 +86,7 @@ namespace GoldPillowGames.Enemy
         protected virtual void GiveGold()
         {
             if(!Config.data.isOnline)
-                Config.data.gold += gold + FindObjectOfType<PlayerStatus>().goldPerEnemy;
+                Config.data.gold += gold * Config.data.dungeonLevel + FindObjectOfType<PlayerStatus>().goldPerEnemy;
             else
                 Config.data.gold += (gold / 2) + FindObjectOfType<PlayerStatus>().goldPerEnemy;
         }

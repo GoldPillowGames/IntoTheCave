@@ -380,7 +380,7 @@ public class RunManager : MonoBehaviour
                     {
                         case 1:
                             print("Boss Fight Reached");
-                            roomToLoad = 10;
+                            roomToLoad = 11;
                            // Audio.ChangeTracks(_bossStage0);
                             currentRoom = 0;
                             // Audio.ActivateTrack(3);
@@ -388,13 +388,13 @@ public class RunManager : MonoBehaviour
                             break;
                         case 2:
                             print("Boss Fight Reached");
-                            roomToLoad = 16;
+                            roomToLoad = 17;
                             currentRoom = 0;
                             currentStage = 3;
                             break;
                          case 3:
                             print("Boss Fight Reached");
-                            roomToLoad = 16;
+                            roomToLoad = 17;
                             currentRoom = 0;
                             currentStage = 3;
                             break;

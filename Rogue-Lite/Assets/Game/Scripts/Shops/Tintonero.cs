@@ -42,7 +42,7 @@ public class Tintonero : NPCBehaviour
         base.CloseMenu();
         
         Config.data.tintoneroDialogueIndex++;
-        if (Config.data.tintoneroDialogueIndex > 4)
+        if (Config.data.tintoneroDialogueIndex > 2)
         {
             Config.data.tintoneroDialogueIndex = 2;
         }
@@ -53,7 +53,7 @@ public class Tintonero : NPCBehaviour
     {
         base.CloseMenuPermanently();
         Config.data.tintoneroDialogueIndex++;
-        if (Config.data.tintoneroDialogueIndex > 4)
+        if (Config.data.tintoneroDialogueIndex > 2)
         {
             Config.data.tintoneroDialogueIndex = 2;
         }

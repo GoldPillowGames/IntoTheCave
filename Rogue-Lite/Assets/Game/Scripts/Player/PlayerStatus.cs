@@ -25,12 +25,21 @@ public class PlayerStatus : MonoBehaviour
     public float enemiesThreshold = 0.0f; // Por implementar
     public bool canRoll = true;
 
+    private int originalDamage;
+    private int originalHealth;
+
+    private void Awake()
+    {
+        originalDamage = damage;
+        originalHealth = health;
+    }
+
     public void UpdateStatus()
     {
         if (!Config.data.isOnline)
         {
-            damage = damage + 2 * Config.data.strengthLevel;
-            health = health + 3 * Config.data.hpLevel;
+            damage = originalDamage + 2 * Config.data.strengthLevel;
+            health = originalHealth + 20 * Config.data.hpLevel;
         }
     }
 }
