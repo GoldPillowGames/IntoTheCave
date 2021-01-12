@@ -294,17 +294,21 @@ Caballero cabezón, con casco medieval estilo cartoon y variaciones de color.
 
 ## Código 
 ### General 
+- AttackButton: controla el comportamiento de un botón de la interfaz que sirve para atacar. 
 - AudioManager: contiene variables estáticas a las que se puede acceder desde otros scripts para reproducir música y efectos de sonido. 
 - Bonfire: reproduce un efecto de sonido. 
 - BrightnessMenuManager: cambia el brillo del juego en función del valor que asigne el jugador mediante un slider. 
 - CameraController: gestiona el comportamiento de la cámara en función de su estado (4 estados posibles). 
 - CameraFollower: mueve la cámara hacia el jugador con un lerp, cuando un booleano tiene valor verdadero. 
+- CampController: en función de cuantas partidas haya jugado el jugador, se activan una o varias tiendas en el campamento. 
 - CreditsController: contiene un método público que sirve para transicionar de un menú a otro. 
+- CursorManager: le asigna al puntero del ratón el aspecto que debe tener. 
 - DamageText: clase estática que permite instanciar texto que refleja el daño de los ataques.  
 - DamageTextController: controla la animación del texto que refleja el daño de los ataques. 
 - DeathMenuManager: contiene funciones para controlar el menú de muerte o derrota, tanto su aparición, como su desaparición al reiniciar la partida. 
 - EnemyUIController: controla la barra de vida de los enemigos. 
 - FadeManager: contiene funciones para reproducir fades de distintos tipos. 
+- FirstTimeAnimatorController: muestra la cinemática inicial cuando el jugador inicia partida por primera vez. 
 - GameManager: configura los gráficos del juego (elegidos por el jugador en el menú de opciones) y tiene un método que termina la partida y guarda los datos de forma persistente. 
 - ItemSpawner: instancia un punto de spawn de elementos 
 - LanguageManager: permite cambiar el idioma del videojuego. 
@@ -312,6 +316,9 @@ Caballero cabezón, con casco medieval estilo cartoon y variaciones de color.
 - MenuManager: gestiona todo lo relacionado con los menús. 
 - MeshCombiner: optimiza ciertos mayados al combinarlos. 
 - OnlineLobby: gestiona el funcionamiento de las salas en el modo multijugador. 
+- PauseMenuManager: gestiona todo lo relacionado al menú de pausa. 
+- PlayerHelmetController: gestiona lo relacionado a la apariencia del personaje del jugador. Concretamente cambia la estética de la cabeza del jugador. 
+- PlayerObjectManager: 
 - PlayerWeaponry: gestiona el arma que tiene equipada el jugador en cada momento. 
 - PostProcess: gestiona el valor del post-proceso. 
 - PostProcessManager: inicializa el post-proceso. 
@@ -319,6 +326,8 @@ Caballero cabezón, con casco medieval estilo cartoon y variaciones de color.
 - TimeManager: gestiona el transcurso del tiempo en el videojuego. 
 - Translator: gestiona el comportamiento de la selección de idioma. 
 - UIElement: sirve para crear elementos de interfaz. Mueve el objeto en cuestión para que siempre apunte a la cámara y sea visible. 
+
+### Scripts 
 - SimpleCameraController: mueve la cámara en función de los controles del jugador. 
 
 ### Player 
@@ -333,6 +342,51 @@ Caballero cabezón, con casco medieval estilo cartoon y variaciones de color.
 ### Enemy 
 - EnemyState: estado genérico de la máquina de estados de los enemigos. 
 - EnemyController: controla la máquina de estados del enemigo. 
+
+### Scripts/Enemy/SinCabeza 
+- AttackState: estado del enemigo sin cabeza en el que ataca. 
+- DeathState: estado del enemigo sin cabeza en el que está muerto 
+- FollowingState: estado del enemigo sin cabeza en el que persigue al jugador. 
+- OrbController: controlador del enemigo sin cabeza. 
+- SinCabezaController: controlador del arma que porta el enemigo sin cabeza. 
+- HurtState: estado del enemigo sin cabeza en el que le hieren. 
+
+### Scripts/Enemy/Roquita 
+- Attack1State: estado del enemigo Roquita en el que hace uno de sus ataques (tiene varios tipos). 
+- Attack2State: estado del enemigo Roquita en el realiza su segundo ataque. 
+- JumpAttackState: estado del enemigo Roquita en el realiza su ataque en salto. 
+- RoarState: estado del enemigo Roquita en el que ruge. 
+- DeathState: estado del enemigo Roquita en el que está muerto 
+- FollowingState: estado del enemigo Roquita en el que persigue al jugador. 
+- RoquitaAnimatorEvents: controla los posibles eventos (y activa sus animaciones) de Roquita. 
+- RoquitaController: controla las posibles acciones de Roquita. 
+- RoquitaHandController: controla la mano de Roquita. 
+- RoquitaParticlesController: controla los efectos de particulas de Roquita. 
+
+### Scripts/Enemy/Pinchitos 
+- AttackCanonState: ataque a distancia del enemigo Pinchistos. 
+- AttackMelee1State:  ataque cuerpo a cuerpo número 1 del enemigo Pinchitos. 
+- AttackMelee21State: ataque cuerpo a cuerpo número 2 del enemigo Pinchitos. 
+- AttackMelee22State: ataque cuerpo a cuerpo número 3 del enemigo Pinchitos. 
+- DeathState: estado del enemigo Pinchistos, que se activa al ser derrotado. 
+- FollowingState: estado del enemigo Pinchitos en el que persigue al jugador. 
+- PinchitosAnimatorEvents: gestiona todos los posibles eventos del enemigo Pinchitos (y sus animaciones). 
+- PinchitosController: controla todas las posibles acciones de Pinchitos.  
+- SpikeBallController: controla todas las posibles acciones de la bola de Pinchitos. 
+- StaticSpikeBallController: gestiona todo lo relacionado con la bola de pinchitos. 
+
+### Scripts/Enemy/Litos 
+- DeathState: estado del enemigo Litos, cuando es derrotado. 
+- IdleState: estado del enemigo Litos cuando no está combatiendo. 
+- LitosAnimatorEvents: gestiona los posibles eventos de Litos. 
+- LitosController: controla las posibles acciones de Litos. 
+
+Scripts/Enemy/Litos/SlapHand 
+FollowingState: estado en el que la mano de Litos persigue al jugador. 
+IdleState: estado neutral de la mano de Litos. 
+LitosSlapHandController: controla lo relacionado a la mano de Litos.	 
+RecoveringState: estado de la mano de Litos en el que se recupera tras atacar. 
+SlapAttackState: estado de la mano de Litos en el que ataca.
 
 ### Enemy/HuesitosArcher 
 - ArrowController: gestiona el comportamiento de las flechas. 
@@ -388,51 +442,39 @@ Caballero cabezón, con casco medieval estilo cartoon y variaciones de color.
 - RoomListItem: gestiona los objetos de la sala. 
 
 ### Game/Scripts/Player 
-PlayerController: gestiona todas las acciones posibles del jugador. 
-PlayerStatus: contiene todos los datos y estadísticas del jugador. 
+- PlayerController: gestiona todas las acciones posibles del jugador. 
+- PlayerStatus: contiene todos los datos y estadísticas del jugador. 
 
 ### Game/Scripts/Run 
-Item: es la clase para los items que el jugador puede recoger, y le dan ventajas. 
-RoomManager: gestiona la sala en la que se encuentra el jugador. 
-RunManager: gestiona la partida que está jugando el jugador. 
+- Item: es la clase para los items que el jugador puede recoger, y le dan ventajas. 
+- RoomManager: gestiona la sala en la que se encuentra el jugador. 
+- RunManager: gestiona la partida que está jugando el jugador. 
 
 ### Game/Scripts/Run/Items 
-Item01: recupera un 5% de la vida del jugador. 
-Item02: aumenta en un 5% el daño del jugador. 
-Item03: aumenta la velocidad de movimiento del jugador en un 5%. 
-Item04: aumenta el oro que el jugador recibirá de los enemigos un 10%. 
-Item05: le da al jugador un 25% del oro que tiene en ese momento. 
-Item06: aumenta el robo de vida del jugador en 5 puntos. 
-Item07: cambia el arma del jugador a una lanza. 
-Item08: cambia el arma del jugador a un estoque. 
-Item09: potencia la habilidad especial del jugador. 
-Item10: aumenta la suerte del jugador en un 5%. 
-Item11: hace que los enemigos exploten. 
-Item12: reduce la vida del jugador un 50%, aumenta su daño un 50%. 
-Item13: reduce el daño del jugador un 50%, aumenta su vida un 50%. 
-Item14: aumenta la agilidad del jugador en un 10%. 
-Item15: permite al jugador sobrevivir a un ataque que de otra forma le hubiera derrotado. 
-Item16: los enemigos pasan a tener una menor vida inicial. 
-Item17: aumenta las curaciones del jugador. 
-Item18: otorga una ventaja aleatoria. 
-Item19: reduce el oro del jugador a 0, aumenta su vida y daño en un 100%. 
-Item20: reduce el robo de vida en 3 puntos. Aumenta el daño un 10%. 
-Item21: el jugador deja de poder rodar, pero aumenta su vida en un 75%. 
-Item22: aumenta la fuerza del jugador al empujar enemigos un 10%. 
-Item23: el jugador pasa a instanciar granadas cuando rueda. 
-Item24: aumenta el umbral de vida a partir del cual el enemigo muere. 
+- Item01: recupera un 5% de la vida del jugador. 
+- Item02: aumenta en un 5% el daño del jugador. 
+- Item03: aumenta la velocidad de movimiento del jugador en un 5%. 
+- Item04: aumenta el oro que el jugador recibirá de los enemigos un 10%. 
+- Item05: le da al jugador un 25% del oro que tiene en ese momento. 
+- Item06: aumenta el robo de vida del jugador en 5 puntos. 
+- Item07: cambia el arma del jugador a una lanza. 
+- Item08: cambia el arma del jugador a un estoque. 
+- Item15: permite al jugador sobrevivir a un ataque que de otra forma le hubiera derrotado. 
+- Item16: los enemigos pasan a tener una menor vida inicial. 
+- Item17: aumenta las curaciones del jugador. 
+- Item22: aumenta la fuerza del jugador al empujar enemigos un 10%. 
+- Item24: aumenta el umbral de vida a partir del cual el enemigo muere. 
 
 ### Game/Scripts/SaveGame 
-Helper: clase estática para escribir y leer los datos guardados del juego. 
-SaveManager: gestiona el guardado de datos, la lectura de estos, o su reseteo al estado inicial. 
-SaveState: guarda la configuración elegida por el jugador para el juego. 
+- Helper: clase estática para escribir y leer los datos guardados del juego. 
+- SaveManager: gestiona el guardado de datos, la lectura de estos, o su reseteo al estado inicial. 
+- SaveState: guarda la configuración elegida por el jugador para el juego. 
 
 ### Game/Scripts/UI 
-UIController: gestiona la interfaz del jugador. 
+- UIController: gestiona la interfaz del jugador. 
 
 ### Game/Scripts/UI/Fade 
-Fade: permite ejecutar un efecto fade. 
-
+- Fade: permite ejecutar un efecto fade. 
 
 ## Animación 
 
