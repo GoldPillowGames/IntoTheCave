@@ -60,7 +60,7 @@ namespace GoldPillowGames.Enemy.Pinchitos {
                 {
                     stateMachine.SetState(new AttackMelee21State(_enemyController, stateMachine, anim));
                 }
-                else
+                else if (_enemyController.CanThrow)
                 {
                     stateMachine.SetState(new AttackCannonState(_enemyController, stateMachine, anim));
                 }
