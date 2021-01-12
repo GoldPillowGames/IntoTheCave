@@ -61,4 +61,9 @@ public class AnimatorController : MonoBehaviour
         if (GetComponentInParent<PlayerController>().isMe || !Config.data.isOnline)
             playerController.FinishAttackInWeapon();
     }
+
+    void ThrowArrow()
+    {
+        playerController.ThrowArrow();
+    }
 }
