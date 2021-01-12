@@ -1,4 +1,5 @@
 ﻿using GoldPillowGames.Core;
+using GoldPillowGames.Enemy.Litos.LaserHand;
 using GoldPillowGames.Enemy.Litos.SlapHand;
 using GoldPillowGames.Enemy.Pinchitos;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace GoldPillowGames.Enemy.Litos
     {
         #region Variables
         [SerializeField] private LitosSlapHandController slapHand;
+        [SerializeField] private LitosLaserHandController laserHand;
         [SerializeField] private float timeBetweenAttacks = 0.7f;
         private Animator _anim;
         private Collider _collider;
@@ -31,7 +33,7 @@ namespace GoldPillowGames.Enemy.Litos
             
             stateMachine.SetInitialState(new IdleState(this, stateMachine, _anim));
             
-            DoNewAttack();
+            Invoke(nameof(DoNewAttack), timeBetweenAttacks);
         }
         
         protected override void Die()
@@ -52,13 +54,13 @@ namespace GoldPillowGames.Enemy.Litos
 
         private void DoNewAttack()
         {
-            if (Random.value >= 0.5f)
+            if (Random.value >= 1f)
             {
-                slapHand.Attack();
+                laserHand.Attack();
             }
             else
             {
-                slapHand.Attack(); // Poner la otra mano.
+                slapHand.Attack();
             }
         }
 
