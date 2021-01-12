@@ -54,7 +54,7 @@ namespace GoldPillowGames.Enemy.Litos
 
         private void DoNewAttack()
         {
-            if (Random.value >= 1f)
+            if (Random.value >= 0.5f)
             {
                 laserHand.Attack();
             }

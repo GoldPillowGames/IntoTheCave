@@ -35,7 +35,9 @@ namespace GoldPillowGames.Enemy.Pinchitos
         {
             _isInTheAir = true;
             transform.parent = null;
-            _rigidbody.velocity = (target - transform.position).normalized * velocity;
+            var direction = target - transform.position;
+            direction.y = -1;
+            _rigidbody.velocity = direction.normalized * velocity;
             _pinchitosController.CanThrow = false;
         }
 
