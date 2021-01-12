@@ -68,7 +68,7 @@ public class ItemShop : MonoBehaviour
         FindObjectOfType<PlayerHelmetController>().EquipSkin(index);
     }
 
-    public void CloseMenu()
+    public virtual void CloseMenu()
     {
         if (itemsPanel)
         {

@@ -118,5 +118,8 @@ public class SaveState
     public int hpLevel = 0;
     public int strengthLevel = 0;
     public int dungeonLevel = 1;
+    // public int gold
     public int playerLevel => hpLevel + strengthLevel + 1;
+
+    public bool newGamePlusStarted = false;
 }

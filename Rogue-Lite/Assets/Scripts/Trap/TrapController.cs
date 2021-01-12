@@ -28,6 +28,8 @@ namespace GoldPillowGames.Trap
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            //if (!Config.data.isOnline)
+            //    damage *= Config.data.dungeonLevel;
         }
 
         private void OnTriggerStay(Collider other)

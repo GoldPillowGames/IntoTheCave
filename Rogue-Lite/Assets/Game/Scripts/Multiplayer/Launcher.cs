@@ -22,6 +22,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Text nicknameText;
     [SerializeField] TMP_Text roomNamePlaceholder;
     [SerializeField] TMP_Text roomName;
+    [SerializeField] GameObject hostButton;
 
     private void Awake()
     {
@@ -39,6 +40,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connecting to Master");
         PhotonNetwork.OfflineMode = false;
+        if (Application.isMobilePlatform)
+            hostButton.SetActive(false);
         PhotonNetwork.NickName = "Player " + Random.Range(0, 9999).ToString("0000");
         PhotonNetwork.ConnectUsingSettings();
     }
