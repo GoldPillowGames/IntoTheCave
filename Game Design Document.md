@@ -154,16 +154,20 @@ Un tablón de corcho, con papeles pegados, que muestra las estadísticas de tu �
 - **Lanza:** no cuenta con un arma secundaria, como el estoque o la espada, pero tiene mucho daño. Cuenta con 2 ataques, uno principal que es hacia delante y hace mucho daño, y uno en área que hace muy poco daño, pero empuja a los enemigos hacia atrás. 
 
 #### Enemigos
-- **Caballero zombi:** se trata de un enemigo cuerpo a cuerpo, que perseguirá al jugador siempre que pueda. Contará con una cantidad de vida relativamente alta (sin pasarse) debido a que es un caballero. 
-- **Huesitos:** se trata de un enemigo cuerpo a cuerpo como el anterior, pero tiene menos vida y es más rápido. 
-- **Esqueleto con arco:** 
-- **Hiedra:** se trata de un enemigo que no se puede mover, con una cantidad de vida media y que atacará al jugador desde la distancia. 
+- **Huesitos cuerpo a cuerpo:** se trata de un enemigo cuerpo a cuerpo, que perseguirá al jugador siempre que pueda. Tiene una vida y daño medios. 
+
+- **Huesitos con arco:** mismo enemigo que el anterior, pero con un arco y ataca a distancia. 
+
+- **Enemigo templario:** se trata de un enemigo cuerpo a cuerpo, que perseguirá al jugador siempre que pueda. Contará con una cantidad de vida relativamente alta (sin pasarse) debido a que es un caballero. 
+
 - **Espectro:** se trata de un enemigo a distancia que atacará al jugador disparándole. 
 
 #### Bosses
-- **Boss 1 (criatura gorda):** 
-- **Boss 2 (criatura con 2 brazos y una esfera debajo del cuerpo para moverse):** 
-- **Boss fijo al suelo:** se trata de un boss de gran tamaño y fijo al suelo que ataca con los brazos. Deben esquivarse estos ataques, habiendo tiempo entre ellos para atacar, ya que se mueve de forma lenta. Puede haber ataques de 2 tipos. Uno en el que golpee el suelo y otro que haga un barrido con el brazo o el puño. 
+- **Roquita:** primer jefe del juego. Persigue al jugador para atacarle con sus 2 grandes manos, o bien salta para intentar aplastar al jugador. 
+
+- **Criatura con 2 brazos y una esfera debajo del cuerpo para moverse:** segundo jefe del juego. 
+
+- **Boss fijo al suelo:** se trata del boss final. Un boss de gran tamaño y fijo al suelo que ataca con los brazos. Deben esquivarse estos ataques, habiendo tiempo entre ellos para atacar, ya que se mueve de forma lenta. Puede haber ataques de 2 tipos. Uno en el que golpee el suelo con la mano y otro que coloque la mano encima del jugador para disparar un rayo láser. 
 
 #### Escenario del campamento 
 
@@ -201,10 +205,6 @@ Item23: el jugador pasa a instanciar granadas cuando rueda.
 Item24: aumenta el umbral de vida a partir del cual el enemigo muere.
 
 ## Aspecto visual
-
-### Contexto 
-
-El videojuego contará… 
 
 ### Referencias Visuales 
 
