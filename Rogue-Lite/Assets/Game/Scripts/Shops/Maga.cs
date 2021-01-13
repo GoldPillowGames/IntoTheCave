@@ -35,11 +35,16 @@ public class Maga : NPCBehaviour
             {
                 Config.data.newGamePlusStarted = true;
                 dialogueController.StartDialogue(7);
+                menu.SetActive(true);
+                menu.GetComponent<MagicianShop>().Start();
+                menu.SetActive(false);
             }
             else
             {
                 dialogueController.StartDialogue(dialogueIndex);
             }
+
+            
             //dialogueController.StartDialogue(dialogueIndex);
             Debug.Log("Starting Conversation");
         }

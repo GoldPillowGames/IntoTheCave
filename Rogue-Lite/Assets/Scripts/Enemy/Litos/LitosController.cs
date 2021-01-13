@@ -66,6 +66,7 @@ namespace GoldPillowGames.Enemy.Litos
 
             if (!Config.data.isOnline)
             {
+                Config.data.dungeonsCompleted++;
                 FindObjectOfType<PlayerController>().health = -10000;
             }
             else

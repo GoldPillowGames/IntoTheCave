@@ -111,18 +111,25 @@ public class MagicianShop : ItemShop
         FindObjectOfType<PlayerController>().health = FindObjectOfType<PlayerStatus>().health;
     }
 
+    
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        print("Magician Shop Start");
         currentDungeonLevel = Config.data.dungeonLevel;
 
+        //if(Config.data.dungeonsCompleted > 0)
+        //{
+        //    Config.data.newGamePlusStarted = true;
+        //}
+
         //hpTitle.localPosition = (Config.data.newGamePlusStarted) ? hpTitlePos[0] : hpTitlePos[1];
-        hp.localPosition = (Config.data.newGamePlusStarted) ? hpPos[0] : hpPos[1];
+        hp.localPosition = (Config.data.newGamePlusStarted || Config.data.dungeonsCompleted > 0) ? hpPos[0] : hpPos[1];
         //strengthTitle.localPosition = (Config.data.newGamePlusStarted) ? strengthTitlePos[0] : strengthTitlePos[1];
-        strength.localPosition = (Config.data.newGamePlusStarted) ? strengthPos[0] : strengthPos[1];
-        dungeonLevelTitle.gameObject.SetActive((Config.data.newGamePlusStarted) ? true : false);
-        dungeonLevelSelector.SetActive((Config.data.newGamePlusStarted) ? true : false);
+        strength.localPosition = (Config.data.newGamePlusStarted || Config.data.dungeonsCompleted > 0) ? strengthPos[0] : strengthPos[1];
+        dungeonLevelTitle.gameObject.SetActive((Config.data.newGamePlusStarted || Config.data.dungeonsCompleted > 0) ? true : false);
+        dungeonLevelSelector.SetActive((Config.data.newGamePlusStarted || Config.data.dungeonsCompleted > 0) ? true : false);
         currentHPLevel = Config.data.hpLevel;
         currentStrengthLevel = Config.data.strengthLevel;
         currentPlayerLevel = Config.data.playerLevel;

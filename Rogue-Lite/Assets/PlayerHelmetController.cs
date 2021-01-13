@@ -16,6 +16,11 @@ public class PlayerHelmetController : MonoBehaviour
             EquipHelmet(Config.data.gearIndex);
             EquipSkin(Config.data.clothesIndex);
         }
+        else
+        {
+            EquipHelmet(0);
+            EquipSkin(0);
+        }
         
     }
 
