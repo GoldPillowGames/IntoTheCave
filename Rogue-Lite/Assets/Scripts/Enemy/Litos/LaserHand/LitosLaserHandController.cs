@@ -69,7 +69,6 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody>();
-            InitialPosition = transform.position;
             //DisableChildrenRagdoll();
         }
 
@@ -89,6 +88,7 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
         
         private void Start()
         {
+            InitialPosition = transform.position;
             if (!photonView.IsMine && Config.data.isOnline)
                 return;
             _stateMachine.SetInitialState(new IdleState(this, _stateMachine, _anim));

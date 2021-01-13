@@ -32,6 +32,11 @@ namespace GoldPillowGames.Enemy.Litos
             _anim = GetComponentInChildren<Animator>();
             _collider = GetComponent<Collider>();
 
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            
+            transform.forward = -Vector3.forward;
+            
             //if (!photonView.IsMine && Config.data.isOnline)
             //{
             //    Agent.enabled = false;
@@ -46,7 +51,6 @@ namespace GoldPillowGames.Enemy.Litos
                 return;
 
             stateMachine.SetInitialState(new IdleState(this, stateMachine, _anim));
-            transform.forward = -Vector3.forward;
             
             Invoke(nameof(DoNewAttack), timeBetweenAttacks);
         }
