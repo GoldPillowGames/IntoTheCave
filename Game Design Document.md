@@ -397,6 +397,13 @@ LitosSlapHandController: controla lo relacionado a la mano de Litos.
 RecoveringState: estado de la mano de Litos en el que se recupera tras atacar. 
 SlapAttackState: estado de la mano de Litos en el que ataca.
 
+Scripts/Enemy/Litos/LaserHand 
+FollowingState: estado en el que la mano laser de Litos persigue al jugador. 
+IdleState: estado neutral de la mano laser de Litos. 
+LaserSlapHandController: controla lo relacionado a la mano laser de Litos.	 
+RecoveringState: estado de la mano laser de Litos en el que se recupera tras atacar. 
+LaserAttackState: estado de la mano laser de Litos en el que ataca.
+
 ### Enemy/HuesitosArcher 
 - ArrowController: gestiona el comportamiento de las flechas. 
 - BowController: gestiona que las flechas se inicialicen y muestren. 
@@ -545,6 +552,25 @@ SlapAttackState: estado de la mano de Litos en el que ataca.
 ### NPC de tienda – Maga 
 - Idle 
 
+### Enlaces de interés 
+https://goldpillowgames.github.io/  
+https://goldpillowgames.itch.io/into-the-cave  
+https://github.com/GoldPillowGames/practica-2   
+https://twitter.com/GoldPillowGames  
+https://www.instagram.com/goldpillowgames/?hl=es  
+https://www.youtube.com/channel/UCn0IeU3ajap8zqTpq0sX6gQ  
+
+
 ## Calendario 
+### Equipo
+| Hitos | Fecha |
+| ----------- | ----------- |
+| Inicio del proyecto  | 23/11/2020 |
+| Definición completa del juego   | 20/12/2020  |
+| Se puede jugar una partida completa al juego (faltan elementos del juego final)  | 31/12/2020  |
+| Se completa una versión del videojuego que permite a los testers probarlo y dar feedback. | 3/01/2021  |
+| El juego está completo (faltan arreglos pequeños de bug)  | 11/01/2021  |
+| Fin del proyecto (lanzamiento del videojuego)  | 13/01/2021  |
+
 
 
