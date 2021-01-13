@@ -39,8 +39,6 @@ namespace GoldPillowGames.Enemy.Litos
         protected override void Die()
         {
             base.Die();
-
-            slapHand.HandDie();
             
             _collider.enabled = false;
             _anim.enabled = false;
@@ -52,6 +50,12 @@ namespace GoldPillowGames.Enemy.Litos
             Die();
         }
 
+        public void HandsDie()
+        {
+            laserHand.HandDie();
+            slapHand.HandDie();
+        }
+        
         private void DoNewAttack()
         {
             if (Random.value >= 0.5f)

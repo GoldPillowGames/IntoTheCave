@@ -17,7 +17,7 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
         [SerializeField] private Animator childAnim;
         private Animator _anim;
         private Collider _collider;
-
+        private Rigidbody _rigidbody;
         #endregion
 
         #region Properties
@@ -51,6 +51,7 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
             _collider = GetComponent<Collider>();
+            _rigidbody = GetComponent<Rigidbody>();
             InitialPosition = transform.position;
         }
 
@@ -107,8 +108,15 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
                 child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
             }
 
-            _collider.enabled = false;
+            _collider.enabled = true;
+            _collider.isTrigger = false;
             _anim.enabled = false;
+            _rigidbody.isKinematic = false;
+            _rigidbody.useGravity = true;
+            
+            stateMachine.SetState(new IdleState(this, stateMachine, _anim));
+            ChildAnim.SetBool("IsAttacking", true);
+            
             enabled = false;
         }
 
