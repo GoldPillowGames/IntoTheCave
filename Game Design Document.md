@@ -658,7 +658,7 @@ https://www.youtube.com/channel/UCn0IeU3ajap8zqTpq0sX6gQ
 | El juego está completo (faltan arreglos pequeños de bug)  | 11/01/2021  |
 | Fin del proyecto (lanzamiento del videojuego)  | 13/01/2021  |
 
-## Post-mortem 
+## Post mortem 
 
 ### Opiniones individuales: 
 
