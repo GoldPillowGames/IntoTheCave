@@ -396,12 +396,33 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void SpecialSkillDown()
+    {
+        if (!Config.data.isTactile && playerState == PlayerState.NEUTRAL || playerState == PlayerState.BLOCKING)
+        {
+            animator.SetBool("IsDefending", true);
+            playerState = PlayerState.BLOCKING;
+        }
+        else
+        {
+            animator.SetBool("IsDefending", false);
+        }
+    }
+
+    public void SpecialSkillUp()
+    {
+        if(!Config.data.isTactile && playerState == PlayerState.BLOCKING)
+        {
+            playerState = PlayerState.NEUTRAL;
+        }
+    }
+
     public void Roll()
     {
         if (rollTimer <= 0 && playerStatus.canRoll && movement != Vector3.zero && playerState == PlayerState.NEUTRAL && canRoll)
         {
             playerState = PlayerState.ROLLING;
-            rollDirection = movement;
+            rollDirection = lastMovement;
             currentRotation = Quaternion.LookRotation(rollDirection);
             movement = Vector3.zero;
             canRoll = false;
@@ -584,7 +605,7 @@ public class PlayerController : MonoBehaviour
         Fade.OnPlay = GameManager.Instance.EndRun;
         Fade.PlayFade(FadeType.INSTANT);
     }
-
+    Vector3 lastMovement;
     /// <summary>
     /// Calculates and updates player movement
     /// </summary>
@@ -604,7 +625,10 @@ public class PlayerController : MonoBehaviour
                 Vector2 input = new Vector2(_leftJoystick.Horizontal, _leftJoystick.Vertical).normalized;
                 movement = (input == Vector2.zero) ? Vector3.zero : cameraDirection.right.normalized * input.x + cameraDirection.forward.normalized * input.y;
                 if(input != Vector2.zero)
-                    lastMovementDir = movement.normalized;
+                {
+                    lastMovement = movement;
+                }
+                    //lastMovementDir = movement.normalized;
             }
 
             if (playerState == PlayerState.NEUTRAL)

@@ -30,7 +30,22 @@ public class RoomManager : MonoBehaviour
         }
         else
         {
-            pathName = "Enemies";
+            switch (currentStage)
+            {
+                case 1:
+                    pathName = "Enemies";
+                    break;
+                case 2:
+                    pathName = "Enemies2";
+                    break;
+                case 3:
+                    pathName = "Enemies3";
+                    break;
+                default:
+                    pathName = "Enemies";
+                    break;
+            }
+            
         }
         
         switch (currentStage)

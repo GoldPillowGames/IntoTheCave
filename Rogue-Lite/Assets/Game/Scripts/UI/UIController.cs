@@ -39,8 +39,6 @@ public class UIController : MonoBehaviour
             }
         }
 
-        
-
         DontDestroyOnLoad(this);
     }
 

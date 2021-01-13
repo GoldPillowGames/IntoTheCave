@@ -33,6 +33,16 @@ public class MainMenuManager : MonoBehaviour
             {
                 _firstTimeAnim.gameObject.SetActive(true);
                 _firstTimeAnim.SetBool("Play", true);
+                MenuManager menu = GetComponentInParent<MenuManager>();
+                for (int i = 0; i < menu.gameObject.transform.childCount; i++)
+                {
+                    if(menu.transform.GetChild(i) != this)
+                    {
+                        Destroy(menu.transform.GetChild(i).gameObject);
+                        
+                    }
+                }
+                menu.enabled = false;
             }
             else if(index == 2)
             {

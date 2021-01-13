@@ -295,14 +295,19 @@ public class MenuManager : MonoBehaviour
         if (Config.data.limitedFPS != FPSLimit.NONE)
             Application.targetFrameRate = (int)Config.data.limitedFPS;
     }
-
+    private bool activated = false;
     private void Update()
     {
-        if(_titleMenu.activeSelf && Input.anyKeyDown)
+        if (_titleMenu)
         {
-            ShowMenu(0);
-            SetDynamicMusicTrack(1);
+            if (_titleMenu.activeSelf && Input.anyKeyDown && !activated)
+            {
+                activated = true;
+                ShowMenu(0);
+                SetDynamicMusicTrack(1);
+            }
         }
+        
 
         if (menus[MainMenuType.BRIGHTNESS_MENU].activeSelf && !_brightnessBackground.activeSelf)
         {

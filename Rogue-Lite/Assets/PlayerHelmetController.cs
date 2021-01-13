@@ -11,8 +11,12 @@ public class PlayerHelmetController : MonoBehaviour
 
     private void Start()
     {
-        EquipHelmet(0);
-        EquipSkin(0);
+        if (!Config.data.isOnline)
+        {
+            EquipHelmet(Config.data.gearIndex);
+            EquipSkin(Config.data.clothesIndex);
+        }
+        
     }
 
     public void EquipHelmet(int index)
@@ -38,11 +42,15 @@ public class PlayerHelmetController : MonoBehaviour
         {
             eyes.SetActive(false);
         }
+
+        Config.data.gearIndex = index;
     }
 
     public void EquipSkin(int index)
     {
         mesh.SetMaterial(0, materials[index]);
         mesh.Init();
+
+        Config.data.clothesIndex = index;
     }
 }

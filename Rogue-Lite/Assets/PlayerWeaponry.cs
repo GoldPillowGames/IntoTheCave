@@ -121,17 +121,17 @@ public class PlayerWeaponry : MonoBehaviour
             return;
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SwapWeapon(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SwapWeapon(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SwapWeapon(2);
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SwapWeapon(0);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SwapWeapon(1);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    SwapWeapon(2);
+        //}
     }
 }

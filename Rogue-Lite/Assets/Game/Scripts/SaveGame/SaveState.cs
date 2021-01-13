@@ -122,4 +122,7 @@ public class SaveState
     public int playerLevel => hpLevel + strengthLevel + 1;
 
     public bool newGamePlusStarted = false;
+
+    public int gearIndex = 0;
+    public int clothesIndex = 0;
 }
