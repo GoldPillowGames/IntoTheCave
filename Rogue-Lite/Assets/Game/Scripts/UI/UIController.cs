@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Button _specialSkill;
     [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject winMenu;
 
     [Header("Gold")]
     [SerializeField] private TextMeshProUGUI _goldText;
@@ -68,6 +69,13 @@ public class UIController : MonoBehaviour
         Fade.SetTimeEffect(true);
         Time.timeScale = 0.0f;
         deathMenu.SetActive(true);
+    }
+
+    public void ShowWinMenu()
+    {
+        Fade.SetTimeEffect(true);
+        Time.timeScale = 0.0f;
+        winMenu.SetActive(true);
     }
 
     public void EndGame()

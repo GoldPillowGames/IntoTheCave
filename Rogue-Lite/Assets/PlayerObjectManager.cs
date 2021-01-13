@@ -35,6 +35,21 @@ public class PlayerObjectManager : MonoBehaviour
     }
 
     [PunRPC]
+    public void Win()
+    {
+        foreach (PlayerController player in FindObjectsOfType<PlayerController>())
+        {
+            if (player.isMe)
+            {
+                FindObjectOfType<TimeManager>().timeScale = 0.0f;
+                Time.timeScale = 0.0f;
+                player.isDead = true;
+                player.UI.ShowWinMenu();
+            }
+        }
+    }
+
+    [PunRPC]
     public void DisconnectPlayer()
     {
         FindObjectOfType<GameManager>().DisconnectPlayer();

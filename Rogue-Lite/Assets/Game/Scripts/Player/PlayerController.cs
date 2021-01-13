@@ -637,6 +637,19 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void Win()
+    {
+        if (!Config.data.isOnline && !isDead)
+        {
+
+        }
+        else if (!isDead)
+        {
+            isDead = true;
+            PV.RPC("Win", RpcTarget.All);
+        }
+    }
+
     
 
     public void Disconnect()
