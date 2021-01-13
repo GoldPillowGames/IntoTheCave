@@ -572,5 +572,95 @@ https://www.youtube.com/channel/UCn0IeU3ajap8zqTpq0sX6gQ
 | El juego está completo (faltan arreglos pequeños de bug)  | 11/01/2021  |
 | Fin del proyecto (lanzamiento del videojuego)  | 13/01/2021  |
 
+## Post-mortem 
 
+### Opiniones individuales: 
+
+#### Opiniones sobre Jorge Sánchez Sánchez: 
+
+Jorge: creo que he cumplido siempre en su mayoría los plazos de tiempo, con una calidad más que adecuada y me he adaptado con facilidad a todo aquello que se tuviera que hacer en último momento, corregir o eliminar por falta de tiempo. Lo malo se podría decir que sobre todo en el tema de diálogos me comprometí a echar una mano y ya fuera por falta de tiempo o por mala organización mía no le he dedicado el tiempo necesario aumentando la carga de trabajo al resto de los compañeros e incluso la falta de concept en props que sí que en su momento habrían hecho falta. 
+
+Elvira: Gran artista. Las fechas se han llevado muy bien, la organización ha mejorado de forma considerable, el trabajo al día y cualquier cosa que te he pedido la has tenido en cuestión de horas. Todo genial. Nuestro flujo de trabajo y nuestra comunicación ha sido muy fluido y hemos llevado un muy buen ritmo. 
+
+Fernando: Sin mucho que comentar porque no he trabajado mano a mano con él, pero se ha notado un incremento en el ritmo de trabajo con respecto al anterior proyecto. 
+
+Germán: Ha tenido un rendimiento increíble y finalmente ha explotado el potencial que llevo intentando ver desde el 2º curso. Ha sido ágil y sus entregables han sido de una calidad impresionable. 
+
+Ignacio: trabajo constante y a buen ritmo. Por norma general, buena comunicación. En alguna ocasión puntual, al menos por mi parte, no tenía muy claro que estaba haciendo. 
+
+#### Opiniones sobre Elvira Gutiérrez Bartolomé: 
+
+Jorge: Me parece una bestialidad la velocidad y la calidad que tiene de modelado una vez le proporciono turn arounds. Me siento muy a gusto con el flujo de trabajo que hemos tenido en la parte de artes y como nos hemos coordinado siempre con facilidad, gran apoyo artístico en el momento del concept. 
+
+Elvira: He mantenido mi ritmo de trabajo constante y procurado no tener puntos bajos. Se ha sacado todo el trabajo posible adelante y los errores en el mismo se han corregido con rapidez. Como punto negativo, mi forma de comunicarme con los demás es un tanto cuestionable. 
+
+Fernando: Sin mucho que comentar porque no he trabajado mano a mano con ella, aunque destacar en general un ritmo bastante rápido a la hora de hacer las tareas planteadas. 
+
+Germán: Un trabajo espectacular. Es rápida, y pese a que a veces por las prisas hay imperfecciones, si se le indican las arregla al instante. Un muy buen trabajo. Se nota la diferencia de su trabajo en 2D al 3D. 
+
+Ignacio: un gran trabajo, constante, a buen ritmo y de calidad. Buena comunicación con los compañeros. Nada negativo destacable. 
+
+#### Opiniones sobre Fernando Martín Espina: 
+
+Jorge: A nivel de programación no puedo opinar mucho, aunque sí que sería de agradecer que hubiera cierta mayor organización, que en mi opinión sí que podríamos haber tenido ciertas IAs con algo más de tiempo. Aun así, las ias me molan como van pese a este problema de plazos de tiempo. 
+
+Elvira: Aunque se le vio ausente en los primeros días, luego ha llevado un muy buen desempeño. No he trabajado directamente con él, pero no tengo ninguna queja de su trabajo y de sus resultados. Ha hecho un gran trabajo. 
+
+Fernando: Durante la primera semana me dediqué a investigar y documentarme sobre cómo realizar un buen código escalable y leyendo sobre patrones de diseño, convenciones de código… Debido a ello y sumado a una ligera dejadez durante el principio del proyecto, los resultados mostrados durante ese tiempo no fueron los esperados. A partir de ese momento he mantenido un ritmo más constante. El hecho de tener que hacer todas las IAs se me atragantó y perdí un poco la motivación hacia el principio-mitad del desarrollo, pero luego la recuperé. 
+
+Germán: Tengo sentimientos encontrados. Al inicio me pareció que su parte avanzaba demasiado lenta, como si no estuviese poniendo ganas, y desconociendo los motivos o si fue realmente así o no, ha cumplido con sus tareas en las últimas semanas. Quizás se hubiese agradecido un poco más de participación en otras áreas, como en el game design, ya que era una de las cosas que quería hacer en un inicio. En cuanto a la calidad del código, este es de muchísima calidad. 
+
+Ignacio: buen trabajo y de calidad. Lo he notado algo distante al principio del proyecto, tanto en cuanto a cantidad de trabajo realizado como en cuanto a comunicación. Al final, por el contrario, ha sido excelente. 
+
+#### Opiniones sobre Germán López Gutiérrez: 
+
+Jorge: Brutal apoyo en el trabajo y a nivel artístico. Gran compañero de tras-nochamientos mientras trabajamos hasta las mil, me parece genial la calidad de trabajo que ha habido en sus partes y de quitarse el sombrero la funcionalidad e las ideas que me ha dado con los elementos artísticos y a nivel de juego, como los diálogos o las viñetas. TRABAJAS DEMASIADO Y DUERMES POCO (menos que yo a veces y ya es decir). 
+
+Elvira: Ha trabajado muchísimo más de lo que debería, y aunque alucinante, se ha dejado la salud en el proceso haciendo el trabajo de dos programadores en vez de uno. Su comunicación con los demás y su forma de dar feedback ha mejorado muchísimo. Debería cuidar más su salud. 
+
+Fernando: Sin duda la persona que más horas le ha echado al proyecto. Es increíble todo el trabajo que ha realizado, desde todas las animaciones hasta gran parte del código del juego. En la parte negativa, en general la organización dentro del proyecto de Unity podría haber sido mejor: scripts sin usar, códigos muy largos sin descomponer, scripts arrastrados desde el prototipo… En general un código poco legible. 
+
+Germán: Considero haber sido rápido y, aunque me he encargado de hacer un número de tareas excesivo en mi opinión, he sido capaz de llevarlas a cabo. Además, considero que he organizado bien al grupo, especialmente a los artistas. Me gustaría que hubiese habido una distribución de tareas mucho más equitativa, pero teniendo en cuenta los conocimientos y aptitudes de cada uno, no quedaba más remedio que hacerlo de esta forma. Eso sí, me hubiese gustado poder haber tenido más tiempo para el game design. 
+
+Ignacio: Muchísimo trabajo y de calidad. A veces me costaba saber en qué estaba trabajando, aunque esto es en mayor parte culpa mía, y también era debido a la enorme cantidad de cosas distintas que hacía. 
+
+#### Opiniones sobre Ignacio Atance Loras: 
+
+Jorge: Aunque diga que ha tenido ciertos problemas de continuidad en su trabajo, al menos eso le oí comentar en ocasiones, me parece que ha tenido un gran trabajo y a muy buen nivel en la parte musical y a nivel de level design. Gran Scrum máster, la verdad que sí que es de agradecer la labor de escritura durante los dailys y que siempre esté atento en que se realicen los dailys y los sprint reviews. 
+
+Elvira: Gran trabajo como compositor, level designer y scrum máster. Siempre dispuesto a organizar con eficacia y a llevar un seguimiento diario muy útil y necesario de la metodología de trabajo. Además, es muy fácil comunicarse con él. 
+
+Fernando: Es admirable el hecho de haber tenido que aprender a utilizar un software de realización de música desde cero y crear varias pistas dinámicas para cada una de las partes del juego. Por otra parte, aparte del diseño de niveles, se habría agradecido algo más de apoyo por su parte en la parte de programación. 
+
+Germán: Pese a algunas dificultades que le han surgido, ha cumplido con su parte y pese a que me hubiese gustado ver más participación en otras áreas del desarrollo como es el campo de la programación, soy consciente de la situación personal y ha hecho un buen trabajo, sobretodo el sonoro, donde la calidad de la banda sonora es muy buena teniendo en cuenta la temática del videojuego. 
+
+Ignacio: Hice buen trabajo y comunicación, constantes entregas de material y disponibilidad para ayudar al resto de compañeros. Sobre todo, en la última semana (aunque también en momentos puntuales por motivos personales que no estuvieron todo lo bien gestionados que deberían). Al centrarme mucho en mis roles (level designer, encargado de música y sonido, encargado de la documentación...) esta última semana ha podido ayudar menos de lo esperado a quienes más lo necesitaban. 
+
+ 
+
+### ¿Qué ha ido bien? 
+
+La organización y flujo de trabajos han sido mucho mejor que en proyectos anteriores debido a lo aprendido, y al nivel de seriedad y compromiso con el que se ha afrontado el desarrollo del videojuego. Desde el inicio se dejaron claros los conceptos y las ideas, con el objetivo de evitar cambios o ideas poco concisas en el futuro. Debido al conocimiento de Unity previo o proveniente del autodidactismo, el desarrollo del proyecto a nivel técnico ha sido extremadamente ágil para la cantidad de contenido planeado a realizar. 
+
+### Flujo de correcciones:  
+
+Debido a problemas iniciales con la comunicación (concretamente con la falta de esta), se comenzaron a hacer daily stand-ups, lo cual nos ayudó a fijar el rumbo del desarrollo del proyecto y mejorar el flujo de trabajo. 
+
+### Feedback o retroalimentación externa: 
+
+Tras permitir a los testers probar el videojuego en su versión casi acabada, les fue enviado un cuestionario para que pudieran contar sus conclusiones de forma anónima. 
+
+Este cuestionario se iniciaba preguntando por el dispositivo de juego (ordenador o móviles) como por el navegador utilizado. Después se les pedía que explicaran si habían tenido problemas de rendimiento, y en último lugar se les preguntaba por errores dentro del juego y problemas de balance (daño, vida, oro...) que los testers hubieran encontrado. 
+
+En total fueron 9 personas las que probaron el juego, y se encontró que todas optaban por la versión de ordenador frente a la de móvil, y que los navegadores más usados fueron Chrome, Firefox, y Opera GX. Esto es importante, pues Opera GX es un navegador cada vez más extendido entre jugadores de videojuego, pero no es un navegador contemplado por los creadores de webgl Unity, lo que puede dar lugar a conflictos. 
+
+Respecto a problemas de rendimiento, no se reportó ninguno de gravedad, siendo todos ligeras diferencias en el framerate esperado y el obtenido (se esperaban 60 frames frente a los 50-40 que obtuvieron algunos jugadores con los gráficos a máxima calidad). 
+
+En cuanto al balance, muchos jugadores coincidieron en que la cantidad de vida inicial del jugador era demasiado alta, por lo que esta fue reducida.  
+
+Por último, respecto a errores del videojuego, todos fueron errores de poca gravedad y que no afectaban de forma drástica a la experiencia y no impedían disfrutar de la misma (a excepción de uno que permitía al jugador abandonar el escenario de juego). Todos estos errores se han corregido con el objetivo de mejorar la experiencia de los jugadores. 
+
+### ¿Qué se podría haber mejorado? 
+
+Debido al dinamismo con el que hemos afrontado el trabajo (cada persona se organizaba como consideraba, siempre intentando cumplir con los plazos) en general el trabajo de cada uno ha ido con altibajos y no con constancia, como sería lo ideal. 
 
