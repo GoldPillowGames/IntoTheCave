@@ -14694,15 +14694,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b0a637c7cc0bc4fb9e30dcf00d8666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 9999
-  gold: 0
+  health: 0
+  gold: 10
   slapDamage: 25
-  velocity: 12
-  radiusToAttack: 4
-  slapRadius: 8
-  slapParticles: {fileID: 568705655547305712}
-  litosController: {fileID: 1715838099242018955}
-  childAnim: {fileID: 568705655250655269}
+  velocity: 5
+  radiusToAttack: 3
+  slapRadius: 5
+  slapParticles: {fileID: 0}
+  litosController: {fileID: 0}
+  childAnim: {fileID: 0}
 --- !u!65 &803077890508653893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14764,14 +14764,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserDamage: 25
   timeToDamageAgain: 1
-  velocity: 12
-  velocityWhenLaserOn: 10
-  radiusToAttack: 2
-  timeOn: 3
-  litosController: {fileID: 1715838099242018955}
-  laserParticles: {fileID: 172526594}
-  groundParticles: {fileID: 733010289}
-  childAnim: {fileID: 393667932}
+  velocity: 5
+  velocityWhenLaserOn: 0
+  radiusToAttack: 3
+  timeOn: 0
+  litosController: {fileID: 0}
+  laserParticles: {fileID: 0}
+  groundParticles: {fileID: 0}
+  childAnim: {fileID: 0}
 --- !u!95 &1388590508
 Animator:
   serializedVersion: 3
