@@ -74,12 +74,12 @@ namespace GoldPillowGames.Enemy
 
         protected virtual void Update()
         {
-            stateMachine.Update(Time.deltaTime);
+            stateMachine?.Update(Time.deltaTime);
         }
 
         protected virtual void FixedUpdate()
         {
-            stateMachine.FixedUpdate(Time.deltaTime);
+            stateMachine?.FixedUpdate(Time.deltaTime);
         }
         
         protected virtual void GiveGold()
@@ -107,12 +107,6 @@ namespace GoldPillowGames.Enemy
             
             if (_roomManager != null)
                 _roomManager.EnemyDied();
-            
-            gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
-            foreach(Transform child in GetComponentsInChildren<Transform>())
-            {
-                child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
-            }
         }
 
         virtual protected void CheckClosestPlayer()
@@ -128,6 +122,7 @@ namespace GoldPillowGames.Enemy
                 if(health - damage <= _maxHealth * FindObjectOfType<PlayerStatus>().enemiesThreshold)
                 {
                     health = 0;
+                    ChangeToDeathLayer();
                 }
                 else
                 {
@@ -144,10 +139,21 @@ namespace GoldPillowGames.Enemy
             if (health - damage <= _maxHealth * FindObjectOfType<PlayerStatus>().enemiesThreshold)
             {
                 health = 0;
+                ChangeToDeathLayer();
             }
             else
             {
                 health = Mathf.Max(0, health - damage);
+            }
+        }
+
+        private void ChangeToDeathLayer()
+        {
+            tag = "Untagged";
+            gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+            foreach(Transform child in GetComponentsInChildren<Transform>())
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
             }
         }
         #endregion

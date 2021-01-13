@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
+using Random = UnityEngine.Random;
 
 public class RoomManager : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class RoomManager : MonoBehaviour
     private int _minEnemies = 2;
     private int _maxEnemies = 4;
     private int _numEnemies;
-    
+
     void Start()
     {
         Audio.ActivateTrack(1);

@@ -1,4 +1,5 @@
 ﻿using System;
+using GoldPillowGames.Core;
 using UnityEngine;
 
 namespace GoldPillowGames.Enemy.Pinchitos
@@ -13,6 +14,7 @@ namespace GoldPillowGames.Enemy.Pinchitos
         private Rigidbody _rigidbody;
         private Transform _initialParent;
         private Vector3 _initialLocalPosition;
+        private Quaternion _initialLocalRotation;
         private Animator _anim;
 
         private void Awake()
@@ -24,6 +26,7 @@ namespace GoldPillowGames.Enemy.Pinchitos
             _collider.isTrigger = true;
             _initialParent = transform.parent;
             _initialLocalPosition = transform.localPosition;
+            _initialLocalRotation = transform.localRotation;
         }
 
         private void Start()
@@ -52,6 +55,7 @@ namespace GoldPillowGames.Enemy.Pinchitos
         {
             transform.parent = _initialParent;
             transform.localPosition = _initialLocalPosition;
+            transform.localRotation = _initialLocalRotation;
         }
         
         private void CanThrowAgain()
