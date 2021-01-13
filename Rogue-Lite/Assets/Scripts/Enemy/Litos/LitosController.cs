@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using Photon.Pun;
+using Photon.Realtime;
 
 namespace GoldPillowGames.Enemy.Litos
 {
@@ -17,21 +18,33 @@ namespace GoldPillowGames.Enemy.Litos
         [SerializeField] private float timeBetweenAttacks = 0.7f;
         private Animator _anim;
         private Collider _collider;
+        private PhotonView photonView;
+        private PlayerController[] _players;
         #endregion
 
         #region Methods
         protected override void Awake()
         {
             base.Awake();
+            photonView = GetComponent<PhotonView>();
 
+            _players = FindObjectsOfType<PlayerController>();
             _anim = GetComponentInChildren<Animator>();
             _collider = GetComponent<Collider>();
+
+            //if (!photonView.IsMine && Config.data.isOnline)
+            //{
+            //    Agent.enabled = false;
+            //}
         }
 
         protected override void Start()
         {
             base.Start();
-            
+
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
             stateMachine.SetInitialState(new IdleState(this, stateMachine, _anim));
             
             Invoke(nameof(DoNewAttack), timeBetweenAttacks);
@@ -48,7 +61,7 @@ namespace GoldPillowGames.Enemy.Litos
 
             if (!Config.data.isOnline)
             {
-                FindObjectOfType<PlayerController>().Kill();
+                FindObjectOfType<PlayerController>().health = -10000;
             }
         }
 

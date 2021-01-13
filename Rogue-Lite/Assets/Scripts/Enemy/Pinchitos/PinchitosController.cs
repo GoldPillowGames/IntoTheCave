@@ -4,6 +4,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
+using Photon.Realtime;
 using Random = UnityEngine.Random;
 
 namespace GoldPillowGames.Enemy.Pinchitos
@@ -76,6 +77,8 @@ namespace GoldPillowGames.Enemy.Pinchitos
 
         protected override void Start()
         {
+            _spikeBall.SetDamage(attackCannonDamage);
+
             base.Start();
 
             if (!photonView.IsMine && Config.data.isOnline)
@@ -89,7 +92,7 @@ namespace GoldPillowGames.Enemy.Pinchitos
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = DirectionToPlayer;
             
-            _spikeBall.SetDamage(attackCannonDamage);
+            
         }
 
         protected override void CheckClosestPlayer()
@@ -212,17 +215,35 @@ namespace GoldPillowGames.Enemy.Pinchitos
 
         public void SetMelee1Damage()
         {
+            if (!Config.data.isOnline)
+                _staticSpikeBall.SetDamage(attackMelee1Damage);
+            else
+                photonView.RPC("SetDamage", RpcTarget.All, attackMelee1Damage);
+        }
+
+        [PunRPC]
+        public void SetDamage(int damage)
+        {
             _staticSpikeBall.SetDamage(attackMelee1Damage);
         }
+
         
         public void SetMelee21Damage()
         {
-            _staticSpikeBall.SetDamage(attackMelee21Damage);
+            //_staticSpikeBall.SetDamage(attackMelee21Damage);
+            if (!Config.data.isOnline)
+                _staticSpikeBall.SetDamage(attackMelee21Damage);
+            else
+                photonView.RPC("SetDamage", RpcTarget.All, attackMelee21Damage);
         }
         
         public void SetMelee22Damage()
         {
-            _staticSpikeBall.SetDamage(attackMelee22Damage);
+            //_staticSpikeBall.SetDamage(attackMelee22Damage);
+            if (!Config.data.isOnline)
+                _staticSpikeBall.SetDamage(attackMelee22Damage);
+            else
+                photonView.RPC("SetDamage", RpcTarget.All, attackMelee22Damage);
         }
         
         protected override void Die()
@@ -259,9 +280,12 @@ namespace GoldPillowGames.Enemy.Pinchitos
             Die();
         }
 
+
         [PunRPC]
         public override void ReceiveDamage(float damage)
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             base.ReceiveDamage(damage);
             
             if (health <= 0)

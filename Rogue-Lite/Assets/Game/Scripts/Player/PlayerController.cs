@@ -445,12 +445,21 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage, Vector3 pushDirection)
     {
         if ((!PV.IsMine && Config.data.isOnline) || playerState == PlayerState.BLOCKING || playerState == PlayerState.ROLLING)
+        {
+            print("Not me");
             return;
+        }
+            
 
         int calculatedDamage = damage;
 
         if (!Config.data.isOnline)
             calculatedDamage = damage * Config.data.dungeonLevel;
+        else
+            calculatedDamage = damage;
+
+        print("Damage: " + damage);
+        print("Calculated Damage: " + calculatedDamage);
 
         playerState = PlayerState.IS_BEING_DAMAGED;
         LetAttack();
@@ -463,6 +472,8 @@ public class PlayerController : MonoBehaviour
         {
             health -= calculatedDamage;
         }
+
+        
 
         CameraShaker.Shake(0.2f, 2f, 1.75f);
 
@@ -584,6 +595,8 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             Config.data.dungeonsStarted++;
             animator.SetTrigger("Death");
+            
+            // UI.ShowDeathMenu();
         }
         else if(!isDead)
         {

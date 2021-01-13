@@ -60,9 +60,12 @@ public class CursorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Camera.main)
+        {
+            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            cursorImage.rectTransform.position = Input.mousePosition;
+            Cursor.visible = false;
+        }
         
-        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        cursorImage.rectTransform.position = Input.mousePosition;
-        Cursor.visible = false;
     }
 }

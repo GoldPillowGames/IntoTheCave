@@ -5,6 +5,7 @@ using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy.Roquita
 {
@@ -30,6 +31,8 @@ namespace GoldPillowGames.Enemy.Roquita
         private Animator _anim;
         private AgentPropeller _propeller;
         private Collider _collider;
+        private PhotonView photonView;
+        private PlayerController[] _players;
         #endregion
 
         #region Properties
@@ -53,28 +56,99 @@ namespace GoldPillowGames.Enemy.Roquita
         {
             base.Awake();
 
+            photonView = GetComponent<PhotonView>();
+            _players = FindObjectsOfType<PlayerController>();
             Agent = GetComponent<NavMeshAgent>();
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponentInChildren<Animator>();
             _propeller = new AgentPropeller(Agent);
             _collider = GetComponent<Collider>();
+
+            if (!photonView.IsMine && Config.data.isOnline)
+            {
+                Agent.enabled = false;
+            }
         }
 
         protected override void Start()
         {
-            base.Start();
+            quickHand.SetDamage(quickHandDamage);
+            strongHand.SetDamage(strongHandDamage);
+
             
+            base.Start();
+
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = DirectionToPlayer;
             
-            quickHand.SetDamage(quickHandDamage);
-            strongHand.SetDamage(strongHandDamage);
+            
+        }
+
+        [PunRPC]
+        protected override void GiveGold()
+        {
+            base.GiveGold();
+        }
+
+        protected override void CheckClosestPlayer()
+        {
+            if (_players.Length < 2)
+                _players = FindObjectsOfType<PlayerController>();
+
+            float distance = Mathf.Infinity;
+            PlayerController closestPlayer = null;
+
+            foreach (PlayerController p in _players)
+            {
+                if (p != null)
+                {
+                    if ((p.transform.position - transform.position).magnitude < distance)
+                    {
+                        distance = (p.transform.position - transform.position).magnitude;
+                        closestPlayer = p;
+                    }
+                }
+
+            }
+
+            if (closestPlayer != null)
+            {
+                if (Player != closestPlayer)
+                {
+                    Player = closestPlayer.transform;
+                }
+            }
+        }
+
+        protected override void Update()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
+            base.Update();
+
+            
         }
 
         protected override void FixedUpdate()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             base.FixedUpdate();
-            
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             _propeller.Update(Time.deltaTime);
         }
 
@@ -141,6 +215,12 @@ namespace GoldPillowGames.Enemy.Roquita
             CameraShaker.Shake(0.4f, 3, 4);
         }
 
+        //[PunRPC]
+        //public void SyncTakeDamage()
+        //{
+
+        //}
+
         public void DisableCollider()
         {
             _collider.enabled = false;
@@ -176,7 +256,15 @@ namespace GoldPillowGames.Enemy.Roquita
         public void PrepareToLand()
         {
             var currentPosition = transform.position;
-            var playerPosition = Player.position;
+            Vector3 playerPosition;
+            if (!Config.data.isOnline)
+                playerPosition = Player.position;
+            else
+            {
+                CheckClosestPlayer();
+                playerPosition = Player.position;
+            }
+                
             
             Agent.Warp(new Vector3(playerPosition.x, currentPosition.y, playerPosition.z));
             
@@ -188,6 +276,7 @@ namespace GoldPillowGames.Enemy.Roquita
             _propeller.StartPush(time, pushAttackForce * transform.forward);
         }
 
+        [PunRPC]
         protected override void Die()
         {
             base.Die();
@@ -202,9 +291,13 @@ namespace GoldPillowGames.Enemy.Roquita
         {
             Die();
         }
-        
+
+        [PunRPC]
         public override void ReceiveDamage(float damage)
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
             base.ReceiveDamage(damage);
             
             if (health <= 0)

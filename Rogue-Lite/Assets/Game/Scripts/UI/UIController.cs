@@ -92,8 +92,8 @@ public class UIController : MonoBehaviour
     {
         if (Application.isFocused)
         {
-            if (!player)
-                FindObjectOfType<PlayerController>();
+            //if (!player)
+            //    FindObjectOfType<PlayerController>();
 
             _playerHealthbar.fillAmount = (float)player.health / (float)player.maxHealth;
             _playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(_playerHealthbarWhiteBackground.fillAmount, _playerHealthbar.fillAmount, 10 * Time.deltaTime);

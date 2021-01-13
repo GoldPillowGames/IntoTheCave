@@ -310,9 +310,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7231270350072137886}
+  - component: {fileID: 7231270350072137873}
   - component: {fileID: 7231270350072137887}
   - component: {fileID: 7231270350072137872}
-  - component: {fileID: 7231270350072137873}
   m_Layer: 16
   m_Name: Anim
   m_TagString: Untagged
@@ -336,6 +336,18 @@ Transform:
   m_Father: {fileID: 7231270350330255339}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &7231270350072137873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231270350072137885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daebc950fd9f70c448d2a7a909aeecf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7231270350072137887
 Animator:
   serializedVersion: 3
@@ -391,18 +403,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!114 &7231270350072137873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231270350072137885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daebc950fd9f70c448d2a7a909aeecf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7231270350137699050
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   jumpDamage: 25
   body: {fileID: 7231270351164119519}
   earthquakeParticles: {fileID: 7231270351243046646}
-  healthBar: {fileID: 9062667877373948431}
+  healthBar: {fileID: 6404945789904656294}
   quickHand: {fileID: 7231270349998412186}
   strongHand: {fileID: 7231270351239853305}
   landingParticles: {fileID: 6409617735978796328}
@@ -7427,7 +7427,7 @@ GameObject:
   - component: {fileID: 5820794075756277502}
   - component: {fileID: 2603800206083702571}
   m_Layer: 16
-  m_Name: Enemy UI
+  m_Name: Enemy UI (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12377,7 +12377,7 @@ PrefabInstance:
     - target: {fileID: 1846390605143680730, guid: 26827b25574c3544396595179726bb5f,
         type: 3}
       propertyPath: m_Name
-      value: Enemy UI (1)
+      value: Enemy UI
       objectReference: {fileID: 0}
     - target: {fileID: 1846390605143680730, guid: 26827b25574c3544396595179726bb5f,
         type: 3}
@@ -12519,6 +12519,12 @@ PrefabInstance:
 --- !u!224 &9187244273759350215 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4468388619890547899, guid: 26827b25574c3544396595179726bb5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4719000809429512572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6404945789904656294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1846390605143680730, guid: 26827b25574c3544396595179726bb5f,
     type: 3}
   m_PrefabInstance: {fileID: 4719000809429512572}
   m_PrefabAsset: {fileID: 0}

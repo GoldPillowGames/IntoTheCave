@@ -24,6 +24,14 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnRandomItem()
     {
+        if (!Config.data.isOnline)
+        {
+            if (FindObjectOfType<RunManager>().currentStage >= 4)
+            {
+                return;
+            }
+        }
+        
         int index;
         if (!Config.data.isOnline)
         {

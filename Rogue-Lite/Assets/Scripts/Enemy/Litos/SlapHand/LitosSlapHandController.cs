@@ -2,6 +2,7 @@
 using System.Linq;
 using GoldPillowGames.Patterns;
 using UnityEngine;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy.Litos.SlapHand
 {
@@ -18,6 +19,8 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
         private Animator _anim;
         private Collider _collider;
         private Rigidbody _rigidbody;
+        private PhotonView photonView;
+        private PlayerController[] _players;
         #endregion
 
         #region Properties
@@ -47,12 +50,14 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
         protected override void Awake()
         {
             base.Awake();
-
+            photonView = GetComponent<PhotonView>();
+            _players = FindObjectsOfType<PlayerController>();
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
             _collider = GetComponent<Collider>();
             _rigidbody = GetComponent<Rigidbody>();
             InitialPosition = transform.position;
+            
         }
 
         protected override void Start()
@@ -60,6 +65,9 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
             base.Start();
 
             health = int.MaxValue;
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
             stateMachine.SetInitialState(new IdleState(this, stateMachine, _anim));
         }
 
@@ -98,11 +106,13 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
             CameraShaker.Shake(0.4f, 3, 4);
         }
 
+        [PunRPC]
         public void HandDie()
         {
             EnableChildrenRagdoll();
             
             gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+
             foreach(Transform child in GetComponentsInChildren<Transform>())
             {
                 child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
@@ -122,14 +132,19 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
 
         public void FinishAttack()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             litosController.AttackFinished();
         }
         
         public void Attack()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             stateMachine.SetState(new FollowingState(this, stateMachine, _anim));
         }
         
+        [PunRPC]
         public override void ReceiveDamage(float damage)
         {
             litosController.ReceiveDamage(damage);

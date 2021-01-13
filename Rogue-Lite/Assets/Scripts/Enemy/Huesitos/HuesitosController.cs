@@ -77,7 +77,6 @@ namespace GoldPillowGames.Enemy.Huesitos
                 CheckClosestPlayer();
             }
             
-
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = DirectionToPlayer;
         }
@@ -100,7 +99,6 @@ namespace GoldPillowGames.Enemy.Huesitos
                         closestPlayer = p;
                     }
                 }
-                
             }
 
             if (closestPlayer != null)
