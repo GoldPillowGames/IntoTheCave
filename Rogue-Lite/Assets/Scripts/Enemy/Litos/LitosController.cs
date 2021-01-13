@@ -64,6 +64,10 @@ namespace GoldPillowGames.Enemy.Litos
             {
                 FindObjectOfType<PlayerController>().health = -10000;
             }
+            else
+            {
+
+            }
         }
 
         public void DiePublic()
