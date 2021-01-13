@@ -1,8 +1,10 @@
+![5](https://user-images.githubusercontent.com/44704611/104491410-7f2bc480-55d2-11eb-868a-574900f7831b.png)
+
 # Documento de diseño 
 ## Visión general
 ### Tema  
 
-La mejora constante y la superación. 
+La aventura, la mejora constante y la superación. 
 
 ### Género  
 
@@ -40,6 +42,14 @@ Figuras 3D: son figuras decorativas que podrán ser compradas por los jugadores.
 
 Libro de arte: este podrá ser adquirido de forma digital desde la propia plataforma de publicación del videojuego (itch.io) ya que está permite la venta de productos independientes en la propia página del videojuego, aunque este sea gratuito. El libro de arte tendrá un precio de 2,49€. 
 
+
+### Canvas 
+![Canvas](https://user-images.githubusercontent.com/44704611/104492148-869f9d80-55d3-11eb-945a-7ed86d2007d2.png)
+
+### Caja de herramientas
+![Diagrama toolkit into the cave](https://user-images.githubusercontent.com/44704611/104491930-33c5e600-55d3-11eb-916c-f25efcb40642.png)
+
+
 ## Alcance del proyecto 
 ### Tiempo y coste
 - **Coste principal:** 65 € 
@@ -76,7 +86,10 @@ Libro de arte: este podrá ser adquirido de forma digital desde la propia plataf
 
 ### Moonlighter
 - **Medio:** Videojuego 
-- **Motivo:** Sistema de mazmorras.
+- **Motivo:** el gameplay que consiste en explorar una mazmorra y luego utilizar lo que encuentres en ella para mejorar al personaje.
+
+## Elevator Pitch 
+Into the Cave es un videojuego del género Rogue-Lite para uno o dos jugadores, en el que se debe avanzar a través de distintas salas en una cueva, generadas procedimentalmente, derrotando a todos los enemigos que nos encontremos y haciéndose más fuertes en el proceso, ya que las salas serán cada vez más complicadas. Los jugadores contarán para ello con 3 armas distintas que podrán utilizar y la posibilidad de esquivar ataques. Es un juego fuertemente inspirado en juegos como Hades. El diseño de los personajes se inspira fuertemente en Little Big Planet, mientras que la estética se basa en juegos como Genshin Impact o The Legend of Zelda concluyendo en un resultado simpático y amigable para todos los públicos.  
 
 ## Descripción general del proyecto 
 Se trata de un juego del género Rogue-Lite, en vista isométrica, en el que el jugador controla a un personaje el cual se encuentra en un campamento, cerca del cual hay una cueva. En el campamento el jugador puede mejorar su personaje, o cambiar su apariencia. Una vez entra a la cueva, esta estará formada de distintas salas llenas de enemigos, a los cuales debe derrotar. Una vez derrotados podrá pasar por una, de varias salidas, a la siguiente sala. A lo largo de las salas, se irá encontrando distintos objetos, los cuales podrán ser armas nuevas, objetos que apliquen pasivas, o habilidades. También cada cierto número de salas aparecerá un jefe, hasta llegar al jefe final y completar el juego.  
@@ -95,19 +108,15 @@ El componente narrativo del videojuego se desarrolla hablando con los personajes
 Se ha descubierto una misteriosa cueva, la cual cambia cada vez que alguien se adentra en ella. El protagonista es un aventurero que se ha propuesto llegar hasta el final de la misma y descubrir sus secretos. 
 
 ## Resumen
-
+Se ha descubierto una misteriosa cueva que cambia cada vez que alguien entra en ella. Es una cueva llena de monstruos y tesoros, y nuestro personaje principal, un curioso y tranquilo caballero, es un aventurero que se ha propuesto llegar al final de ella y revelar todos sus secretos. Muchos comerciantes han establecido sus negocios a la entrada, y el personaje principal los utilizará para adquirir objetos útiles para su aventura.  
 
 ## ¿Cómo se cuenta la historia?
-La historia será contada, primero, con una cinemática inicial tipo cómic que explique grosso modo el contexto del mundo, el cómo apareció la cueva, cómo se fueron asentando las distintas personas en torno a la entrada de la cueva, construyendo un campamento que recibe a aventureros de todos los rincones del mundo que buscan adentrarse en la caverna. 
-El juego comenzaría, luego de la cinemática, en medio de una run, para que permita al jugador antes que nada experimentar las mecánicas del videojuego por sí mismo. 
-Finalmente, tras terminar la run inicial a modo de tutorial, aparecería en el campamento, pudiendo hablar con los distintos personajes. 
-La historia, a partir de aquí, será contada a través de, por un lado, los personajes que conducen los distintos puestos, que, además de la frase genérica estándar que te muestra al hablar con él (algo del estilo “Bienvenido a la ______, ¿Qué desea?”), te explique, en caso de haber una frase disponible, parte de su vida y de cómo llegó hasta allí, ahondando en los orígenes de la cueva y concretando tu conocimiento sobre esta más allá de la cinemática inicial (esto tendría sentido ya que los personajes llevan ya tiempo asentados en el lugar y conocen más de su historia). También te podrán decir frases relativas a la última run realizada, en caso de haber vencido a cierto jefe te hablará sobre él, y en caso de haber perdido, te aconsejará cómo vencerlo (sin que se sienta un consejo a secas, sino que esté implícito en la frase asignada). 
-También habrán NPC’s genéricos con aspecto de aventurero que te dirán frases relativas a ciertos enemigos que existen en la mazmorra (incluso aunque no te los hayas encontrado aún) que te anticiparán (o referenciarán) a enemigos de la mazmorra, diciendo consejos (de nuevo, implícitos) sobre cómo vencerlos o explicando brevemente parte del origen de la criatura, de su alimentación... Estas frases pueden repetirse, y serán elegidas aleatoriamente de un pool de frases. Hablarán sobre todo tipo de enemigos (básicos, minijefes y jefes) y también sobre las distintas zonas (bioma, temperatura, vegetación... todo relativo a los modelos 3D que componen dicha zona y los distintos props que la decoran). 
+Al iniciar una nueva partida, se muestra una cinemática en el jugador en la que se ve al caballero encontrando un tesoro dentro de la cueva, y siendo rodeado por monstruos justo después. Tras este suceso, el personaje aparece en el campamento, entendiéndose así que, si se es derrotado dentro de la cueva, se vuelve a fuera y hay que volver a entrar, cambiando entonces la cueva.  
 
 ## Jugabilidad
 Se trata de un juego del género Rogue-Lite, en vista isométrica, en el que el jugador controla a un personaje el cual se encuentra en un campamento, cerca del cual hay una cueva. En el campamento el jugador puede mejorar su personaje, o cambiar su apariencia. Una vez entra a la cueva, esta estará formada de distintas salas llenas de enemigos, a los cuales debe derrotar. Una vez derrotados podrá pasar por una, de varias salidas, a la siguiente sala. A lo largo de las salas, se irá encontrando distintos objetos, los cuales podrán ser armas nuevas, objetos que apliquen pasivas, o habilidades. También cada cierto número de salas aparecerá un jefe, hasta llegar al jefe final y completar el juego.  
 
-Las mejoras adquiridas en el campamento se mantienen para siempre. Las mejoras adquiridas dentro de la cueva se reinician al morir, o una vez completado el juego. 
+Las mejoras adquiridas en el campamento se mantienen para siempre, o se utilizaran durante la siguiente partida en la cueva. Las mejoras adquiridas dentro de la cueva se reinician al morir, o una vez completado el juego. 
 
 ### Qué experiencia se busca
 El objetivo es una experiencia de mejora y progreso constante para el jugador. según el jugador explora la cueva múltiples veces, comprobará como sus habilidades en combate mejoran, sintiéndose bien por ello. Al mismo tiempo, al mejorar a su personaje entre partida y partida, y al ir desbloqueando nuevos aspectos, el jugador sentirá que progresa dentro del juego, y que tiene incentivos para seguir jugando. Por su parte, el combate será dinámico y preciso, para que se sienta justo y divertido, siendo así una mecánica adictiva para el jugador. 
@@ -477,6 +486,64 @@ SlapAttackState: estado de la mano de Litos en el que ataca.
 - Fade: permite ejecutar un efecto fade. 
 
 ## Animación 
+### Personaje principal  
+- Idle 
+- Correr 
+- Voltereta 
+- Ataque 1 con espada 
+- Ataque 2 con espada 
+- Ataque especial con espada (cubrirse con escudo) 
+- Ataque 1 con alabarda 
+- Ataque 2 con alabarda 
+- Ataque 1 con estoque 
+- Ataque 2 con estoque 
+- Ataque con ballesta 
+
+### NPC hostil 1 – Huesitos cuerpo a cuerpo 
+- Correr 
+- Ataque 
+
+### NPC hostil 2 – Huesitos con arco 
+- Correr 
+- Ataque 
+
+### NPC hostil 3 – Templario 
+- Correr 
+- Ataque 
+
+### NPC hostil 4 – Espectro 
+- Moverse 
+- Ataque 
+
+### NPC hostil 5 – Roquita 
+- Moverse 
+- Saltar y aterrizar 
+- Ataque con mano derecha 
+- Ataque con mano izquierda 
+
+### NPC hostil 6 – Pinchitos 
+- Moverse 
+- Disparar bola de pinchos 
+- Ataque de derecha a izquierda 
+- Ataque de izquierda a derecha 
+- Ataque de abajo a arriba 
+
+### NPC hostil 7 – Litos 
+- Idle 
+- Ataque con mano derecha (golpea el suelo) 
+- Ataque con la mano izquierda (la coloca encima) 
+
+### NPC de tienda – Armero 
+- Idle 
+
+### NPC de tienda – Herrero 
+- Idle 
+
+### NPC de tienda - Tintorero 
+- Idle 
+
+### NPC de tienda – Maga 
+- Idle 
 
 ## Calendario 
 
