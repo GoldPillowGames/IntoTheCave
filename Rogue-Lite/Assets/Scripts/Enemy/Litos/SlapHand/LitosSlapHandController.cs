@@ -60,6 +60,20 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
             
         }
 
+        protected override void Update()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.Update();
+        }
+
+        protected override void FixedUpdate()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.FixedUpdate();
+        }
+
         protected override void Start()
         {
             base.Start();

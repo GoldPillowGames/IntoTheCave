@@ -35,8 +35,28 @@ namespace GoldPillowGames.Player
                     CameraShaker.Shake(0.1f, 1.75f, 2f);
 
                     PlayerStatus player = GetComponentInParent<PlayerStatus>();
-                    DamageText.Spawn((int)player.damage, other.ClosestPoint(transform.position));
-                    player.GetComponent<PlayerController>().health += player.damage * (int)player.healthSteal / 100 * (int)player.heal;
+
+                    if(Config.data.isOnline && player == null)
+                    {
+                        PlayerStatus[] players = FindObjectsOfType<PlayerStatus>();
+                        foreach(PlayerStatus p in players)
+                        {
+                            if (p.GetComponent<PlayerController>().isMe)
+                            {
+                                player = p;
+                            }
+                        }
+                    }
+                    else if(player == null)
+                    {
+                        player = FindObjectOfType<PlayerStatus>();
+                    }
+
+                    int dmg = player.damage / 4;
+
+                    Debug.Log("Player: " + player);
+                    DamageText.Spawn((int)dmg, other.ClosestPoint(transform.position));
+                    player.GetComponent<PlayerController>().health += dmg * (int)player.healthSteal / 100 * (int)player.heal;
                     if(player.GetComponent<PlayerController>().health > player.health)
                     {
                         player.GetComponent<PlayerController>().health = player.health;
@@ -51,12 +71,12 @@ namespace GoldPillowGames.Player
 
                     if (!Config.data.isOnline)
                     {
-                        enemyController.ReceiveDamage(player.damage / 2);
+                        enemyController.ReceiveDamage(dmg);
                         enemyController.Push(0.5f, weaponPush* player.push, (other.transform.position - player.transform.position).normalized);
                     }
                     else
                     {
-                        enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("ReceiveDamage", Photon.Pun.RpcTarget.All, (float)player.damage);
+                        enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("ReceiveDamage", Photon.Pun.RpcTarget.All, (float)dmg);
                         enemyController.GetComponent<Photon.Pun.PhotonView>().RPC("Push", Photon.Pun.RpcTarget.All, 0.5f, weaponPush* player.push, (other.transform.position - player.transform.position).normalized);
                     }
                     DestroyArrow();

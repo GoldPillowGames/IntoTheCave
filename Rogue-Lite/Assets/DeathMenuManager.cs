@@ -35,7 +35,22 @@ public class DeathMenuManager : MonoBehaviour
 
     public void PlayRandomDeathSound()
     {
-        _textAnimatorPlayer.ShowText("From my deepest dreams, a light reflects the dawn of a new day.");
+        switch (Config.data.language)
+        {
+            case Language.EN:
+                _textAnimatorPlayer.ShowText("From my deepest dreams, a light reflects the dawn of a new day.");
+                break;
+            case Language.ES:
+                _textAnimatorPlayer.ShowText("Desde mis sueños más profundos, una luz refleja el amanecer de un nuevo día.");
+                break;
+            case Language.DE:
+                _textAnimatorPlayer.ShowText("Aus meinen tiefsten Träumen spiegelt ein Licht die Morgendämmerung eines neuen Tages.");
+                break;
+            default:
+                _textAnimatorPlayer.ShowText("From my deepest dreams, a light reflects the dawn of a new day.");
+                break;
+        }
+        
         Audio.PlaySFX(_deathClip);
     }
 

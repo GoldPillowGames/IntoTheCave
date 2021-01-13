@@ -62,6 +62,7 @@ public class PlayerWeaponry : MonoBehaviour
                 }
                 trail._base = weaponTrails1[2];
                 trail._tip = weaponTrails1[1];
+                playerController.weaponState = PlayerWeapon.SHIELD;
                 playerController._attackTime = attackTimer1;
                 playerController._moveTime = moveTimer1;
                 playerController.numberOfAttacks = 2;
@@ -84,6 +85,7 @@ public class PlayerWeaponry : MonoBehaviour
 
                 trail._base = weaponTrails2[2];
                 trail._tip = weaponTrails2[1];
+                playerController.weaponState = PlayerWeapon.HALBERT;
                 playerController._attackTime = attackTimer2;
                 playerController._moveTime = moveTimer2;
                 playerController.numberOfAttacks = 2;
@@ -105,6 +107,7 @@ public class PlayerWeaponry : MonoBehaviour
                 }
                 trail._base = weaponTrails3[2];
                 trail._tip = weaponTrails3[1];
+                playerController.weaponState = PlayerWeapon.CROSSBOW;
                 playerController._attackTime = attackTimer3;
                 playerController._moveTime = moveTimer3;
                 playerController.numberOfAttacks = 2;

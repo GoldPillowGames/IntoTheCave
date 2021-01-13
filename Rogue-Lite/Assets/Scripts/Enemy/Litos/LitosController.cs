@@ -90,6 +90,20 @@ namespace GoldPillowGames.Enemy.Litos
             }
         }
 
+        protected override void Update()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.Update();
+        }
+
+        protected override void FixedUpdate()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.FixedUpdate();
+        }
+
         public void AttackFinished()
         {
             Invoke(nameof(DoNewAttack), timeBetweenAttacks);
