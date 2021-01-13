@@ -15,5 +15,10 @@ namespace GoldPillowGames.Enemy.Litos
         {
             _controller.DiePublic();
         }
+
+        private void HandsDie()
+        {
+            _controller.HandsDie();
+        }
     }
 }

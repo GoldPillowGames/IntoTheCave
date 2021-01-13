@@ -74,7 +74,6 @@ namespace GoldPillowGames.Enemy.Pinchitos
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
-                Debug.Log("KEK");
                 FinishThrow();
             }
         }

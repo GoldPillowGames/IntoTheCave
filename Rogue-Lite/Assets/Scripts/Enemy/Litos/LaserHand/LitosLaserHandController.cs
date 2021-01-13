@@ -20,8 +20,10 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
         [SerializeField] private ParticleSystem laserParticles;
         [SerializeField] private ParticleSystem groundParticles;
         [SerializeField] private Animator childAnim;
+        [SerializeField] private Collider attackCollider;
+        [SerializeField] private Collider dieCollider;
         private Animator _anim;
-        private Collider _collider;
+        private Rigidbody _rigidbody;
         private List<GameObject> _entitiesHit;
 
         private FiniteStateMachine _stateMachine;
@@ -61,7 +63,7 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
             _entitiesHit = new List<GameObject>();
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponent<Animator>();
-            _collider = GetComponent<Collider>();
+            _rigidbody = GetComponent<Rigidbody>();
             InitialPosition = transform.position;
             //DisableChildrenRagdoll();
         }
@@ -138,8 +140,19 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
                 child.gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
             }
 
-            _collider.enabled = false;
+            attackCollider.enabled = false;
             _anim.enabled = false;
+            
+            groundParticles.Stop();
+            laserParticles.Stop();
+            _rigidbody.isKinematic = false;
+            _rigidbody.useGravity = true;
+            
+            _stateMachine.SetState(new IdleState(this, _stateMachine, _anim));
+            ChildAnim.SetBool("IsAttacking", true);
+            dieCollider.enabled = true;
+            dieCollider.isTrigger = false;
+            
             enabled = false;
         }
 
