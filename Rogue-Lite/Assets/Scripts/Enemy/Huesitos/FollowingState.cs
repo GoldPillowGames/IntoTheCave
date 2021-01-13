@@ -13,7 +13,7 @@ namespace GoldPillowGames.Enemy.Huesitos {
         #region Methods
         public FollowingState(HuesitosController enemyController, FiniteStateMachine stateMachine, Animator anim) : base(stateMachine, anim)
         {
-            animationBoolParameterSelector.Add(new string[] {"IsFollowing1", "IsFollowing2"});
+            animationBoolParameterSelector.Add(new[] {"IsFollowing1", "IsFollowing2"});
             _enemyController = enemyController;
             _targetFollower = new NavMeshTargetFollower(_enemyController.Agent);
         }

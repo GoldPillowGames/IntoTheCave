@@ -14641,6 +14641,7 @@ GameObject:
   - component: {fileID: 803077890508653895}
   - component: {fileID: 803077890508653892}
   - component: {fileID: 803077890508653893}
+  - component: {fileID: 961509042}
   m_Layer: 16
   m_Name: SlapHandAnim
   m_TagString: Enemy
@@ -14697,12 +14698,12 @@ MonoBehaviour:
   health: 0
   gold: 10
   slapDamage: 25
-  velocity: 5
+  velocity: 12
   radiusToAttack: 3
   slapRadius: 5
-  slapParticles: {fileID: 0}
-  litosController: {fileID: 0}
-  childAnim: {fileID: 0}
+  slapParticles: {fileID: 568705655547305712}
+  litosController: {fileID: 1715838099242018955}
+  childAnim: {fileID: 568705655250655269}
 --- !u!65 &803077890508653893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14716,6 +14717,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.040581, y: 11.49, z: 11.769352}
   m_Center: {x: 6.221534, y: 9.31, z: -1.4390469}
+--- !u!54 &961509042
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803077890508653894}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &803077891722757364
 GameObject:
   m_ObjectHideFlags: 0
@@ -14728,6 +14745,8 @@ GameObject:
   - component: {fileID: 3337606292553513534}
   - component: {fileID: 1388590508}
   - component: {fileID: 7127329130474790711}
+  - component: {fileID: 2109550404}
+  - component: {fileID: 2109550405}
   m_Layer: 16
   m_Name: LaserHand
   m_TagString: Untagged
@@ -14764,16 +14783,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserDamage: 25
   timeToDamageAgain: 1
-  velocity: 5
-  velocityWhenLaserOn: 0
+  velocity: 12
+  velocityWhenLaserOn: 10
   radiusToAttack: 3
-  timeOn: 0
+  timeOn: 2
   litosController: {fileID: 1715838099242018955}
   laserParticles: {fileID: 172526594}
   groundParticles: {fileID: 733010289}
   childAnim: {fileID: 393667932}
-  attackCollider: {fileID: 0}
-  dieCollider: {fileID: 0}
+  attackCollider: {fileID: 7127329130474790711}
+  dieCollider: {fileID: 2109550405}
 --- !u!95 &1388590508
 Animator:
   serializedVersion: 3
@@ -14807,6 +14826,35 @@ CapsuleCollider:
   m_Height: 41.990044
   m_Direction: 1
   m_Center: {x: 0.84, y: -10.181108, z: 0.85}
+--- !u!54 &2109550404
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803077891722757364}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &2109550405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803077891722757364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 11.040581, y: 11.49, z: 11.769352}
+  m_Center: {x: 6.221534, y: 9.31, z: -1.4390469}
 --- !u!1 &1203347666524541999
 GameObject:
   m_ObjectHideFlags: 0
@@ -14944,7 +14992,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 1715838099242018965}
   - {fileID: 568705654166897116}
-  viewIdField: 0
+  viewIdField: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &1715838099242018965
