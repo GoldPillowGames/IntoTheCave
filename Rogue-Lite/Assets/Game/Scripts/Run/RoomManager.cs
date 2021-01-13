@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private bool isBossRoom;
     // [SerializeField] private GameObject[] _doors;
     private GameObject[] _posibleEnemiesToSpawn;
+    private string pathName;
     
     // Provisional:
     private int _minEnemies = 2;
@@ -24,7 +25,12 @@ public class RoomManager : MonoBehaviour
         int currentStage = runManager.currentStage;
         if (isBossRoom)
         {
+            pathName = "Bosses";
             currentStage--;
+        }
+        else
+        {
+            pathName = "Enemies";
         }
         
         switch (currentStage)
@@ -112,7 +118,7 @@ public class RoomManager : MonoBehaviour
         }
         else if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Enemies", enemyToInstantiate.name), position, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", pathName, enemyToInstantiate.name), position, Quaternion.identity);
         }
     }
     

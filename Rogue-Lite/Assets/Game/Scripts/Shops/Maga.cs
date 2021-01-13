@@ -31,7 +31,7 @@ public class Maga : NPCBehaviour
         {
             interacting = true;
             player.playerState = PlayerState.DIALOGUE;
-            if(Config.data.newGamePlusStarted == false && Config.data.dungeonsCompleted > 0)
+            if((Config.data.newGamePlusStarted == false && Config.data.dungeonsCompleted > 0) || (Config.data.dungeonsStarted >= 7 && Config.data.newGamePlusStarted == false))
             {
                 Config.data.newGamePlusStarted = true;
                 dialogueController.StartDialogue(7);

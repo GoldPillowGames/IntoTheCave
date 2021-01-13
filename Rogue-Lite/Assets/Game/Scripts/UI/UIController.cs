@@ -90,40 +90,46 @@ public class UIController : MonoBehaviour
         Fade.PlayFade();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        _playerHealthbar.fillAmount = (float)player.health / (float)player.maxHealth;
-        _playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(_playerHealthbarWhiteBackground.fillAmount, _playerHealthbar.fillAmount, 10 * Time.deltaTime);
-
-        
-
-        if (_currentGold != Config.data.gold)
+        if (Application.isFocused)
         {
-            _currentGold = Config.data.gold;
+            if (!player)
+                FindObjectOfType<PlayerController>();
+
+            _playerHealthbar.fillAmount = (float)player.health / (float)player.maxHealth;
+            _playerHealthbarWhiteBackground.fillAmount = Mathf.Lerp(_playerHealthbarWhiteBackground.fillAmount, _playerHealthbar.fillAmount, 10 * Time.deltaTime);
+
+
+
+            if (_currentGold != Config.data.gold)
+            {
+                _currentGold = Config.data.gold;
+
+            }
+
+            _healthText.text = player.health > 0 ? player.health.ToString() : "0";
+
+            if (_gold < Config.data.gold)
+            {
+                _gold += Time.unscaledDeltaTime * 100;
+                int _goldInt = (int)_gold;
+                _goldText.text = _goldInt.ToString();
+                _goldAnim.SetBool("TakingGold", true);
+            }
+            else
+            {
+                _goldAnim.SetBool("TakingGold", false);
+            }
+
+            if (_gold > Config.data.gold)
+            {
+                _gold = Config.data.gold;
+                int _goldInt = (int)_gold;
+                _goldText.text = _goldInt.ToString();
+            }
+        }
             
-        }
-
-        _healthText.text = player.health > 0 ? player.health.ToString() : "0";
-
-        if (_gold < Config.data.gold)
-        {
-            _gold += Time.unscaledDeltaTime * 100;
-            int _goldInt = (int)_gold;
-            _goldText.text = _goldInt.ToString();
-            _goldAnim.SetBool("TakingGold", true);
-        }
-        else
-        {
-            _goldAnim.SetBool("TakingGold", false);
-        }
-        
-        if(_gold > Config.data.gold)
-        {
-            _gold = Config.data.gold;
-            int _goldInt = (int)_gold;
-            _goldText.text = _goldInt.ToString();
-        }
     }
 
     //public void OnPointerDown(PointerEventData eventData)

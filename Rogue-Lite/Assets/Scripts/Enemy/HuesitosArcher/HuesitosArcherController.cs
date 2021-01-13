@@ -225,7 +225,7 @@ namespace GoldPillowGames.Enemy.HuesitosArcher
         }
 
 
-        [Photon.Pun.PunRPC]
+        [PunRPC]
         public override void ReceiveDamage(float damage)
         {
             if (!photonView.IsMine && Config.data.isOnline)

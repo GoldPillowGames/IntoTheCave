@@ -7,6 +7,8 @@ using UnityEngine.Rendering.Universal;
 using Photon.Pun;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
 using AwesomeToon;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 public enum MainMenuType
 {
@@ -14,16 +16,22 @@ public enum MainMenuType
     SETTINGS_MENU = 1,
     BRIGHTNESS_MENU = 2,
     LANGUAGE_MENU = 3,
-    CREDITS_MENU = 4
+    CREDITS_MENU = 4,
+    TITLE_MENU = 5
 }
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _timeline;
+
+    [SerializeField] private GameObject _titleMenu;
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _brightnessMenu;
     [SerializeField] private GameObject _languageMenu;
     [SerializeField] private GameObject _settingsMenu;
     [SerializeField] private GameObject _creditsMenu;
+
+    [SerializeField] private GameObject[] _pressToContinue;
 
     [SerializeField] private GameObject _brightnessBackground;
 
@@ -52,11 +60,15 @@ public class MenuManager : MonoBehaviour
         menus.Add(MainMenuType.LANGUAGE_MENU, _languageMenu);
         menus.Add(MainMenuType.SETTINGS_MENU, _settingsMenu);
         menus.Add(MainMenuType.CREDITS_MENU, _creditsMenu);
+        menus.Add(MainMenuType.TITLE_MENU, _titleMenu);
 
         if (Config.data.firstTimeLoaded)
         {
+            _timeline.GetComponent<PlayableDirector>().Stop();
             if (Application.isMobilePlatform)
             {
+                
+
                 #region UI
                 Config.data.isTactile = true;
                 Config.data.isDebug = false;
@@ -83,6 +95,8 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
+               
+
                 #region UI
                 Config.data.isTactile = false;
                 Config.data.isDebug = false;
@@ -111,8 +125,23 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            ShowMenuInstantly(0);
+            ShowMenuInstantly(5);
             // ShowMenu(MainMenuType.MAIN_MENU);
+        }
+
+        if (Application.isMobilePlatform)
+        {
+            _pressToContinue[0].SetActive(false);
+            _pressToContinue[1].SetActive(false);
+            _pressToContinue[2].SetActive(true);
+            _pressToContinue[3].SetActive(true);
+        }
+        else
+        {
+            _pressToContinue[0].SetActive(true);
+            _pressToContinue[1].SetActive(true);
+            _pressToContinue[2].SetActive(false);
+            _pressToContinue[3].SetActive(false);
         }
 
         if (Config.data.vSync)
@@ -269,6 +298,12 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
+        if(_titleMenu.activeSelf && Input.anyKeyDown)
+        {
+            ShowMenu(0);
+            SetDynamicMusicTrack(1);
+        }
+
         if (menus[MainMenuType.BRIGHTNESS_MENU].activeSelf && !_brightnessBackground.activeSelf)
         {
             _brightnessBackground.SetActive(true);
@@ -302,6 +337,13 @@ public class MenuManager : MonoBehaviour
                     {
                         print(menu);
                         _creditsAnimator.SetBool("IsPlaying", false);
+                    }
+
+                    if (menu == MainMenuType.BRIGHTNESS_MENU)
+                    {
+                        //_timeline.GetComponent<PlayableDirector>().state = PlayState.Paused;
+                        _timeline.GetComponent<PlayableDirector>().Stop();
+                        // _timeline.GetComponent<PlayableDirector>().Evaluate();
                     }
                 }
                 else

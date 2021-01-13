@@ -3,6 +3,7 @@ using GoldPillowGames.Core;
 using GoldPillowGames.Patterns;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 using Random = UnityEngine.Random;
 
 namespace GoldPillowGames.Enemy.Pinchitos
@@ -26,6 +27,8 @@ namespace GoldPillowGames.Enemy.Pinchitos
         private Animator _anim;
         private AgentPropeller _propeller;
         private Collider _collider;
+        private PhotonView photonView;
+        private PlayerController[] _players;
         #endregion
 
         #region Properties
@@ -52,6 +55,10 @@ namespace GoldPillowGames.Enemy.Pinchitos
         {
             base.Awake();
 
+            photonView = GetComponent<PhotonView>();
+
+            _players = FindObjectsOfType<PlayerController>();
+
             Agent = GetComponent<NavMeshAgent>();
             Player = FindObjectOfType<PlayerController>().transform;
             _anim = GetComponentInChildren<Animator>();
@@ -60,20 +67,73 @@ namespace GoldPillowGames.Enemy.Pinchitos
 
             _spikeBall = GetComponentInChildren<SpikeBallController>();
             _staticSpikeBall = GetComponentInChildren<StaticSpikeBallController>();
+
+            if (!photonView.IsMine && Config.data.isOnline)
+            {
+                Agent.enabled = false;
+            }
         }
 
         protected override void Start()
         {
             base.Start();
-            
+
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
+            if (Config.data.isOnline)
+            {
+                CheckClosestPlayer();
+            }
+
             stateMachine.SetInitialState(new FollowingState(this, stateMachine, _anim));
             transform.forward = DirectionToPlayer;
             
             _spikeBall.SetDamage(attackCannonDamage);
         }
 
+        protected override void CheckClosestPlayer()
+        {
+            if (_players.Length < 2)
+                _players = FindObjectsOfType<PlayerController>();
+
+            float distance = Mathf.Infinity;
+            PlayerController closestPlayer = null;
+
+            foreach (PlayerController p in _players)
+            {
+                if (p != null)
+                {
+                    if ((p.transform.position - transform.position).magnitude < distance)
+                    {
+                        distance = (p.transform.position - transform.position).magnitude;
+                        closestPlayer = p;
+                    }
+                }
+
+            }
+
+            if (closestPlayer != null)
+            {
+                if (Player != closestPlayer)
+                {
+                    Player = closestPlayer.transform;
+                }
+            }
+        }
+
+        protected override void Update()
+        {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+            base.Update();
+        }
+
         protected override void FixedUpdate()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
+
             base.FixedUpdate();
             
             _propeller.Update(Time.deltaTime);
@@ -174,13 +234,32 @@ namespace GoldPillowGames.Enemy.Pinchitos
             Agent.enabled = false;
             _anim.enabled = false;
             enabled = false;
+
+            if (!Config.data.isOnline)
+            {
+                GiveGold();
+            }
+            else
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RPC("GiveGold", RpcTarget.All);
+                }
+            }
+        }
+
+        [PunRPC]
+        protected override void GiveGold()
+        {
+            base.GiveGold();
         }
 
         public void DiePublic()
         {
             Die();
         }
-        
+
+        [PunRPC]
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);

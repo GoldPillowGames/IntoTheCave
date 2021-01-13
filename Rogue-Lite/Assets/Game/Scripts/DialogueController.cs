@@ -110,6 +110,46 @@ public class DialogueController : MonoBehaviour
         isInDialogue = true;
     }
 
+    public void ContinueDialogue()
+    {
+        if (isInDialogue)
+        {
+            //int random = UnityEngine.Random.Range(0, values.Count);
+            //sentence = values[random][1];
+            //textAnimatorPlayer.ShowText(sentence);
+            if (values[currentSentenceIndex + 2][1] == "")
+            {
+                // EndDialogue();
+                if (values[currentSentenceIndex + 1][1] == "")
+                {
+                    EndDialogue();
+                }
+                else
+                {
+                    GetComponentInParent<NPCBehaviour>().ShowMenu();
+                    isInDialogue = false;
+                }
+
+            }
+            else if (currentDialogueIndex == int.Parse(values[currentSentenceIndex + 2][1]))
+            {
+                ShowSentence(currentSentenceIndex + 1);
+            }
+            else if (currentDialogueIndex == int.Parse(values[currentSentenceIndex + 1][1]))
+            {
+                GetComponentInParent<NPCBehaviour>().ShowMenu();
+                isInDialogue = false;
+            }
+            else
+            {
+                //print("currentSentenceIndex: " + currentSentenceIndex);
+                //print("currentDialogueIndex: " + currentDialogueIndex);
+                //print("int.Parse(values[currentSentenceIndex + 1][1]): " + int.Parse(values[currentSentenceIndex + 1][1]));
+                EndDialogue();
+            }
+        }
+    }
+
     public void UpdateDialogue()
     {
         if (!dialogueText)

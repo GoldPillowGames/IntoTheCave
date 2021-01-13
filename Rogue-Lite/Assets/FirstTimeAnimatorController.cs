@@ -6,8 +6,11 @@ public class FirstTimeAnimatorController : MonoBehaviour
     {
         Fade.OnPlay = () => {
             Config.data.firstSinglePlayer = false;
+            Config.data.isOnline = false;
             SceneManager.LoadScene(2);
         };
+        Config.data.isOnline = false;
+        Config.SaveData();
         Fade.PlayFade();
     }
 

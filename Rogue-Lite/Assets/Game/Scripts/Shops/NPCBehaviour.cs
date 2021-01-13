@@ -28,6 +28,30 @@ public class NPCBehaviour : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
     }
 
+    public void Interact()
+    {
+        if (timeToStopInteracting <= 0 && !interacting)
+        {
+
+        }
+        else
+        {
+            if (interacting)
+            {
+                dialogueController.ContinueDialogue();
+            }
+            else
+            {
+                if (menu != null)
+                {
+                    FindObjectOfType<CameraController>().cameraState = CameraState.DIALOGUE;
+                    StartConversation();
+                }
+            }
+            
+        }
+    }
+
     // Update is called once per frame
     protected virtual void Update()
     {

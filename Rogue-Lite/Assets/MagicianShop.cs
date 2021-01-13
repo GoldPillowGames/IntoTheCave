@@ -23,9 +23,9 @@ public class MagicianShop : ItemShop
     [SerializeField] TextMeshProUGUI dungeonLevelTitle;
     [SerializeField] GameObject dungeonLevelSelector;
 
-    [SerializeField] Vector2[] hpTitlePos;
+    // [SerializeField] Vector2[] hpTitlePos;
     [SerializeField] Vector2[] hpPos;
-    [SerializeField] Vector2[] strengthTitlePos;
+    // [SerializeField] Vector2[] strengthTitlePos;
     [SerializeField] Vector2[] strengthPos;
     [SerializeField] RectTransform hpTitle;
     [SerializeField] RectTransform hp;
@@ -117,12 +117,12 @@ public class MagicianShop : ItemShop
         
         currentDungeonLevel = Config.data.dungeonLevel;
 
-        hpTitle.localPosition = (Config.data.dungeonsCompleted > 0) ? hpTitlePos[0] : hpTitlePos[1];
-        hp.localPosition = (Config.data.dungeonsCompleted > 0) ? hpPos[0] : hpPos[1];
-        strengthTitle.localPosition = (Config.data.dungeonsCompleted > 0) ? strengthTitlePos[0] : strengthTitlePos[1];
-        strength.localPosition = (Config.data.dungeonsCompleted > 0) ? strengthPos[0] : strengthPos[1];
-        dungeonLevelTitle.gameObject.SetActive((Config.data.dungeonsCompleted > 0) ? true : false);
-        dungeonLevelSelector.SetActive((Config.data.dungeonsCompleted > 0) ? true : false);
+        //hpTitle.localPosition = (Config.data.newGamePlusStarted) ? hpTitlePos[0] : hpTitlePos[1];
+        hp.localPosition = (Config.data.newGamePlusStarted) ? hpPos[0] : hpPos[1];
+        //strengthTitle.localPosition = (Config.data.newGamePlusStarted) ? strengthTitlePos[0] : strengthTitlePos[1];
+        strength.localPosition = (Config.data.newGamePlusStarted) ? strengthPos[0] : strengthPos[1];
+        dungeonLevelTitle.gameObject.SetActive((Config.data.newGamePlusStarted) ? true : false);
+        dungeonLevelSelector.SetActive((Config.data.newGamePlusStarted) ? true : false);
         currentHPLevel = Config.data.hpLevel;
         currentStrengthLevel = Config.data.strengthLevel;
         currentPlayerLevel = Config.data.playerLevel;

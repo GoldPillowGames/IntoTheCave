@@ -186,7 +186,7 @@ namespace GoldPillowGames.Enemy.Huesitos
             Push(time, pushComboForce, transform.forward);
         }
 
-        [Photon.Pun.PunRPC]
+        [PunRPC]
         public override void Push(float time, float force, Vector3 direction)
         {
             if (!photonView.IsMine && Config.data.isOnline)

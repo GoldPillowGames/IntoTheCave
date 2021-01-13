@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 public class BrightnessMenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _timeline;
     [SerializeField] private Slider _brightnessSlider;
     private TextMeshProUGUI _brightnessText;
     private MenuManager _menuManager;
@@ -32,7 +35,14 @@ public class BrightnessMenuManager : MonoBehaviour
     public void SaveBrightness()
     {
         Config.data.brightness = _brightnessSlider.value;
-        Config.data.firstTimeLoaded = false;
+        if(Config.data.firstTimeLoaded)
+        {
+            Config.data.firstTimeLoaded = false;
+            
+        }
+        _timeline.GetComponent<PlayableDirector>().Play();
+        // _timeline.GetComponent<PlayableDirector>().Evaluate();
+
         Config.SaveData();
         _menuManager.ShowMenu(MainMenuType.MAIN_MENU);
     }

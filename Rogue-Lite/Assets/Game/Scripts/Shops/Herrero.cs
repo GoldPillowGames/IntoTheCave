@@ -27,6 +27,16 @@ public class Herrero : NPCBehaviour
 
     public override void StartConversation()
     {
+        if(dialogueIndex < 1)
+        {
+            dialogueIndex = Config.data.herreroDialogueIndex;
+            if(dialogueIndex < 1)
+            {
+                dialogueIndex = 1;
+            }
+        }
+
+
         base.StartConversation();
     }
 

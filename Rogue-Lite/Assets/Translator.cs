@@ -21,8 +21,11 @@ public class Translator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_checkInUpdate)
-            CheckText();
+        if (Application.isFocused)
+        {
+            if (_checkInUpdate)
+                CheckText();
+        }
     }
 
     void CheckText()

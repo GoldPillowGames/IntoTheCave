@@ -215,7 +215,7 @@ public class PlayerController : MonoBehaviour
         }
 
         maxHealth = playerStatus.health;
-        Movement();
+        
 
         // Updates where the player is looking to if he is moving
         if (((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING) || doorOpened)
@@ -344,7 +344,9 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
-        if(playerState == PlayerState.IS_BEING_DAMAGED && _pushTime > 0)
+        Movement();
+
+        if (playerState == PlayerState.IS_BEING_DAMAGED && _pushTime > 0)
         {
             animator.SetBool("IsBeingDamaged", true);
             controller.Move(_pushSpeed * _pushDirection * Time.deltaTime);
