@@ -32,6 +32,7 @@ namespace GoldPillowGames.Enemy.Litos
             base.Start();
             
             stateMachine.SetInitialState(new IdleState(this, stateMachine, _anim));
+            transform.forward = -Vector3.forward;
             
             Invoke(nameof(DoNewAttack), timeBetweenAttacks);
         }
