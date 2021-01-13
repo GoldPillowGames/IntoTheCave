@@ -7746,7 +7746,7 @@ MonoBehaviour:
   _rightJoystick: {fileID: 7211623488446694378}
   cameraFollower: {fileID: 2705554676264267182}
   weapon: {fileID: 1364423278351825906}
-  crossbow: {fileID: 0}
+  crossbow: {fileID: 3713000794430121643}
   speed: 11.5
   gravity: -27.5
   groundCheckerArea: 1.3
@@ -7770,6 +7770,7 @@ MonoBehaviour:
   rollingLayer:
     serializedVersion: 2
     m_Bits: 0
+  weaponState: 0
   health: 150
   maxHealth: 150
   checkRadius: 4
@@ -9562,10 +9563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00617c01f3177bb488d532de2e16bcfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2705554676071063065}
+  player: {fileID: 2705554676141596833}
   arrowSpawner: {fileID: 5434229537153651131}
   arrowPrefab: {fileID: 6714296716361211404, guid: 6ee598d8771d03043ab077959e99d7ed,
     type: 3}
+  shootSound: {fileID: 8300000, guid: 5256046ec8756414b96fd4a4f3e1cbcd, type: 3}
 --- !u!1 &2976147582711498208
 GameObject:
   m_ObjectHideFlags: 0
@@ -11433,6 +11435,7 @@ MonoBehaviour:
   player: {fileID: 0}
   arrowSpawner: {fileID: 0}
   arrowPrefab: {fileID: 0}
+  shootSound: {fileID: 0}
 --- !u!1 &5220955521909463782
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,7 +12666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.5}
+  m_AnchoredPosition: {x: 0, y: -3.4999695}
   m_SizeDelta: {x: 0, y: -669}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4831074411720572591

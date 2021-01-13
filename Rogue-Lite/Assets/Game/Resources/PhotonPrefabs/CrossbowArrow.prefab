@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6714296716361211404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7372607, y: 0.73726094, z: 15.970024}
+  m_LocalScale: {x: 2.23, y: 2.23, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  weaponPush: 3
+  impactClip:
+  - {fileID: 8300000, guid: 49ccee3a829f0e740813a55a780a1e0c, type: 3}
 --- !u!54 &5316928993437322820
 Rigidbody:
   m_ObjectHideFlags: 0

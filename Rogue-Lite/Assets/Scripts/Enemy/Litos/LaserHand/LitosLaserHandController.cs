@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GoldPillowGames.Patterns;
 using UnityEngine;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy.Litos.LaserHand
 {
@@ -25,6 +26,8 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
         private Animator _anim;
         private Rigidbody _rigidbody;
         private List<GameObject> _entitiesHit;
+        private PhotonView photonView;
+        private PlayerController[] _players;
 
         private FiniteStateMachine _stateMachine;
         #endregion
@@ -59,6 +62,8 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
         #region Methods
         private void Awake()
         {
+            photonView = GetComponent<PhotonView>();
+            _players = FindObjectsOfType<PlayerController>();
             _stateMachine = new FiniteStateMachine();
             _entitiesHit = new List<GameObject>();
             Player = FindObjectOfType<PlayerController>().transform;
@@ -70,16 +75,22 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
 
         private void Update()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             _stateMachine.Update(Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             _stateMachine.FixedUpdate(Time.deltaTime);
         }
         
         private void Start()
         {
+            if (!photonView.IsMine && Config.data.isOnline)
+                return;
             _stateMachine.SetInitialState(new IdleState(this, _stateMachine, _anim));
         }
 
@@ -114,7 +125,7 @@ namespace GoldPillowGames.Enemy.Litos.LaserHand
             
             return Vector3.Distance(handPosition,otherPosition);
         }
-        
+
         /*public void SlapAttack()
         {
             var playerCollidersHit = Physics.OverlapSphere(transform.position, slapRadius,

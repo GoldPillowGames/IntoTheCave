@@ -16,6 +16,14 @@ public enum PlayerState
     IS_BEING_DAMAGED,
     PAUSE_MENU
 }
+
+public enum PlayerWeapon
+{
+    SHIELD,
+    HALBERT,
+    CROSSBOW
+}
+
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -59,6 +67,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxTimeToDash = 0.05f;
     [SerializeField] private LayerMask normalLayer;
     [SerializeField] private LayerMask rollingLayer;
+    public PlayerWeapon weaponState;
 
     [Header("State Variables")]
     public int health;
@@ -218,7 +227,7 @@ public class PlayerController : MonoBehaviour
         
 
         // Updates where the player is looking to if he is moving
-        if (((movement != Vector3.zero || playerState == PlayerState.ATTACKING) && playerState != PlayerState.BLOCKING) || doorOpened)
+        if (((movement != Vector3.zero || playerState == PlayerState.ATTACKING) || playerState == PlayerState.BLOCKING) || doorOpened)
         {
             playerContainer.rotation = Quaternion.Lerp(playerContainer.rotation, currentRotation, rotationSpeed * Time.deltaTime);
         }
@@ -259,7 +268,29 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(1) && !Config.data.isTactile && playerState == PlayerState.NEUTRAL || playerState == PlayerState.BLOCKING)
         {
             animator.SetBool("IsDefending", true);
+            // crossbow.ThrowArrow();
+            //if()
             playerState = PlayerState.BLOCKING;
+            //if(weaponState == PlayerWeapon.CROSSBOW)
+            //{
+                
+            //}
+            if (!Config.data.isTactile)
+            {
+                print("Shooting");
+                Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit cameraRayHit;
+                if (Physics.Raycast(cameraRay, out cameraRayHit, 100000, whatIsCursorClick))
+                {
+                    clickPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
+                    lookDirection = (clickPosition - transform.position).normalized;
+                    currentRotation = Quaternion.LookRotation(lookDirection.normalized, transform.up);
+                    //playerContainer.rotation = currentRotation;
+                }
+
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.Normalize();
+            }
         }
         else
         {
@@ -444,7 +475,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage, Vector3 pushDirection)
     {
-        if ((!PV.IsMine && Config.data.isOnline) || playerState == PlayerState.BLOCKING || playerState == PlayerState.ROLLING)
+        if ((!PV.IsMine && Config.data.isOnline) || (playerState == PlayerState.BLOCKING && weaponState == PlayerWeapon.SHIELD) || playerState == PlayerState.ROLLING)
         {
             print("Not me");
             return;
