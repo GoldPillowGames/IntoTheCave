@@ -374,7 +374,7 @@ public class RunManager : MonoBehaviour
 
             while(roomToLoad == SceneManager.GetActiveScene().buildIndex && currentRoom != 0)
             {
-                if (currentRoom == 10)
+                if (currentRoom == 2)
                 {
                     switch (currentStage)
                     {
@@ -396,7 +396,7 @@ public class RunManager : MonoBehaviour
                             print("Boss Fight Reached");
                             roomToLoad = 20;
                             currentRoom = 0;
-                            currentStage = 3;
+                            currentStage = 4;
                             break;
                         default:
                             roomToLoad = Random.Range(5, 10);

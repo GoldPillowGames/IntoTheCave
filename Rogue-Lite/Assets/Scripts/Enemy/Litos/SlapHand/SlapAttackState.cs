@@ -22,7 +22,8 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
             base.Enter();
 
             _handController.GoToNextStateCallback = GoToNextState;
-            _handController.ChildAnim.SetBool("IsAttacking", true);
+            if(_handController.ChildAnim)
+                _handController.ChildAnim.SetBool("IsAttacking", true);
         }
 
         private void GoToNextState()

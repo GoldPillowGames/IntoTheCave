@@ -5,6 +5,7 @@ using GoldPillowGames.Enemy.Pinchitos;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
 namespace GoldPillowGames.Enemy.Litos
 {
@@ -35,7 +36,8 @@ namespace GoldPillowGames.Enemy.Litos
             
             Invoke(nameof(DoNewAttack), timeBetweenAttacks);
         }
-        
+
+        [PunRPC]
         protected override void Die()
         {
             base.Die();
@@ -43,6 +45,11 @@ namespace GoldPillowGames.Enemy.Litos
             _collider.enabled = false;
             _anim.enabled = false;
             enabled = false;
+
+            if (!Config.data.isOnline)
+            {
+                FindObjectOfType<PlayerController>().Kill();
+            }
         }
 
         public void DiePublic()
@@ -50,6 +57,7 @@ namespace GoldPillowGames.Enemy.Litos
             Die();
         }
 
+        [PunRPC]
         public void HandsDie()
         {
             laserHand.HandDie();
@@ -72,7 +80,8 @@ namespace GoldPillowGames.Enemy.Litos
         {
             Invoke(nameof(DoNewAttack), timeBetweenAttacks);
         }
-        
+
+        [PunRPC]
         public override void ReceiveDamage(float damage)
         {
             base.ReceiveDamage(damage);
