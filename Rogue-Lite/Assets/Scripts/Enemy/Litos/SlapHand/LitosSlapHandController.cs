@@ -56,7 +56,6 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
             _anim = GetComponent<Animator>();
             _collider = GetComponent<Collider>();
             _rigidbody = GetComponent<Rigidbody>();
-            InitialPosition = transform.position;
             
         }
 
@@ -78,6 +77,8 @@ namespace GoldPillowGames.Enemy.Litos.SlapHand
         {
             base.Start();
 
+            InitialPosition = transform.position;
+            
             health = int.MaxValue;
             if (!photonView.IsMine && Config.data.isOnline)
                 return;
